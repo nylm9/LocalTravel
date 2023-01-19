@@ -3,10 +3,7 @@ package com.localtravel.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-<<<<<<< HEAD
-=======
 import org.springframework.web.bind.annotation.ResponseBody;
->>>>>>> yeonwoo
 import org.springframework.web.servlet.ModelAndView;
 
 import com.localtravel.dto.MemberDto;
@@ -18,7 +15,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memsvc;
 	
-<<<<<<< HEAD
+
 	@RequestMapping(value="/memberJoinForm")
 	public ModelAndView MemberJoingForm() {
 		ModelAndView mav = new ModelAndView();
@@ -43,7 +40,7 @@ public class MemberController {
 		return mav;
  	}
 
-=======
+
 	/* 로그인 페이지 이동 매핑*/
 	@RequestMapping(value = "/memberLoginForm")
 	public ModelAndView memberLoginForm() {
@@ -67,5 +64,5 @@ public class MemberController {
 		
 		return LoginId;
 	}
->>>>>>> yeonwoo
+
 }
