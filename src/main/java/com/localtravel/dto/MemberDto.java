@@ -1,4 +1,8 @@
 package com.localtravel.dto;
+<<<<<<< HEAD
+=======
+
+>>>>>>> yeonwoo
 import lombok.Data;
 
 @Data
@@ -12,6 +16,12 @@ public class MemberDto {
 	private String mphone;
 	private String maddr;
 	private String mstate;
+<<<<<<< HEAD
 
 }
 
+=======
+	
+	
+}
+>>>>>>> yeonwoo

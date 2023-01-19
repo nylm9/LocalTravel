@@ -6,9 +6,18 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
+<<<<<<< HEAD
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@//106.243.194.229:7778/xe" />
+=======
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@//106.243.194.229:7778/xe" />
+>>>>>>> yeonwoo
 		<property name="username" value="LOCALTRAVEL_DBA" />
 		<property name="password" value="1111" />
 	</bean>
