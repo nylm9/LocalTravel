@@ -81,139 +81,72 @@ img {
 </style>
 </head>
 <body>
+	<!-- 임시적으로 만든 홈버튼 -->
+	<a href="${pageContext.request.contextPath }/">홈으로</a><br>
 
-	<!-- <header>
-		  
-		</header>-->
+	<form class="row g-3"
+		action="${pageContext.request.contextPath }/memberJoin" method="post"
+		enctype="multipart/form-data">
 
-
-
-	<div id="header1" onmouseover="testFunc()" onmouseout="testFunc2()">
-
-		<img
-			src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png"
-			alt="image">
-		<ul>
-			<li><a id="title2" style="color: black; text-align: left;"
-				href="${pageContext.request.contextPath }/">로그인</a></li>
-			<li><a id="title2" style="color: black; text-align: left;"
-				href="${pageContext.request.contextPath }/memberJoinForm">회원가입</a></li>
-		</ul>
-
-
-		<!--      	 <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-     	 	
-     	 </form> -->
-		<div id="header2">
-			<ul>
-				<li><a style="color: black;">기차예매</a></li>
-				<li><a style="color: black;">기능2</a></li>
-
-			</ul>
+		<div>
+			<label for="inputMid" class="form-label">아이디</label>
+			<!-- <span class="small" id=idCheckMsg>중복확인 메세지</span> -->
+			<input type="text" name="mid" id="inputMid">
 		</div>
-	</div>
-
-
-	<div id="layoutSidenav">
-		<div id="layoutSidenav_nav"></div>
-		<div id="layoutSidenav_content">
-			<main>
-				<div class="container-fluid px-4">
-					<h1 class="mt-4">메인페이지</h1>
-					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item active">회원가입 페이지</li>
-					</ol>
-
-
-
-				</div>
-			</main>
-
-			<form class="row g-3"
-				action="${pageContext.request.contextPath }/memberJoin"
-				method="post" enctype="multipart/form-data">
-
-				<div>
-					<label for="inputMid" class="form-label">아이디</label>
-					<!-- <span class="small" id=idCheckMsg>중복확인 메세지</span> -->
-					<input type="text" name="mid" id="inputMid">
-				</div>
-				<div>
-					<label for="inputMpw" class="form-label">비밀번호</label> <input
-						type="password" name="mpw" id="inputMpw">
-				</div>
-				<div>
-					<label for="inputMname" class="form-label">이름</label> <input
-						type="text" name="mname" id="inputMname">
-				</div>
-				<div>
-					<label for="inputMbirth" class="form-label">생년월일</label> <input
-						type="date" name="mbirth" id="inputMbirth">
-				</div>
-
-				<div>
-					<label for="selectmgender" class="form-label">성별</label>
-					 <select name="mgender" id="gender-select">
-						<option value="" disabled selected>--선택해주세요--</option>
-						<option value="1">남성</option>
-						<option value="2">여성</option>
-						<option value="0">선택하지 않음</option>
-					</select>
-				</div>
-
-				<div>
-					<label for="inputMbirth" class="form-label">전화번호</label> <input
-						type="text" name="mphone" id="inputMphone">
-				</div>
-				<div>
-					<label for="inputMaddr" class="form-label">주소</label> <input
-						type="text" name="maddr" id="inputMaddr">
-				</div>
-				<div>
-					<label for="inputMemailId" class="form-label">이메일주소</label> <input
-						type="text" name="memail" id="inputMemailId">
-				</div>
-
-				<div>
-					<button type="submit" class="btn btn-primary">회원가입</button>
-					<button type="reset" class="btn btn-secondary">다시작성</button>
-				</div>
-			</form>
-
-
-
+		<div>
+			<label for="inputMpw" class="form-label">비밀번호</label> <input
+				type="password" name="mpw" id="inputMpw">
 		</div>
-	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/js/scripts.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/assets/demo/chart-area-demo.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/assets/demo/chart-bar-demo.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
-		crossorigin="anonymous"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/js/datatables-simple-demo.js"></script>
+		<div>
+			<label for="inputMname" class="form-label">이름</label> <input
+				type="text" name="mname" id="inputMname">
+		</div>
+		<div>
+			<label for="inputMbirth" class="form-label">생년월일</label> <input
+				type="date" name="mbirth" id="inputMbirth">
+		</div>
+
+		<div>
+			<label for="selectmgender" class="form-label">성별</label> <select
+				name="mgender" id="gender-select">
+				<option value="" disabled selected>--선택해주세요--</option>
+				<option value="1">남성</option>
+				<option value="2">여성</option>
+				<option value="0">선택하지 않음</option>
+			</select>
+		</div>
+
+		<div>
+			<label for="inputMbirth" class="form-label">전화번호</label> <input
+				type="text" name="mphone" id="inputMphone">
+		</div>
+		<div>
+			<label for="inputMaddr" class="form-label">주소</label> <input
+				type="text" name="maddr" id="inputMaddr">
+		</div>
+		<div>
+			<label for="inputMemailId" class="form-label">이메일주소</label> <input
+				type="text" name="memail" id="inputMemailId">
+		</div>
+
+		<div>
+			<button type="submit" class="btn btn-primary">회원가입</button>
+			<button type="reset" class="btn btn-secondary">다시작성</button>
+		</div>
+	</form>
+
 </body>
 
 <script type="text/javascript">
-    function testFunc(){
-    	console.log('!!!!')
-    	document.getElementById('header2').style.display = '';
-    	
-    }	
-    function testFunc2(){
-    	document.getElementById('header2').style.display = 'none';
-    }
-    
-    
-    </script>
+	function testFunc() {
+		console.log('!!!!')
+		document.getElementById('header2').style.display = '';
+
+	}
+	function testFunc2() {
+		document.getElementById('header2').style.display = 'none';
+	}
+</script>
 
 
 </html>

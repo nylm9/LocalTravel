@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- 임시적으로 만든 홈버튼 -->
+	<a href="${pageContext.request.contextPath }/">홈으로</a><br>
+	
 	<div>
 		<input type="text" id="mid"> <input type="text" id="mpw">
 		<button type="button" onclick="memberLoginBtn()">로그인</button>

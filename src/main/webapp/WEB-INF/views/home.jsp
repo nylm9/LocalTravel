@@ -91,13 +91,8 @@ width: 40px;
      	 	
 		  		<img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image">
 		  		<ul>
-<<<<<<< HEAD
-     	 			<li><a id="title2" style="color:black; text-align: left;" href="${pageContext.request.contextPath }/">로그인</a></li>
-     	 			<li><a id="title2" style="color:black; text-align: left;" href="${pageContext.request.contextPath }/memberJoinForm" >회원가입</a></li>
-=======
      	 			<li><a id="title2" style="color:black; text-align: left;" href="${pageContext.request.contextPath }/memberLoginForm">로그인</a></li>
-     	 			<li><a id="title2" style="color:black; text-align: left;">회원가입</a></li>
->>>>>>> yeonwoo
+     	 			<li><a id="title2" style="color:black; text-align: left;" href="${pageContext.request.contextPath }/memberJoinForm" >회원가입</a></li>
      	 		</ul>
      		
      
