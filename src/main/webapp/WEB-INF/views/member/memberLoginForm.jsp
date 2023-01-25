@@ -1,52 +1,123 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>프로젝트 - 로그인페이지</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <!-- theme meta -->
+    <meta name="theme-name" content="revolve" />
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/images/favicon.ico" type="image/x-icon">
+    
+    <!-- THEME CSS
+	================================================== -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Themify -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/themify/css/themify-icons.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/slick-carousel/slick-theme.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/slick-carousel/slick.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.css">
+    <!-- manin stylesheet -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 </head>
 <body>
-	<!-- 임시적으로 만든 홈버튼 -->
-	<a href="${pageContext.request.contextPath }/">홈으로</a><br>
-	
-	<div>
-		<input type="text" id="mid"> <input type="text" id="mpw">
-		<button type="button" onclick="memberLoginBtn()">로그인</button>
-	</div>
-	
-	<!-- Jquery&로그인 기능 관련 JavaScript -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	<script type="text/javascript">
-		
-		function memberLoginBtn() {
-			var mid = $('#mid').val();
-			var mpw = $('#mpw').val();
-			
-			console.log(mid + ' ' + mpw);
-			
-			$.ajax({
-				type: "get",
-				url: "${pageContext.request.contextPath }/memberLogin",
-				data : {
-					"mid" : mid,
-					"mpw" : mpw
-				},
-				success: function(loginResult){
-					console.log(loginResult);
-					var loginId = loginResult;
-					if(loginId.length > 0){
-						//로그인 성공시 띄울 부분
-						alert('로그인 완료됨');
-					} else {
-						//로그인 실패시 띄울 부분
-						alert('로그인 실패됨')
-					}
-				}
-			});
-		}
-		
-		
-	</script>
+
+<header class="header-top justify-content-center" style="background: #FFEBFF;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-2 col-md-4 text-center d-none d-lg-block">
+          <a class="navbar-brand " href="index.html">
+           <img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image"
+           style="width:40px; height:40px;">
+          </a>
+      </div>
+
+      <div class="col-lg-8 col-md-12">
+        <nav class="navbar navbar-expand-lg navigation-2 navigation">
+          <a class="navbar-brand text-uppercase d-lg-none" href="#">
+            <img src="${pageContext.request.contextPath }/resources/images/logo.png" alt="" class="img-fluid">
+          </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="ti-menu"></span>
+            </button>
+
+              <div class="collapse navbar-collapse" id="navbar-collapse">
+                  <ul id="menu" class="menu navbar-nav mx-auto">
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          예약하기
+                          </a>
+                      </li>
+                      
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          지역별
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <a class="dropdown-item" href="standard-fullwidth.html">패키지1</a>
+                            <a class="dropdown-item" href="standard-left-sidebar.html">패키지 2</a>
+                            <a class="dropdown-item" href="standard-right-sidebar.html">패키지3</a>
+                          </div>
+                      </li>
+
+                      <li class="nav-item"><a href="about.html" class="nav-link">정산</a></li>
+                  </ul>
+                  
+                   <ul class="list-inline mb-0 d-block d-lg-none">
+                    <li class="list-inline-item"><a href="#">로그인</a></li>
+                    <li class="list-inline-item"><a href="#">회원가입</a></li>
+                  </ul>
+              </div>
+          </nav>
+        </div>
+        
+        <div class="col-lg-2 col-md-4 col-6">
+          <div class="header-socials-2 text-right d-none d-lg-block">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item"><a href="#">마이페이지</a></li>
+              <li class="list-inline-item"><a href="#">회원가입</a></li>  
+            </ul>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+</header>
+<!-- 로그인창 -->
+<section></section>
+
+
+
+
+
+<!-- THEME JAVASCRIPT FILES
+================================================== -->
+<!-- initialize jQuery Library -->
+<script src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
+<!-- Bootstrap jQuery -->
+<script src="${pageContext.request.contextPath }/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/plugins/bootstrap/js/popper.min.js"></script>
+<!-- Owl caeousel -->
+<script src="${pageContext.request.contextPath }/resources/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/plugins/slick-carousel/slick.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.js"></script>
+<!-- Instagram Feed Js -->
+<script src="${pageContext.request.contextPath }/resources/plugins/instafeed-js/instafeed.min.js"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+<script src="${pageContext.request.contextPath }/resources/plugins/google-map/gmap.js"></script>
+<!-- main js -->
+<script src="${pageContext.request.contextPath }/resources/js/custom.js"></script>
+
+
 </body>
 </html>
