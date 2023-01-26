@@ -11,12 +11,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>TRAIN-열차예매사이트</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
-	rel="stylesheet" />
-<link
-	href="${pageContext.request.contextPath }/resources/css/styles.css"
-	rel="stylesheet" />
+
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
 <style>
@@ -79,8 +74,35 @@ img {
 	position: fixed;
 } */
 </style>
+
+ <!-- theme meta -->
+    <meta name="theme-name" content="revolve" />
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/images/favicon.ico" type="image/x-icon">
+    
+    <!-- THEME CSS
+	================================================== -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Themify -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/themify/css/themify-icons.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/slick-carousel/slick-theme.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/slick-carousel/slick.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.css">
+    <!-- manin stylesheet -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 </head>
 <body>
+
+	<!-- ======= Header ======= -->
+	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
+	<!-- End Header -->
+
+
 	<!-- 임시적으로 만든 홈버튼 -->
 	<a href="${pageContext.request.contextPath }/">홈으로</a><br>
 
