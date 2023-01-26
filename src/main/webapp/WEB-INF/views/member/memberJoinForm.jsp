@@ -73,6 +73,22 @@ img {
 	display: block;
 	position: fixed;
 } */
+select {
+width: 200px; 
+padding: .8em .5em; 
+border: 1px solid #999;
+font-family: inherit;  
+background: url('arrow.jpg') no-repeat 95% 50%; 
+border-radius: 0px; 
+-webkit-appearance: none; 
+-moz-appearance: none;
+appearance: none;
+background-color: #0f1f4;
+}
+
+select::-ms-expand {
+        display: none;
+}
 </style>
 
  <!-- theme meta -->
@@ -103,59 +119,80 @@ img {
 	<!-- End Header -->
 
 
-	<!-- 임시적으로 만든 홈버튼 -->
-	<a href="${pageContext.request.contextPath }/">홈으로</a><br>
+	<!-- 회원가입창 -->
+<section class="section" style="margin-top:40px;">
+			<div class="row justify-content-center">
+				<div class="col d-flex flex-column align-items-center justify-content-center" style="max-width:1000px;" >
 
-	<form class="row g-3"
-		action="${pageContext.request.contextPath }/memberJoin" method="post"
-		enctype="multipart/form-data">
+					<div class="card mb-3">
+						<div class="card-body">
+							<div class="pt-4 pb-2">
+								<h5 class="card-title text-center pb-0 fs-4">회원가입</h5>
+								<p class="text-center small">회원 정보를 입력해주세요.</p>
+							</div>
 
-		<div>
-			<label for="inputMid" class="form-label">아이디</label>
-			<!-- <span class="small" id=idCheckMsg>중복확인 메세지</span> -->
-			<input type="text" name="mid" id="inputMid">
-		</div>
-		<div>
-			<label for="inputMpw" class="form-label">비밀번호</label> <input
-				type="password" name="mpw" id="inputMpw">
-		</div>
-		<div>
-			<label for="inputMname" class="form-label">이름</label> <input
-				type="text" name="mname" id="inputMname">
-		</div>
-		<div>
-			<label for="inputMbirth" class="form-label">생년월일</label> <input
-				type="date" name="mbirth" id="inputMbirth">
-		</div>
+							<form class="row g-3" action="${pageContext.request.contextPath }/memberJoin" 
+							      method="post" enctype="multipart/form-data" onsubmit="return joinFormCheck(this)">
 
-		<div>
-			<label for="selectmgender" class="form-label">성별</label> <select
-				name="mgender" id="gender-select">
-				<option value="" disabled selected>--선택해주세요--</option>
-				<option value="1">남성</option>
-				<option value="2">여성</option>
-				<option value="0">선택하지 않음</option>
-			</select>
-		</div>
+								<div class="col-md-6">
+									<label for="inputMid" class="form-label">아이디</label>
+									<span class="small" id=idCheckMsg>중복확인 메세지</span>
+									<input type="text" name="mid" class="form-control" id="inputMid">
+								</div>
+								<div class="col-md-6">
+									<label for="inputMpw" class="form-label">비밀번호</label>
+									<input type="password" name="mpw" class="form-control" id="inputMpw">
+								</div>
+								<div class="col-md-6">
+									<label for="inputMname" class="form-label">이름</label>
+									<input type="text" name="mname" class="form-control" id="inputMname">
+								</div>
+								<div class="col-md-6">
+									<label for="inputMbirth" class="form-label">생년월일</label>
+									<input type="date" name="mbirth" class="form-control" id="inputMbirth">
+								</div>
+								
+								<div class="col-md-6" >
+									<label for="selectmgender" class="form-label">성별</label> 
+									<select name="mgender" id="gender-select" class="form-control">
+										<option value="" disabled selected >--선택해주세요--</option>
+										<option value="1">남성</option>
+										<option value="2">여성</option>
+										<option value="0">선택하지 않음</option>
+										
+									</select>
+										
+								</div>
+								
+								
+								
+								<div class="col-12">
+									<label for="inputMaddr" class="form-label">주소</label>
+									<input type="text" name="maddr" class="form-control" id="inputMaddr">
+								</div>
 
-		<div>
-			<label for="inputMbirth" class="form-label">전화번호</label> <input
-				type="text" name="mphone" id="inputMphone">
-		</div>
-		<div>
-			<label for="inputMaddr" class="form-label">주소</label> <input
-				type="text" name="maddr" id="inputMaddr">
-		</div>
-		<div>
-			<label for="inputMemailId" class="form-label">이메일주소</label> <input
-				type="text" name="memail" id="inputMemailId">
-		</div>
+								<div class="col-md-5">
+									<label for="inputMemailId" class="form-label">이메일아이디</label>
+									<input type="text" name="memailid" class="form-control" id="inputMemailId">
+								</div>
+								<div class="col-md-5">
+									<label for="inputMemailDomain" class="form-label">이메일도메인</label>
+									<input type="text" name="memaildomain" class="form-control" id="inputMemailDomain">
+								</div>
+								
 
-		<div>
-			<button type="submit" class="btn btn-primary">회원가입</button>
-			<button type="reset" class="btn btn-secondary">다시작성</button>
-		</div>
-	</form>
+								
+
+								<div class="text-center">
+									<button type="submit" class="btn btn-primary" style="margin-top:10px;margin-left:350px;">회원가입</button>
+									<button type="reset" class="btn btn-secondary" style="margin-top:10px;">다시작성</button>
+								</div> 
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
 </body>
 
@@ -169,6 +206,36 @@ img {
 		document.getElementById('header2').style.display = 'none';
 	}
 </script>
+
+		<script type="text/javascript">
+		function joinFormCheck(joinForm){
+			var formMid = joinForm.mid;
+			if(formMid.value == 0){
+				alert('아이디를 입력 해주세요!');
+				formMid.focus();
+				return false;
+			}
+			var formMpw = joinForm.mpw;
+			if(formMpw.value == 0){
+				alert('비밀번호를 입력 해주세요!');
+				formMpw.focus();
+				return false;
+			}
+			var formMname = joinForm.mname;
+			if(formMname.value == 0){
+				alert('이름을 입력 해주세요!');
+				formMname.focus();
+				return false;
+			}
+		}
+		
+		function selectDomain(selDomain){
+			var selectDomainVal = selDomain.value;
+			document.getElementById('inputMemailDomain').value = selectDomainVal;
+		}
+		
+		
+	</script>
 
 
 </html>
