@@ -1,5 +1,10 @@
 package com.localtravel.dto;
 
-public class TRStationDto {
+import lombok.Data;
 
+@Data
+public class TRStationDto {
+	private String nodeid;
+	private String nodename;
+	private String nocitycode;
 }

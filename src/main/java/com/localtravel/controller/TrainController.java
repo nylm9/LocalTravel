@@ -16,17 +16,19 @@ public class TrainController {
 	// 열차-도시코드 가져오기
 	@RequestMapping(value ="/getCityCodeInfo")
 	public ModelAndView getCityCodeInfo() throws Exception {
-		System.out.println("TrainController - 열차 코드 가져오기");
+		System.out.println("TrainController - 열차 도시코드 가져오기");
 		
 		int insertReult = trsvc.getCityCodeInfo();
 		
 		return null;
 	}
 	
+	// 열차 - 역코드 가져오기
 	@RequestMapping(value ="/getStationInfo")
-	public ModelAndView getStationInfo() {
+	public ModelAndView getStationInfo() throws Exception {
+		System.out.println("TrainController - 열차 역코드 가져오기");
 		
-		
+		int insertReult = trsvc.getStaionCodeInfo();
 		
 		return null;
 	}
