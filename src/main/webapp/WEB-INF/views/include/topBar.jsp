@@ -23,9 +23,10 @@
               <div class="collapse navbar-collapse" id="navbar-collapse">
                   <ul id="menu" class="menu navbar-nav mx-auto">
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath }/reservePage" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <%-- <a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath }/reservePage" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           예약하기
-                          </a>
+                          </a> --%>
+                           <li class="nav-item"><a href="${pageContext.request.contextPath }/reservePage" class="nav-link">예약하기</a></li>
                       </li>
                       
                       <li class="nav-item dropdown">
@@ -57,6 +58,7 @@
             <ul class="list-inline mb-0">
               <li class="list-inline-item"><a href="${pageContext.request.contextPath }/memberLoginForm">로그인</a></li>
               <li class="list-inline-item"><a href="${pageContext.request.contextPath }/memberJoinForm">회원가입</a></li>  
+             
             </ul>
           </div>
         </div>

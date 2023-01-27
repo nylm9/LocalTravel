@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>TRAIN-열차예매사이트</title>
+<title>TRAIN-열차예매사이트_Admin페이지</title>
 
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -125,9 +125,10 @@ select::-ms-expand {
 	<!-- ======= Header ======= -->
 	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
 	<!-- End Header -->
+	
+	<h1>로그인한 아이디 : ${sessionScope.loginId }</h1>
 
-
-	<!-- 회원가입창 -->
+<!-- Enjoy테이블 데이터 입력 부분 -->
 	<section class="section" style="margin-top: 40px;">
 		<div class="row justify-content-center">
 			<div
@@ -137,8 +138,8 @@ select::-ms-expand {
 				<div class="card mb-3">
 					<div class="card-body">
 						<div class="pt-4 pb-2">
-							<h5 class="card-title text-center pb-0 fs-4">회원가입</h5>
-							<p class="text-center small">회원 정보를 입력해주세요.</p>
+							<h5 class="card-title text-center pb-0 fs-4">Enjoy 데이터 입력</h5>
+							<p class="text-center small">Enjoy 정보를 입력해주세요.</p>
 						</div>
 
 						<form class="row g-3"
@@ -147,7 +148,7 @@ select::-ms-expand {
 							onsubmit="return joinFormCheck(this)">
 
 							<div class="col-md-6">
-								<label for="inputMid" class="form-label">아이디</label> <span
+								<label for="inputMid" class="form-label">놀거리 종류</label> <span
 									class="small" id=idCheckMsg>⠀</span> 
 									<input type="text" name="mid" class="form-control" id="inputMid"
 									onkeyup="joinIdCheck(this.value)">
@@ -204,86 +205,37 @@ select::-ms-expand {
 		</div>
 	</section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 
-<script type="text/javascript">
-	function testFunc() {
-		console.log('!!!!')
-		document.getElementById('header2').style.display = '';
-
-	}
-	function testFunc2() {
-		document.getElementById('header2').style.display = 'none';
-	}
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){
-	console.log('확인!');
-	//jQuery 작동여부 확인
-})
-
-
-function joinIdCheck(idVal) {
-	console.log("입력한 아이디 : " + idVal);
-	if(idVal.length == 0) {
-		$("#idCheckMsg").text('아이디를 입력 해주세요!').css("color","red"); 
-	} else {
-		$.ajax( { 
-			type : "get",	
-			url : "${pageContext.request.contextPath }/memberIdCheck", 
-			data : { "inputId" : idVal },
-			success : function(checkResult) {
-				console.log("checkResult : " + checkResult);
-				if( checkResult == 'OK' ) {
-					/* 아이디 사용 가능 */
-					$("#idCheckMsg").text('사용가능한 아이디 입니다.').css("color","green"); 
-				} else {
-					/* 중복된 아이디 */
-					$("#idCheckMsg").text('중복된 아이디 입니다.').css("color","red"); 
-				}
-			}
-		} );
-	}
-}
-
-
-
-
-
-
-
-		function joinFormCheck(joinForm){
-			var formMid = joinForm.mid;
-			if(formMid.value == 0){
-				alert('아이디를 입력 해주세요!');
-				formMid.focus();
-				return false;
-			}
-			var formMpw = joinForm.mpw;
-			if(formMpw.value == 0){
-				alert('비밀번호를 입력 해주세요!');
-				formMpw.focus();
-				return false;
-			}
-			var formMname = joinForm.mname;
-			if(formMname.value == 0){
-				alert('이름을 입력 해주세요!');
-				formMname.focus();
-				return false;
-			}
-		}
-		
-/* 		function selectDomain(selDomain){
-			var selectDomainVal = selDomain.value;
-			document.getElementById('inputMemailDomain').value = selectDomainVal;
-		} */
-		
-		
-	</script>
-
+  <script type="text/javascript">
+    	var Msg = '${Msg}';
+    	if(Msg.length > 0 ){
+    		alert(Msg);
+    	}
+    </script>
 
 <!-- initialize jQuery Library -->
 <script src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
+
+  
 
 </html>
