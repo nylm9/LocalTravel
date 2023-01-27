@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <header class="header-top justify-content-center" style="background: #FFEBFF;">
   <div class="container">
     <div class="row align-items-center">
@@ -49,6 +50,8 @@
           </nav>
         </div>
         
+        <c:choose>
+        <c:when test="${sessionScope.loginId == null }"> <%-- 로그인이 되어 있지 않을 경우 --%>
         <div class="col-lg-2 col-md-4 col-6">
           <div class="header-socials-2 text-right d-none d-lg-block">
             <ul class="list-inline mb-0">
@@ -57,6 +60,13 @@
             </ul>
           </div>
         </div>
+        </c:when>
+        
+        <c:otherwise>
+              <li class="list-inline-item"><a href="${pageContext.request.contextPath }/memberLogout">로그아웃</a></li>
+              <li class="list-inline-item"><a href="${pageContext.request.contextPath }/#">예매정보</a></li>
+        </c:otherwise>
+        </c:choose>
         
     </div>
   </div>
