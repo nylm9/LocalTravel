@@ -38,14 +38,29 @@ public class TrainController {
 	// 열차시간정보 가져오기 RequestData( 출발역, 도착역, YYYY-MM-DD )
 	@RequestMapping(value = "/getTrainSchedule")
 	public @ResponseBody String getTrainSchedule(TRInputScheduleDto inputSchedule) throws Exception {
-		
+		System.out.println("Controller - getTrainSchedule()");
+		System.out.println(inputSchedule);
+		System.out.println("=".repeat(50));
 		String scheduleList = trsvc.searchSchedule(inputSchedule);
 		
 		return null;
 	}
 	
+	// 테스트 - 역 스케줄 입력 및 출력 페이지 이동
+	@RequestMapping(value = "/TestSchedule")
+	public ModelAndView TestSchedule() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("testPage/TestSchedule");
+		return mav;
+	}
 	
-	
-	
+	// 테스트 - CSV파일 가져오기
+	@RequestMapping(value = "/TestCSVfile")
+	public ModelAndView TestCSVfile() {
+		
+		trsvc.fareCsv();
+		
+		return null;
+	}
 
 }

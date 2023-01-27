@@ -15,6 +15,8 @@ public interface TrainDao {
 			+ "VALUES(#{citycode}, #{cityname})")
 	int getCityCodeInfo(TRCityCodeDto city);
 	
+	/* SERVICE - getStaionCodeInfo()내 SQL */
+	
 	// getStaionCodeInfo() - 도시코드 출력
 	@Select("SELECT CITYCODE FROM TRCITYCODE")
 	ArrayList<TRCityCodeDto> selectCityCode();
@@ -24,4 +26,8 @@ public interface TrainDao {
 			+ "VALUES(#{nodeid}, #{nodename}, #{nocitycode})")
 	int getStaionCodeInfo(TRStationDto station);
 
+	/* SERVICE - searchSchedule()내 SQL */
+	
+	@Select("SELECT NODEID FROM TRSTATIONCODE WHERE NODENAME = #{StationId}")
+	String selectStationId(String StationId);
 }
