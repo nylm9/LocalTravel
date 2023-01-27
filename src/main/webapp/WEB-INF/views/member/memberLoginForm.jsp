@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+ <script src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
+    
     <meta charset="UTF-8">
     <title>프로젝트 - 로그인페이지</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +32,7 @@
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
     
-    
+   
   <!-- 로그인메세지 -->
    <script type="text/javascript">
   		var reMsg = '${redirectMsg}';
