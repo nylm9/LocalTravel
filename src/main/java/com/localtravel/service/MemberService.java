@@ -27,4 +27,18 @@ public class MemberService {
 		return memberInfo;
 	}
 
+
+	//아이디 중복확인 기능 
+	public String memberIdCheck(String inputId) {
+		System.out.println("MemberService memberIdCheck() 호출");
+		String idCheckResult = "OK";
+		//아이디 확인 
+		String MemberId = memdao.idCheck(inputId);
+		
+		if(MemberId != null) {
+			idCheckResult = "NO";
+		}
+		return idCheckResult;
+	}
+
 }

@@ -64,5 +64,18 @@ public class MemberController {
 		
 		return LoginId;
 	}
+	
+	
+	@RequestMapping(value = "/memberIdCheck") 
+	public @ResponseBody String memberIdCheck(String inputId) { //ajax를 쓸 때의 return 타입은 ModelAndView가 아님. 
+		//@ResponseBody : String은 '페이지 이름'을 의미한다. 따라서 응답해주는 값을 '데이터를 주고받는 형식'으로 씀을 의미하는 어노테이션
+		System.out.println("아이디 중복 체크 확인 요청");
+		System.out.println("입력한 아이디 : " + inputId);
+		
+		//1. 아이디 중복 확인 기능 호출
+		String idCheckResult = memsvc.memberIdCheck(inputId);
+		//2. 중복확인 결과값 리턴
+		return idCheckResult;
+	}
 
 }

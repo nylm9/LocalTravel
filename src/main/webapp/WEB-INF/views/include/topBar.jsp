@@ -12,7 +12,7 @@
 
       <div class="col-lg-8 col-md-12">
         <nav class="navbar navbar-expand-lg navigation-2 navigation">
-          <a class="navbar-brand text-uppercase d-lg-none" href="#">
+          <a class="navbar-brand text-uppercase d-lg-none" href="${pageContext.request.contextPath }/">
             <img src="${pageContext.request.contextPath }/resources/images/logo.png" alt="" class="img-fluid">
           </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,10 +41,10 @@
                       <li class="nav-item"><a href="about.html" class="nav-link">정산</a></li>
                   </ul>
                   
-                   <ul class="list-inline mb-0 d-block d-lg-none">
+<!--                    <ul class="list-inline mb-0 d-block d-lg-none">
                     <li class="list-inline-item"><a href="#">로그인</a></li>
                     <li class="list-inline-item"><a href="#">회원가입</a></li>
-                  </ul>
+                  </ul> -->
               </div>
           </nav>
         </div>

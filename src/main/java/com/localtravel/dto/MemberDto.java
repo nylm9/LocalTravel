@@ -11,7 +11,6 @@ public class MemberDto {
 	private String mgender;
 	private String memail;
 	private String mphone;
-	private String maddr;
 	private String mstate;
 
 }
