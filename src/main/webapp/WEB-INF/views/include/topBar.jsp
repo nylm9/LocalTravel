@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-2 col-md-4 text-center d-none d-lg-block">
-          <a class="navbar-brand " href="index.html">
+          <a class="navbar-brand " href="${pageContext.request.contextPath }/">
            <img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image"
            style="width:40px; height:40px;">
           </a>
@@ -22,7 +22,7 @@
               <div class="collapse navbar-collapse" id="navbar-collapse">
                   <ul id="menu" class="menu navbar-nav mx-auto">
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath }/reservePage" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           예약하기
                           </a>
                       </li>

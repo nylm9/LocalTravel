@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -35,5 +36,14 @@ public class HomeController {
 		
 		return "home";
 	}
+	
+	@RequestMapping(value="/reservePage")
+	public ModelAndView reservePage() {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("예약페이지 이동");
+		mav.setViewName("reserve/projectreserve");
+		return mav;
+	}
+ 	
 	
 }

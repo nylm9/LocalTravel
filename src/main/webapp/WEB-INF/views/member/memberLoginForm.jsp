@@ -28,6 +28,14 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.css">
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+  <!-- 로그인메세지 -->
+   <script type="text/javascript">
+  		var reMsg = '${redirectMsg}';
+  		if(reMsg.length > 0){
+  			alert(reMsg);
+  		}
+  </script>
+
 </head>
 <body>
 	<!-- ======= Header ======= -->
@@ -35,7 +43,38 @@
 	<!-- End Header -->
 
 <!-- 로그인창 -->
-<section></section>
+<!-- 로그인창 -->
+<section class="section"  style="margin-top:40px;">
+			<div class="row justify-content-center">
+				<div class="col d-flex flex-column align-items-center justify-content-center" style="max-width:1000px;" >
+
+					<div class="card mb-3">
+						<div class="card-body">
+							<div class="pt-4 pb-2">
+								<h5 class="card-title text-center pb-0 fs-4">로그인</h5>
+								<p class="text-center small">아이디, 비밀번호를 입력해주세요.</p>
+							</div>
+
+							<form class="row g-3" action="${pageContext.request.contextPath }/memberLogin" 
+							                      method="post" >
+
+								<div class="col-md-12">
+									<label for="inputMid" class="form-label">아이디</label>
+									<input type="text" name="mid" class="form-control" id="inputMid">
+								</div>
+								<div class="col-md-12">
+									<label for="inputMpw" class="form-label">비밀번호</label>
+									<input type="password" name="mpw" class="form-control" id="inputMpw">
+								</div>
+								<div class="text-center">
+									<button type="submit" class="btn btn-primary" style="margin-top:10px; margin-left:10px;">로그인</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
 
 
