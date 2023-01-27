@@ -149,4 +149,11 @@
 
 
 </body>
+
+    <script type="text/javascript">
+    	var Msg = '${Msg}';
+    	if(Msg.length > 0 ){
+    		alert(Msg);
+    	}
+    </script>
 </html>

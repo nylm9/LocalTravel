@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-    <!-- theme meta -->
+ <!-- theme meta -->
     <meta name="theme-name" content="revolve" />
 
     <!--Favicon-->
@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.css">
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+    
+    
   <!-- 로그인메세지 -->
    <script type="text/javascript">
   		var reMsg = '${redirectMsg}';
@@ -82,7 +84,7 @@
 
 <!-- THEME JAVASCRIPT FILES
 ================================================== -->
-<!-- initialize jQuery Library -->
+<%-- <!-- initialize jQuery Library -->
 <script src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
 <!-- Bootstrap jQuery -->
 <script src="${pageContext.request.contextPath }/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -97,8 +99,14 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 <script src="${pageContext.request.contextPath }/resources/plugins/google-map/gmap.js"></script>
 <!-- main js -->
-<script src="${pageContext.request.contextPath }/resources/js/custom.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/custom.js"></script> --%>
 
 
 </body>
+    <script type="text/javascript">
+    	var Msg = '${Msg}';
+    	if(Msg.length > 0 ){
+    		alert(Msg);
+    	}
+    </script>
 </html>
