@@ -67,12 +67,6 @@ public class MemberController {
 		System.out.println(member);
 		MemberDto memberInfo = memsvc.memberLogin(member);
 		if(memberInfo != null) {
-			if(memberInfo.getMid().equals("admin")) {
-				ra.addFlashAttribute("Msg", "관리자 계정으로 로그인 되었습니다.");
-				session.setAttribute("loginId", memberInfo.getMid());
-				mav.setViewName("admin/AdminPage");
-				return mav;
-			}
 			//로그인 성공시
 			LoginId = memberInfo.getMid();
 			System.out.println("로그인 아이디 : " + LoginId);

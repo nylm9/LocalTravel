@@ -64,7 +64,10 @@
         </div>
         </c:when>
         
-        <c:otherwise>
+        <c:otherwise> 
+        	
+
+        	
               <li class="list-inline-item"><a href="${pageContext.request.contextPath }/memberLogout">로그아웃</a></li>
               <li class="list-inline-item"><a href="${pageContext.request.contextPath }/#">예매정보</a></li>
         </c:otherwise>
