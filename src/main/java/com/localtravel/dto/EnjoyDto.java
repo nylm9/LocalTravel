@@ -1,5 +1,7 @@
 package com.localtravel.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -9,10 +11,11 @@ public class EnjoyDto {
 	private String ename;
 	private int elcode;
 	private String eaddr;
-	private int etell;
-	private int erepute;
+	private String etell;
+	private String erepute;
 	private String eexplain;
 	private int ethcode;
-	/* 사진 업로드 할 필드도 추가할 예정. */
+	private MultipartFile efile; // 업로드한 사진파일
+	private String epicture; // 사진파일코드
 	
 }

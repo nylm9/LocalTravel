@@ -1,5 +1,7 @@
 package com.localtravel.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -9,9 +11,10 @@ public class FoodDto {
 	private int flcode;
 	private String faddr;
 	private int ftell;
-	private int frepute;
+	private String frepute;
 	private String fexplain;
 	private int fthcode;
-	/* 사진 업로드 할 필드도 추가할 예정. */
+	private MultipartFile ffile; // 업로드한 사진파일
+	private String fpicture; 
 
 }

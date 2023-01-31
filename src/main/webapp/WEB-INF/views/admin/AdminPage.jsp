@@ -128,6 +128,16 @@ select::-ms-expand {
 	
 	<h1>로그인한 아이디 : ${sessionScope.loginId }</h1>
 
+
+
+
+<!--     ENAME NVARCHAR2(50) NOT NULL,   -- 놀거리이름
+    ELCODE NCHAR(2),                -- 놀거리 지역코드
+    EADDR NVARCHAR2(200),           -- 놀거리 주소
+    ETELL NVARCHAR2(11),            -- 놀거리 전화번호
+    EREPUTE NCHAR(1),               -- 놀거리 평판 (최초등록이니까 0점으로 하겠음!)
+    EEXPLAIN NVARCHAR2(500),        -- 놀거리 설명
+    ETHCODE NCHAR(5),               -- 놀거리 테마코드 -->
 <!-- Enjoy테이블 데이터 입력 부분 -->
 	<section class="section" style="margin-top: 40px;">
 		<div class="row justify-content-center">
@@ -143,58 +153,70 @@ select::-ms-expand {
 						</div>
 
 						<form class="row g-3"
-							action="${pageContext.request.contextPath }/memberJoin"
-							method="post" enctype="multipart/form-data"
-							onsubmit="return joinFormCheck(this)">
-
+							action="${pageContext.request.contextPath }/insertEnjoyData"
+							method="post" enctype="multipart/form-data">
+							
 							<div class="col-md-6">
-								<label for="inputMid" class="form-label">놀거리 종류</label> <span
-									class="small" id=idCheckMsg>⠀</span> 
-									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)">
-							</div>
-							<div class="col-md-6">
-								<label for="inputMpw" class="form-label">비밀번호</label> <input
-									type="password" name="mpw" class="form-control" id="inputMpw">
-							</div>
-							<div class="col-md-6">
-								<label for="inputMname" class="form-label">이름</label> <input
-									type="text" name="mname" class="form-control" id="inputMname">
-							</div>
-							<div class="col-md-6">
-								<label for="inputMbirth" class="form-label">생년월일</label> <input
-									type="date" name="mbirth" class="form-control" id="inputMbirth">
-							</div>
-
-							<div class="col-md-6">
-								<label for="selectmgender" class="form-label">성별</label> <select
-									name="mgender" id="gender-select" class="form-control">
-									<option value="" disabled selected>--선택해주세요--</option>
-									<option value="1">남성</option>
-									<option value="2">여성</option>
-									<option value="0">선택하지 않음</option>
+								<label for="selectElcode" class="form-label">지역코드</label> <select
+									name="elcode" id="elcode-select" class="form-control">
+									<option value="" disabled selected>--지역 선택--</option>
+									<option value="11">서울</option>
+									<option value="31">경기</option>
+									<option value="23">인천</option>
+									<option value="25">대전</option>
+									<option value="22">대구</option>
+									<option value="26">울산</option>
+									<option value="21">부산</option>
+									<option value="24">광주</option>
+									<option value="12">세종</option>
+									<option value="32">강원</option>
+									<option value="33">충북</option>
+									<option value="34">충남</option>
+									<option value="37">경북</option>
+									<option value="38">경남</option>
+									<option value="35">전북</option>
+									<option value="36">전남</option>
 
 								</select>
 
 							</div>
-
+							
+							
 							<div class="col-md-6">
-								<label for="inputMPhone" class="form-label">휴대폰번호</label> 
-								<input type="text" name="mphone" class="form-control" id="inputMbirth"
-								placeholder="- 는 빼고 입력해주세요">
+								<label for="inputEname" class="form-label">놀거리 이름</label> 
+								<span class="small" id=EnameCheckMsg>⠀</span> 
+									<input type="text" name="ename" class="form-control" id="inputEname"
+									onkeyup="joinNameCheck(this.value)">
+							</div>
+							<div class="col-md-6">
+								<label for="inputEaddr" class="form-label">놀거리 주소</label> 
+								<span class="small" id=EaddrCheckMsg>⠀</span> 
+								<input type="text" name="eaddr" class="form-control" id="inputEaddr" 
+									onkeyup="joinAddrCheck(this.value)">
+							</div>
+							<div class="col-md-6">
+								<label for="inputEtel" class="form-label">놀거리 전화번호(-는 제외하고 입력)</label> 
+								<input type="tel" name="etell" class="form-control" id="inputEtel">
+							</div>
+							<div class="col-md-6">
+								<label for="inputEexplain" class="form-label">놀거리 설명</label> <input
+									type="text" name="eexplain" class="form-control" id="inputEexplain">
 							</div>
 
-
-							<div class="col-md-5">
-								<label for="inputMemailId" class="form-label">이메일아이디</label> <input
-									type="text" name="memail" class="form-control"
-									id="inputMemailId" placeholder="id@Email.com">
+							<div class="col-md-6">
+								<label for="inputEexplain" class="form-label">놀거리 테마코드(5글자)</label> <input
+									type="text" name="eexplain" class="form-control" id="inputEexplain">
+							</div>
+							
+							<div class="col-md-6">
+								<label for="inputEfile" class="form-label">놀거리 이미지</label>
+								<input type="file" name="efile" class="form-control" id="inputEfile">
 							</div>
 
 
 							<div class="text-center">
 								<button type="submit" class="btn btn-primary"
-									style="margin-top: 10px; margin-left: 350px;">회원가입</button>
+									style="margin-top: 10px; margin-left: 350px;">등록</button>
 								<button type="reset" class="btn btn-secondary"
 									style="margin-top: 10px;">다시작성</button>
 							</div>
@@ -206,36 +228,59 @@ select::-ms-expand {
 	</section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 
-  <script type="text/javascript">
+<script type="text/javascript">
+
+function joinAddrCheck(addrVal) {
+	let inputEname = document.getElementById("inputEname").value;
+	console.log("입력한 놀거리 주소 : " + addrVal);
+	if(addrVal.length == 0 ) {
+		$("#EaddrCheckMsg").text('놀거리 주소를 입력 해주세요!').css("color","red"); 
+	} else {
+		$.ajax( { 
+			type : "get",	
+			url : "${pageContext.request.contextPath }/enjoyNameCheck", 
+			data : { "inputEname" : inputEname, "inputEaddr" : inputEaddr },
+			success : function(checkResult) {
+				console.log("checkResult : " + checkResult);
+				if( checkResult == 'OK' ) {
+					/* 놀거리 이름 가능 */
+					$("#EnameCheckMsg").text('입력가능한 놀거리 입니다.').css("color","green"); 
+				} else {
+					/* 놀거리 이름 중복 */
+					$("#EnameCheckMsg").text('중복된 놀거리 입니다.').css("color","red"); 
+				}
+			}
+		} );
+	}
+	}
+</script>
+
+
+<script type="text/javascript">
+	function joinNameCheck(nameVal) {
+		console.log("입력한 놀거리 이름 : " + nameVal);
+		if (nameVal.length == 0) {
+			$("#EnameCheckMsg").text('놀거리 이름를 입력 해주세요!').css("color", "red");
+		}
+	}
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
     	var Msg = '${Msg}';
     	if(Msg.length > 0 ){
     		alert(Msg);
     	}
     </script>
-
-<!-- initialize jQuery Library -->
-<script src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
-
   
 
 </html>

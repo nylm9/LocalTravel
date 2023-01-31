@@ -12,6 +12,8 @@ public class MemberService {
 	@Autowired
 	private MemberDao memdao;
 	
+
+	
 	public int memberJoin(MemberDto member) {
 		System.out.println("MemberService 회원가입 기능 호출");
 		int insertResult = memdao.insertMemberJoin(member);
