@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.JsonArray;
 import com.localtravel.dto.TRInputScheduleDto;
 import com.localtravel.service.TrainService;
 
@@ -42,8 +43,8 @@ public class TrainController {
 		System.out.println(inputSchedule);
 		System.out.println("=".repeat(50));
 		String scheduleList = trsvc.searchSchedule(inputSchedule);
-		
-		return null;
+		System.out.println(scheduleList);
+		return scheduleList;
 	}
 	
 	// 테스트 - 역 스케줄 입력 및 출력 페이지 이동
