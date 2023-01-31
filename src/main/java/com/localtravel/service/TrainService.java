@@ -207,7 +207,8 @@ public class TrainService {
 		JsonObject body = element.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject();
 		JsonArray ScheduleArray = body.get("items").getAsJsonObject().get("item").getAsJsonArray();
 		System.out.println(ScheduleArray.get(0));
-		return null;
+		
+		return gson.toJson(ScheduleArray);
 	}
 	
 	// 3.1. API양식에 맞게 입력한 역의 이름을 역코드로 변환 및 날짜 수정
