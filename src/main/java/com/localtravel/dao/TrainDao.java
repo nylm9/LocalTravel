@@ -3,9 +3,11 @@ package com.localtravel.dao;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.localtravel.dto.TRCityCodeDto;
+import com.localtravel.dto.TRRouteDto;
 import com.localtravel.dto.TRStationDto;
 
 public interface TrainDao {
@@ -30,4 +32,11 @@ public interface TrainDao {
 	
 	@Select("SELECT NODEID FROM TRSTATIONCODE WHERE NODENAME = #{StationId}")
 	String selectStationId(String StationId);
+	
+	@Insert("INSERT INTO TRROUTE(ROUTECODE,ROUTEKR,DEPSTA,ARRSTA,NORMALFARE,SPECIALFARE) "
+			+ "VALUES(#{routecode}, #{routekr}, #{depsta}, #{arrsta}, #{normalfare}, #{specialfare})")
+	int insertRouteList(TRRouteDto routeInfo);
+
+	@Select("SELECT * FROM TRROUTE WHERE ROUTECODE = #{routecode} AND DEPSTA = #{depsta} AND ARRSTA = #{arrsta}")
+	TRRouteDto selectNormalFare(TRRouteDto routedata);
 }

@@ -43,7 +43,7 @@ public class TrainController {
 		System.out.println(inputSchedule);
 		System.out.println("=".repeat(50));
 		String scheduleList = trsvc.searchSchedule(inputSchedule);
-		System.out.println(scheduleList);
+//		System.out.println(scheduleList);
 		return scheduleList;
 	}
 	
