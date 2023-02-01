@@ -235,6 +235,7 @@ public class TrainService {
 		return null;
 	}
 	
+	// 4. CSV파일을 통한 열차 시간 가져오기
 	public void fareCsv() {
 		List<List<String>> ret = new ArrayList<List<String>>();
         BufferedReader br = null;
