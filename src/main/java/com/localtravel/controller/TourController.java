@@ -5,14 +5,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-<<<<<<< HEAD
-=======
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.localtravel.dto.ReviewDto;
 import com.localtravel.service.TourService;
->>>>>>> origin/jungeun2
+
 
 @Controller
 public class TourController {
