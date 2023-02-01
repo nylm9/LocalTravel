@@ -20,6 +20,8 @@ public class AdminController {
 	private AdminService adsvc;
 	
 	
+	
+	
 	@RequestMapping(value="insertEnjoyData")
 	public ModelAndView insertEnjoyData(EnjoyDto enjoy, RedirectAttributes ra) throws IllegalStateException, IOException {
 		ModelAndView mav = new ModelAndView();
@@ -48,7 +50,13 @@ public class AdminController {
 		//2. 중복확인 결과값 리턴
 		return enjoyCheckResult;
 	}
- 	
+	
+	@RequestMapping(value="AdminPage")
+	public String AdminPage() {
+		System.out.println("관리자 페이지 이동");
+		return "admin/AdminPage";
+	}
+  	
 	
 	
 }

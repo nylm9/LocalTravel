@@ -41,6 +41,15 @@
                       </li>
 
                       <li class="nav-item"><a href="about.html" class="nav-link">정산</a></li>
+              <c:choose>
+      				 <c:when test="${sessionScope.loginId == 'admin' }"> 
+        			 <li class="nav-item"><a href="${pageContext.request.contextPath }/AdminPage" class="nav-link">관리자페이지</a></li>
+       				 </c:when>
+       			 <c:otherwise>
+       			 </c:otherwise>
+        
+       		 </c:choose>
+                      
                   </ul>
                   
 <!--                    <ul class="list-inline mb-0 d-block d-lg-none">
@@ -65,8 +74,6 @@
         </c:when>
         
         <c:otherwise> 
-        	
-
         	
               <li class="list-inline-item"><a href="${pageContext.request.contextPath }/memberLogout">로그아웃</a></li>
               <li class="list-inline-item"><a href="${pageContext.request.contextPath }/#">예매정보</a></li>
