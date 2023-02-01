@@ -17,7 +17,7 @@ public interface AdminDao {
 	@Select("SELECT MAX(ECODE) AS ECODE FROM ENJOY")
 	String selectMaxEcode();
 
-	@Select("SELECT ENAME FROM ENJOY WHERE ENAME = #{inputEname} AND EADDR = #{inputEaddr} ")
+	@Select("SELECT ECODE FROM ENJOY WHERE ENAME = #{inputEname} AND EADDR = #{inputEaddr} ")
 	ArrayList<Map<String, String>> enjoyCheck( @Param("inputEname")String inputEname, @Param("inputEaddr")String inputEaddr);
 	
 

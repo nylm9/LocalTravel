@@ -81,12 +81,14 @@ public class AdminService {
 
 	public String enjoyCheck(String inputEname, String inputEaddr) {
 		System.out.println("Ajax_놀거리 중복체크 서비스 호출");
-		String eCheckResult = "OK";
+		String eCheckResult = "NO";
 		//중복 확인 
 		ArrayList<Map<String, String>> enjoyEcode = adao.enjoyCheck(inputEname, inputEaddr);
+		System.out.println(enjoyEcode.size());
 		
-		if(enjoyEcode != null) {
-			eCheckResult = "NO";
+		if(enjoyEcode.size() == 0) {
+			eCheckResult = "OK";
+			System.out.println(eCheckResult);
 		}
 		return eCheckResult;
 	}

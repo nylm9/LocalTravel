@@ -168,9 +168,8 @@ function change_btn(e) {
 			</div>
 	</div>
 </section>
-
 <!--  키워드 검색결과 패키지 -->
-<section class="section">
+<!-- <section class="section">
 			<div class="row" style="min-width: 565px;" >
 			
 			
@@ -208,7 +207,7 @@ function change_btn(e) {
 			
 	</div>
 	
-	<!-- 두번째줄 -->
+	두번째줄
 	<div class="row" style="min-width: 100px;" >
 			
 			
@@ -245,7 +244,7 @@ function change_btn(e) {
 			</div>
 			
 	</div>
-	<!-- 세번째줄 -->
+	세번째줄
 		<div class="row" style="min-width: 100px;" >
 			
 			
@@ -283,8 +282,43 @@ function change_btn(e) {
 			
 	</div>
 </section>
+ -->
 
-
+<!-- 패키지 출력 -->
+	<section class="section">
+			<div class="row mx-auto" style="min-width: 700px; max-width: 1200px;" >
+				<h3>DFSD</h3>
+				
+			<c:forEach items="${ejList}" var="enjoy" varStatus="status">
+				<div class="col-3">
+					<div class="card">
+						<div class="card-body">
+							<%-- <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
+							<a href="${pageContext.request.contextPath }/movieInfo?mvcode=${enjoy.ecode }">
+							<img class="img-fluid" 
+							     alt="" src="${enjoy.epicture }">
+							</a>
+							<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="${enjoy.ename }" >${enjoy.ename }</h6>
+						
+							<p class="small mb-1">노는 기간</p>
+							<button class="btn btn-sm btn-danger"
+							        onclick="ticketPage('${enjoy.ecode }')">예매하기</button>
+							<a class="btn btn-sm btn-danger"
+							   href="${pageContext.request.contextPath }/ticketPage?selectmovie=${enjoy.ecode }">예매하기</a> --%>
+						
+						</div>
+					</div>
+				</div>
+			</c:forEach>				
+						<!--  <script type="text/javascript">
+						 	function ticketPage(selMvcode){
+						 		location.href= "${pageContext.request.contextPath }/ticketPage?selectmovie="+selMvcode;
+						 	}
+						 
+						 </script>
+								 -->
+			</div>
+		</section>
 
 
 </body>

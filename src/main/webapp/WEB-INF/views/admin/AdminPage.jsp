@@ -241,7 +241,7 @@ function joinAddrCheck(addrVal) {
 		$.ajax( { 
 			type : "get",	
 			url : "${pageContext.request.contextPath }/enjoyNameCheck", 
-			data : { "inputEname" : inputEname, "inputEaddr" : inputEaddr },
+			data : { "inputEname" : inputEname, "inputEaddr" : addrVal },
 			success : function(checkResult) {
 				console.log("checkResult : " + checkResult);
 				if( checkResult == 'OK' ) {
