@@ -19,6 +19,9 @@ public interface AdminDao {
 
 	@Select("SELECT ECODE FROM ENJOY WHERE ENAME = #{inputEname} AND EADDR = #{inputEaddr} ")
 	ArrayList<Map<String, String>> enjoyCheck( @Param("inputEname")String inputEname, @Param("inputEaddr")String inputEaddr);
+
+	@Select("SELECT * FROM ENJOY")
+	ArrayList<EnjoyDto> selectEnjoyList();
 	
 
 

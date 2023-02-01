@@ -1,6 +1,7 @@
 package com.localtravel.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.Gson;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.service.AdminService;
 
@@ -31,6 +31,7 @@ public class AdminController {
 		if(insertEResult > 0) {
 			System.out.println("놀거리 등록 성공");
 			ra.addFlashAttribute("Msg", "놀거리 등록에 성공하였습니다.");
+			
 			mav.setViewName("admin/AdminPage");
 		} else {
 			System.out.println("놀거리 등록 실패");
@@ -52,9 +53,14 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="AdminPage")
-	public String AdminPage() {
+	public ModelAndView AdminPage() {
+		ModelAndView mav = new ModelAndView();
 		System.out.println("관리자 페이지 이동");
-		return "admin/AdminPage";
+		// Enjoy 데이터 모두 조회
+		ArrayList<EnjoyDto> enjoyList = adsvc.getEnjoyData();
+		mav.addObject("enjoyList",enjoyList);
+		mav.setViewName("admin/AdminPage");
+		return mav;
 	}
   	
 	

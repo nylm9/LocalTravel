@@ -94,6 +94,13 @@ public class AdminService {
 	}
 
 	
+	public ArrayList<EnjoyDto> getEnjoyData() {
+		System.out.println("Admin_Enjoy데이터 조회 서비스");
+		ArrayList<EnjoyDto> eDataList = adao.selectEnjoyList();
+		return eDataList;
+	}
+
+	
 	
 
 }

@@ -228,6 +228,28 @@ select::-ms-expand {
 	</section>
 
 
+
+
+	<section class="section" style="margin-top: 40px;">
+		<div class="row justify-content-center">
+			<div
+				class="col d-flex flex-column align-items-center justify-content-center"
+				style="max-width: 1000px;">
+				<c:forEach items="${enjoyList }" var="enjoyList">
+					<div class="col-md-6">
+						<label for="inputEexplain" class="form-label">놀거리 정보</label>
+						<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enjoyList.epicture }">
+						<h3>${enjoyList.ename }</h3>
+						<h3>${enjoyList.eaddr }</h3>
+						<hr>
+					</div>
+				</c:forEach>
+
+			</div>
+		</div>
+			</section>
+			
+
 </body>
 
 <script type="text/javascript">
@@ -237,7 +259,10 @@ function joinAddrCheck(addrVal) {
 	console.log("입력한 놀거리 주소 : " + addrVal);
 	if(addrVal.length == 0 ) {
 		$("#EaddrCheckMsg").text('놀거리 주소를 입력 해주세요!').css("color","red"); 
-	} else {
+	} if(addrVal.length != 0 ) {
+		$("#EaddrCheckMsg").text('').css("color","red");
+	} 
+	else {
 		$.ajax( { 
 			type : "get",	
 			url : "${pageContext.request.contextPath }/enjoyNameCheck", 
