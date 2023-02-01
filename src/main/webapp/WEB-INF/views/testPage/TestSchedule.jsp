@@ -15,6 +15,7 @@
 </style>
 </head>
 <body>
+	<a href="${pageContext.request.contextPath }/TestSchedule">새로고침</a>
 	<h2>기차 예매사이트 (열차정보 출력 예제)</h2>
 	
 	출발할 역 정보 : <input type="text" id="depPlaceId"> <br>
