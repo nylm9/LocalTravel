@@ -121,7 +121,7 @@ public class TrainService {
                 String array[] = line.split(",");
                 //배열에서 리스트 반환
                 routeInfo.setRoutecode(array[0]);
-                routeInfo.setRoutecode(array[1]);
+                routeInfo.setRoutekr(array[1]);
                 routeInfo.setDepsta(array[2]);
                 routeInfo.setArrsta(array[3]);
                 routeInfo.setNormalfare(array[4]);
@@ -153,22 +153,66 @@ public class TrainService {
 	}
 	
 	// 5. DB를 통해 열차편성번호에 따른 역간의 운임비를 SELECT해준다.
-	private void SelectTrainFare(JsonArray scheduleArray) {
+	private void SelectTrainFare(JsonArray scheduleArray) throws Exception{
 		for(int i = 0; i < scheduleArray.size(); i++) {
 			TRRouteDto Routedata = new TRRouteDto(); 
 			int trainno = scheduleArray.get(i).getAsJsonObject().get("trainno").getAsInt();
 			// 5.1. 편성번호 설정 
-			if(trainno > 0 && trainno < 101 || trainno > 115 && trainno < 121) {
+			if(trainno > 0 && trainno < 101 || trainno > 115 && trainno < 121 || trainno == 194) {
 				System.out.println("고속경부선");
+				// 코드 설정 ( 수동 ) 
 				Routedata.setRoutecode("KB");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
-				System.out.println("루트정보 : "+Routedata);
-				TRRouteDto nfare = trdao.selectNormalFare(Routedata);
-				System.out.println("입력된 금액 : "+nfare);
-				//scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", nfare);
-			}else {
 				
+				System.out.println("루트정보 : "+Routedata);
+				TRRouteDto routeInfo = new TRRouteDto();
+				routeInfo = trdao.selectNormalFare(Routedata);
+				if(routeInfo == null) {
+					routeInfo = new TRRouteDto();
+					Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
+					Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
+					routeInfo = trdao.selectNormalFare(Routedata);
+				}	
+				
+				System.out.println("입력된 금액 : "+routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+			} else if(trainno > 100 && trainno < 113 || trainno > 161 && trainno < 166) {
+				System.out.println("(구포 경유) 경부선");
+				Routedata.setRoutecode("KBGP");
+				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
+				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
+	
+				System.out.println("루트정보 : "+Routedata);
+				TRRouteDto routeInfo = new TRRouteDto();
+				routeInfo = trdao.selectNormalFare(Routedata);
+				if(routeInfo == null) {
+					routeInfo = new TRRouteDto();
+					Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
+					Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
+					routeInfo = trdao.selectNormalFare(Routedata);
+				}	
+				
+				System.out.println("입력된 금액 : "+routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+			} else if(trainno > 120 && trainno < 129 || trainno > 169 && trainno < 174) {
+				System.out.println("(수원 경유) 경부선");
+				Routedata.setRoutecode("KBSWSG");
+				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
+				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
+	
+				System.out.println("루트정보 : "+Routedata);
+				TRRouteDto routeInfo = new TRRouteDto();
+				routeInfo = trdao.selectNormalFare(Routedata);
+				if(routeInfo == null) {
+					routeInfo = new TRRouteDto();
+					Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
+					Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
+					routeInfo = trdao.selectNormalFare(Routedata);
+				}	
+				
+				System.out.println("입력된 금액 : "+routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
 			}
 			
 			
