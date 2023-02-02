@@ -89,13 +89,14 @@ public class TrainService {
 	private TRInputScheduleDto changeStaionId(TRInputScheduleDto inputSchedule) {
 		String DepSta = inputSchedule.getDepPlaceId();
 		String ArrSta = inputSchedule.getArrPlaceId();
-		if(DepSta == "여수엑스포") {
+		if(DepSta.equals("여수엑스포")) {
 			DepSta = "여수EXPO";
-		} else if(ArrSta == "여수엑스포") {
+		} else if(ArrSta.equals("여수엑스포")) {
 			ArrSta = "여수EXPO";
 		}
 		
 		// 3.1.1. 출발역의 코드를 찾아준다.
+		System.out.println("출발 : " + DepSta + ", " + "도착 : " + ArrSta);
 		String depId = trdao.selectStationId(DepSta);
 		System.out.println("찾은 출발역의 코드 : " + depId);
 
@@ -247,14 +248,10 @@ public class TrainService {
 			StringBuilder urlBuilder = new StringBuilder(
 					"http://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList"); /* URL */
 			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8")
-					+ "=rcDIgqtDvPLJ95VNJCSK44R1cExWDo42RSBvLWAV9IglwBSjU5fsECwXMglNDmsEk%2BxoZypGMP1kn72z0jXbcw%3D%3D"); /*
-																															 * *Service*
-																															 * Key
-																															 */
+					+ "=rcDIgqtDvPLJ95VNJCSK44R1cExWDo42RSBvLWAV9IglwBSjU5fsECwXMglNDmsEk%2BxoZypGMP1kn72z0jXbcw%3D%3D"); 																								 */
 			urlBuilder.append(
 					"&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* 페이지번호 */
-			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="
-					+ URLEncoder.encode("200", "UTF-8")); /* 한 페이지 결과 수 */
+			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="+ URLEncoder.encode("200", "UTF-8")); /* 한 페이지 결과 수 */
 			urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "="
 					+ URLEncoder.encode("json", "UTF-8")); /* 데이터 타입(xml, json) */
 			urlBuilder.append("&" + URLEncoder.encode("cityCode", "UTF-8") + "="
@@ -311,8 +308,14 @@ public class TrainService {
 
 	// 5.1. 단축코드 - IF문 요금 설정 메소드
 	public TRRouteDto settingRouteFare(TRRouteDto Routedata) throws Exception {
+		
 		String ArrSta = Routedata.getArrsta();
 		String DepSta = Routedata.getDepsta();
+		if(DepSta.equals("여수EXPO")) {
+			Routedata.setDepsta("여수엑스포");
+		} else if(ArrSta.equals("여수EXPO")) {
+			Routedata.setArrsta("여수엑스포");
+		}
 		System.out.println("루트정보 : " + Routedata);
 		TRRouteDto routeInfo = new TRRouteDto();
 		routeInfo = trdao.selectNormalFare(Routedata);
