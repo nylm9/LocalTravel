@@ -138,12 +138,13 @@ select::-ms-expand {
     EREPUTE NCHAR(1),               -- 놀거리 평판 (최초등록이니까 0점으로 하겠음!)
     EEXPLAIN NVARCHAR2(500),        -- 놀거리 설명
     ETHCODE NCHAR(5),               -- 놀거리 테마코드 -->
-<!-- Enjoy테이블 데이터 입력 부분 -->
+
+<!-- Enjoy 부분 시작 -->    
 	<section class="section" style="margin-top: 40px;">
-		<div class="row justify-content-center">
+		<div class="row " style="float: left; margin-left: 5px;">
 			<div
 				class="col d-flex flex-column align-items-center justify-content-center"
-				style="max-width: 1000px;">
+				style="max-width: 800px;">
 
 				<div class="card mb-3">
 					<div class="card-body">
@@ -186,13 +187,13 @@ select::-ms-expand {
 								<label for="inputEname" class="form-label">놀거리 이름</label> 
 								<span class="small" id=EnameCheckMsg>⠀</span> 
 									<input type="text" name="ename" class="form-control" id="inputEname"
-									onkeyup="joinNameCheck(this.value)">
+									onkeyup="joinENameCheck(this.value)">
 							</div>
 							<div class="col-md-6">
 								<label for="inputEaddr" class="form-label">놀거리 주소</label> 
 								<span class="small" id=EaddrCheckMsg>⠀</span> 
 								<input type="text" name="eaddr" class="form-control" id="inputEaddr" 
-									onkeyup="joinAddrCheck(this.value)">
+									onkeyup="joinEAddrCheck(this.value)">
 							</div>
 							<div class="col-md-6">
 								<label for="inputEtel" class="form-label">놀거리 전화번호(-는 제외하고 입력)</label> 
@@ -225,13 +226,109 @@ select::-ms-expand {
 				</div>
 			</div>
 		</div>
+		<!-- Enjoy 부분 끝 -->
+		
+		
+		
+		<!-- Food insert 할 부분 시작 -->
+		<div class="row ">
+			<div
+				class="col d-flex flex-column align-items-center justify-content-center"
+				style="max-width: 900px;">
+
+				<div class="card mb-3">
+					<div class="card-body">
+						<div class="pt-4 pb-2">
+							<h5 class="card-title text-center pb-0 fs-4">Food 데이터 입력</h5>
+							<p class="text-center small">Food 정보를 입력해주세요.</p>
+						</div>
+
+						<form class="row g-3"
+							action="${pageContext.request.contextPath }/insertEnjoyData"
+							method="post" enctype="multipart/form-data">
+							
+							<div class="col-md-6">
+								<label for="selectFlcode" class="form-label">지역코드</label> <select
+									name="Flcode" id="Flcode-select" class="form-control">
+									<option value="" disabled selected>--지역 선택--</option>
+									<option value="11">서울</option>
+									<option value="31">경기</option>
+									<option value="23">인천</option>
+									<option value="25">대전</option>
+									<option value="22">대구</option>
+									<option value="26">울산</option>
+									<option value="21">부산</option>
+									<option value="24">광주</option>
+									<option value="12">세종</option>
+									<option value="32">강원</option>
+									<option value="33">충북</option>
+									<option value="34">충남</option>
+									<option value="37">경북</option>
+									<option value="38">경남</option>
+									<option value="35">전북</option>
+									<option value="36">전남</option>
+
+								</select>
+
+							</div>
+							
+							
+							<div class="col-md-6">
+								<label for="inputFname" class="form-label">가게 이름</label> 
+								<span class="small" id=FnameCheckMsg>⠀</span> 
+									<input type="text" name="Fname" class="form-control" id="inputFname"
+									onkeyup="joinFNameCheck(this.value)">
+							</div>
+							<div class="col-md-6">
+								<label for="inputFaddr" class="form-label">가게 주소</label> 
+								<span class="small" id=FaddrCheckMsg>⠀</span> 
+								<input type="text" name="Faddr" class="form-control" id="inputFaddr" 
+									onkeyup="joinFAddrCheck(this.value)">
+							</div>
+							<div class="col-md-6">
+								<label for="inputFtel" class="form-label">가게 전화번호(-는 제외하고 입력)</label> 
+								<input type="tel" name="Ftell" class="form-control" id="inputFtel">
+							</div>
+							<div class="col-md-6">
+								<label for="inputFexplain" class="form-label">가게 설명</label> <input
+									type="text" name="Fexplain" class="form-control" id="inputFexplain">
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputFexplain" class="form-label">놀거리 테마코드(5글자)</label> <input
+									type="text" name="Fexplain" class="form-control" id="inputFexplain">
+							</div>
+							
+							<div class="col-md-6">
+								<label for="inputFfile" class="form-label">가게 이미지</label>
+								<input type="file" name="Ffile" class="form-control" id="inputFfile">
+							</div>
+							
+							<div class="col-md-6">
+								<label for="" class="form-label">  </label>
+								<input type="hidden" class="form-control" >
+							</div>
+
+							<div class="text-center">
+								<button type="submit" class="btn btn-primary"
+									style="margin-top: 10px; margin-left: 350px;">등록</button>
+								<button type="reset" class="btn btn-secondary"
+									style="margin-top: 10px;">다시작성</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 	</section>
 
 
 
 
+<!-- Enjoy 데이터 모두 출력 -->
 	<section class="section" style="margin-top: 40px;">
-		<div class="row justify-content-center">
+		<div class="row">
 			<div
 				class="col d-flex flex-column align-items-center justify-content-center"
 				style="max-width: 1000px;">
@@ -254,7 +351,7 @@ select::-ms-expand {
 
 <script type="text/javascript">
 
-function joinAddrCheck(addrVal) {
+function joinEAddrCheck(addrVal) {
 	let inputEname = document.getElementById("inputEname").value;
 	console.log("입력한 놀거리 주소 : " + addrVal);
 	if(addrVal.length == 0 ) {
@@ -284,7 +381,7 @@ function joinAddrCheck(addrVal) {
 
 
 <script type="text/javascript">
-	function joinNameCheck(nameVal) {
+	function joinENameCheck(nameVal) {
 		console.log("입력한 놀거리 이름 : " + nameVal);
 		if (nameVal.length == 0) {
 			$("#EnameCheckMsg").text('놀거리 이름를 입력 해주세요!').css("color", "red");
