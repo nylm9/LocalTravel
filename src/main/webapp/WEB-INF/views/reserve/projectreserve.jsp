@@ -77,6 +77,10 @@
 			cursor: pointer;
 			margin-bottom: 3px;
 		}
+		.card-header{
+			text-align: center;
+			font-weight: bold;
+		}
 		
 	</style>
 
@@ -97,7 +101,11 @@
 				<div class="col-lg-3 col-md-6 col-sm-6" >
 					<div class="card" style="margin-top:40px; margin-left:40px;">
 						<div class="card-body">
+						<div class="card-header">
+						출발역
+						</div>
 						<!-- 출발역 선택창 -->
+						
 						<c:forEach items="${cityList }" var="citylist">
 							<div class="DepLocationSelcet" id="${citylist.citycode }"
 							onclick="DepRegionSelect(${citylist.citycode })">${citylist.cityname }</div>					
