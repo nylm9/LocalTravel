@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.localtravel.dto.TRCityCodeDto;
+import com.localtravel.dto.TRInputScheduleDto;
 import com.localtravel.dto.TRRouteDto;
 import com.localtravel.dto.TRStationDto;
 
@@ -39,4 +40,10 @@ public interface TrainDao {
 
 	@Select("SELECT * FROM TRROUTE WHERE ROUTECODE = #{routecode} AND DEPSTA = #{depsta} AND ARRSTA = #{arrsta}")
 	TRRouteDto selectNormalFare(TRRouteDto routedata);
+	
+	@Select("SELECT ROUTECODE FROM TRROUTE WHERE DEPSTA = #{depSta} AND ARRSTA=#{arrSta}")
+	ArrayList<String> selectTrainType(TRRouteDto selectRoute);
+	
+	@Select("SELECT ROUTECODE FROM TRROUTE WHERE DEPSTA = #{depPlaceId} AND ARRSTA=#{arrPlaceId}")
+	ArrayList<String> selectTyroute(TRInputScheduleDto inputSchedule);
 }
