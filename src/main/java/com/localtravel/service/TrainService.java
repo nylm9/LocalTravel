@@ -247,8 +247,7 @@ public class TrainService {
 		for (int i = 0; i < citycodes.size(); i++) {
 			StringBuilder urlBuilder = new StringBuilder(
 					"http://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList"); /* URL */
-			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8")
-					+ "=rcDIgqtDvPLJ95VNJCSK44R1cExWDo42RSBvLWAV9IglwBSjU5fsECwXMglNDmsEk%2BxoZypGMP1kn72z0jXbcw%3D%3D"); 																								 */
+			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=rcDIgqtDvPLJ95VNJCSK44R1cExWDo42RSBvLWAV9IglwBSjU5fsECwXMglNDmsEk%2BxoZypGMP1kn72z0jXbcw%3D%3D"); 																								 
 			urlBuilder.append(
 					"&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* 페이지번호 */
 			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="+ URLEncoder.encode("200", "UTF-8")); /* 한 페이지 결과 수 */
