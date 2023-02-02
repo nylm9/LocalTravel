@@ -61,10 +61,10 @@
 		<div class="card mx-auto " style="width: 700px; margin-top:40px;" >
 		<form onsubmit="return reviewForm(this)" >
 		
-			 <input type="text" name="rvencode" value="놀거리코드"><!--  value="${param.reencode }" 놀거리 코드 집어넣어야함 -->
+			 <input type="text" name="rvencode" value="${param.ecode }"><!--  value="${param.reencode }" 놀거리 코드 집어넣어야함 -->
 			 
            <div class="card-header">
-            	<h2 class="card-title mb-0 py-1" style="text-align: center;font-size: 30px;font-weight: bold;">놀거리제목</h2>
+            	<h2 class="card-title mb-0 py-1" style="text-align: center;font-size: 30px;font-weight: bold;">${param.ename }</h2>
             </div> 
             
             <div class="card-body pb-1">
@@ -109,6 +109,8 @@
             <div class="card-footer px-4 " style="text-align: center;">
               <button type="submit" class="btn btn-primary " >관람평 등록</button>
               <button type="button" class="btn btn-secondary " onclick="window.close()">창닫기</button>
+               <a class="btn btn-secondary"
+							   href="${pageContext.request.contextPath }/enjoyPage">창닫기</a>
             </div>
             
             </form>
@@ -121,19 +123,20 @@
 
 
 	<!-- Vendor JS Files -->
-	<script
-		src="${pageContext.request.contextPath }/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<%-- 	<script
+		src="${pageContext.request.contextPath }/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> --%>
 
-	<script src="${pageContext.request.contextPath }/resources/assets/vendor/tinymce/tinymce.min.js"></script>
-
+<%-- 	<script src="${pageContext.request.contextPath }/resources/assets/vendor/tinymce/tinymce.min.js"></script><!--  -->
+ --%>
 	<!-- Template Main JS File -->
-	<script
+		<script
 		src="${pageContext.request.contextPath }/resources/assets/js/main.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		
 	<script type="text/javascript">
 	function writeReview(reencode,ename){
-		window.open('${pageContext.request.contextPath }/reviewForm?recode='+reencode+"&ename="+ename,'reviewFormPage',"width=750,heigh=400, top=100, left=500");
+		window.open('${pageContext.request.contextPath }/reviewForm?reencode='+reencode+"&ename="+ename,'reviewFormPage',"width=750,heigh=400, top=100, left=500");
 	}
 	function selecteRecommend(checkVal){
  		if(checkVal== '1'){
@@ -152,18 +155,18 @@
 			alert('관람평 추천을 선택해주세요');
 			return false;
 		}
-		console.log(formObj.rvencode.value);
-		console.log(formObj.rvrecommend.value);
-		console.log(formObj.rvcomment.value);
+		console.log(rvencode);
+		console.log(rvrecommend);
+		console.log(rvcomment);
 		$.ajax({
 			url:"${pageContext.request.contextPath }/reviewWrite",
 			type:"post",
-			data:{"rvrecode":rvencode, "rvrecommend":rvrecommend, "rvcomment":rvcomment },
+			data:{"rvencode":rvencode, "rvrecommend":rvrecommend, "rvcomment":rvcomment },
 			async:false,
 			success :function(result){
 				if(result =="N_login"){
 					alert("로그인후에 다시 작성해주세요");
-					window.opener.location.reload()
+					window.opener.location.reload();
 				}else if(result =='1'){
 					alert("작성완료되었습니다");
 					window.opener.location.reload();

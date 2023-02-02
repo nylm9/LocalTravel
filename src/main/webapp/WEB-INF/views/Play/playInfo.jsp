@@ -64,27 +64,33 @@
 	<!-- 상세보기 -->
 		<section class="section">
 			<div class="card mb-3 p-5 mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:40px;">
+			
+			
             	<div class="row g-0">
               		<div class="col-12 " style="text-align: center;" >
               			<!-- 사진 -->
-                		<img src="${pageContext.request.contextPath }/resources/Test1.jpg" style="width: 700px; height: 300px;" 
+                		<img src="${enInfo.epicture }" style="width: 700px; height: 400px;" 
                 		     class="img-fluid rounded-start" alt="...">
               		</div>
               		<div class="col-12">
                 		<div class="card-body">
-                  			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >제목</h5>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >날짜</span>
+                  			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${enInfo.ename }</h5>
+                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >${enInfo.eaddr }</span>
+                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >${enInfo.erepute }</span>
+                  		
                   			 <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-up"></i></span>
                   			<span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-down"></i></span>
                   			</p>
                   			<hr>
-                  			<p class="card-text mb-1">내용</p>
+                  			<p class="card-text mb-1">${enInfo.erepute }</p>
+                  			<p class="card-text mb-1">${enInfo.eexplain }</p>
                   			<p class="card-text mb-1"><a>지도</a></p>
                   			 <a class="btn btn-sm btn-danger"
-							   href="${pageContext.request.contextPath }/projectreviewForm">리뷰작성</a>
+							   href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
                 		</div>
               		</div>
             	</div>
+            	
 
            	
           	</div>
@@ -115,10 +121,9 @@
 											</span>										
 										</c:otherwise>									
 									</c:choose>
-									
 										${review.RVMID} 
 									</h2>
-									<textarea class="reviewComment w-100" rows="5" readonly="readonly">${review.RVCOMMENT}</textarea>
+									<textarea class="reviewComment w-100" rows="1" readonly="readonly">${review.RVCOMMENT}</textarea>
 									<h6>${review.RVDATE}</h6>
                 				</div>
                 			</div>
@@ -131,6 +136,21 @@
           	</div>
           	
 		</section>
+		
+		<!-- 기차예매 -->
+		<section class="section">
+		<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
+				<div class="row g-0">
+              		<div class="col-12 " style="text-align: center;" >
+                		<h2>기차예매</h2>
+              		</div>
+              		<hr>
+              		<div>
+              		<h5>갈수있는 열차랑 예매버튼</h5>
+              		</div>
+              	</div>
+         </div>
+         </section>
 
 </body>
 </html>
