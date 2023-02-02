@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,6 +62,23 @@
 	  		overflow: scroll;
 	  	}
 	</style>
+	<!-- Yeonwoo Style -->
+	<style>
+		.DepLocationSelcet{
+			border: 1px solid black;
+			text-align: center;
+			margin-bottom: 3px;
+		}
+		.DepLocationSelcet:hover{
+			border: 1px solid black;
+			color: white;
+			background-color: black;
+			text-align: center;
+			cursor: pointer;
+			margin-bottom: 3px;
+		}
+		
+	</style>
 
 
 </head>
@@ -80,48 +97,15 @@
 				<div class="col-lg-3 col-md-6 col-sm-6" >
 					<div class="card" style="margin-top:40px; margin-left:40px;">
 						<div class="card-body">
-						
-							<table>
-								<thead>
-									<tr>
-										<th colspan="2">역</th>
-									</tr>
-								</thead>
-									<tbody>
-										<tr>
-											<td>서울</td>
-											<td>경기</td>
-										</tr>
-										<tr>
-											<td>인천</td>
-											<td>대전</td>
-										</tr>
-										<tr>
-											<td>대구</td>
-											<td>울산</td>
-										</tr>
-										<tr>
-											<td>부산</td>
-											<td>광주</td>
-										</tr>
-										<tr>
-											<td>세종</td>
-											<td>강원</td>
-										</tr>
-										<tr>
-											<td>충북</td>
-											<td>충남</td>
-										</tr>
-										<tr>
-											<td>경북</td>
-											<td>경남</td>
-										</tr>
-										<tr>
-											<td>전북</td>
-											<td>전남</td>
-										</tr>
-									</tbody>
-							</table>
+						<!-- 출발역 선택창 -->
+						<c:forEach items="${cityList }" var="citylist">
+							<div class="DepLocationSelcet" id="${citylist.citycode }"
+							onclick="DepRegionSelect(${citylist.citycode })">${citylist.cityname }</div>					
+							<div class="d-none">
+								<div id="stationView${citylist.citycode }"></div>
+							</div>
+						</c:forEach>
+							<div id="stationView"></div>
 						</div>
 					</div>
 				</div>
@@ -198,6 +182,32 @@
 			</div>
 	</section>
 
+<script type="text/javascript">
+	// 출발 :: 지역 선택 -> 역 출력
+	function DepRegionSelect(citycode){
+		console.log(citycode);
+		$.ajax({
+			type: "get",
+			url: "${pageContext.request.contextPath }/DepRegionSelect",
+			data: {
+				"citycode" : citycode
+			},
+			dataType: "json",
+			async : false,
+			success: function(scList){
+				console.log(scList);
+				output = "";
+				for(var i = 0; i < scList.length; i++){
+					output += "<div>";
+					output += scList[i].nodename;
+					output += "</div>";
+				}
+				console.log(output);
+				$('#stationView').html(output);
+			}
+		});
+	}
+</script>
 
 
 <!-- THEME JAVASCRIPT FILES

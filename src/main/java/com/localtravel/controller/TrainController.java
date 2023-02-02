@@ -9,6 +9,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.JsonArray;
 import com.localtravel.dto.TRInputScheduleDto;
+import com.localtravel.service.TrainReserveService;
 import com.localtravel.service.TrainService;
 
 @Controller
@@ -16,6 +17,9 @@ public class TrainController {
 	
 	@Autowired
 	TrainService trsvc;
+	
+	@Autowired
+	TrainReserveService treser;
 	
 	// 열차-도시코드 가져오기
 	@RequestMapping(value ="/getCityCodeInfo")
@@ -57,6 +61,28 @@ public class TrainController {
 //		System.out.println(scheduleList);
 		return scheduleList;
 	}
+	
+	/* 열차 예매 관련 컨트롤러 */
+	
+	// // 출발 :: 지역 선택 -> 역 출력
+	@RequestMapping(value ="/DepRegionSelect")
+	public @ResponseBody String DepRegionSelect(String citycode) {
+		System.out.println(citycode);
+		String stationList = treser.getStationList(citycode);
+		
+		return stationList;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	// 테스트 - 역 스케줄 입력 및 출력 페이지 이동
 	@RequestMapping(value = "/TestSchedule")
