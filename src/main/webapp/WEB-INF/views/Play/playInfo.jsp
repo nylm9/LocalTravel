@@ -36,7 +36,21 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.css">
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+    
+	<style type="text/css">
 	
+	.reviewComment{
+		outline: none;
+		resize: none;
+		border: none;
+	}
+	</style>
+	<script type="text/javascript">
+  		var reMsg = '${redirectMsg}';
+  		if(reMsg.length > 0){
+  			alert(reMsg);
+  		}
+  </script>
 	
 	
 
@@ -49,7 +63,7 @@
 	
 	<!-- 상세보기 -->
 		<section class="section">
-			<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px; margin-top:40px;">
+			<div class="card mb-3 p-5 mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:40px;">
             	<div class="row g-0">
               		<div class="col-12 " style="text-align: center;" >
               			<!-- 사진 -->
@@ -75,10 +89,10 @@
            	
           	</div>
           	
-          	<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
+	<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
 				<div class="row g-0">
               		<div class="col-12 " style="text-align: center;" >
-                		<h2>후기글</h2>
+                		<h2>리뷰</h2>
               		</div>
               		<hr>
               		
@@ -86,11 +100,7 @@
               		<div class="col-6">
                 		<div class="card-body">
                 			<div class="row">
-                				<div class="col-auto" >
                 				
-                					<img class="rounded-circle reviewProfile" 
-                					src="${pageContext.request.contextPath }/resources/assets/img/profile01.jpg" >
-                				</div>
                 				<div class="col">
 									<h2 class="card-title p-0 mb-1"> 
                 					<c:choose>
@@ -116,21 +126,7 @@
                 		<hr>
               		</div>
 					</c:forEach>             
-					<div class="col-12" style="text-align:center;">
-					[이전]
-					<c:forEach begin="${pageInfo.startPageNum }" end="${pageInfo.endPageNum }" var="pageNum" step="1">
-						<c:choose>
-							<c:when test="${pageNum == pageInfo.reviewPage }">
-							${pageNum }
-							</c:when>
-							
-							<c:otherwise>
-					    	<a href="${pageContext.request.contextPath }/movieInfo?mvcode=${mvInfo.mvcode }&reviewPage=${pageNum }">${pageNum }</a> 
-							</c:otherwise>
-						</c:choose>
-					</c:forEach> 
-					[다음]
-					</div> 		
+				
             	</div>  			         	
           	</div>
           	

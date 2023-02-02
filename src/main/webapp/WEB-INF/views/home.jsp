@@ -121,7 +121,7 @@
 	               </div>
 	            </div>
             </div>
-	             <a class="btn btn-sm btn-danger"  href="${pageContext.request.contextPath }/reviewForm">
+	             <a class="btn btn-sm btn-danger"  href="${pageContext.request.contextPath }/playInfo">
              		 <span>놀거리리뷰</span>
             	 </a>
 		</div>
