@@ -1,23 +1,44 @@
 package com.localtravel.controller;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+
+import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.ReviewDto;
+import com.localtravel.service.EnjoyService;
 import com.localtravel.service.TourService;
 
 
 @Controller
 public class TourController {
+	
+	@Autowired
+	private EnjoyService ensvc;
+	
 	@RequestMapping(value = "/playInfo")
 	public ModelAndView playInfo() {
-		System.out.println("놀거리상세보기테스트");
+		System.out.println("놀거리상세보기");
+		String ecode = "E001";
+		System.out.println("놀거리코드:"+ecode);
 		ModelAndView mav = new ModelAndView();
+		
+		        //놀거리상세정보조회
+				EnjoyDto enInfo = ensvc.getenjoyInfo(ecode);
+				mav.addObject("enInfo",enInfo);
+				//리뷰목록조회
+				ArrayList<Map<String,String>> reviewList = ensvc.getReviewList(ecode);
+				mav.addObject("reviewList",reviewList);
+				
 		mav.setViewName("Play/playInfo");
 		return mav;
 	}

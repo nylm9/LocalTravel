@@ -132,8 +132,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		
 	<script type="text/javascript">
-	function writeReview(reencode,mvtitle){
-		window.open('${pageContext.request.contextPath }/reviewForm?recode='+reencode+'reviewFormPage',"width=750,heigh=400, top=100, left=500");
+	function writeReview(reencode,ename){
+		window.open('${pageContext.request.contextPath }/reviewForm?recode='+reencode+"&ename="+ename,'reviewFormPage',"width=750,heigh=400, top=100, left=500");
 	}
 	function selecteRecommend(checkVal){
  		if(checkVal== '1'){
