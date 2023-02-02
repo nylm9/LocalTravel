@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.localtravel.dto.EnjoyDto;
+import com.localtravel.dto.FoodDto;
 import com.localtravel.service.AdminService;
 
 @Controller
@@ -19,10 +20,27 @@ public class AdminController {
 	@Autowired
 	private AdminService adsvc;
 	
+	@RequestMapping(value="/insertFoodData")
+	public ModelAndView insertFoodData(FoodDto food, RedirectAttributes ra) throws IllegalStateException, IOException {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("Admin_가게 등록 기능 컨트롤러 호출");
+		System.out.println(food);
+		int insertFResult = adsvc.insertFData(food);
+		if(insertFResult > 0) {
+			System.out.println("가게 등록 성공");
+			ra.addFlashAttribute("Msg", "놀거리 등록에 성공하였습니다.");
+			
+			mav.setViewName("admin/AdminPage");
+		} else {
+			System.out.println("가게 등록 실패");
+			ra.addFlashAttribute("Msg", "놀거리 등록에 실패하였습니다.");
+			mav.setViewName("admin/AdminPage");
+		}
+		return mav;
+ 	}
 	
 	
-	
-	@RequestMapping(value="insertEnjoyData")
+	@RequestMapping(value="/insertEnjoyData")
 	public ModelAndView insertEnjoyData(EnjoyDto enjoy, RedirectAttributes ra) throws IllegalStateException, IOException {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("Admin_놀거리 등록 기능 호출");
@@ -41,7 +59,7 @@ public class AdminController {
 		return mav;
  	}
 	
-	@RequestMapping(value="enjoyNameCheck")
+	@RequestMapping(value="/enjoyNameCheck")
 	public @ResponseBody String enjoyNameCheck(String inputEname, String inputEaddr) {
 		System.out.println("Ajax_놀거리 이름 중복체크");
 		System.out.println("입력한 놀거리 이름 : " + inputEname);
@@ -52,7 +70,18 @@ public class AdminController {
 		return enjoyCheckResult;
 	}
 	
-	@RequestMapping(value="AdminPage")
+	@RequestMapping(value="/enjoyFoodCheck")
+	public @ResponseBody String enjoyFoodCheck(String inputFname, String inputFaddr) {
+		System.out.println("Ajax_가게 이름 중복체크");
+		System.out.println("입력한 가게 이름 : " + inputFname);
+		System.out.println("입력한 가게 이름 : " + inputFaddr);
+		//1. 중복 확인 기능 호출
+		String foodCheckResult = adsvc.foodCheck(inputFname, inputFaddr);
+		//2. 중복확인 결과값 리턴
+		return foodCheckResult;
+	}
+	
+	@RequestMapping(value="/AdminPage")
 	public ModelAndView AdminPage() {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("관리자 페이지 이동");

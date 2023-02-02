@@ -150,7 +150,7 @@ select::-ms-expand {
 					<div class="card-body">
 						<div class="pt-4 pb-2">
 							<h5 class="card-title text-center pb-0 fs-4">Enjoy 데이터 입력</h5>
-							<p class="text-center small">Enjoy 정보를 입력해주세요.</p>
+							<p class="text-center small">Enjoy 정보를 입력해주세요( 이름 -> 주소 순으로 작성 )</p>
 						</div>
 
 						<form class="row g-3"
@@ -240,11 +240,11 @@ select::-ms-expand {
 					<div class="card-body">
 						<div class="pt-4 pb-2">
 							<h5 class="card-title text-center pb-0 fs-4">Food 데이터 입력</h5>
-							<p class="text-center small">Food 정보를 입력해주세요.</p>
+							<p class="text-center small">Food 정보를 입력해주세요 ( 이름 -> 주소 순으로 작성 )</p>
 						</div>
 
 						<form class="row g-3"
-							action="${pageContext.request.contextPath }/insertEnjoyData"
+							action="${pageContext.request.contextPath }/insertFoodData"
 							method="post" enctype="multipart/form-data">
 							
 							<div class="col-md-6">
@@ -276,37 +276,32 @@ select::-ms-expand {
 							<div class="col-md-6">
 								<label for="inputFname" class="form-label">가게 이름</label> 
 								<span class="small" id=FnameCheckMsg>⠀</span> 
-									<input type="text" name="Fname" class="form-control" id="inputFname"
+									<input type="text" name="fname" class="form-control" id="inputFname"
 									onkeyup="joinFNameCheck(this.value)">
 							</div>
 							<div class="col-md-6">
 								<label for="inputFaddr" class="form-label">가게 주소</label> 
 								<span class="small" id=FaddrCheckMsg>⠀</span> 
-								<input type="text" name="Faddr" class="form-control" id="inputFaddr" 
+								<input type="text" name="faddr" class="form-control" id="inputFaddr" 
 									onkeyup="joinFAddrCheck(this.value)">
 							</div>
 							<div class="col-md-6">
 								<label for="inputFtel" class="form-label">가게 전화번호(-는 제외하고 입력)</label> 
-								<input type="tel" name="Ftell" class="form-control" id="inputFtel">
+								<input type="tel" name="ftell" class="form-control" id="inputFtel">
 							</div>
 							<div class="col-md-6">
 								<label for="inputFexplain" class="form-label">가게 설명</label> <input
-									type="text" name="Fexplain" class="form-control" id="inputFexplain">
+									type="text" name="fexplain" class="form-control" id="inputFexplain">
 							</div>
 
 							<div class="col-md-6">
 								<label for="inputFexplain" class="form-label">놀거리 테마코드(5글자)</label> <input
-									type="text" name="Fexplain" class="form-control" id="inputFexplain">
+									type="text" name="fthcode" class="form-control" id="inputFexplain">
 							</div>
 							
 							<div class="col-md-6">
 								<label for="inputFfile" class="form-label">가게 이미지</label>
-								<input type="file" name="Ffile" class="form-control" id="inputFfile">
-							</div>
-							
-							<div class="col-md-6">
-								<label for="" class="form-label">  </label>
-								<input type="hidden" class="form-control" >
+								<input type="file" name="ffile" class="form-control" id="inputFfile">
 							</div>
 
 							<div class="text-center">
@@ -315,6 +310,7 @@ select::-ms-expand {
 								<button type="reset" class="btn btn-secondary"
 									style="margin-top: 10px;">다시작성</button>
 							</div>
+							
 						</form>
 					</div>
 				</div>
@@ -349,49 +345,89 @@ select::-ms-expand {
 
 </body>
 
-<script type="text/javascript">
 
-function joinEAddrCheck(addrVal) {
-	let inputEname = document.getElementById("inputEname").value;
-	console.log("입력한 놀거리 주소 : " + addrVal);
-	if(addrVal.length == 0 ) {
-		$("#EaddrCheckMsg").text('놀거리 주소를 입력 해주세요!').css("color","red"); 
-	} if(addrVal.length != 0 ) {
-		$("#EaddrCheckMsg").text('').css("color","red");
-	} 
-	else {
-		$.ajax( { 
-			type : "get",	
-			url : "${pageContext.request.contextPath }/enjoyNameCheck", 
-			data : { "inputEname" : inputEname, "inputEaddr" : addrVal },
-			success : function(checkResult) {
-				console.log("checkResult : " + checkResult);
-				if( checkResult == 'OK' ) {
-					/* 놀거리 이름 가능 */
-					$("#EnameCheckMsg").text('입력가능한 놀거리 입니다.').css("color","green"); 
-				} else {
-					/* 놀거리 이름 중복 */
-					$("#EnameCheckMsg").text('중복된 놀거리 입니다.').css("color","red"); 
-				}
-			}
-		} );
-	}
-	}
-</script>
-
+<!-- enjoy부분 스크립트 시작 -->
 
 <script type="text/javascript">
 	function joinENameCheck(nameVal) {
 		console.log("입력한 놀거리 이름 : " + nameVal);
 		if (nameVal.length == 0) {
 			$("#EnameCheckMsg").text('놀거리 이름를 입력 해주세요!').css("color", "red");
-		}
+		} 
+	}
+</script>
+
+
+<script type="text/javascript">
+
+function joinEAddrCheck(addrVal) {
+	let inputEname = document.getElementById("inputEname").value;
+	console.log("입력한 놀거리 주소 : " + addrVal);
+/* 	if(addrVal.length == 0 ) {
+		$("#EaddrCheckMsg").text('놀거리 주소를 입력 해주세요!').css("color","red"); 
+	} else {  */
+		$.ajax( { 
+			type : "get",	
+			url : "${pageContext.request.contextPath }/enjoyNameCheck", 
+			data : { "inputEname" : inputEname, "inputEaddr" : addrVal },
+			success : function(checkResult) {
+				console.log("checkResult : " + checkResult);
+				if( checkResult == 'NO' ) {
+					/* 놀거리 이름 중복 */
+					$("#EnameCheckMsg").text('중복된 놀거리 입니다.').css("color","red"); 
+				} else {
+					/* 놀거리 이름 가능 */
+					$("#EnameCheckMsg").text('입력가능한 놀거리 입니다.').css("color","green"); 
+				}
+			}
+		} );
+	/* } */
 	}
 </script>
 
 
 
 
+<!-- enjoy부분 스크립트 끝 -->
+
+
+
+<!-- food부분 스크립트 시작 -->
+
+<script type="text/javascript">
+	function joinFNameCheck(nameVal) {
+		console.log("입력한 가게 이름 : " + nameVal);
+		if (nameVal.length == 0) {
+			$("#FnameCheckMsg").text('가게 이름을 입력 해주세요!').css("color", "red");
+		} 
+	}
+</script>
+
+
+<script type="text/javascript">
+
+function joinFAddrCheck(addrVal) {
+	let inputFname = document.getElementById("inputFname").value;
+	console.log("입력한 가게 주소 : " + addrVal);
+		$.ajax( { 
+			type : "get",	
+			url : "${pageContext.request.contextPath }/enjoyFoodCheck", 
+			data : { "inputFname" : inputFname, "inputFaddr" : addrVal },
+			success : function(checkResult) {
+				console.log("checkResult : " + checkResult);
+				if( checkResult == 'NO' ) {
+					/* 가게 이름 중복 */
+					$("#FnameCheckMsg").text('중복된 가게 입니다.').css("color","red"); 
+				} else {
+					/* 가게 이름 가능 */
+					$("#FnameCheckMsg").text('입력가능한 가게 입니다.').css("color","green"); 
+				}
+			}
+		} );
+	}
+</script>
+
+<!-- food부분 스크립트 끝 -->
 
 
 
