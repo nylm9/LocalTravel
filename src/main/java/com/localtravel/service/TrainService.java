@@ -32,10 +32,25 @@ public class TrainService {
 	@Autowired
 	TrainDao trdao;
 
-	// 3. 열차 스케줄 가져오기 ( 예매시 사용할 스케쥴 모음 )
+	// 3. 열차 스케줄 가져오기 ( 예매시 사용할 스케쥴 기능 )
 	public String searchSchedule(TRInputScheduleDto inputSchedule) throws Exception {
+		System.out.println("Service - searchSchedule()");
+		// 1.1. 역이 중앙선, 강릉선인 경우
+		System.out.println("=================(열차종류 세팅)====================");
+		ArrayList<String> TYroute = new ArrayList<String>();
+		String trainType = "00";
+		System.out.println(inputSchedule);
+		TYroute = trdao.selectTyroute(inputSchedule);
+		System.out.println(TYroute.get(0));
+		if(TYroute.get(0).equals("GL") || TYroute.get(0).equals("JA")) {
+			trainType = "16";
+		}
+		System.out.println("열차종류 : " + trainType);
+		System.out.println("=====================================================");
+		
 		// 1. 입력한 역의 이름을 역코드로 변환해준다. ( => SERVICE 3.1. )
-		changeStaionId(inputSchedule);
+		inputSchedule = changeStaionId(inputSchedule);
+		
 		
 		// 2. 출/도착역의 정보를 입력 뒤 API를 통해 스케줄을 가져온다.
 		StringBuilder urlBuilder = new StringBuilder(
@@ -44,7 +59,6 @@ public class TrainService {
 				+ "=rcDIgqtDvPLJ95VNJCSK44R1cExWDo42RSBvLWAV9IglwBSjU5fsECwXMglNDmsEk%2BxoZypGMP1kn72z0jXbcw%3D%3D"); 
 		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); 
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); 
-																													
 		urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("depPlaceId", "UTF-8") + "="
 				+ URLEncoder.encode(inputSchedule.getDepPlaceId(), "UTF-8")); // 출발기차역ID
@@ -52,7 +66,7 @@ public class TrainService {
 				+ URLEncoder.encode(inputSchedule.getArrPlaceId(), "UTF-8")); // 도착기차역ID
 		urlBuilder.append("&" + URLEncoder.encode("depPlandTime", "UTF-8") + "="
 				+ URLEncoder.encode(inputSchedule.getDepPlandTime(), "UTF-8")); // 출발일(YYYYMMDD)
-		urlBuilder.append("&" + URLEncoder.encode("trainGradeCode", "UTF-8") + "=" + URLEncoder.encode("00", "UTF-8")); 
+		urlBuilder.append("&" + URLEncoder.encode("trainGradeCode", "UTF-8") + "=" + URLEncoder.encode(trainType, "UTF-8")); 
 		URL url = new URL(urlBuilder.toString());
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
@@ -75,15 +89,17 @@ public class TrainService {
 
 		Gson gson = new Gson();
 		JsonElement element = JsonParser.parseString(sb.toString());
-		System.out.println(element);
+//		System.out.println(element);
 		JsonObject body = element.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject();
 		JsonArray ScheduleArray = body.get("items").getAsJsonObject().get("item").getAsJsonArray();
 		System.out.println(ScheduleArray.get(0));
 		// 열차 운임비 데이터 넣어주는 메소드
 		SelectTrainFare(ScheduleArray);
-
+		System.out.println("데이터 조회 완료");
 		return gson.toJson(ScheduleArray);
 	}
+
+	
 
 	// 3.1. API양식에 맞게 입력한 역의 이름을 역코드로 변환 및 날짜 수정
 	private TRInputScheduleDto changeStaionId(TRInputScheduleDto inputSchedule) {
@@ -107,14 +123,16 @@ public class TrainService {
 		// 3.1.3. 날짜데이터의 "-" 제거
 
 		String setTime = inputSchedule.getDepPlandTime().replace("-", "");
-
-		// 3.1.4. 각 코드를 Dto에 통해준다.
+		// 3.1.4. 
+		
+		
+		// 3.2.1. 각 코드를 Dto에 통해준다.
 		inputSchedule.setDepPlaceId(depId);
 		inputSchedule.setArrPlaceId(arrId);
 		inputSchedule.setDepPlandTime(setTime);
-		System.out.println("수정된 입력 정보 : " + inputSchedule);
+//		System.out.println("수정된 입력 정보 : " + inputSchedule);
 
-		return null;
+		return inputSchedule;
 	}
 
 	// 4. CSV파일을 통한 열차 시간 가져오기( 열차시간 INSERT )
@@ -189,7 +207,7 @@ public class TrainService {
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/json");
-		System.out.println("Response code: " + conn.getResponseCode());
+//		System.out.println("Response code: " + conn.getResponseCode());
 		BufferedReader rd;
 		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
 			rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -210,7 +228,7 @@ public class TrainService {
 		JsonElement element = JsonParser.parseString(sb.toString());
 		JsonObject body = element.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject();
 		JsonArray obj = body.get("items").getAsJsonObject().get("item").getAsJsonArray();
-		System.out.println(obj);
+//		System.out.println(obj);
 
 		// 도시코드 DB에 삽입
 		int insertResult = 0;
@@ -223,10 +241,10 @@ public class TrainService {
 			insertResult += trdao.getCityCodeInfo(city);
 		}
 
-		System.out.println("=========================================================");
+//		System.out.println("=========================================================");
 
 		// insert 작업 완료
-		System.out.println(insertResult);
+//		System.out.println(insertResult);
 		if (insertResult > 0) {
 			System.out.println("insert 작업 완료");
 		} else {
@@ -324,7 +342,7 @@ public class TrainService {
 			Routedata.setArrsta(DepSta);
 			routeInfo = trdao.selectNormalFare(Routedata);
 		}
-		System.out.println("입력된 금액 : " + routeInfo.getNormalfare());
+//		System.out.println("입력된 금액 : " + routeInfo.getNormalfare());
 		return routeInfo;
 	}
 
@@ -336,7 +354,7 @@ public class TrainService {
 			// 5.1. 열차번호 설정 ( trainno )
 
 			if (trainno > 0 && trainno < 101 || trainno > 115 && trainno < 121 || trainno == 194 || trainno == 183) {
-				System.out.println("고속경부선");
+//				System.out.println("고속경부선");
 				// 노선코드 설정 ( 수동 )
 				Routedata.setRoutecode("KB");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
@@ -344,63 +362,65 @@ public class TrainService {
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
 			} else if (trainno > 100 && trainno < 113 || trainno > 161 && trainno < 166) {
-				System.out.println("(구포 경유) 경부선");
+//				System.out.println("(구포 경유) 경부선");
 				Routedata.setRoutecode("KBGP");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
 			} else if (trainno > 120 && trainno < 129 || trainno > 169 && trainno < 174) {
-				System.out.println("(수원 경유) 경부선");
+//				System.out.println("(수원 경유) 경부선");
 				Routedata.setRoutecode("KBSWSG");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
 			} else if (trainno > 200 && trainno < 225 || trainno > 281 && trainno < 289) {
-				System.out.println("경전선 ( 진주행 )");
+//				System.out.println("경전선 ( 진주행 )");
 				Routedata.setRoutecode("KJ");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
 			} else if (trainno > 230 && trainno < 255 || trainno > 290 && trainno < 299) {
-				System.out.println("동해선 ( 포항행 )");
+//				System.out.println("동해선 ( 포항행 )");
 				Routedata.setRoutecode("DH");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
 			} else if (trainno > 400 && trainno < 441 || trainno > 490 && trainno < 493) {
-				System.out.println("호남선");
+//				System.out.println("호남선");
 				Routedata.setRoutecode("HN");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
 			} else if (trainno > 470 && trainno < 487 || trainno > 490 && trainno < 493) {
-				System.out.println("호남선 - 서대전 경유");
+//				System.out.println("호남선 - 서대전 경유");
 				Routedata.setRoutecode("HNGJ");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
 			} else if (trainno > 500 && trainno < 525 || trainno > 540 && trainno < 591) {
-				System.out.println("전라선");
+//				System.out.println("전라선");
 				Routedata.setRoutecode("JL");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
-				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
-			} else if (trainno > 800 && trainno < 829 || trainno > 850 && trainno < 865) {
-				System.out.println("강릉선");
+				if(routeInfo != null) {
+					scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+				}
+			} else if (trainno > 800 && trainno < 829 || trainno > 840 && trainno < 865) {
+//				System.out.println("강릉선");
 				Routedata.setRoutecode("GL");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
 			} else if (trainno > 700 && trainno < 715 || trainno > 780 && trainno < 783) {
-				System.out.println("중앙선");
+//				System.out.println("중앙선");
 				Routedata.setRoutecode("JA");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
@@ -409,5 +429,5 @@ public class TrainService {
 			}
 		}
 	}
-
+	
 }

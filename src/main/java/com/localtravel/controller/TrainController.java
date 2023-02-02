@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.JsonArray;
 import com.localtravel.dto.TRInputScheduleDto;
@@ -38,11 +39,21 @@ public class TrainController {
 	
 	// 열차시간정보 가져오기 RequestData( 출발역, 도착역, YYYY-MM-DD )
 	@RequestMapping(value = "/getTrainSchedule")
-	public @ResponseBody String getTrainSchedule(TRInputScheduleDto inputSchedule) throws Exception {
+	public @ResponseBody String getTrainSchedule(TRInputScheduleDto inputSchedule, RedirectAttributes ra) throws Exception {
+		String scheduleList = "";
 		System.out.println("Controller - getTrainSchedule()");
 		System.out.println(inputSchedule);
 		System.out.println("=".repeat(50));
-		String scheduleList = trsvc.searchSchedule(inputSchedule);
+		
+		try {
+			scheduleList = trsvc.searchSchedule(inputSchedule);
+		} catch (Exception IllegalStateException) {
+			System.out.println("해당 노선을 찾을 수 없습니다.");
+			System.out.println(IllegalStateException);
+			ra.addFlashAttribute("redirectMsg", "회원가입 되었습니다.");
+			ra.addFlashAttribute("redirect", "TestSchedule");
+		}
+		
 //		System.out.println(scheduleList);
 		return scheduleList;
 	}

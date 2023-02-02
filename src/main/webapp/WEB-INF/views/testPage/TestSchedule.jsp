@@ -13,6 +13,9 @@
 		border-collapse: collapse;
 	};
 </style>
+<script type="text/javascript">
+		
+  </script>
 </head>
 <body>
 	<a href="${pageContext.request.contextPath }/TestSchedule">새로고침</a>
@@ -51,6 +54,7 @@
 				dataType: "json",
 				async : false,
 				success: function(scList){
+					
 					var output ="";
 					// AJAX - 예매정보를 출력할 때 사용된 코드
 					//console.log(scList);
