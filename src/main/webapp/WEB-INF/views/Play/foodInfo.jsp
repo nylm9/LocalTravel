@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>놀거리 상세보기 페이지</title>
+<title>먹거리 상세보기 페이지</title>
 
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -62,31 +62,31 @@
 	<!-- End Header -->
 	
 	<!-- 상세보기 -->
-		<section class="section">
+		 <section class="section">
 			<div class="card mb-3 p-5 mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:40px;">
 			
 			
             	<div class="row g-0">
               		<div class="col-12 " style="text-align: center;" >
               			<!-- 사진 -->
-                		<img src="${enInfo.epicture }" style="width: 700px; height: 400px;" 
+                		<img src="${fdInfo.fpicture }" style="width: 700px; height: 400px;" 
                 		     class="img-fluid rounded-start" alt="...">
               		</div>
               		<div class="col-12">
                 		<div class="card-body">
-                  			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${enInfo.ename }</h5>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >${enInfo.eaddr }</span>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >${enInfo.erepute }</span>
+                  			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${fdInfo.fname }</h5>
+                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >${fdInfo.faddr }</span>
+                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >${fdInfo.frepute }</span>
                   		
                   			 <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-up"></i></span>
                   			<span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-down"></i></span>
                   			</p>
                   			<hr>
-                  			<p class="card-text mb-1">${enInfo.erepute }</p>
-                  			<p class="card-text mb-1">${enInfo.eexplain }</p>
+                  			<p class="card-text mb-1">${fdInfo.frepute }</p>
+                  			<p class="card-text mb-1">${fdInfo.fexplain }</p>
                   			<p class="card-text mb-1"><a>지도</a></p>
                   			 <a class="btn btn-sm btn-danger"
-							   href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
+							   href="${pageContext.request.contextPath }/reviewForm?fcode=${fdInfo.fcode }">리뷰작성</a>
                 		</div>
               		</div>
             	</div>
@@ -98,11 +98,11 @@
 	<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
 				<div class="row g-0">
               		<div class="col-12 " style="text-align: center;" >
-                		<h2>리뷰</h2>
+                		<h2>먹거리리뷰</h2>
               		</div>
               		<hr>
               		
-              		<c:forEach items="${reviewList }" var="review">
+              		<c:forEach items="${fdreviewList }" var="review">
               		<div class="col-6">
                 		<div class="card-body">
                 			<div class="row">

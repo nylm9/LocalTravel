@@ -35,8 +35,8 @@
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                             <a class="dropdown-item" href="${pageContext.request.contextPath }/enjoyPage">놀거리</a>
-                            <a class="dropdown-item" href="standard-left-sidebar.html">패키지 2</a>
-                            <a class="dropdown-item" href="standard-right-sidebar.html">패키지3</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath }/foodPage">먹거리</a>
+                         
                           </div>
                       </li>
 

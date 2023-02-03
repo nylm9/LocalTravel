@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>놀거리사이트</title>
+<title>먹거리페이지</title>
 
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -135,115 +135,53 @@ function change_btn(e) {
 <section class="section" style="margin-top:40px; margin:auto;">
 	<div class="row align-items-center">
 	
-			<div class="card" style=" margin-left:680px; margin-top:40px;">
-				<div class="card-body" >
-				<div class="e" id="moving-text">
-				<h5>인원</h5>
-					<button  class="button"  onclick="change_btn(this)">가족과함께</button>
-					<button  class="button"  onclick="change_btn(this)">혼자</button>
-					<button  class="button"  onclick="change_btn(this)">데이트</button>
-					<button  class="button"  onclick="change_btn(this)">우정</button>
-				</div>
-				
+		<div class="card" style=" margin-left:680px; margin-top:40px;">
+			<div class="card-body" >
 				<div class="e" id="moving-text" style="margin-top:5px;">	
-				<h5>계절</h5>		
-				<button class="button"  onclick="change_btn(this)">봄</button>
-				<button class="button"  onclick="change_btn(this)">여름</button>
-				<button class="button"  onclick="change_btn(this)">가을</button>
-				<button class="button"  onclick="change_btn(this)">겨울</button>
-				</div>
-				
-				<div class="e" id="moving-text" style="margin-top:5px;">	
-				<h5>무엇을?</h5>
-				<button  class="button"  onclick="change_btn(this)">사진명소</button>
-				<button  class="button"  onclick="change_btn(this)"">익스트림</button>
-				<button  class="button"  onclick="change_btn(this)">힐링</button>
-				<button  class="button"  onclick="change_btn(this)">자연</button>
-				<button  class="button"  onclick="change_btn(this)">체험</button>
-				<button  class="button"  onclick="change_btn(this)">문화</button>
-				<button  class="button"  onclick="change_btn(this)">상점</button>
-				</div>
-				
+				<h5>먹거리</h5>		
+				<button class="button"  onclick="change_btn(this)">양식</button>
+				<button class="button"  onclick="change_btn(this)">중식</button>
+				<button class="button"  onclick="change_btn(this)">일식</button>
+				<button class="button"  onclick="change_btn(this)">한식</button>
+				<button class="button"  onclick="change_btn(this)">동남아</button>
+				<button class="button"  onclick="change_btn(this)">카페</button>
 				</div>
 			</div>
+		</div>
 	</div>
 </section>
 <!--  키워드 검색결과 패키지 -->
-<!-- <section class="section">
-			<div class="row" style="min-width: 565px;" >
-			
-			
-				<div class="col-lg-3 col-md-4 col-sm-6" >
-					<div class="card" style="margin-top:40px; margin-left:30px;">
-						<div class="card-body">
-						<h4>패키지</h4>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-lg-3 col-md-4 col-sm-6" >
-					<div class="card" style="margin-top:40px; ">
-						<div class="card-body">
-						<h4>패키지</h4>
-						</div>
-					</div>
-			</div>
-			
-			<div class="col-lg-3 col-md-4 col-sm-6" >
-					<div class="card" style="margin-top:40px; ">
-						<div class="card-body">
-						<h4>패키지</h4>
-						</div>
-					</div>
-			</div>
-			
-			<div class="col-lg-3 col-md-4 col-sm-6" >
-					<div class="card" style="margin-top:40px;margin-right:30px;">
-						<div class="card-body">
-						<h4>패키지</h4>
-						</div>
-					</div>
-			</div>
-			
-	</div>
-</section>
- -->
+
 
 <!-- 패키지 출력 -->
 	<section class="section">
-			<div class="row mx-auto" style="min-width: 700px; max-width: 1200px;" >
+			<div class="row mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:5px;" >
 				
 				
-			<c:forEach items="${enList}" var="enjoy" varStatus="status">
+			 <c:forEach items="${fdList}" var="food" varStatus="status">
 				<div class="col-3">
-					<div class="card">
+					<div class="card"  style=" margin-top:5px;">
 						<div class="card-body">
 							 <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
 							 <div style="height:200px;width:5px;">
-							<a href="${pageContext.request.contextPath }/playInfo?mvcode=${enjoy.ecode }">
+							<a href="${pageContext.request.contextPath }/foodInfo?fcode=${food.fcode }">
 							<img class="img-fluid" 
-							     alt="" src="${enjoy.epicture }" >
+							     alt="" src="${food.fpicture }" >
 							</a>
 							</div>
-							
-							<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="${enjoy.ename }" >${enjoy.ename }</h6>
-							
-							<p class="small mb-1">${enjoy.eaddr }</p>
+							<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="${food.fname }" >${food.fname }</h6>
+						
+							<p class="small mb-1">${food.faddr }</p>
 							
 							<a class="btn-dark btn-sm btn"
-							href="${pageContext.request.contextPath }/playInfo?ecode=${enjoy.ecode }">상세보기</a>
-							
+							href="${pageContext.request.contextPath }/foodInfo?fcode=${food.fcode }">상세보기</a>
+						
 						
 						</div>
 					</div>
 				</div>
 			</c:forEach>				
-						 <!--  <script type="text/javascript">
-						 	function ticketPage(selMvcode){
-						 		location.href= "${pageContext.request.contextPath }/ticketPage?selectmovie="+selMvcode;
-						 	}
-						 
-						 </script> -->
+						  
 							
 			</div>
 		</section>

@@ -6,11 +6,11 @@ public class ReviewDto {
 	private String rvcomment;
 	private String rvrecommend;
 	private String rvdate;
-	public String getRvrecode() {
+	public String getRvencode() {
 		return rvencode;
 	}
-	public void setRvrecode(String rvrecode) {
-		this.rvencode = rvrecode;
+	public void setRvencode(String rvencode) {
+		this.rvencode = rvencode;
 	}
 	public String getRvmid() {
 		return rvmid;
@@ -38,7 +38,7 @@ public class ReviewDto {
 	}
 	@Override
 	public String toString() {
-		return "ReviewDto [rvrecode=" + rvencode + ", rvmid=" + rvmid + ", rvcomment=" + rvcomment + ", rvrecommend="
+		return "ReviewDto [rvencode=" + rvencode + ", rvmid=" + rvmid + ", rvcomment=" + rvcomment + ", rvrecommend="
 				+ rvrecommend + ", rvdate=" + rvdate + "]";
 	}
 	
