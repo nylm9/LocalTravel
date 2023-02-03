@@ -33,13 +33,13 @@ public interface EnjoyDao {
 	@Select("SELECT * FROM FOOD WHERE FCODE = #{fcode}")
 	FoodDto selectfoodInfo(String fcode);
 	
-	@Select("SELECT * FROM FDREVIEWS RV"
-			+ " INNER JOIN FOOD FD ON RV.RVENCODE = FD.FCODE "
-			+ " WHERE FD.FCODE = #{fcode}")
+	@Select("SELECT * FROM FDREVIEWES FR INNER JOIN FOOD FD ON FR.RVFDCODE = FD.FCODE WHERE FD.FCODE = #{fcode}")
 	ArrayList<Map<String, String>> selectfdReviewList(String fcode);
 
 	@Select("SELECT * FROM MENU MN INNER JOIN FOOD FD ON MN.MENUFCODE = FD.FCODE  WHERE FD.FCODE =#{fcode}")
 	ArrayList<MenuDto> selectMenuList_Rank(String fcode);
+
+
 	
 
 	

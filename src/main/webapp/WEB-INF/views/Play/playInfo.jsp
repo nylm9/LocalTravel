@@ -75,14 +75,14 @@
               		<div class="col-12">
                 		<div class="card-body">
                   			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${enInfo.ename }</h5>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >${enInfo.eaddr }</span>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >${enInfo.erepute }</span>
+                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >주소: ${enInfo.eaddr }</span>
+                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >평점: ${enInfo.erepute }</span>
                   		
                   			 <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-up"></i></span>
                   			<span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-down"></i></span>
                   			</p>
                   			<hr>
-                  			<p class="card-text mb-1">${enInfo.erepute }</p>
+                  			<p class="card-text mb-1">전화번호: ${enInfo.etell }</p>
                   			<p class="card-text mb-1">${enInfo.eexplain }</p>
                   			<p class="card-text mb-1"><a>지도</a></p>
                   			 <a class="btn btn-sm btn-danger"

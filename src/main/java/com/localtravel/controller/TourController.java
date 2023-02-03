@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
+import com.localtravel.dto.FoodReviewDto;
 import com.localtravel.dto.MenuDto;
 import com.localtravel.dto.ReviewDto;
 import com.localtravel.service.EnjoyService;
@@ -27,7 +28,7 @@ public class TourController {
 	@Autowired
 	private EnjoyService ensvc;
 	
-	
+	//놀거리
 	@RequestMapping(value="enjoyPage")
 	public ModelAndView enjoyPage() {
 		System.out.println("놀거리 페이지 이동 요청");
@@ -53,6 +54,7 @@ public class TourController {
 				//리뷰목록조회
 				ArrayList<Map<String,String>> reviewList = ensvc.getReviewList(ecode);
 				mav.addObject("reviewList",reviewList);
+				
 				
 		mav.setViewName("Play/playInfo");
 		return mav;
@@ -88,13 +90,14 @@ public class TourController {
 		return writeResult;
 	}
 	
-	
+	//먹거리
 	@RequestMapping(value = "/foodPage")
 	public ModelAndView foodPage() {
 		System.out.println("먹거리페이지이동");
 		
 		ArrayList<FoodDto> fdList = ensvc.getfoodList();
 		ModelAndView mav = new ModelAndView();
+		
 		
 		mav.addObject("fdList", fdList);
 		mav.setViewName("Play/foodPage");
@@ -104,22 +107,53 @@ public class TourController {
 	@RequestMapping(value = "/foodInfo")
 	public ModelAndView foodInfo(String fcode) {
 		System.out.println("먹거리 상세보기");
+		
 		System.out.println("먹거리코드:"+fcode);
+		
 		ModelAndView mav = new ModelAndView();
 		
 		        //먹거리상세정보조회
 				FoodDto fdInfo = ensvc.getfoodInfo(fcode);
 				mav.addObject("fdInfo",fdInfo);
 				
-//				  //리뷰목록조회 
-//					ArrayList<Map<String,String>> fdreviewList =ensvc.getfoodReviewList(fcode); 
-//					mav.addObject("fdreviewList",fdreviewList);
+				  //리뷰목록조회 
+					ArrayList<Map<String,String>> fdreviewList =ensvc.getfoodReviewList(fcode); 
+					mav.addObject("fdreviewList",fdreviewList);
+					System.out.println("리뷰목록"+fdreviewList);
+					
 				  //메뉴목록조회
-				   ArrayList<MenuDto> mnList = ensvc.getMenuList(fcode);
+				  ArrayList<MenuDto> mnList = ensvc.getMenuList(fcode);
 				  mav.addObject("mnList", mnList);
+				  System.out.println("메뉴목록"+mnList);
 				 
 				
 		mav.setViewName("Play/foodInfo");
 		return mav;
 }
+	@RequestMapping(value = "/fdreviewForm")
+	public ModelAndView fdreviewForm(String refdcode) {
+		System.out.println("먹거리 리뷰페이지이동");
+		System.out.println(refdcode);
+		String rvfdthcode ="11111";
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("review/FoodReviewForm");
+		return mav;
+	}
+
+	
+	@RequestMapping(value = "/fdreviewWrite")
+	public @ResponseBody String fdreviewWrite(FoodReviewDto fdreview) {
+		System.out.println("먹거리관람평등록요청");
+		String loginId = (String) session.getAttribute("loginId");
+		
+		 if(loginId == null) { return "N_login"; }
+		 
+		fdreview.setRvmid(loginId);
+		
+		System.out.println(fdreview);
+
+		String fdwriteResult = toursvc.fdreviewWrite_svc(fdreview);
+		return fdwriteResult;
+	}
 }

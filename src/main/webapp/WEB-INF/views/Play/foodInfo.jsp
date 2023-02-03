@@ -75,18 +75,37 @@
               		<div class="col-12">
                 		<div class="card-body">
                   			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${fdInfo.fname }</h5>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >${fdInfo.faddr }</span>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >${fdInfo.frepute }</span>
+                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >주소: ${fdInfo.faddr }</span>
+                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >평점: ${fdInfo.frepute }</span>
                   		
                   			 <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-up"></i></span>
                   			<span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-down"></i></span>
                   			</p>
                   			<hr>
-                  			<p class="card-text mb-1">${fdInfo.frepute }</p>
+                			<p class="card-text mb-1">전화번호: ${fdInfo.ftell }</p>
                   			<p class="card-text mb-1">${fdInfo.fexplain }</p>
+                  			<hr>
+                  			<c:forEach items="${mnList }" var="menu">
+              		<div class="col-6">
+                		<div class="card-body">
+                			<div class="row">
+                				<div class="col">
+									<h4 >메뉴</h4>
+									<h7>${menu.menuname1} : ${menu.menuexplain1}</h7>
+									<h6>${menu.menuprice1}</h6>
+									<h7>${menu.menuname2} : ${menu.menuexplain2}</h7>
+									<h6>${menu.menuprice2}</h6>
+									<h7>${menu.menuname3} : ${menu.menuexplain3}</h7>
+									<h6>${menu.menuprice3}</h6>
+                				</div>
+                			</div>
+                		</div>
+                		<hr>
+              		</div>
+					</c:forEach>             
                   			<p class="card-text mb-1"><a>지도</a></p>
                   			 <a class="btn btn-sm btn-danger"
-							   href="${pageContext.request.contextPath }/reviewForm?fcode=${fdInfo.fcode }">리뷰작성</a>
+							   href="${pageContext.request.contextPath }/fdreviewForm?fcode=${fdInfo.fcode }">리뷰작성</a>
                 		</div>
               		</div>
             	</div>
@@ -102,7 +121,7 @@
               		</div>
               		<hr>
               		
-              		<c:forEach items="${fdreviewList }" var="review">
+              		<c:forEach items="${fdreviewList }" var="fdreview">
               		<div class="col-6">
                 		<div class="card-body">
                 			<div class="row">
@@ -110,7 +129,7 @@
                 				<div class="col">
 									<h2 class="card-title p-0 mb-1"> 
                 					<c:choose>
-										<c:when test="${review.RVRECOMMEND == '1' }">
+										<c:when test="${fdreview.RVRECOMMEND == '1' }">
 											<span style="font-weight: bold; color: black;">
 												<i class="bi bi-hand-thumbs-up "></i>
 											</span>
@@ -121,10 +140,10 @@
 											</span>										
 										</c:otherwise>									
 									</c:choose>
-										${review.RVMID} 
+										${fdreview.RVMID} 
 									</h2>
-									<textarea class="reviewComment w-100" rows="1" readonly="readonly">${review.RVCOMMENT}</textarea>
-									<h6>${review.RVDATE}</h6>
+									<textarea class="reviewComment w-100" rows="1" readonly="readonly">${fdreview.RVCOMMENT}</textarea>
+									<h6>${fdreview.RVDATE}</h6>
                 				</div>
                 			</div>
                 		</div>
