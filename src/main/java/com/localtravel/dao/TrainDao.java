@@ -31,6 +31,8 @@ public interface TrainDao {
 
 	/* SERVICE - searchSchedule()내 SQL */
 	
+	// 열차 정보 출력 관련 DAO
+	
 	@Select("SELECT NODEID FROM TRSTATIONCODE WHERE NODENAME = #{StationId}")
 	String selectStationId(String StationId);
 	
@@ -46,4 +48,18 @@ public interface TrainDao {
 	
 	@Select("SELECT ROUTECODE FROM TRROUTE WHERE DEPSTA = #{depPlaceId} AND ARRSTA=#{arrPlaceId}")
 	ArrayList<String> selectTyroute(TRInputScheduleDto inputSchedule);
+	
+	// TrainReserve 관련 DAO
+	
+	// 예매부분 출력을 위한 도시코드를 가져옵니다.
+	@Select("SELECT * FROM TRCITYCODE")
+	ArrayList<TRCityCodeDto> selectCityList();
+	// 예매부분 출력을 위한 도시코드를 기반으로 한 역사 정보를 가져옵니다.
+	@Select("SELECT * FROM TRSTATIONCODE WHERE NOCITYCODE = #{citycode}")
+	ArrayList<TRStationDto> selectStaList(String citycode);
+	
+	
+	
+	
+	
 }
