@@ -64,12 +64,13 @@
 	</style>
 	<!-- Yeonwoo Style -->
 	<style>
-		.DepLocationSelcet{
+		/* 지역 선택시 */
+		.LocationSelcet{
 			border: 1px solid black;
 			text-align: center;
 			margin-bottom: 3px;
 		}
-		.DepLocationSelcet:hover{
+		.LocationSelcet:hover{
 			border: 1px solid black;
 			color: white;
 			background-color: black;
@@ -77,11 +78,32 @@
 			cursor: pointer;
 			margin-bottom: 3px;
 		}
+		.LocationSelcetAct{
+			border: 1px solid black;
+			color: white;
+			background-color: red;
+			text-align: center;
+			cursor: pointer;
+			margin-bottom: 3px;
+		}
+		/* 목록 제목부분 */
 		.card-header{
 			text-align: center;
 			font-weight: bold;
 		}
-		
+		/* 역 선택 부분 */
+		.stationBtn{
+			display: inline-block;
+			border: 1px solid black;
+			margin: 3px;
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+		/* 지역선택 Body 부분 */
+		.SelectList{
+			height: 500px;
+			overflow: scroll;
+		}
 	</style>
 
 
@@ -100,25 +122,23 @@
 			<!-- 출발역 선택표 -->
 				<div class="col-lg-3 col-md-6 col-sm-6" >
 					<div class="card" style="margin-top:40px; margin-left:40px;">
-						<div class="card-body">
+						<div class="card-body SelectList">
 						<div class="card-header">
 						출발역
 						</div>
 						<!-- 출발역 선택창 -->
-						
 						<c:forEach items="${cityList }" var="citylist">
-							<div class="DepLocationSelcet" id="${citylist.citycode }"
-							onclick="DepRegionSelect(${citylist.citycode })">${citylist.cityname }</div>					
-							<div class="d-none">
+							<div class="LocationSelcet" id="DepLoctaion${citylist.citycode }"
+							onclick="DepLoctaionSelect(this,${citylist.citycode })">${citylist.cityname }</div>					
+							<div id="stationList${citylist.citycode }" class="d-none">
 								<div id="stationView${citylist.citycode }"></div>
 							</div>
 						</c:forEach>
-							<div id="stationView"></div>
 						</div>
 					</div>
 				</div>
 				
-				<!-- 출발역을 눌렀을때  -->
+				<!-- 도착역 선택표 -->
 				<div class="col-lg-3 col-md-6 col-sm-6" >
 					<div class="card" style="margin-top:40px; margin-left:40px;">
 						<div class="card-body">
@@ -192,8 +212,10 @@
 
 <script type="text/javascript">
 	// 출발 :: 지역 선택 -> 역 출력
-	function DepRegionSelect(citycode){
+	function DepLoctaionSelect(Btn, citycode){
 		console.log(citycode);
+		var cityCode = citycode;
+		var sl = document.getElementById("stationList"+cityCode);
 		$.ajax({
 			type: "get",
 			url: "${pageContext.request.contextPath }/DepRegionSelect",
@@ -206,12 +228,14 @@
 				console.log(scList);
 				output = "";
 				for(var i = 0; i < scList.length; i++){
-					output += "<div>";
+					output += "<div class='stationBtn'>";
 					output += scList[i].nodename;
 					output += "</div>";
 				}
 				console.log(output);
-				$('#stationView').html(output);
+				$('#stationView'+cityCode).html(output);
+				sl.classList.remove('d-none');
+				$(Btn).addClass("LocationSelcetAct");
 			}
 		});
 	}

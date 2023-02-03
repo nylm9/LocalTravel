@@ -51,9 +51,10 @@ public interface TrainDao {
 	
 	// TrainReserve 관련 DAO
 	
+	// 예매부분 출력을 위한 도시코드를 가져옵니다.
 	@Select("SELECT * FROM TRCITYCODE")
 	ArrayList<TRCityCodeDto> selectCityList();
-	
+	// 예매부분 출력을 위한 도시코드를 기반으로 한 역사 정보를 가져옵니다.
 	@Select("SELECT * FROM TRSTATIONCODE WHERE NOCITYCODE = #{citycode}")
 	ArrayList<TRStationDto> selectStaList(String citycode);
 	

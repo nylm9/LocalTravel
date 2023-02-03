@@ -50,10 +50,9 @@ public class HomeController {
 	public ModelAndView reservePage() {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("예약페이지 이동");
-		// DB 사용부분 - 임시적으로 OFF
-//		ArrayList<TRCityCodeDto> cityList = treserve.getCityList();
-//		System.out.println(cityList);
-//		mav.addObject("cityList",cityList);
+		ArrayList<TRCityCodeDto> cityList = treserve.getCityList();
+		System.out.println(cityList);
+		mav.addObject("cityList",cityList);
 		mav.setViewName("reserve/projectreserve");
 		return mav;
 	}
