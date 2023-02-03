@@ -69,7 +69,7 @@ public class TrainController {
 	public @ResponseBody String DepRegionSelect(String citycode) {
 		System.out.println(citycode);
 		String stationList = treser.getStationList(citycode);
-		
+		System.out.println(stationList);
 		return stationList;
 	}
 	
