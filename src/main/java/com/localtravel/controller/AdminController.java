@@ -28,12 +28,13 @@ public class AdminController {
 		int insertFResult = adsvc.insertFData(food);
 		if(insertFResult > 0) {
 			System.out.println("가게 등록 성공");
-			ra.addFlashAttribute("Msg", "놀거리 등록에 성공하였습니다.");
-			
+			ra.addFlashAttribute("Msg", "가게 등록에 성공하였습니다.");
+			String fcode = food.getFcode();
+			mav.addObject("fcode",fcode);
 			mav.setViewName("admin/AdminPage");
 		} else {
 			System.out.println("가게 등록 실패");
-			ra.addFlashAttribute("Msg", "놀거리 등록에 실패하였습니다.");
+			ra.addFlashAttribute("Msg", "가게 등록에 실패하였습니다.");
 			mav.setViewName("admin/AdminPage");
 		}
 		return mav;
