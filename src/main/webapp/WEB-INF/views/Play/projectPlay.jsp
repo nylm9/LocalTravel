@@ -211,7 +211,7 @@ function change_btn(e) {
 
 <!-- 패키지 출력 -->
 	<section class="section">
-			<div class="row mx-auto" style="min-width: 700px; max-width: 1200px;" >
+			<div class="row mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:30px;" >
 				
 				
 			<c:forEach items="${enList}" var="enjoy" varStatus="status">

@@ -108,21 +108,23 @@
                 			<div class="row">
                 				
                 				<div class="col">
-									<h2 class="card-title p-0 mb-1"> 
+									<h8 class="card-title p-0 mb-1"> 
                 					<c:choose>
 										<c:when test="${review.RVRECOMMEND == '1' }">
-											<span style="font-weight: bold; color: black;">
+											<span style="font-weight: bold; color: pink;">
 												<i class="bi bi-hand-thumbs-up "></i>
+												<h8>좋아요</h8>
 											</span>
 										</c:when>
 										<c:otherwise>
-											<span style="font-weight: bold; color: black;">
+											<span style="font-weight: bold; color: red;">
 												<i class="bi bi-hand-thumbs-down "></i>
+												<h8>별로에요</h8>
 											</span>										
 										</c:otherwise>									
 									</c:choose>
-										${review.RVMID} 
-									</h2>
+										ID: ${review.RVMID} 
+									</h8>
 									<textarea class="reviewComment w-100" rows="1" readonly="readonly">${review.RVCOMMENT}</textarea>
 									<h6>${review.RVDATE}</h6>
                 				</div>
