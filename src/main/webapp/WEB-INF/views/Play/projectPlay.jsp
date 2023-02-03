@@ -229,22 +229,21 @@ function change_btn(e) {
 							<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="${enjoy.ename }" >${enjoy.ename }</h6>
 							
 							<p class="small mb-1">${enjoy.eaddr }</p>
+							
 							<a class="btn-dark btn-sm btn"
 							href="${pageContext.request.contextPath }/playInfo?ecode=${enjoy.ecode }">상세보기</a>
 							
-							<a class="btn btn-sm btn-danger"
-							   href="${pageContext.request.contextPath }/=${enjoy.ecode }">예매하기</a>
 						
 						</div>
 					</div>
 				</div>
 			</c:forEach>				
-						  <script type="text/javascript">
+						 <!--  <script type="text/javascript">
 						 	function ticketPage(selMvcode){
 						 		location.href= "${pageContext.request.contextPath }/ticketPage?selectmovie="+selMvcode;
 						 	}
 						 
-						 </script>
+						 </script> -->
 							
 			</div>
 		</section>

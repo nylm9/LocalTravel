@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
+import com.localtravel.dto.MenuDto;
 import com.localtravel.dto.ReviewDto;
 import com.localtravel.service.EnjoyService;
 import com.localtravel.service.TourService;
@@ -100,4 +101,25 @@ public class TourController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/foodInfo")
+	public ModelAndView foodInfo(String fcode) {
+		System.out.println("먹거리 상세보기");
+		System.out.println("먹거리코드:"+fcode);
+		ModelAndView mav = new ModelAndView();
+		
+		        //먹거리상세정보조회
+				FoodDto fdInfo = ensvc.getfoodInfo(fcode);
+				mav.addObject("fdInfo",fdInfo);
+				
+//				  //리뷰목록조회 
+//					ArrayList<Map<String,String>> fdreviewList =ensvc.getfoodReviewList(fcode); 
+//					mav.addObject("fdreviewList",fdreviewList);
+				  //메뉴목록조회
+				   ArrayList<MenuDto> mnList = ensvc.getMenuList(fcode);
+				  mav.addObject("mnList", mnList);
+				 
+				
+		mav.setViewName("Play/foodInfo");
+		return mav;
+}
 }

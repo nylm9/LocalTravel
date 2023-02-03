@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>놀거리사이트</title>
+<title>먹거리페이지</title>
 
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -155,37 +155,33 @@ function change_btn(e) {
 
 <!-- 패키지 출력 -->
 	<section class="section">
-			<div class="row mx-auto" style="min-width: 700px; max-width: 1200px;" >
-				<h5>음식정보출력</h5>
+			<div class="row mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:5px;" >
 				
-			<%-- <c:forEach items="${enList}" var="enjoy" varStatus="status">
+				
+			 <c:forEach items="${fdList}" var="food" varStatus="status">
 				<div class="col-3">
-					<div class="card">
+					<div class="card"  style=" margin-top:5px;">
 						<div class="card-body">
 							 <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
 							 <div style="height:200px;width:5px;">
-							<a href="${pageContext.request.contextPath }/movieInfo?mvcode=${enjoy.ecode }">
+							<a href="${pageContext.request.contextPath }/foodInfo?fcode=${food.fcode }">
 							<img class="img-fluid" 
-							     alt="" src="${enjoy.epicture }" >
+							     alt="" src="${food.fpicture }" >
 							</a>
 							</div>
-							<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="${enjoy.ename }" >${enjoy.ename }</h6>
+							<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="${food.fname }" >${food.fname }</h6>
 						
-							<p class="small mb-1">노는 기간</p>
+							<p class="small mb-1">${food.faddr }</p>
 							
-							<a class="btn btn-sm btn-danger"
-							   href="${pageContext.request.contextPath }/=${enjoy.ecode }">예매하기</a>
+							<a class="btn-dark btn-sm btn"
+							href="${pageContext.request.contextPath }/foodInfo?fcode=${food.fcode }">상세보기</a>
+						
 						
 						</div>
 					</div>
 				</div>
 			</c:forEach>				
-						  <script type="text/javascript">
-						 	function ticketPage(selMvcode){
-						 		location.href= "${pageContext.request.contextPath }/ticketPage?selectmovie="+selMvcode;
-						 	}
-						 
-						 </script> --%>
+						  
 							
 			</div>
 		</section>
