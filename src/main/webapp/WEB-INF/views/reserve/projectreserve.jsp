@@ -92,6 +92,14 @@
 			font-weight: bold;
 		}
 		/* 역 선택 부분 */
+		
+		/* 지역선택 Body 부분 */
+		.SelectList{
+			height: 500px;
+			overflow: scroll;
+		}
+		
+		/* 역 버튼  */
 		.stationBtn{
 			display: inline-block;
 			border: 1px solid black;
@@ -99,11 +107,23 @@
 			padding-left: 5px;
 			padding-right: 5px;
 		}
-		/* 지역선택 Body 부분 */
-		.SelectList{
-			height: 500px;
-			overflow: scroll;
+		.stationBtn:hover{
+			border: 1px solid black;
+			color: white;
+			background-color: black;
+			text-align: center;
+			cursor: pointer;
+			margin-bottom: 3px;
 		}
+		.stationBtnAct{
+			border: 1px solid black;
+			color: white;
+			background-color: red;
+			text-align: center;
+			cursor: pointer;
+			margin-bottom: 3px;
+		}
+		
 	</style>
 
 
@@ -122,16 +142,19 @@
 			<!-- 출발역 선택표 -->
 				<div class="col-lg-3 col-md-6 col-sm-6" >
 					<div class="card" style="margin-top:40px; margin-left:40px;">
-						<div class="card-body SelectList">
 						<div class="card-header">
 						출발역
 						</div>
+						<div class="card-body SelectList">
 						<!-- 출발역 선택창 -->
 						<c:forEach items="${cityList }" var="citylist">
+							<!-- 지역 목록 -->
 							<div class="LocationSelcet" id="DepLoctaion${citylist.citycode }"
 							onclick="DepLoctaionSelect(this,${citylist.citycode })">${citylist.cityname }</div>					
 							<div id="stationList${citylist.citycode }" class="d-none">
-								<div id="stationView${citylist.citycode }"></div>
+								<div id="stationView${citylist.citycode }">
+								<!-- 역 목록 -->
+								</div>
 							</div>
 						</c:forEach>
 						</div>
@@ -192,6 +215,7 @@
 							<div class="row" >												
 								<div class="col-6">
 									<h3 style="float: left;">출발</h3>
+									<p id="DepStaDisplay"></p>
 									<h3 style="float: right;">도착</h3>
 								</div>
 								
@@ -211,10 +235,11 @@
 	</section>
 
 <script type="text/javascript">
-	// 출발 :: 지역 선택 -> 역 출력
+	// 1.1. 출발 :: 지역 선택 -> 역 출력 
 	function DepLoctaionSelect(Btn, citycode){
 		console.log(citycode);
 		var cityCode = citycode;
+		//역 목록을 감싸는 DIV 
 		var sl = document.getElementById("stationList"+cityCode);
 		$.ajax({
 			type: "get",
@@ -228,17 +253,37 @@
 				console.log(scList);
 				output = "";
 				for(var i = 0; i < scList.length; i++){
-					output += "<div class='stationBtn'>";
-					output += scList[i].nodename;
+					// 역의 클래스 stationBtn과 아이디 staBtncode+고유넘버로 이루어져있음
+					output += "<div class='stationBtn' id='staBtncode"+citycode+i+"' onclick='DepStationSelect(this, "+"\""+scList[i].nodeid+"\","+"\""+scList[i].nodename+"\")'>";
+					output += scList[i].nodename+"역";
 					output += "</div>";
 				}
 				console.log(output);
+				// 이전에 누른 선택을 초기화시킴 
+				for(var i =0; i < 40; i++){
+					$("#stationList"+i).addClass('d-none');
+					$('#DepLoctaion'+i).removeClass('LocationSelcetAct');
+				}
+				//해당 지역의 역목록을 출력합니다.
 				$('#stationView'+cityCode).html(output);
+				//
 				sl.classList.remove('d-none');
+				// 버튼 엑티브 
 				$(Btn).addClass("LocationSelcetAct");
 			}
 		});
 	}
+	
+	// 1.2. 출발 :: 역 선택 -> 역정보 입력 -> 이동 가능한 역 정보 띄우기
+	function DepStationSelect(btn, nodeid, nodename){
+		console.log(btn);
+		console.log(nodeid);
+		$('.stationBtn').removeClass('stationBtnAct');
+		$(btn).addClass('stationBtnAct');
+		$('#DepStaDisplay').html(nodename+"역");
+		
+	}
+	
 </script>
 
 
