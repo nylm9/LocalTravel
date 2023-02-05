@@ -185,13 +185,13 @@ select::-ms-expand {
 							
 							<div class="col-md-6">
 								<label for="inputEname" class="form-label">놀거리 이름</label> 
-								<span class="small" id=EnameCheckMsg>⠀</span> 
+								<span class="small" id="EnameCheckMsg">⠀</span> 
 									<input type="text" name="ename" class="form-control" id="inputEname"
 									onkeyup="joinENameCheck(this.value)">
 							</div>
 							<div class="col-md-6">
 								<label for="inputEaddr" class="form-label">놀거리 주소</label> 
-								<span class="small" id=EaddrCheckMsg>⠀</span> 
+								<span class="small" id="EaddrCheckMsg">⠀</span> 
 								<input type="text" name="eaddr" class="form-control" id="inputEaddr" 
 									onkeyup="joinEAddrCheck(this.value)">
 							</div>
@@ -275,13 +275,87 @@ select::-ms-expand {
 							
 							<div class="col-md-6">
 								<label for="inputFname" class="form-label">가게 이름</label> 
-								<span class="small" id=FnameCheckMsg>⠀</span> 
+								<span class="small" id="FnameCheckMsg">⠀</span> 
 									<input type="text" name="fname" class="form-control" id="inputFname"
 									onkeyup="joinFNameCheck(this.value)">
 							</div>
 							<div class="col-md-6">
 								<label for="inputFaddr" class="form-label">가게 주소</label> 
-								<span class="small" id=FaddrCheckMsg>⠀</span> 
+								<span class="small" id="FaddrCheckMsg">⠀</span> 
+								<input type="text" name="faddr" class="form-control" id="inputFaddr" 
+									onkeyup="joinFAddrCheck(this.value)">
+							</div>
+							<div class="col-md-6">
+								<label for="inputFtel" class="form-label">가게 전화번호(-는 제외하고 입력)</label> 
+								<input type="tel" name="ftell" class="form-control" id="inputFtel">
+							</div>
+							<div class="col-md-6">
+								<label for="inputFexplain" class="form-label">가게 설명</label> <input
+									type="text" name="fexplain" class="form-control" id="inputFexplain">
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputFexplain" class="form-label">놀거리 테마코드(5글자)</label> <input
+									type="text" name="fthcode" class="form-control" id="inputFexplain">
+							</div>
+							
+							<div class="col-md-6">
+								<label for="inputFfile" class="form-label">가게 이미지</label>
+								<input type="file" name="ffile" class="form-control" id="inputFfile">
+							</div>
+
+							<div class="text-center">
+								<button type="submit" class="btn btn-primary"
+									style="margin-top: 10px; margin-left: 350px;">등록</button>
+								<button type="reset" class="btn btn-secondary"
+									style="margin-top: 10px;">다시작성</button>
+							</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+				<!-- Food insert 할 부분 시작 -->
+		<div class="row " style="float: right;" >
+			<div
+				class="col d-flex flex-column align-items-center justify-content-center"
+				style="max-width: 900px;">
+
+				<div class="card mb-3">
+					<div class="card-body">
+						<div class="pt-4 pb-2">
+							<h5 class="card-title text-center pb-0 fs-4">menu 데이터 입력</h5>
+							<p class="text-center small">menu 정보를 입력해주세요 </p>
+						</div>
+
+						<form class="row g-3"
+							action="${pageContext.request.contextPath }/insertMenuData"
+							method="post" enctype="multipart/form-data">
+							
+							<div class="col-md-6">
+								<label for="inputFname" class="form-label">가게 코드</label> 
+								<span class="small" id="FnameCheckMsg">⠀</span> 
+									<input type="hidden" name="fname" class="form-control" id="hiddenfcode" 
+									value="${sessionScope.fcode }">
+									<input type="text" name="fname" class="form-control" id="Viewfcode" >
+							</div>
+							
+							
+							<div class="col-md-6">
+								<label for="inputFname" class="form-label">가게 이름</label> 
+								<span class="small" id="FnameCheckMsg">⠀</span> 
+									<input type="text" name="fname" class="form-control" id="inputFname"
+									onkeyup="joinFNameCheck(this.value)">
+							</div>
+							<div class="col-md-6">
+								<label for="inputFaddr" class="form-label">가게 주소</label> 
+								<span class="small" id="FaddrCheckMsg">⠀</span> 
 								<input type="text" name="faddr" class="form-control" id="inputFaddr" 
 									onkeyup="joinFAddrCheck(this.value)">
 							</div>
@@ -428,6 +502,34 @@ function joinFAddrCheck(addrVal) {
 </script>
 
 <!-- food부분 스크립트 끝 -->
+
+
+
+<!-- menu부분 스크립트 시작 -->
+<script type="text/javascript">
+
+	function selectFcode() {
+	const fcode =  document.getElementById('hiddenfcode').value;
+		 document.getElementById("result").innerText = fcode;
+	}
+</script>
+
+
+<script type="text/javascript">
+
+$.ajax({
+	  type: "GET",
+	  url: "your-url",
+	  success: function(response) {
+	    // response는 결과 값
+	  }
+	});
+	
+$("input[name='your-input-name']").val(response);
+
+</script>
+<!-- menu부분 스크립트 끝 -->
+
 
 
 
