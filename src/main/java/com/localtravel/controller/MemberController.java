@@ -116,7 +116,7 @@ public class MemberController {
 //		ArrayList<MemberDto> memberList =memsvc.getmemberList(mid); 
 //		mav.addObject("memberList",memberList);
 //		System.out.println("로그인한 아이디 정보조회"+memberList);
-//		로그인한 아이디를 받아와야하니까 이렇게 하면 안될 거같음 영화페이지 영화예매정보불러오는 거 참고하기
+//		수정하기
 		
 		mav.setViewName("member/mypage");
 		return mav;
