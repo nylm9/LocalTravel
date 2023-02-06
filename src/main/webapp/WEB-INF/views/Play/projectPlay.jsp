@@ -63,7 +63,24 @@ color:white;
             border-bottom-right-radius: 5px;  
            
 }
-
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  color: #1c1c1c;
+  font-weight: 600;
+   font-family: sans-serif; 
+}
+/* input[type="radio"] {
+    display:none;
+}
+input[type="radio"] + label{
+	border: 1px solid #1993A8;
+            background-color: rgba(0,0,0,0);
+            color: #1993A8;
+            padding: 5px;
+               border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+             border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;  
+} */
 /*이동css*/
 /* #moving-text {
   position: relative;
@@ -100,7 +117,7 @@ function change_btn(e) {
 	}
 </script> -->
 
-<!-- 버튼 눌렷을때 이벤트 -->
+<!-- 버튼 눌렷을때 색 바뀌는 이벤트 -->
 <script type="text/javascript">
 
 function change_btn(e) {
@@ -115,15 +132,22 @@ function change_btn(e) {
   //});
   
  // console.log(e.currentTarget);
-}
-
-
 
 
 </script>
-
-
-
+<!-- 버튼 하나만 눌리게 하는 이벤트 -->
+<script type="text/javascript">
+function change_btn(selectedBtn) {
+  const buttons = document.querySelectorAll('.button');
+  buttons.forEach(button => {
+    if (button === selectedBtn) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+</script>
 </head>
 <body>
 

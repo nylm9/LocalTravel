@@ -76,7 +76,7 @@
         <c:otherwise> 
         	
               <li class="list-inline-item"><a href="${pageContext.request.contextPath }/memberLogout">로그아웃</a></li>
-              <li class="list-inline-item"><a href="${pageContext.request.contextPath }/#">예매정보</a></li>
+              <li class="list-inline-item"><a href="${pageContext.request.contextPath }/myPage">마이페이지</a></li>
         </c:otherwise>
         </c:choose>
         

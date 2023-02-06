@@ -1,10 +1,13 @@
 package com.localtravel.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.localtravel.dao.MemberDao;
 import com.localtravel.dto.MemberDto;
+import com.localtravel.dto.MenuDto;
 
 @Service
 public class MemberService {
@@ -41,6 +44,14 @@ public class MemberService {
 			idCheckResult = "NO";
 		}
 		return idCheckResult;
+	}
+
+
+	public ArrayList<MemberDto> getmemberList(String mid) {
+		System.out.println("MemberService - 마이페이지 로그인한 아이디 정보조회");
+		ArrayList<MemberDto> memList = memdao.selectMemberList_Rank(mid);
+		System.out.println(memList);
+		return memList;
 	}
 
 }

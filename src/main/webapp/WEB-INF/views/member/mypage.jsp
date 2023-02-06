@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>놀거리 상세보기 페이지</title>
+<title>마이페이지</title>
 
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -36,78 +36,23 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.css">
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
-    
-	<style type="text/css">
-	
-	.reviewComment{
-		outline: none;
-		resize: none;
-		border: none;
-	}
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  color: #1c1c1c;
-  font-weight: 600;
-   font-family: sans-serif; 
-}
-	</style>
-	<script type="text/javascript">
-  		var reMsg = '${redirectMsg}';
-  		if(reMsg.length > 0){
-  			alert(reMsg);
-  		}
-  </script>
-	
-	
+
 
 </head>
 <body>
-
 	<!-- ======= Header ======= -->
 	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
 	<!-- End Header -->
-	
-	<!-- 상세보기 -->
+	<!-- 회원정보출력 -->
 		<section class="section">
-			<div class="card mb-3 p-5 mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:40px;">
-			
-			
-            	<div class="row g-0">
-              		<div class="col-12 " style="text-align: center;" >
-              			<!-- 사진 -->
-                		<img src="${enInfo.epicture }" style="width: 700px; height: 400px;" 
-                		     class="img-fluid rounded-start" alt="...">
-              		</div>
-              		<div class="col-12">
-                		<div class="card-body">
-                  			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${enInfo.ename }</h5>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >주소: ${enInfo.eaddr }</span>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >평점: ${enInfo.erepute }</span>
-                  		
-                  			 <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-up"></i></span>
-                  			<span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-down"></i></span>
-                  			</p>
-                  			<hr>
-                  			<p class="card-text mb-1">전화번호: ${enInfo.etell }</p>
-                  			<p class="card-text mb-1">${enInfo.eexplain }</p>
-                  			<p class="card-text mb-1"><a>지도</a></p>
-                  			 <a class="btn btn-sm btn-danger"
-							   href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
-                		</div>
-              		</div>
-            	</div>
-            	
-
-           	
-          	</div>
-          	
-	<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
+		<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
 				<div class="row g-0">
               		<div class="col-12 " style="text-align: center;" >
-                		<p style="font-size:25px;">리뷰</p>
+                		<p style="font-size:25px;">마이페이지</p>
               		</div>
               		<hr>
               		
-              		<c:forEach items="${reviewList }" var="review">
+              		<c:forEach items="${memberList }" var="memberList">
               		<div class="col-6">
                 		<div class="card-body">
                 			<div class="row">
@@ -141,23 +86,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 				
             	</div>  			         	
           	</div>
-          	
-		</section>
-		
-		<!-- 기차예매 -->
-		<section class="section">
-		<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
-				<div class="row g-0">
-              		<div class="col-12 " style="text-align: center;" >
-                		<p style="font-size:25px;">기차예매</p>
-              		</div>
-              		<hr>
-              		<div>
-              		<h5>갈수있는 열차랑 예매버튼</h5>
-              		</div>
-              	</div>
-         </div>
-         </section>
+          	</section>
 
 </body>
 </html>

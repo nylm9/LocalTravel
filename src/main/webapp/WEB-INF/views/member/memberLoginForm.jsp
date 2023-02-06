@@ -56,7 +56,7 @@
 					<div class="card mb-3">
 						<div class="card-body">
 							<div class="pt-4 pb-2">
-								<h5 class="card-title text-center pb-0 fs-4">로그인</h5>
+								<p class="text-center pb-0 fs-4" style="font-weight:bold;color:black;">로그인</p>
 								<p class="text-center small">아이디, 비밀번호를 입력해주세요.</p>
 							</div>
 

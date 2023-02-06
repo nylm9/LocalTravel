@@ -1,6 +1,8 @@
 package com.localtravel.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -104,6 +106,20 @@ public class MemberController {
 		mav.setViewName("redirect:/");
 		return mav;
 		
+	}
+	@RequestMapping(value = "/myPage")
+	public ModelAndView myPage(String mid) {
+		System.out.println("마이페이지이동");
+		ModelAndView mav = new ModelAndView();
+		
+//		//로그인한 아이디 정보조회 
+//		ArrayList<MemberDto> memberList =memsvc.getmemberList(mid); 
+//		mav.addObject("memberList",memberList);
+//		System.out.println("로그인한 아이디 정보조회"+memberList);
+//		로그인한 아이디를 받아와야하니까 이렇게 하면 안될 거같음 영화페이지 영화예매정보불러오는 거 참고하기
+		
+		mav.setViewName("member/mypage");
+		return mav;
 	}
 	
 	/* 테마 버튼을 클릭하여 ajax로 관련 정보를 조회할 때는 총 1~3개의 버튼이 눌리므로 

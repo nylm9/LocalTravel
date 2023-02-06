@@ -1,5 +1,7 @@
 package com.localtravel.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -23,6 +25,10 @@ public interface MemberDao {
 			+ "FROM MEMBERS "
 			+ "WHERE MID = #{inputId}")
 	String idCheck(String inputId);
+
+
+	@Select("SELECT * FROM MEMBERS WHERE MID=#{mid}")
+	ArrayList<MemberDto> selectMemberList_Rank(String mid);
 	
 	
 	

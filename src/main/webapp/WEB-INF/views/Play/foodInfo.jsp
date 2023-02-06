@@ -44,6 +44,11 @@
 		resize: none;
 		border: none;
 	}
+	h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  color: #1c1c1c;
+  font-weight: 600;
+   font-family: sans-serif; 
+}
 	</style>
 	<script type="text/javascript">
   		var reMsg = '${redirectMsg}';
@@ -117,7 +122,7 @@
 	<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
 				<div class="row g-0">
               		<div class="col-12 " style="text-align: center;" >
-                		<h2>먹거리리뷰</h2>
+                		<p style="font-size:25px;">먹거리리뷰</p>
               		</div>
               		<hr>
               		
@@ -161,7 +166,7 @@
 		<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
 				<div class="row g-0">
               		<div class="col-12 " style="text-align: center;" >
-                		<h2>기차예매</h2>
+                		<p style="font-size:25px;">기차예매</p>
               		</div>
               		<hr>
               		<div>
