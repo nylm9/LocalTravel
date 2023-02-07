@@ -164,25 +164,21 @@
 				<!-- 도착역 선택표 -->
 				<div class="col-lg-3 col-md-6 col-sm-6" >
 					<div class="card" style="margin-top:40px; margin-left:40px;">
-						<div class="card-body">
-							<table>
-								<thead>
-									<div class="card card-graph">
-									
-									<!-- 예시를 서울역으로 넣어놓은 것 -->
-										<div class="card-body">서울역</div>
-									</div>
-								</thead>
-								<tbody>
-									<tr>
-									<!-- 도착지 선택 -->
-										<td>부산</td>
-									</tr>
-									<tr>
-										<td>경기</td>
-									</tr>
-								</tbody>
-							</table>
+						<div class="card-header">
+						도착역
+						</div>
+						<div class="card-body SelectList">
+						<!-- 출발역 선택창 -->
+						<c:forEach items="${cityList }" var="citylist">
+							<!-- 지역 목록 -->
+							<div class="LocationSelcet" id="ArrLoctaion${citylist.citycode }"
+							onclick="ArrLoctaionSelect(this,${citylist.citycode })">${citylist.cityname }</div>					
+							<div id="ArrstationList${citylist.citycode }" class="">
+								<div id="arrStationView${citylist.citycode }">
+								<!-- 역 목록 -->
+								</div>
+							</div>
+						</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -281,7 +277,31 @@
 		$('.stationBtn').removeClass('stationBtnAct');
 		$(btn).addClass('stationBtnAct');
 		$('#DepStaDisplay').html(nodename+"역");
-		
+		$.ajax({
+			type: "get",
+			url: "${pageContext.request.contextPath }/DepStationSelect",
+			data: {
+				"nodename" : nodename
+			},
+			dataType: "json",
+			async : false,
+			success: function(scList){
+				console.log(scList);
+				output = "";
+				for(var i = 0; i < scList.length; i++){
+					// 역의 클래스 stationBtn과 아이디 staBtncode+고유넘버로 이루어져있음
+					output += "<div class='stationBtn' id='staBtncode"+'arr'+scList[i].nodeid+"' onclick='arrStaBtn(this, "+"\""+scList[i].nodeid+"\","+"\""+scList[i].nodename+"\")'>";
+					output += scList[i].nodename+"역";
+					output += "</div>";
+					$('#arrStationView'+scList[i].citycode).html(output);
+				}
+				console.log(output);
+				
+				//해당 지역의 역목록을 출력합니다.
+				
+				
+			}
+		});
 	}
 	
 </script>

@@ -73,11 +73,15 @@ public class TrainController {
 		return stationList;
 	}
 	
-	
-	
-	
-	
-	
+	// 출발 :: 역 선택 -> 도착역 정보 출력
+	@RequestMapping(value ="/DepStationSelect")
+	public @ResponseBody String DepStationSelect(String nodename) {
+		System.out.println("선택한 역 이름 : " + nodename);
+		String arrStaList = treser.getArrStationList(nodename);
+		System.err.println("도착할 역 정보 : ");
+		System.out.println(arrStaList);
+		return arrStaList;
+	}
 	
 	
 	
