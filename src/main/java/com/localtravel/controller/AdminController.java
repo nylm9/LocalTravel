@@ -1,27 +1,19 @@
 package com.localtravel.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
+import com.localtravel.dto.MenuDto;
 import com.localtravel.service.AdminService;
 
 @Controller
@@ -29,6 +21,17 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adsvc;
+	
+	@RequestMapping(value="/insertMenuData")
+	public ModelAndView insertMenuData(MenuDto menu, RedirectAttributes ra) throws IllegalStateException, IOException {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("Admin_메뉴 등록 기능 컨트롤러 호출");
+		System.out.println(menu);
+		int insertMResult = adsvc.insertMData(menu);
+		return mav;
+	}
+	
+	
 	
 	@RequestMapping(value="/insertFoodData")
 	public ModelAndView insertFoodData(FoodDto food, RedirectAttributes ra) throws IllegalStateException, IOException {
@@ -163,11 +166,24 @@ public class AdminController {
 		return "admin/AdminPage";
 	} */
   	
-	@RequestMapping(value="searchPopOpen")
+	@RequestMapping(value="/searchPopOpen")
 	public String searchPopOpen() {
 		System.out.println("가게코드 검색창 팝업 오픈");
 		return "admin/searchPop";
 	}
+	
+	@RequestMapping(value="/getAllFoodList")
+	public @ResponseBody String getAllFoodList(String inputval) {
+		System.out.println("Ajax_Food목록 조회");
+		ArrayList<FoodDto> allFList = adsvc.getFoodList(inputval);
+		System.out.println(allFList);
+		return new Gson().toJson(allFList);
+	}
+	
+	
+	
+	
+	
 	
 	
 }

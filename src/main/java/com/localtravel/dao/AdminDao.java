@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
+import com.localtravel.dto.MenuDto;
 
 public interface AdminDao {
 	@Insert("INSERT INTO ENJOY(ECODE, ENAME, ELCODE, EADDR, ETELL, EREPUTE, EEXPLAIN, ETHCODE, EPICTURE) "
@@ -33,6 +34,14 @@ public interface AdminDao {
 	@Insert("INSERT INTO FOOD(FCODE, FNAME, FLCODE, FADDR, FTELL, FREPUTE, FEXPLAIN, FTHCODE, FPICTURE) "
 			+ "VALUES( #{fcode}, #{fname}, #{flcode}, #{faddr}, #{ftell}, '0', #{fexplain}, #{fthcode}, #{fpicture} ) ")
 	int insertFdata(FoodDto food);
+
+	@Select("SELECT * FROM FOOD WHERE FNAME LIKE  '%'||#{inputval}||'%' ")
+	ArrayList<FoodDto> selectAllFoodList(String inputval);
+	
+	@Insert("INSERT INTO MENU(MENUFCODE,MENUNAME1,MENUPRICE1,MENUEXPLAIN1, "
+			+ "MENUNAME2,MENUPRICE2,MENUEXPLAIN2,MENUNAME3,MENUPRICE3,MENUEXPLAIN3,MENUTHCODE) "
+			+ "VALUES( #{} )")
+	int insertMdata(MenuDto menu);
 
 	
 	
