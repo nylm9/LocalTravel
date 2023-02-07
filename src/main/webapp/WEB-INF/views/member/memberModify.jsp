@@ -68,7 +68,7 @@
 								<label class="form-label">아이디</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 										<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MID }" readonly>
+									onkeyup="joinIdCheck(this.value)" value="${memInfo.MID }">
 										
 									</div>
 							</div>
@@ -76,7 +76,7 @@
 								<label class="form-label">이름</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MNAME }" readonly>
+									onkeyup="joinIdCheck(this.value)" value="${memInfo.MNAME }" >
 										
 									</div>
 							</div>
@@ -84,7 +84,7 @@
 								<label class="form-label">생년월일</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MBIRTH }" readonly>
+									onkeyup="joinIdCheck(this.value)" value="${memInfo.MBIRTH }">
 									</div>
 							</div>
 							<div class="col-md-6">
@@ -114,7 +114,7 @@
 								<label class="form-label">휴대폰번호</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MPHONE }" readonly>
+									onkeyup="joinIdCheck(this.value)" value="${memInfo.MPHONE }" >
 										
 									</div>
 							</div>
@@ -122,7 +122,7 @@
 								<label class="form-label">이메일</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MEMAIL }" readonly>
+									onkeyup="joinIdCheck(this.value)" value="${memInfo.MEMAIL }" >
 										
 									</div>
 							</div>
@@ -131,7 +131,7 @@
 							<div class="text-center modifyCol">
 								
 									<a  class="btn btn-secondary" style="margin-top: 10px; margin-left: 520px;"
-									href="${pageContext.request.contextPath }/memberModifyPage?loginId=${loginId }">
+									href="${pageContext.request.contextPath }/memberModify">
 		                                    글수정
 		                            </a>
 							</div>

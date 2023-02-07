@@ -60,6 +60,7 @@ public class MemberController {
 		return mav;
 	}
 	
+	
 	/* 로그인 기능 매핑*/
 	@RequestMapping(value = "/memberLogin")
 	public ModelAndView memberLogin(MemberDto member, RedirectAttributes ra){
@@ -108,7 +109,7 @@ public class MemberController {
 		
 	}
 	@RequestMapping(value = "/myPage")
-	public ModelAndView myPage(String mid) {
+	public ModelAndView myPage() {
 		System.out.println("마이페이지이동");
 		ModelAndView mav = new ModelAndView();
 		
@@ -117,6 +118,10 @@ public class MemberController {
 //		mav.addObject("memberList",memberList);
 //		System.out.println("로그인한 아이디 정보조회"+memberList);
 //		수정하기
+		String loginId = (String)session.getAttribute("loginId");
+		ArrayList<Map<String, String>> memberList = memsvc.getmembersList(loginId);
+		mav.addObject("memberList" ,memberList);
+		
 		
 		mav.setViewName("member/mypage");
 		return mav;
@@ -126,4 +131,30 @@ public class MemberController {
 	 * ajax문을 1개로 써서 파라메터 3개를 전송한다. (1개만 눌릴때는 2개를 null로)
 	 * null인 파라메터는 서비스 switch case같은 제어문으로 처리하거나 mapper에서 조건문을 나누어 처리! */
 
+	@RequestMapping(value = "/memberModify")
+	public ModelAndView boardModify(MemberDto memBoard, RedirectAttributes ra) {
+		System.out.println("회원정보수정 요청");
+		ModelAndView mav = new ModelAndView();
+		System.out.println(memBoard);
+		
+//		int modifyResult = memsvc.boardModify(memBoard);
+//		if(modifyResult > 0) {
+//			ra.addFlashAttribute("boardMsg","회원정보가 수정 되었습니다.");
+//		} else {
+//			ra.addFlashAttribute("boardMsg","회원정보 수정에 실패했습니다.");
+//		}
+//		mav.setViewName("member/mypage"); 수정하기
+		return mav;
+	}
+	@RequestMapping(value = "/memberModifyPage")
+	public ModelAndView memberModifyPage(String loginId) {
+		System.out.println("회원정보수정페이지로 넘어가기");
+		loginId = (String)session.getAttribute("loginId");
+		ModelAndView mav = new ModelAndView();
+		ArrayList<Map<String, String>> memberList = memsvc.getmembersList(loginId);
+		mav.addObject("memberList" ,memberList);
+		mav.setViewName("member/memberModify");
+		return mav;
+	}
+	
 }
