@@ -1,9 +1,12 @@
 package com.localtravel.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.localtravel.dto.MemberDto;
 
@@ -28,7 +31,15 @@ public interface MemberDao {
 
 
 	@Select("SELECT * FROM MEMBERS WHERE MID=#{mid}")
-	ArrayList<MemberDto> selectMemberList_Rank(String mid);
+	ArrayList<Map<String, String>> selectMemberList_Rank(@Param("mid")String loginId);
+
+
+	@Update("UPDATE MEMBERS set MNAME=#MPHONE = #{mphone} WHERE MID=#{mid};")
+	int updateBoard(MemberDto memBoard);
+
+
+
+
 	
 	
 	
