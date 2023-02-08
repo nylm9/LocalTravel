@@ -348,16 +348,24 @@ select::-ms-expand {
 							<div class="col-md-6">
 								<label for="inputFname" class="form-label">가게 코드</label>
 								<input type="button" value="검색" onclick="showPopup()"> 
-								<span class="small" id="FnameCheckMsg">⠀</span> <input
-									type="hidden" name="fname" class="form-control"
-									id="hiddenfcode" value="${sessionScope.fcode }"> <input
-									type="text" name="fname" class="form-control" id="Viewfcode">
+								<span class="small" id="FnameCheckMsg">⠀</span> 
+								<%-- <input type="hidden" name="fname" class="form-control" id="hiddenfcode" 
+								value="${sessionScope.fcode }">  --%>
+								<input type="text" name="menufcode" class="form-control" id="Viewfcode">
 							</div>
 
+							<div class="col-md-6">
+								<input type="hidden">
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputMfile" class="form-label">대표메뉴1 이미지</label> <input
+									type="file" name="mfile1" class="form-control" id="inputMfile">
+							</div>
 
 							<div class="col-md-6">
 								<label for="inputMenuName1" class="form-label">대표메뉴1 이름</label>
-								<span class="small" id="FnameCheckMsg">⠀</span> <input
+								 <input
 									type="text" name="menuname1" class="form-control"
 									id="inputMenuName1">
 							</div>
@@ -367,28 +375,61 @@ select::-ms-expand {
 									type="text" name="menuprice1" class="form-control"
 									id="inputMenuPrice1">
 							</div>
+
 							<div class="col-md-6">
 								<label for="inputMenuExplain1" class="form-label">대표메뉴1
 									설명</label> <input type="text" name="menuexplain1" class="form-control"
 									id="inputMenuExplain1">
 							</div>
-
+							
 							<div class="col-md-6">
-								<label for="inputFexplain" class="form-label">가게 설명</label> <input
-									type="text" name="fexplain" class="form-control"
-									id="inputFexplain">
+								<label for="inputMfile2" class="form-label">대표메뉴2 이미지</label> <input
+									type="file" name="mfile2" class="form-control" id="inputMfile2">
 							</div>
 
 							<div class="col-md-6">
-								<label for="inputFexplain" class="form-label">놀거리
-									테마코드(5글자)</label> <input type="text" name="fthcode"
-									class="form-control" id="inputFexplain">
+								<label for="inputMenuName2" class="form-label">대표메뉴2 이름</label>
+								 <input
+									type="text" name="menuname2" class="form-control"
+									id="inputMenuName2">
+							</div>
+							<div class="col-md-6">
+								<label for="inputMenuPrice2" class="form-label">대표메뉴2 가격</label>
+								<span class="small" id="FaddrCheckMsg">⠀</span> <input
+									type="text" name="menuprice2" class="form-control"
+									id="inputMenuPrice2">
 							</div>
 
 							<div class="col-md-6">
-								<label for="inputFfile" class="form-label">가게 이미지</label> <input
-									type="file" name="ffile" class="form-control" id="inputFfile">
+								<label for="inputMenuExplain2" class="form-label">대표메뉴2
+									설명</label> <input type="text" name="menuexplain2" class="form-control"
+									id="inputMenuExplain2">
 							</div>
+							
+							<div class="col-md-6">
+								<label for="inputMfile3" class="form-label">대표메뉴3 이미지</label> <input
+									type="file" name="mfile3" class="form-control" id="inputMfile3">
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputMenuName3" class="form-label">대표메뉴3 이름</label>
+							 <input
+									type="text" name="menuname3" class="form-control"
+									id="inputMenuName3">
+							</div>
+							<div class="col-md-6">
+								<label for="inputMenuPrice3" class="form-label">대표메뉴3 가격</label>
+							 <input
+									type="text" name="menuprice3" class="form-control"
+									id="inputMenuPrice3">
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputMenuExplain3" class="form-label">대표메뉴3
+									설명</label> <input type="text" name="menuexplain3" class="form-control"
+									id="inputMenuExplain3">
+							</div>
+
 
 							<div class="text-center">
 								<button type="submit" class="btn btn-primary"

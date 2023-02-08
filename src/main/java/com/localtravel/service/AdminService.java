@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.localtravel.dao.AdminDao;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
+import com.localtravel.dto.MenuDto;
 
 @Service
 public class AdminService {
@@ -169,6 +170,106 @@ public class AdminService {
 				System.out.println(joinResult);
 				return joinResult;
 			}
+
+	public ArrayList<FoodDto> getFoodList(String inputval) {
+		System.out.println("food 목록 조회");
+		ArrayList<FoodDto> fList = adao.selectAllFoodList(inputval);
+		System.out.println("fList : " + fList);
+		return fList;
+	}
+
+	
+	public int insertMData(MenuDto menu) throws IllegalStateException, IOException {
+		System.out.println("Admin_Menu데이터 삽입 서비스");
+		
+		// 대표메뉴1 사진 업로드 과정
+//		1. 파일명 확인
+		MultipartFile mfile1 = menu.getMfile1();
+		String mpicture1 = "";
+		if(mfile1.isEmpty()) { 	// ffile이 null이면 true 
+			// 가게 파일을 업로드 하지 않은 경우
+			System.out.println("첨부파일 없음");
+		} else {
+			// 가게 파일을 업로드 했을 경우
+			System.out.println("첨부파일 있음");
+			UUID uuid = UUID.randomUUID();
+			mpicture1 = uuid.toString() + "_" + mfile1.getOriginalFilename();
+			// UUID : 총 32자리 임의의 코드를 만들어주는 역할
+			String savePath = context.getRealPath("resources\\FoodPicture");
+			System.out.println(savePath);
+//			2. 파일을 저장 
+			//1. 파일을 저장할 경로 
+			//2. 파일저장기능 호출
+			File file = new File(savePath,mpicture1);
+			mfile1.transferTo(file);
+		}
+		System.out.println("epicture : " + mpicture1);
+		//첨부파일이 없을 경우 :: mprofile : 
+		//첨부파일이 있을 경우 :: 32자리코드 + 첨부파일명
+		menu.setMpicture1(mpicture1);
+
+		// 대표메뉴2 사진 업로드 과정
+//		1. 파일명 확인
+		MultipartFile mfile2 = menu.getMfile2();
+		String mpicture2 = "";
+		if(mfile2.isEmpty()) { 	// ffile이 null이면 true 
+			// 가게 파일을 업로드 하지 않은 경우
+			System.out.println("첨부파일 없음");
+		} else {
+			// 가게 파일을 업로드 했을 경우
+			System.out.println("첨부파일 있음");
+			UUID uuid = UUID.randomUUID();
+			mpicture2 = uuid.toString() + "_" + mfile2.getOriginalFilename();
+			// UUID : 총 32자리 임의의 코드를 만들어주는 역할
+			String savePath = context.getRealPath("resources\\FoodPicture");
+			System.out.println(savePath);
+//			2. 파일을 저장 
+			//1. 파일을 저장할 경로 
+			//2. 파일저장기능 호출
+			File file = new File(savePath,mpicture2);
+			mfile2.transferTo(file);
+		}
+		System.out.println("epicture : " + mpicture2);
+		//첨부파일이 없을 경우 :: mprofile : 
+		//첨부파일이 있을 경우 :: 32자리코드 + 첨부파일명
+		menu.setMpicture2(mpicture2);
+		
+		// 대표메뉴3 사진 업로드 과정
+//		1. 파일명 확인
+		MultipartFile mfile3 = menu.getMfile3();
+		String mpicture3 = "";
+		if(mfile3.isEmpty()) { 	// ffile이 null이면 true 
+			// 가게 파일을 업로드 하지 않은 경우
+			System.out.println("첨부파일 없음");
+		} else {
+			// 가게 파일을 업로드 했을 경우
+			System.out.println("첨부파일 있음");
+			UUID uuid = UUID.randomUUID();
+			mpicture3 = uuid.toString() + "_" + mfile3.getOriginalFilename();
+			// UUID : 총 32자리 임의의 코드를 만들어주는 역할
+			String savePath = context.getRealPath("resources\\FoodPicture");
+			System.out.println(savePath);
+//			2. 파일을 저장 
+			//1. 파일을 저장할 경로 
+			//2. 파일저장기능 호출
+			File file = new File(savePath,mpicture3);
+			mfile3.transferTo(file);
+		}
+		System.out.println("epicture : " + mpicture3);
+		//첨부파일이 없을 경우 :: mprofile : 
+		//첨부파일이 있을 경우 :: 32자리코드 + 첨부파일명
+		menu.setMpicture1(mpicture3);
+		
+		// 최종 insert 부분
+		int joinResult = 0;
+		try {
+			joinResult = adao.insertMdata(menu);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(joinResult);
+		return joinResult;
+	}
 	
 	
 
