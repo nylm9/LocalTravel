@@ -28,6 +28,16 @@ public class AdminController {
 		System.out.println("Admin_메뉴 등록 기능 컨트롤러 호출");
 		System.out.println(menu);
 		int insertMResult = adsvc.insertMData(menu);
+		if(insertMResult > 0) {
+			System.out.println("메뉴 등록 성공");
+			ra.addFlashAttribute("Msg", "메뉴 등록에 성공하였습니다.");
+			mav.setViewName("admin/AdminPage");
+		} else {
+			System.out.println("메뉴 등록 실패");
+			ra.addFlashAttribute("Msg", "메뉴 등록에 실패하였습니다.");
+			mav.setViewName("admin/AdminPage");
+			
+		}
 		return mav;
 	}
 	
@@ -99,13 +109,23 @@ public class AdminController {
 	public ModelAndView AdminPage() {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("관리자 페이지 이동");
-		// Enjoy 데이터 모두 조회
-		ArrayList<EnjoyDto> enjoyList = adsvc.getEnjoyData();
-		mav.addObject("enjoyList",enjoyList);
 		mav.setViewName("admin/AdminPage");
 		return mav;
 	}
 	
+	@RequestMapping(value="/AdminDataPage")
+	public ModelAndView AdminDataPage() {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("데이터 조회 페이지 이동");
+		// Enjoy 데이터 모두 조회
+		ArrayList<EnjoyDto> enjoyList = adsvc.getEnjoyData();
+		// Food 데이터 모두 조회
+		ArrayList<FoodDto> foodList = adsvc.getFoodData();
+		mav.addObject("enjoyList",enjoyList);
+		mav.addObject("foodList",foodList);
+		mav.setViewName("admin/Admin_DataViewPage");
+		return mav;
+	}
 	
 	/* @PostMapping("/multi-file")
 	public String multiFileUpload(@RequestParam("multiFile") List<MultipartFile> multiFileList, @RequestParam String fileContent, HttpServletRequest request) {
@@ -178,6 +198,11 @@ public class AdminController {
 		ArrayList<FoodDto> allFList = adsvc.getFoodList(inputval);
 		System.out.println(allFList);
 		return new Gson().toJson(allFList);
+	}
+	
+	@RequestMapping(value="/MenuDataPopOpen")
+	public String MenuDataPopOpen() {
+		return "admin/menuDataPop";
 	}
 	
 	

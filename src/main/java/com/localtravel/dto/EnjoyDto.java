@@ -14,7 +14,7 @@ public class EnjoyDto {
 	private String etell; //놀거리전화번호
 	private String erepute; //놀거리평점
 	private String eexplain;  //놀거리설명
-	private int ethcode; //놀거리테마코드
+	private String ethcode; //놀거리테마코드
 	private MultipartFile efile; // 업로드한 사진파일
 	private String epicture; // 사진파일코드
 	

@@ -329,7 +329,7 @@ select::-ms-expand {
 
 
 		<!-- Food insert 할 부분 시작 -->
-		<div class="row " style="float: right;">
+		<div class="row " style="float: center;">
 			<div
 				class="col d-flex flex-column align-items-center justify-content-center"
 				style="max-width: 900px;">
@@ -355,7 +355,8 @@ select::-ms-expand {
 							</div>
 
 							<div class="col-md-6">
-								<input type="hidden">
+								<label for="inputMenuThcode" class="form-label">메뉴테마코드</label>
+								 <input type="text" name="menuthcode" class="form-control" id="inputMenuThcode">
 							</div>
 
 							<div class="col-md-6">
@@ -456,25 +457,7 @@ select::-ms-expand {
 
 
 
-	<!-- Enjoy 데이터 모두 출력 -->
-	<section class="section" style="margin-top: 40px;">
-		<div class="row">
-			<div
-				class="col d-flex flex-column align-items-center justify-content-center"
-				style="max-width: 1000px;">
-				<c:forEach items="${enjoyList }" var="enjoyList">
-					<div class="col-md-6">
-						<label for="inputEexplain" class="form-label">놀거리 정보</label> <img
-							src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enjoyList.epicture }">
-						<h3>${enjoyList.ename }</h3>
-						<h3>${enjoyList.eaddr }</h3>
-						<hr>
-					</div>
-				</c:forEach>
 
-			</div>
-		</div>
-	</section>
 
 
 </body>

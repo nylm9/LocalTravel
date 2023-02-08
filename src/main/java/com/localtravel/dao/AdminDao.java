@@ -20,11 +20,13 @@ public interface AdminDao {
 	String selectMaxEcode();
 
 	@Select("SELECT ECODE FROM ENJOY WHERE ENAME = #{inputEname} AND EADDR = #{inputEaddr} ")
-	ArrayList<Map<String, String>> enjoyCheck( @Param("inputEname")String inputEname, @Param("inputEaddr")String inputEaddr);
+	ArrayList<Map<String, String>> enjoyCheck(@Param("inputEname") String inputEname,
+			@Param("inputEaddr") String inputEaddr);
 
 	@Select("SELECT FCODE FROM FOOD WHERE FNAME = #{inputFname} AND FADDR= #{inputFaddr}")
-	ArrayList<Map<String, String>> foodCheck(@Param("inputFname")String inputFname, @Param("inputFaddr")String inputFaddr);
-	
+	ArrayList<Map<String, String>> foodCheck(@Param("inputFname") String inputFname,
+			@Param("inputFaddr") String inputFaddr);
+
 	@Select("SELECT * FROM ENJOY")
 	ArrayList<EnjoyDto> selectEnjoyList();
 
@@ -37,16 +39,17 @@ public interface AdminDao {
 
 	@Select("SELECT * FROM FOOD WHERE FNAME LIKE  '%'||#{inputval}||'%' ")
 	ArrayList<FoodDto> selectAllFoodList(String inputval);
+
 	
-	/*
-	 * @Insert("INSERT INTO MENU(MENUFCODE,MENUNAME1,MENUPRICE1,MENUEXPLAIN1, " +
-	 * "MENUNAME2,MENUPRICE2,MENUEXPLAIN2,MENUNAME3,MENUPRICE3,MENUEXPLAIN3,MENUTHCODE) "
-	 * + "VALUES( #{} )")
-	 */
+	  @Insert("INSERT INTO MENU(MENUFCODE,MENUNAME1,MENUPRICE1,MENUEXPLAIN1, " +
+			  	"MENUNAME2,MENUPRICE2,MENUEXPLAIN2,MENUNAME3,MENUPRICE3,MENUEXPLAIN3,MENUTHCODE) "
+			  	+ "VALUES( #{menufcode}, #{menuname1}, #{menuprice1}, #{menuexplain1}, "
+			  	+ "#{menuname2}, #{menuprice2}, #{menuexplain2}, #{menuname3}, #{menuprice3}, #{menuexplain3}, "
+			  	+ "#{menuthcode} )")
+	 
 	int insertMdata(MenuDto menu);
 
-	
-	
-
+	 @Select("SELECT * FROM FOOD")
+	ArrayList<FoodDto> selectFoodList();
 
 }

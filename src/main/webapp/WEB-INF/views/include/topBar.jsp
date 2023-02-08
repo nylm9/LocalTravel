@@ -40,17 +40,27 @@
                           </div>
                       </li>
 
-                      <li class="nav-item"><a href="about.html" class="nav-link">정산</a></li>
-              <c:choose>
-      				 <c:when test="${sessionScope.loginId == 'admin' }"> 
-        			 <li class="nav-item"><a href="${pageContext.request.contextPath }/AdminPage" class="nav-link">관리자페이지</a></li>
-       				 </c:when>
-       			 <c:otherwise>
-       			 </c:otherwise>
-        
-       		 </c:choose>
-                      
-                  </ul>
+							<li class="nav-item"><a href="about.html" class="nav-link">정산</a></li>
+							<c:choose>
+								<c:when test="${sessionScope.loginId == 'admin' }">
+									<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#"
+										id="navbarDropdown2" role="button" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false"> 관리자페이지 </a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+											<a class="dropdown-item"
+												href="${pageContext.request.contextPath }/AdminPage">데이터 입력</a> <a
+												class="dropdown-item"
+												href="${pageContext.request.contextPath }/AdminDataPage">데이터 조회</a>
+										</div>
+									</li>
+								</c:when>
+								<c:otherwise>
+								</c:otherwise>
+
+							</c:choose>
+
+						</ul>
                   
 <!--                    <ul class="list-inline mb-0 d-block d-lg-none">
                     <li class="list-inline-item"><a href="#">로그인</a></li>

@@ -13,7 +13,7 @@ public class FoodDto {
 	private String ftell; //식당전화번호
 	private String frepute; //식당평점
 	private String fexplain; //식당상세정보 
-	private int fthcode;  //식당음식테마코드
+	private String fthcode;  //식당음식테마코드
 	private MultipartFile ffile; // 업로드한 사진파일
 	private String fpicture; // 업로드한 사진코드
 	

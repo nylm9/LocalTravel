@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class MenuDto {
 	private String menufcode;		// 가게코드(FK - Food_fcode)
+	private String menuthcode;
 	private MultipartFile mfile1;   // 업로드한 사진파일1
 	private String mpicture1;       // 업로드한 사진코드1
 	private String menuname1; 		// 대표메뉴1 이름

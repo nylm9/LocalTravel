@@ -270,6 +270,11 @@ public class AdminService {
 		System.out.println(joinResult);
 		return joinResult;
 	}
+
+	public ArrayList<FoodDto> getFoodData() {
+		ArrayList<FoodDto> fList = adao.selectFoodList();
+		return fList;
+	}
 	
 	
 
