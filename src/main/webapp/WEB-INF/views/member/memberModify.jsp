@@ -48,13 +48,13 @@
 			<div class="row mx-auto" style="max-width:1200px;min-width:700px;">
 			    
 			    
-				<c:forEach items="${memberList }" var="memInfo">
+				<c:forEach items="${memberList}" var="memInfo">
 				
 				<div class="col-12">
 					<div class="card mb-3" style="padding:20px;">
 						<div class="row g-0" id="memberListArea">
 							<div class="col-12">
-								<p class="text-center pb-0 fs-4" style="font-weight:bold;color:black;">내정보</p>
+								<p class="text-center pb-0 fs-4" style="font-weight:bold;color:black;">수정하기</p>
 							</div>
 							
 							<%-- <form class="row g-3"
@@ -68,7 +68,7 @@
 								<label class="form-label">아이디</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 										<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MID }">
+									onkeyup="joinIdCheck(this.value)" value="${memInfo.MID }" readonly>
 										
 									</div>
 							</div>
@@ -108,7 +108,17 @@
 										<c:if test="${memInfo.MGENDER == '3' }">
 											<p style="font-size:15px; padding-left:10px;  padding-top:10px;">선택하지않음</p>
 										</c:if>
+								 <select name="mgender" id="gender-select" class="form-control">
+									<option value="" disabled selected>--선택해주세요--</option>
+									<option value="1">남성</option>
+									<option value="2">여성</option>
+									<option value="0">선택하지 않음</option>
+
+								</select>
 									</div>
+										
+
+							
 							</div>
 							<div class="col-md-6">
 								<label class="form-label">휴대폰번호</label> 
