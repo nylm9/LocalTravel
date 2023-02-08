@@ -232,7 +232,30 @@ thead {
 							</tr>
 						</table>
 						<hr>
-						<div>예매 정보 1</div>
+						<!-- 열차 스케쥴 정보를 담는 부분 -->
+						<div style="overflow: scroll; height: 300px" id="scheduleListArea">
+							<div>열차정보1</div>
+							<div>열차정보2</div>
+							<div>열차정보3</div>
+							<div>열차정보4</div>
+							<div>열차정보5</div>
+							<div>열차정보6</div>
+							<div>열차정보7</div>
+							<div>열차정보1</div>
+							<div>열차정보2</div>
+							<div>열차정보3</div>
+							<div>열차정보4</div>
+							<div>열차정보5</div>
+							<div>열차정보6</div>
+							<div>열차정보7</div>
+							<div>열차정보1</div>
+							<div>열차정보2</div>
+							<div>열차정보3</div>
+							<div>열차정보4</div>
+							<div>열차정보5</div>
+							<div>열차정보6</div>
+							<div>열차정보7</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -247,7 +270,6 @@ thead {
 								<p style="float: left;" id="DepStaDisplay"></p>
 								<p style="float: right;" id="ArrStaDisplay"></p>
 								<h3 style="float: right;">도착</h3>
-
 							</div>
 
 							<div class="col" style="text-align: center;">
@@ -448,6 +470,13 @@ thead {
 			alert('날짜를 입력해주세요')
 			return false;
 		}
+		var loding = "";
+		loding += '<div class="spinner-border" role="status">';
+		loding += '<span class="visually-hidden">Loading...</span>';
+		loding += '</div>';
+		alert(loding);
+		$("#scheduleListArea").html(loding);  
+		
 		$.ajax({
 			type: "get",
 			url: "${pageContext.request.contextPath }/searchTRSchedule",
@@ -460,6 +489,25 @@ thead {
 			async : false,
 			success: function(scList){
 				console.log(scList);
+				var output ="";
+				// AJAX - 예매정보를 출력할 때 사용된 코드
+				//console.log(scList);
+				
+				if(scList.length > 0){
+					for(var i = 0; i < scList.length; i++){
+						console.log(scList[i].trainno);
+						output += '<div>';
+						output += '출발지 : '+scList[i].depplacename+', ';
+						output += '도착지 : '+scList[i].arrplacename+', ';
+						output += '출발 시간 : '+scList[i].depplandtime+', ';
+						output += '도착 시간 : '+scList[i].arrplandtime+', ';
+						output += '열차번호 : '+scList[i].trainno+', ';
+						output += '금액 : '+scList[i].adultcharge;
+						output += '<div>';
+					}
+					
+				}
+				$("#scheduleListArea").html(output);
 			}
 		});
 	}
