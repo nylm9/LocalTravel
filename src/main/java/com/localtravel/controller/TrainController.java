@@ -83,8 +83,13 @@ public class TrainController {
 		return arrStaList;
 	}
 	
-	
-	
+	// 공통 :: 양쪽 역의 값이 존재하는 경우 
+	@RequestMapping(value ="/searchTRSchedule")
+	public @ResponseBody String searchTRSchedule(TRInputScheduleDto scheduleInfo) {
+		System.out.println(scheduleInfo);
+		String scheduleList = treser.searchTRSchedule(scheduleInfo);
+		return null;
+	}
 	
 	
 	

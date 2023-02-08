@@ -96,7 +96,16 @@ thead {
 .LocationSelcetAct {
 	border: 1px solid black;
 	color: white;
-	background-color: red;
+	background-color: lightsalmon;
+	text-align: center;
+	cursor: pointer;
+	margin-bottom: 3px;
+}
+
+.LocationSelcetInact {
+	border: 1px solid black;
+	color: white;
+	background-color: darkgray;
 	text-align: center;
 	cursor: pointer;
 	margin-bottom: 3px;
@@ -135,7 +144,7 @@ thead {
 .stationBtnAct {
 	border: 1px solid black;
 	color: white;
-	background-color: red;
+	background-color: lightsalmon;
 	text-align: center;
 	cursor: pointer;
 	margin-bottom: 3px;
@@ -184,7 +193,7 @@ thead {
 						<c:forEach items="${cityList }" var="citylist">
 							<!-- 지역 목록 -->
 							<div class="LocationSelcet" id="ArrLoctaion${citylist.citycode }"
-								onclick="ArrLoctaionSelect(this,${citylist.citycode })">${citylist.cityname }</div>
+								onclick="return ArrLoctaionSelect(this,${citylist.citycode })">${citylist.cityname }</div>
 							<div id="ArrstationList${citylist.citycode }" class="">
 								<div id="arrStationView${citylist.citycode }">
 									<!-- 역 목록 -->
@@ -196,22 +205,23 @@ thead {
 			</div>
 
 			<!-- 출발지와 도착지를 모두 선택하고 날짜선택 -->
-			<div class="col-lg-3 col-md-6 col-sm-6">
+			<div class="col-lg-6 col-md-6 col-sm-6">
 				<div class="card" style="margin-top: 40px; margin-left: 40px;">
 					<div class="card-body">
-						<div class="card" style="float: left;">
-							<div class="card-body">
-								<h5 class="card-title">날짜</h5>
+						<div class="card" style="height: 90px; margin-bottom: 5px;">
+							<div class="card-body d-none" id="scDateListArea">
+								<h5 class="card-title ">날짜</h5>
 								<!-- List group with Links and buttons -->
-								<div class="list-group reserveArea" id="scDateListArea">
-									<h5>3월</h5>
+								<div class="list-group reserveArea">
+									<input type="date" onclose="test01()">
 								</div>
 							</div>
 						</div>
-						<div class="card" style="float: right;">
-							<div class="card-body">
-								<h6>열차상세정보</h6>
-							</div>
+						<div class="card" >
+						<div class="card-body">
+							<h6>열차상세정보</h6>
+
+						</div>
 						</div>
 					</div>
 				</div>
@@ -226,7 +236,7 @@ thead {
 								<p style="float: left;" id="DepStaDisplay"></p>
 								<p style="float: right;" id="ArrStaDisplay"></p>
 								<h3 style="float: right;">도착</h3>
-								
+
 							</div>
 
 							<div class="col" style="text-align: center;">
@@ -245,6 +255,16 @@ thead {
 	</section>
 
 	<script type="text/javascript">
+	// 출발역 누를 경우 1, 아닌 경우 0  - 초기화 기능
+	var DepStaionBtnAct = 0;
+	
+	// 역 정보 저장 기능
+	var DepStationid= "";
+	var ArrStationid= "";
+	var TrainTime = "";
+	
+	
+	
 	// 1.1. 출발 :: 지역 선택 -> 역 출력 
 	function DepLoctaionSelect(Btn, citycode){
 		console.log(citycode);
@@ -286,6 +306,10 @@ thead {
 	
 	// 1.2. 출발역 선택 기준 ::  역 선택 -> 역정보 입력 -> 이동 가능한 역 정보 띄우기
 	function DepStationSelect(btn, nodeid, nodename){
+		DepStaionBtnAct = 1;
+		console.log('DepStaionBtnAct : '+DepStaionBtnAct+' - 출발역 선택')
+		DepStationid = nodeid;
+		console.log('출발역 아이디 저장 : '+DepStationid);
 		console.log(btn);
 		console.log(nodeid);
 		$('.stationBtn').removeClass('stationBtnAct');
@@ -304,13 +328,11 @@ thead {
 					$("#ArrstationList"+i).addClass('d-none');
 					$('#ArrLoctaion'+i).removeClass('LocationSelcetAct');
 				}
-				console.log(arrStaList);
 				var ArrStaouput = "";
 				var ccode = "";
 				for(j = 11; j < 39; j++){
 					ccode = j+"";
-					$('#ArrLoctaion'+ccode).removeClass('LocationSelcetAct');
-					console.log('지역코드 : '+ccode);
+					$('#ArrLoctaion'+ccode).addClass('LocationSelcetInact');
 					for(i = 0; i < arrStaList.length; i++){
 						if(ccode === arrStaList[i].citycode){
 							//console.log(arrStaList[i].nodename);
@@ -318,10 +340,10 @@ thead {
 							ArrStaouput += arrStaList[i].nodename+"역";
 							ArrStaouput += "</div>";
 							$('#ArrLoctaion'+ccode).addClass('LocationSelcetAct');
+							$('#ArrLoctaion'+ccode).removeClass('LocationSelcetInact');
 							$("#ArrstationList"+ccode).removeClass('d-none');
-						}
+						} 
 					}
-					console.log(ArrStaouput);
 					$('#arrStationView'+ccode).html(ArrStaouput);
 					ArrStaouput = "";
 				}
@@ -331,17 +353,43 @@ thead {
 	
 	// 1.3. 출발역 선택 기준 :: 도착역을 선택하기 
 	function ArrStationSelected(Btn, nodeid, nodename){
+		
+		// 출발역을 먼저 누른경우 
 		console.log(nodename);
 		for(var i =0; i < 100; i++){
 			$('#DtoAstaBtn'+i).removeClass('LocationSelcetAct');
 		}
 		$(Btn).addClass("LocationSelcetAct");
 		$('#ArrStaDisplay').html(nodename+"역");
-		
+		$('#scDateListArea').removeClass("d-none");
+		// Ajax기능
+		$.ajax({
+			type: "get",
+			url: "${pageContext.request.contextPath }/searchTRSchedule",
+			data: {
+				"depPlaceId" : DepStationid,
+				"arrPlaceId" : nodeid
+			},
+			dataType: "json",
+			async : false,
+			success: function(arrStaList){
+				
+			}
+		});
 	}
 	
 	// 2.1. 도착역 선택 기준 :: 도착역을 선택하기 
 	function ArrLoctaionSelect(Btn, citycode){
+		if(DepStaionBtnAct == 1){
+			var result = confirm("도착역을 기준으로 출발역을 고르시겠습니까?");
+			if(result){
+			    alert('네');
+			    location.href="${pageContext.request.contextPath }/reservePage";
+			}else{
+			    alert('아니요');
+			    return false;
+			}
+		}
 		console.log(citycode);
 		var cityCode = citycode;
 		//역 목록을 감싸는 DIV 
@@ -378,7 +426,14 @@ thead {
 			}
 		});
 	}
+	// 도착역 기준 :: 도착역을 선택하기
+	function AtoDStationSelect(Btn, nodeid, nodename){
+		
+	}
 	
+	function test01(){
+		alert('밥')
+	}
 	
 </script>
 
