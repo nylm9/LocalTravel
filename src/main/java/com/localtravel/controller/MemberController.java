@@ -133,34 +133,35 @@ public class MemberController {
 	 * ajax문을 1개로 써서 파라메터 3개를 전송한다. (1개만 눌릴때는 2개를 null로)
 	 * null인 파라메터는 서비스 switch case같은 제어문으로 처리하거나 mapper에서 조건문을 나누어 처리! */
 
-	@RequestMapping(value = "/memberModify")
-	public ModelAndView boardModify(MemberDto memBoard, RedirectAttributes ra) {
-		System.out.println("회원정보수정 요청");
-		ModelAndView mav = new ModelAndView();
-		System.out.println(memBoard);
-		
-		int modifyResult = memsvc.boardModify(memBoard);
-		if(modifyResult > 0) {
-			ra.addFlashAttribute("Msg", "회원정보가 수정 되었습니다.");
-			mav.setViewName("redirect:/");
-		} else {
-			ra.addFlashAttribute("Msg","회원정보 수정에 실패했습니다.");
-			mav.setViewName("redirect:/memberModify"); 
-		}
-		return mav;
-	}
 	@RequestMapping(value = "/memberModifyPage")
 	public ModelAndView memberModifyPage(String loginId) {
 		System.out.println("회원정보수정페이지로 넘어가기");
 		ModelAndView mav = new ModelAndView();
 		
+		loginId = (String)session.getAttribute("loginId");
 		MemberDto memInfo = memsvc.getmemberInfo(loginId);
 		mav.addObject("memInfo",memInfo);
-		ArrayList<Map<String, String>> memberList = memsvc.getmembersList(loginId);
-		mav.addObject("memberList" ,memberList);
-		System.out.println("memberList:"+memberList);
+		
+		System.out.println("memberInfo:"+memInfo);
 		
 		mav.setViewName("member/memberModify");
+		return mav;
+	}
+	@RequestMapping(value = "/memberModify")
+	public ModelAndView boardModify(String loginId) {
+		System.out.println("회원정보수정 요청");
+		ModelAndView mav = new ModelAndView();
+		loginId = (String)session.getAttribute("loginId");
+		System.out.println(loginId);
+//		int modifyResult = memsvc.boardModify(memBoard);
+//		if(modifyResult > 0) {
+//			ra.addFlashAttribute("Msg", "회원정보가 수정 되었습니다.");
+//			mav.setViewName("redirect:/");
+//		} else {
+//			ra.addFlashAttribute("Msg","회원정보 수정에 실패했습니다.");
+//			mav.setViewName("redirect:/memberModify"); 
+//		}
+		MemberDto modifyInfo  = memsvc.boardModify(loginId);
 		return mav;
 	}
 	

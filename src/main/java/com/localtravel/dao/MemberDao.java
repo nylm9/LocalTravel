@@ -34,8 +34,9 @@ public interface MemberDao {
 	
 
 
-	@Update("UPDATE MEMBERS set MID=#{mid},MNAME=#{mname},MBIRTH=#{mbirth},MGENDER=#{mgender},MPHONE=#{mphone},MEMAIL=#{memail} WHERE MID=#{mid};")
-	int updateBoard(MemberDto memBoard);
+	@Update("UPDATE MEMBERS set MID=#{mid},MNAME=#{mname},MBIRTH=TO_CHAR(#{mbirth},'YYYY-MM-DD'),MGENDER=#{mgender},MPHONE=#{mphone},MEMAIL=#{memail} WHERE MID=#{mid}")
+//	UPDATE MEMBERS set MID=#{mid},MNAME='수정이름2',MBIRTH=TO_CHAR(SYSDATE,'YYYY-MM-DD'),MGENDER='2',MPHONE='010',MEMAIL='text' WHERE MID='id';
+	MemberDto updateBoard(String loginId);
 
 
 	@Select("SELECT * FROM MEMBERS WHERE MID=#{mid}")

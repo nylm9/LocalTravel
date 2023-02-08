@@ -68,7 +68,7 @@
 								<label class="form-label">아이디</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 										<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MID }" readonly>
+									 value="${memInfo.MID }" readonly>
 										
 									</div>
 							</div>
@@ -76,7 +76,7 @@
 								<label class="form-label">이름</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MNAME }" readonly>
+									 value="${memInfo.MNAME }" readonly>
 										
 									</div>
 							</div>
@@ -84,7 +84,7 @@
 								<label class="form-label">생년월일</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MBIRTH }" readonly>
+									 value="${memInfo.MBIRTH }" readonly>
 									</div>
 							</div>
 							<div class="col-md-6">
@@ -114,7 +114,7 @@
 								<label class="form-label">휴대폰번호</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MPHONE }" readonly>
+									 value="${memInfo.MPHONE }" readonly>
 										
 									</div>
 							</div>
@@ -122,7 +122,7 @@
 								<label class="form-label">이메일</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MEMAIL }" readonly>
+									 value="${memInfo.MEMAIL }" readonly>
 										
 									</div>
 							</div>

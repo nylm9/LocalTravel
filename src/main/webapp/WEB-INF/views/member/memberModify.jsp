@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>마이페이지</title>
+<title>회원정보수정페이지</title>
 
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -47,8 +47,8 @@
 		<section class="section"  style="margin-top: 40px;">
 			<div class="row mx-auto" style="max-width:1200px;min-width:700px;">
 			    
-			    
-				<c:forEach items="${memberList}" var="memInfo">
+			    <form onsubmit="return modifyForm(this)" action="${pageContext.request.contextPath }/memberModify">
+			<%-- 	<c:forEach items="${memInfo }" var="memInfo"> --%>
 				
 				<div class="col-12">
 					<div class="card mb-3" style="padding:20px;">
@@ -68,23 +68,23 @@
 								<label class="form-label">아이디</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 										<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MID }" readonly>
+									 value="${memInfo.mid }" readonly>
 										
 									</div>
 							</div>
 							<div class="col-md-6">
 								<label class="form-label">이름</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
-									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MNAME }" >
+									<input type="text" name="mname" class="form-control" id="inputMid"
+									 value="${memInfo.mname }" >
 										
 									</div>
 							</div>
 							<div class="col-md-6">
 								<label class="form-label">생년월일</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
-									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MBIRTH }">
+									<input type="text" name="mbirth" class="form-control" id="inputMid"
+									 value="${memInfo.mbirth }">
 									</div>
 							</div>
 							<div class="col-md-6">
@@ -99,13 +99,13 @@
 											</c:otherwise>									
 										</c:choose> --%>
 										
-										<c:if test="${memInfo.MGENDER == '1' }">
+										<c:if test="${memInfo.mgender == '1' }">
 											<p style="font-size:15px; padding-left:10px;  padding-top:10px;">남자</p>
 										</c:if>
-										<c:if test="${memInfo.MGENDER == '2' }">
+										<c:if test="${memInfo.mgender == '2' }">
 											<p style="font-size:15px; padding-left:10px;  padding-top:10px;">여자</p>
 										</c:if>
-										<c:if test="${memInfo.MGENDER == '3' }">
+										<c:if test="${memInfo.mgender == '3' }">
 											<p style="font-size:15px; padding-left:10px;  padding-top:10px;">선택하지않음</p>
 										</c:if>
 								 <select name="mgender" id="gender-select" class="form-control">
@@ -123,38 +123,73 @@
 							<div class="col-md-6">
 								<label class="form-label">휴대폰번호</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
-									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MPHONE }" >
+									<input type="text" name="mphone" class="form-control" id="inputMid"
+									 value="${memInfo.mphone }" >
 										
 									</div>
 							</div>
 							<div class="col-md-6">
 								<label class="form-label">이메일</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
-									<input type="text" name="mid" class="form-control" id="inputMid"
-									onkeyup="joinIdCheck(this.value)" value="${memInfo.MEMAIL }" >
+									<input type="text" name="memail" class="form-control" id="inputMid"
+									 value="${memInfo.memail }" >
 										
 									</div>
 							</div>
 							<!-- </form> -->
 							
 							<div class="text-center modifyCol">
-								
-									<a  class="btn btn-secondary" style="margin-top: 10px; margin-left: 520px;"
-									href="${pageContext.request.contextPath }/memberModify">
+								<button type="submit" class="btn btn-secondary" style="margin-top: 10px; margin-left: 520px;">
 		                                    글수정
-		                            </a>
+		                            </button>
 							</div>
 							
 						</div>
 					</div>
 				</div>
 				
-				</c:forEach>
-				
+				<%-- </c:forEach> --%>
+				</form>
 				</div>
 			
 		</section>
-		
+			<script type="text/javascript">
+/* 	function writeReview(loginId,mname){
+		window.open('${pageContext.request.contextPath }/memberModifyPage?loginId='+loginId+"&mname="+mname,'memberModify',"width=750,heigh=400, top=100, left=500");
+	}
+ */
+	function modifyForm(formObj){
+		var mid = formObj.mid.value;
+		var mname =formObj.mname.value;
+		var mbirth = formObj.mbirth.value;
+		var mgender = formObj.mgender.value;
+		var mphone = formObj.mphone.value;
+		var memail = formObj.memail.value;
+		console.log("ddd");
+		console.log(mid);
+		console.log(mname);
+		console.log(mbirth);
+		console.log(mgender);
+		console.log(mphone);
+		console.log(memail);
+		$.ajax({
+			url:"${pageContext.request.contextPath }/memberModify",
+			type:"post",
+			data:{"mid":mid, "mname":mname, "mbirth":mbirth, "mgender":mgender, "mphone":mphone, "memail":memail },
+			async:false,
+			success :function(result){
+				 if(result =='1'){
+					alert("작성완료되었습니다");
+					window.opener.location.reload();
+				}else{
+					alert("작성실패");
+				}
+			}
+		})
+//		window.opener.location.reload();
+		window.close();
+		return false;
+	}
+	</script> 
 </body>
 </html>
