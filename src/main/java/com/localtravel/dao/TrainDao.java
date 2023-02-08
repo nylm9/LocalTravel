@@ -48,6 +48,8 @@ public interface TrainDao {
 	
 	@Select("SELECT ROUTECODE FROM TRROUTE WHERE DEPSTA = #{depPlaceId} AND ARRSTA=#{arrPlaceId}")
 	ArrayList<String> selectTyroute(TRInputScheduleDto inputSchedule);
+	@Select("SELECT ROUTECODE FROM TRROUTE WHERE DEPSTA = #{arrPlaceId} AND ARRSTA=#{depPlaceId}")
+	ArrayList<String> selectTyrouteChange(TRInputScheduleDto inputSchedule);
 	
 	// TrainReserve 관련 DAO
 	
@@ -60,6 +62,8 @@ public interface TrainDao {
 	// 예매부분 출발역을 누를경우 도착역이 띄워짐
 	@Select("SELECT DISTINCT * FROM TRSTATIONCODE WHERE NODENAME IN (SELECT DISTINCT ARRSTA FROM TRROUTE WHERE DEPSTA = #{nodename}) OR NODENAME IN (SELECT DISTINCT DEPSTA FROM TRROUTE WHERE ARRSTA = #{nodename})")
 	ArrayList<TRStationDto> selectArrStaion(String nodename);
+
+	
 	
 	
 	

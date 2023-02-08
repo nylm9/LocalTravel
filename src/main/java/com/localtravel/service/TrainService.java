@@ -40,8 +40,15 @@ public class TrainService {
 		ArrayList<String> TYroute = new ArrayList<String>();
 		String trainType = "00";
 		System.out.println(inputSchedule);
-		TYroute = trdao.selectTyroute(inputSchedule);
-		System.out.println(TYroute.get(0));
+		try {
+			TYroute = trdao.selectTyroute(inputSchedule);
+			System.out.println(TYroute.get(0));
+		} catch (Exception e) {
+			TYroute = trdao.selectTyrouteChange(inputSchedule);
+		}
+		if(TYroute != null) {
+			System.out.println(TYroute.get(0));
+		}
 		if(TYroute.get(0).equals("GL") || TYroute.get(0).equals("JA")) {
 			trainType = "16";
 		}
