@@ -59,19 +59,6 @@ public class MemberService {
 		return memList;
 	}
 
-
-	public int boardModify(MemberDto memBoard) {
-		System.out.println("MemberService - 마이페이지 회원정보수정");
-		int updateResult =0;
-		try {
-			updateResult = memdao.updateBoard(memBoard);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return updateResult;
-	}
-
-
 	public MemberDto getmemberInfo(String loginId) {
 		System.out.println("MemberService - 마이페이지 회원정보수정페이지 출력");
 		MemberDto memInfo = memdao.selectfoodInfo(loginId);
@@ -79,6 +66,19 @@ public class MemberService {
 		return memInfo;
 		
 	}
+
+	public MemberDto boardModify(String loginId) {
+		System.out.println("MemberService - 마이페이지 회원정보수정");
+		MemberDto updateResult =memdao.updateBoard(loginId);
+//		try {
+//			updateResult = memdao.updateBoard(loginId);
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+		return updateResult;
+	}
+
+
 
 
 
