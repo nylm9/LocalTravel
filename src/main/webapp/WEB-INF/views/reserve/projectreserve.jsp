@@ -149,6 +149,15 @@ thead {
 	cursor: pointer;
 	margin-bottom: 3px;
 }
+
+.cleanTable {
+	border: 0px solid white;
+}
+
+.cleanTh {
+	padding-left: 5px;
+	padding-right: 5px;
+}
 </style>
 
 
@@ -205,27 +214,52 @@ thead {
 			</div>
 
 			<!-- 출발지와 도착지를 모두 선택하고 날짜선택 -->
-			<div class="col-lg-6 col-md-6 col-sm-6">
-				<div class="card" style="margin-top: 40px; margin-left: 40px;">
-					<div class="card-body">
-						<div class="card" style="height: 90px; margin-bottom: 5px;">
-							<div class="card-body d-none" id="scDateListArea">
-								<h5 class="card-title ">날짜</h5>
-								<!-- List group with Links and buttons -->
-								<div class="list-group reserveArea">
-									<input type="date" onclose="test01()">
-								</div>
-							</div>
-						</div>
-						<div class="card" >
-						<div class="card-body">
-							<h6>열차상세정보</h6>
-
-						</div>
+			<div class="col-lg-5 col-md-6 col-sm-6">
+				<div class="card" style="margin-top: 40px; margin-left: 30px;">
+					<div class="card-header">날짜 및 인원 입력</div>
+					<div class="card-body" style="padding-top: 5px;">
+						<table class="cleanTable">
+							<tr class="cleanTable">
+								<th class="cleanTable cleanTh col" style="width: 50px;"><h5>날짜</h5>
+									<input type="date" id="InputDate"></th>
+								<!--<th class="cleanTable cleanTh col"
+									style="width: 50px;"><h5>인원</h5> <input
+									type="text" style="width: 40px;"></th>-->
+								<th class="cleanTable cleanTh col" style="width: 50px;">
+									<button type="button" onclick="return serchTrainInfoBtn()"
+										class="btn btn-danger font-bold mb-1 w-40 h-30">열차조회</button>
+								</th>
+							</tr>
+						</table>
+						<hr>
+						<!-- 열차 스케쥴 정보를 담는 부분 -->
+						<div style="overflow: scroll; height: 300px" id="scheduleListArea">
+							<div>열차정보1</div>
+							<div>열차정보2</div>
+							<div>열차정보3</div>
+							<div>열차정보4</div>
+							<div>열차정보5</div>
+							<div>열차정보6</div>
+							<div>열차정보7</div>
+							<div>열차정보1</div>
+							<div>열차정보2</div>
+							<div>열차정보3</div>
+							<div>열차정보4</div>
+							<div>열차정보5</div>
+							<div>열차정보6</div>
+							<div>열차정보7</div>
+							<div>열차정보1</div>
+							<div>열차정보2</div>
+							<div>열차정보3</div>
+							<div>열차정보4</div>
+							<div>열차정보5</div>
+							<div>열차정보6</div>
+							<div>열차정보7</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
 			<!-- 맨아단에 출발->도착 예매하기 버튼 -->
 			<div class="col-12">
 				<div class="card">
@@ -236,7 +270,6 @@ thead {
 								<p style="float: left;" id="DepStaDisplay"></p>
 								<p style="float: right;" id="ArrStaDisplay"></p>
 								<h3 style="float: right;">도착</h3>
-
 							</div>
 
 							<div class="col" style="text-align: center;">
@@ -260,7 +293,9 @@ thead {
 	
 	// 역 정보 저장 기능
 	var DepStationid= "";
+	var DepStationname= "";
 	var ArrStationid= "";
+	var ArrStationname= "";
 	var TrainTime = "";
 	
 	
@@ -308,7 +343,7 @@ thead {
 	function DepStationSelect(btn, nodeid, nodename){
 		DepStaionBtnAct = 1;
 		console.log('DepStaionBtnAct : '+DepStaionBtnAct+' - 출발역 선택')
-		DepStationid = nodeid;
+		DepStationname = nodename;
 		console.log('출발역 아이디 저장 : '+DepStationid);
 		console.log(btn);
 		console.log(nodeid);
@@ -362,20 +397,8 @@ thead {
 		$(Btn).addClass("LocationSelcetAct");
 		$('#ArrStaDisplay').html(nodename+"역");
 		$('#scDateListArea').removeClass("d-none");
-		// Ajax기능
-		$.ajax({
-			type: "get",
-			url: "${pageContext.request.contextPath }/searchTRSchedule",
-			data: {
-				"depPlaceId" : DepStationid,
-				"arrPlaceId" : nodeid
-			},
-			dataType: "json",
-			async : false,
-			success: function(arrStaList){
-				
-			}
-		});
+		ArrStationname = nodename;
+		console.log('출발역 : '+DepStationid+", 도착역 : "+ArrStationid)
 	}
 	
 	// 2.1. 도착역 선택 기준 :: 도착역을 선택하기 
@@ -431,9 +454,65 @@ thead {
 		
 	}
 	
-	function test01(){
-		alert('밥')
+	
+	
+	// 3.1 날짜를 선택 후 열차조회 버튼 입력
+	function serchTrainInfoBtn(){
+		TrainTime = $('#InputDate').val();
+		console.log(TrainTime);
+		if(DepStationname.length == 0){
+			alert('출발역을 입력해주세요')
+			return false;
+		} else if(ArrStationname.length == 0){
+			alert('도착역을 입력해주세요')
+			return false;
+		} else if (TrainTime.length == 0){
+			alert('날짜를 입력해주세요')
+			return false;
+		}
+		var loding = "";
+		loding += '<div class="spinner-border" role="status">';
+		loding += '<span class="visually-hidden">Loading...</span>';
+		loding += '</div>';
+		alert(loding);
+		$("#scheduleListArea").html(loding);  
+		
+		$.ajax({
+			type: "get",
+			url: "${pageContext.request.contextPath }/searchTRSchedule",
+			data: {
+				"depPlaceId" : DepStationname,
+				"arrPlaceId" : ArrStationname,
+				"depPlandTime" : TrainTime
+			},
+			dataType: "json",
+			async : false,
+			success: function(scList){
+				console.log(scList);
+				var output ="";
+				// AJAX - 예매정보를 출력할 때 사용된 코드
+				//console.log(scList);
+				
+				if(scList.length > 0){
+					for(var i = 0; i < scList.length; i++){
+						console.log(scList[i].trainno);
+						output += '<div>';
+						output += '출발지 : '+scList[i].depplacename+', ';
+						output += '도착지 : '+scList[i].arrplacename+', ';
+						output += '출발 시간 : '+scList[i].depplandtime+', ';
+						output += '도착 시간 : '+scList[i].arrplandtime+', ';
+						output += '열차번호 : '+scList[i].trainno+', ';
+						output += '금액 : '+scList[i].adultcharge;
+						output += '<div>';
+					}
+					
+				}
+				$("#scheduleListArea").html(output);
+			}
+		});
 	}
+	
+	
 	
 </script>
 
