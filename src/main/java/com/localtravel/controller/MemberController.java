@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.MemberDto;
 import com.localtravel.service.MemberService;
 
@@ -119,6 +120,7 @@ public class MemberController {
 //		System.out.println("로그인한 아이디 정보조회"+memberList);
 //		수정하기
 		String loginId = (String)session.getAttribute("loginId");
+		System.out.println(loginId);
 		ArrayList<Map<String, String>> memberList = memsvc.getmembersList(loginId);
 		mav.addObject("memberList" ,memberList);
 		
@@ -137,22 +139,27 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(memBoard);
 		
-//		int modifyResult = memsvc.boardModify(memBoard);
-//		if(modifyResult > 0) {
-//			ra.addFlashAttribute("boardMsg","회원정보가 수정 되었습니다.");
-//		} else {
-//			ra.addFlashAttribute("boardMsg","회원정보 수정에 실패했습니다.");
-//		}
-//		mav.setViewName("member/mypage"); 수정하기
+		int modifyResult = memsvc.boardModify(memBoard);
+		if(modifyResult > 0) {
+			ra.addFlashAttribute("Msg", "회원정보가 수정 되었습니다.");
+			mav.setViewName("redirect:/");
+		} else {
+			ra.addFlashAttribute("Msg","회원정보 수정에 실패했습니다.");
+			mav.setViewName("redirect:/memberModify"); 
+		}
 		return mav;
 	}
 	@RequestMapping(value = "/memberModifyPage")
 	public ModelAndView memberModifyPage(String loginId) {
 		System.out.println("회원정보수정페이지로 넘어가기");
-		loginId = (String)session.getAttribute("loginId");
 		ModelAndView mav = new ModelAndView();
+		
+		MemberDto memInfo = memsvc.getmemberInfo(loginId);
+		mav.addObject("memInfo",memInfo);
 		ArrayList<Map<String, String>> memberList = memsvc.getmembersList(loginId);
 		mav.addObject("memberList" ,memberList);
+		System.out.println("memberList:"+memberList);
+		
 		mav.setViewName("member/memberModify");
 		return mav;
 	}

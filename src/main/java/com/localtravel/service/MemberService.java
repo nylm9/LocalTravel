@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.localtravel.dao.MemberDao;
+import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.MemberDto;
 import com.localtravel.dto.MenuDto;
 
@@ -68,6 +69,15 @@ public class MemberService {
 			e.printStackTrace();
 		}
 		return updateResult;
+	}
+
+
+	public MemberDto getmemberInfo(String loginId) {
+		System.out.println("MemberService - 마이페이지 회원정보수정페이지 출력");
+		MemberDto memInfo = memdao.selectfoodInfo(loginId);
+		System.out.println(memInfo);
+		return memInfo;
+		
 	}
 
 

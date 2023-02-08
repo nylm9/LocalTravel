@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.MemberDto;
 
 public interface MemberDao {
@@ -30,12 +31,19 @@ public interface MemberDao {
 	String idCheck(String inputId);
 
 
-	@Select("SELECT * FROM MEMBERS WHERE MID=#{mid}")
-	ArrayList<Map<String, String>> selectMemberList_Rank(@Param("mid")String loginId);
+	
 
 
-	@Update("UPDATE MEMBERS set MNAME=#MPHONE = #{mphone} WHERE MID=#{mid};")
+	@Update("UPDATE MEMBERS set MID=#{mid},MNAME=#{mname},MBIRTH=#{mbirth},MGENDER=#{mgender},MPHONE=#{mphone},MEMAIL=#{memail} WHERE MID=#{mid};")
 	int updateBoard(MemberDto memBoard);
+
+
+	@Select("SELECT * FROM MEMBERS WHERE MID=#{mid}")
+	MemberDto selectfoodInfo(String loginId);
+
+
+	@Select("SELECT * FROM MEMBERS WHERE MID=#{mid}")
+	ArrayList<Map<String, String>> selectMemberList_Rank(String loginId);
 
 
 
