@@ -158,6 +158,18 @@ thead {
 	padding-left: 5px;
 	padding-right: 5px;
 }
+
+.scheduleInfoTitle {
+	font-size: small;
+	border: 0px solid white;
+	padding: 2px;
+}
+
+.scheduleInfoContent {
+	font-size: small;
+	border: 0px solid white;
+	padding: 2px;
+}
 </style>
 
 
@@ -234,27 +246,34 @@ thead {
 						<hr>
 						<!-- 열차 스케쥴 정보를 담는 부분 -->
 						<div style="overflow: scroll; height: 300px" id="scheduleListArea">
-							<div>열차정보1</div>
-							<div>열차정보2</div>
-							<div>열차정보3</div>
-							<div>열차정보4</div>
-							<div>열차정보5</div>
-							<div>열차정보6</div>
-							<div>열차정보7</div>
-							<div>열차정보1</div>
-							<div>열차정보2</div>
-							<div>열차정보3</div>
-							<div>열차정보4</div>
-							<div>열차정보5</div>
-							<div>열차정보6</div>
-							<div>열차정보7</div>
-							<div>열차정보1</div>
-							<div>열차정보2</div>
-							<div>열차정보3</div>
-							<div>열차정보4</div>
-							<div>열차정보5</div>
-							<div>열차정보6</div>
-							<div>열차정보7</div>
+							<div class="card">
+								<div class="card-body" style="padding: 5px;">
+									<table class="cleanTable">
+										<tr class="cleanTable">
+											<th class="scheduleInfoTitle" style="font-size: small;">출발지</th>
+											<th class="scheduleInfoTitle">도착지</th>
+											<th class="scheduleInfoTitle">출발 시간</th>
+											<th class="scheduleInfoTitle">도착 시간</th>
+											<th class="scheduleInfoTitle">소요 시간</th>
+											<th class="scheduleInfoTitle">열차 번호</th>
+											<th class="scheduleInfoTitle">운임비</th>
+											<th class="scheduleInfoTitle" rowspan="2"><button
+													type="button" onclick="selectSchedule(this)"
+													class="btn font-bold mb-1 w-10 h-10"
+													style="padding-left: 20px; padding-right: 20px; background-color: pink;">선택</button></th>
+										</tr>
+										<tr class="cleanTable">
+											<td class="scheduleInfoContent" style="font-size: small;">서울</td>
+											<td class="scheduleInfoContent">부산</td>
+											<td class="scheduleInfoContent">08:40</td>
+											<td class="scheduleInfoContent">10:40</td>
+											<td class="scheduleInfoContent">01:00</td>
+											<td class="scheduleInfoContent">12</td>
+											<td class="scheduleInfoContent">59,800원</td>
+										</tr>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -406,10 +425,8 @@ thead {
 		if(DepStaionBtnAct == 1){
 			var result = confirm("도착역을 기준으로 출발역을 고르시겠습니까?");
 			if(result){
-			    alert('네');
 			    location.href="${pageContext.request.contextPath }/reservePage";
 			}else{
-			    alert('아니요');
 			    return false;
 			}
 		}
@@ -474,7 +491,6 @@ thead {
 		loding += '<div class="spinner-border" role="status">';
 		loding += '<span class="visually-hidden">Loading...</span>';
 		loding += '</div>';
-		alert(loding);
 		$("#scheduleListArea").html(loding);  
 		
 		$.ajax({
@@ -496,14 +512,54 @@ thead {
 				if(scList.length > 0){
 					for(var i = 0; i < scList.length; i++){
 						console.log(scList[i].trainno);
-						output += '<div>';
-						output += '출발지 : '+scList[i].depplacename+', ';
-						output += '도착지 : '+scList[i].arrplacename+', ';
-						output += '출발 시간 : '+scList[i].depplandtime+', ';
-						output += '도착 시간 : '+scList[i].arrplandtime+', ';
-						output += '열차번호 : '+scList[i].trainno+', ';
-						output += '금액 : '+scList[i].adultcharge;
-						output += '<div>';
+						var deptime = scList[i].depplandtime+'';
+						var arrtime = scList[i].arrplandtime+'';
+						var deptimeData = deptime.substr(0, 4)+"/"+deptime.substr(4, 2)+"/"+deptime.substr(6, 2)+" "+deptime.substr(8, 2)+":"+deptime.substr(10, 2)+":00";
+						console.log(deptimeData);
+						var arrtimeData = arrtime.substr(0, 4)+"/"+arrtime.substr(4, 2)+"/"+arrtime.substr(6, 2)+" "+arrtime.substr(8, 2)+":"+arrtime.substr(10, 2)+":00";
+						console.log(arrtimeData);
+						deptime = deptime.substr(8, 2)+":"+deptime.substr(10, 2);
+						arrtime = arrtime.substr(8, 2)+":"+arrtime.substr(10, 2);
+						
+						
+						const dateA = new Date(arrtimeData+'');
+						const dateB = new Date(deptimeData+'');
+						const diffMSec = dateA.getTime() - dateB.getTime();
+						const diffHour = diffMSec / (60 * 60 * 1000);
+						var diffhour = Math.abs(Math.round(diffHour));
+						var diffMin =  Math.abs((diffMSec / (60 * 1000)) - 120);
+						//if(diffMin >= 60){
+						//	diffMin = diffMin - 60;
+						//}
+						diffMin = diffMin.toString().padStart(2, '0');
+						
+						var timeRequired = diffhour + ":" + diffMin;
+						// 스케줄 선택 버튼 입력부분
+						output +='<div class="card" style="margin-bottom: 3px;">';
+						output +='<div class="card-body" style="padding: 5px;">';
+						output +='<table class="cleanTable">';
+						output +='	<tr class="cleanTable">';
+						output +='<th class="scheduleInfoTitle" >출발지</th>';
+						output +='<th class="scheduleInfoTitle" >도착지</th>';
+						output +='<th class="scheduleInfoTitle" >출발 시간</th>';
+						output +='<th class="scheduleInfoTitle" >도착 시간</th>';
+						output +='<th class="scheduleInfoTitle" >소요 시간</th>';
+						output +='<th class="scheduleInfoTitle" >열차 번호</th>';
+						output +='<th class="scheduleInfoTitle" >운임비</th>';
+						output +='<th class="scheduleInfoTitle" rowspan="2"><button type="button" onclick="selectSchedule(this)" class="btn font-bold mb-1 w-10 h-10" style="padding-left: 20px; padding-right: 20px; background-color: pink;">선택</button></th>';
+						output +='</tr>';
+						output +='<tr class="cleanTable">';
+						output +='<td class="scheduleInfoContent" >'+scList[i].depplacename+'</td>';
+						output +='<td class="scheduleInfoContent" >'+scList[i].arrplacename+'</td>';
+						output +='<td class="scheduleInfoContent" >'+deptime+'</td>';
+						output +='<td class="scheduleInfoContent" >'+arrtime+'</td>';
+						output +='<td class="scheduleInfoContent" >'+timeRequired+'</td>';
+						output +='<td class="scheduleInfoContent" >'+scList[i].trainno+'</td>';
+						output +='<td class="scheduleInfoContent" >'+scList[i].adultcharge+'원</td>';
+						output +='</tr>';
+						output +='</table>';
+						output +='</div>';
+						output +='</div>';
 					}
 					
 				}

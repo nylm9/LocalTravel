@@ -1,10 +1,5 @@
 package com.localtravel.service;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.localtravel.dao.TrainDao;
 import com.localtravel.dto.TRCityCodeDto;
 import com.localtravel.dto.TRInputScheduleDto;
@@ -33,7 +26,7 @@ public class TrainReserveService {
 		ArrayList<TRCityCodeDto> cityList = trdao.selectCityList();
 		return cityList;
 	}
-
+	// 처음 역을 선택 할 시 출력될 기능
 	public String getStationList(String citycode) {
 		JsonArray jsonArray = new JsonArray();
 		ArrayList<TRStationDto> staList = trdao.selectStaList(citycode);
@@ -49,7 +42,7 @@ public class TrainReserveService {
 		
 		return gson.toJson(jsonArray);
 	}
-
+	// 다음 역을 선택 할 시 출력될 기능
 	public String getArrStationList(String nodename) {
 		JsonArray jsonArray = new JsonArray();
 		ArrayList<TRStationDto> staList = trdao.selectArrStaion(nodename);

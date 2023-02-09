@@ -88,6 +88,7 @@ public class TrainController {
 	public @ResponseBody String searchTRSchedule(TRInputScheduleDto scheduleInfo) throws Exception {
 		System.out.println(scheduleInfo);
 		String scheduleList = treser.searchTRSchedule(scheduleInfo);
+		System.out.println(scheduleList);
 		return scheduleList;
 	}
 	
