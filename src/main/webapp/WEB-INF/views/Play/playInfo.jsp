@@ -72,13 +72,16 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 			
 			
             	<div class="row g-0">
-              		<div class="col-12 " style="text-align: center;" >
-              			<!-- 사진 -->
-                		<img src="${enInfo.epicture }" style="width: 700px; height: 400px;" 
-                		     class="img-fluid rounded-start" alt="...">
-              		</div>
+              		<!-- <div class="col-12 " style="text-align: center;" >
+              			사진
+              			
+              		</div> -->
               		<div class="col-12">
-                		<div class="card-body">
+                		<div class="card-body" s> 
+                		<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enInfo.epicture }" 
+                		style="width: 300px; height: 400px; float:left" 
+                		     class="img-fluid rounded-start" alt="...">
+                		     <div style="padding-left:350px;">
                   			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${enInfo.ename }</h5>
                   			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >주소: ${enInfo.eaddr }</span>
                   			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >평점: ${enInfo.erepute }</span>
@@ -92,6 +95,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
                   			<p class="card-text mb-1"><a>지도</a></p>
                   			 <a class="btn btn-sm btn-danger"
 							   href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
+							   </div>
                 		</div>
               		</div>
             	</div>
