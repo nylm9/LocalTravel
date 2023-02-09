@@ -200,10 +200,10 @@ public class AdminService {
 //			2. 파일을 저장 
 			//1. 파일을 저장할 경로 
 			//2. 파일저장기능 호출
-			File file = new File(savePath,mpicture1);
-			mfile1.transferTo(file);
+			File file1 = new File(savePath,mpicture1);
+			mfile1.transferTo(file1);
 		}
-		System.out.println("epicture : " + mpicture1);
+		System.out.println("mpicture1 : " + mpicture1);
 		//첨부파일이 없을 경우 :: mprofile : 
 		//첨부파일이 있을 경우 :: 32자리코드 + 첨부파일명
 		menu.setMpicture1(mpicture1);
@@ -226,10 +226,10 @@ public class AdminService {
 //			2. 파일을 저장 
 			//1. 파일을 저장할 경로 
 			//2. 파일저장기능 호출
-			File file = new File(savePath,mpicture2);
-			mfile2.transferTo(file);
+			File file2 = new File(savePath,mpicture2);
+			mfile2.transferTo(file2);
 		}
-		System.out.println("epicture : " + mpicture2);
+		System.out.println("mpicture2 : " + mpicture2);
 		//첨부파일이 없을 경우 :: mprofile : 
 		//첨부파일이 있을 경우 :: 32자리코드 + 첨부파일명
 		menu.setMpicture2(mpicture2);
@@ -252,14 +252,14 @@ public class AdminService {
 //			2. 파일을 저장 
 			//1. 파일을 저장할 경로 
 			//2. 파일저장기능 호출
-			File file = new File(savePath,mpicture3);
-			mfile3.transferTo(file);
+			File file3 = new File(savePath,mpicture3);
+			mfile3.transferTo(file3);
 		}
-		System.out.println("epicture : " + mpicture3);
+		System.out.println("mpicture3 : " + mpicture3);
 		//첨부파일이 없을 경우 :: mprofile : 
 		//첨부파일이 있을 경우 :: 32자리코드 + 첨부파일명
-		menu.setMpicture1(mpicture3);
-		
+		menu.setMpicture3(mpicture3);
+		System.out.println("menu" + menu);
 		// 최종 insert 부분
 		int joinResult = 0;
 		try {
@@ -274,6 +274,11 @@ public class AdminService {
 	public ArrayList<FoodDto> getFoodData() {
 		ArrayList<FoodDto> fList = adao.selectFoodList();
 		return fList;
+	}
+
+	public ArrayList<MenuDto> getSelectFMenu(String selectFcode) {
+		ArrayList<MenuDto> selectFoodMenu = adao.selectFoodMenu(selectFcode);
+		return selectFoodMenu;
 	}
 	
 	

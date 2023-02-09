@@ -45,6 +45,12 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("/mainPage")
+	public String mainPage() {
+		return "home";
+	}
+	
+	
 	// 예매페이지 이동 
 	@RequestMapping(value="/reservePage")
 	public ModelAndView reservePage() {

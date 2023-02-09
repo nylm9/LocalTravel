@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-2 col-md-4 text-center d-none d-lg-block">
-          <a class="navbar-brand " href="${pageContext.request.contextPath }/">
+          <a class="navbar-brand " href="${pageContext.request.contextPath }/mainPage">
            <img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image"
            style="width:40px; height:40px;">
           </a>
@@ -13,7 +13,7 @@
 
       <div class="col-lg-8 col-md-12">
         <nav class="navbar navbar-expand-lg navigation-2 navigation">
-          <a class="navbar-brand text-uppercase d-lg-none" href="${pageContext.request.contextPath }/">
+          <a class="navbar-brand text-uppercase d-lg-none" href="${pageContext.request.contextPath }/mainPage">
             <img src="${pageContext.request.contextPath }/resources/images/logo.png" alt="" class="img-fluid">
           </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
