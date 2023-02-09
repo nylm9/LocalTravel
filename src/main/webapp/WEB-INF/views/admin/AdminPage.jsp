@@ -208,7 +208,7 @@ select::-ms-expand {
 
 							<div class="col-md-6">
 								<label for="inputEexplain" class="form-label">놀거리
-									테마코드(5글자)</label> <input type="text" name="eexplain"
+									테마코드(5글자)</label> <input type="text" name="ethcode"
 									class="form-control" id="inputEexplain">
 							</div>
 

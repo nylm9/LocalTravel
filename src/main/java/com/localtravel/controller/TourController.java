@@ -156,4 +156,14 @@ public class TourController {
 		String fdwriteResult = toursvc.fdreviewWrite_svc(fdreview);
 		return fdwriteResult;
 	}
+	
+	@RequestMapping(value="/getEnjoyResult")
+	public @ResponseBody String getEnjoyResult(String selEnjoyTag) {
+		System.out.println("selEnjoyTag : " + selEnjoyTag);
+		// 파라미터 값이 input태그의 값인데, 지금은 family와 같은 영어로 되어있음.
+		// 이를 테마코드로 변경하면 됨.
+		return null;
+	}
+	
+	
 }
