@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.localtravel.dao.TourDao;
+import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodReviewDto;
 import com.localtravel.dto.ReviewDto;
 
@@ -36,6 +37,13 @@ public class TourService {
 			System.out.println("관람평등록처리예외");
 		}
 		return fdreviewResult+"";
+	}
+
+	public EnjoyDto enjoyInfo_svc(String encode) {
+		System.out.println("Toursevice - 메인페이지 놀거리상세보기 ");
+		EnjoyDto enjoyresult = tourdao.enjoyInfodao(encode);
+		
+		return enjoyresult;
 	}
 
 }

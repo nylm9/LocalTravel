@@ -46,15 +46,17 @@
 	            <div class="slider-item">
 	               <div class="slider-item-content">
 						<div class="post-thumb mb-4">
-							<a href="blog-single.html">
-								<img src="${pageContext.request.contextPath }/resources/images/slider/slider1.jpg" alt="" class="img-fluid">
+							<a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E001"> <!-- 번호를 하나씩 컨트롤러로 보내고 -->
+								<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/롯데월드 봄.jfif" alt="" 
+								 class="img-fluid" style="width:680px;height:650px;">
 							</a>
 						</div>
 
 						<div class="slider-post-content">
-							<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">패키지 1</span>
-							<h3 class="post-title mt-1"><a href="blog-single.html">멘트</a></h3>
-							<span class=" text-muted  text-capitalize">날짜, 여행경로</span>
+						<!-- 하나씩 일일이 적기 -->
+							<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">롯데월드 어드벤처</span>
+							<h3 class="post-title mt-1"><a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E001">환상의 나라 에버랜드로~</a></h3>
+							<span class=" text-muted  text-capitalize">서울 송파구 올림픽로 240</span>
 						</div>
 	               </div>
 	            </div>
@@ -62,14 +64,15 @@
 	            <div class="slider-item">
 	               <div class="slider-item-content">
 						<div class="post-thumb mb-4">
-							<a href="blog-single.html">
-								<img src="${pageContext.request.contextPath }/resources/images/slider/slider2.jpg" alt="" class="img-fluid">
+							<a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E007">
+								<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/f46dff9a-7235-4acf-850d-9b5e85a43ba7_해운대해수욕장.jfif"
+								 alt="" class="img-fluid" style="width:680px;height:650px;">
 							</a>
 						</div>
 						<div class="slider-post-content">
-							<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">패키지 2</span>
-							<h3 class="post-title mt-1"><a href="blog-single.html">멘트</a></h3>
-							<span class=" text-muted  text-capitalize">날짜, 여행경로</span>
+							<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">해운대 해수욕장</span>
+							<h3 class="post-title mt-1"><a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E007">주변의 뺴어난 자연경관과 어우러진</br> 전국 제일의 해수욕장</a></h3>
+							<span class=" text-muted  text-capitalize">부산 해운대구 우동</span>
 						</div>
 	               </div>
 	            </div>
@@ -77,14 +80,16 @@
 	            <div class="slider-item">
 	               <div class="slider-item-content">
 						<div class="post-thumb mb-4">
-							<a href="blog-single.html">
-								<img src="${pageContext.request.contextPath }/resources/images/slider/slider3.jpg" alt="" class="img-fluid">
+							<a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E009">
+								<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/대구이월드.jfif"
+								 alt="" class="img-fluid"style="width:680px;height:650px;">
 							</a>
 						</div>
 						<div class="slider-post-content">
-							<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">패키지 3</span>
-							<h3 class="post-title mt-1"><a href="blog-single.html">멘트</a></h3>
-							<span class=" text-muted  text-capitalize">날짜, 여행경로</span>
+							<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing"
+							>이월드</span>
+							<h3 class="post-title mt-1"><a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E009">Where Dreams come true</br>벚꽃이 이쁜 이월드</a></h3>
+							<span class=" text-muted  text-capitalize">대구 달서구 두류공원로 200 이월드</span>
 						</div>
 	               </div>
 	            </div>
@@ -92,38 +97,57 @@
 	            <div class="slider-item">
 	               <div class="slider-item-content">
 						<div class="post-thumb mb-4">
-							<a href="blog-single.html">
-								<img src="${pageContext.request.contextPath }/resources/images/slider/slider2.jpg" alt="" class="img-fluid">
+							<a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E014">
+								<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/보문정.jpg"
+								 alt="" class="img-fluid"style="width:680px;height:650px;">
 							</a>
 						</div>
-
 						<div class="slider-post-content">
-							<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">패키지 4</span>
-							<h3 class="post-title mt-1"><a href="blog-single.html">멘트</a></h3>
-							<span class=" text-muted  text-capitalize">날짜, 여행경로</span>
+							<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing"
+							>보문정</span>
+							<h3 class="post-title mt-1"><a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E014">어느 계절 하나 빼놓지 않고 
+							</br>풍경을 감상해야 할 곳</a></h3>
+							<span class=" text-muted  text-capitalize">경북 경주시 신평동</span>
 						</div>
 	               </div>
 	            </div>
 
-	            <div class="slider-item">
+	             <div class="slider-item">
 	               <div class="slider-item-content">
 						<div class="post-thumb mb-4">
-							<a href="blog-single.html">
-								<img src="${pageContext.request.contextPath }/resources/images/slider/slider3.jpg" alt="" class="img-fluid">
+							<a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E013">
+								<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/반곡역.jpg"
+								 alt="" class="img-fluid"style="width:680px;height:650px;">
 							</a>
 						</div>
-			
 						<div class="slider-post-content">
-							<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">패키지 5</span>
-							<h3 class="post-title mt-1"><a href="blog-single.html">멘트</a></h3>
-							<span class=" text-muted  text-capitalize">날짜, 여행경로</span>
+							<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing"
+							>반곡역(간이역)</span>
+							<h3 class="post-title mt-1"><a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E013">주변풍경이 아름답고 자연과 어우러져 </br>경치 좋은 곳</a></h3>
+							<span class=" text-muted  text-capitalize">강원 원주시 달마중3길 30</span>
 						</div>
 	               </div>
 	            </div>
+	             <div class="slider-item">
+	               <div class="slider-item-content">
+						<div class="post-thumb mb-4">
+							<a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E012">
+								<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/여의도 윤중로 벛꽃길.jfif"
+								 alt="" class="img-fluid"style="width:680px;height:650px;">
+							</a>
+						</div>
+						<div class="slider-post-content">
+							<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing"
+							>여의도 윤중로 벚꽃길</span>
+							<h3 class="post-title mt-1"><a href="${pageContext.request.contextPath }/enjoyInfo?ecode=E012">해마다 4월이 되면 벚꽃이 흐드러지는 곳</a></h3>
+							<span class=" text-muted  text-capitalize">서울 영등포구 여의도동</span>
+						</div>
+	               </div>
+	            </div> 
+	             
+	             
             </div>
-	             <a class="btn btn-sm btn-danger"  href="${pageContext.request.contextPath }/playInfo">
-             		 <span>놀거리리뷰</span>
-            	 </a>
+	             
 		</div>
 	</div>
 </section>

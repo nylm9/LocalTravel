@@ -148,10 +148,10 @@ public class MemberController {
 		return mav;
 	}
 	@RequestMapping(value = "/memberModify")
-	public ModelAndView boardModify(String loginId) {
+	public ModelAndView  boardModify(MemberDto memberDto,RedirectAttributes ra) {
 		System.out.println("회원정보수정 요청");
 		ModelAndView mav = new ModelAndView();
-		loginId = (String)session.getAttribute("loginId");
+		String loginId = (String)session.getAttribute("loginId");
 		System.out.println(loginId);
 //		int modifyResult = memsvc.boardModify(memBoard);
 //		if(modifyResult > 0) {
@@ -161,7 +161,18 @@ public class MemberController {
 //			ra.addFlashAttribute("Msg","회원정보 수정에 실패했습니다.");
 //			mav.setViewName("redirect:/memberModify"); 
 //		}
-		MemberDto modifyInfo  = memsvc.boardModify(loginId);
+		int modifyInfo  = memsvc.boardModify(memberDto);
+		System.out.println(modifyInfo);
+		if(modifyInfo > 0) {
+			System.out.println("회원정보수정 성공");
+			ra.addFlashAttribute("Msg", "회원정보수정 성공하였습니다.");
+			mav.setViewName("redirect:/myPage");
+		} else {
+			System.out.println("회원정보수정 실패");
+			ra.addFlashAttribute("Msg", "회원정보수정 실패하였습니다.");
+			mav.setViewName("redirect:/myPage");
+			
+		}
 		return mav;
 	}
 	
