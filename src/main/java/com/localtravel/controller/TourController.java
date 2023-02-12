@@ -156,4 +156,22 @@ public class TourController {
 		String fdwriteResult = toursvc.fdreviewWrite_svc(fdreview);
 		return fdwriteResult;
 	}
+	
+	
+	
+	@RequestMapping(value = "/enjoyInfo")
+	public ModelAndView enjoyInfo(String ecode) {
+		System.out.println("메인페이지에서 놀거리상세보기로 넘기기");
+		//		String ecode = "E001";
+		System.out.println("놀거리코드:"+ecode);
+		ModelAndView mav = new ModelAndView();
+
+		//놀거리상세정보조회
+		EnjoyDto enInfo = toursvc.enjoyInfo_svc(ecode);
+		mav.addObject("enInfo",enInfo);
+
+		mav.setViewName("Play/playInfo");
+		return mav;
+	}
+
 }

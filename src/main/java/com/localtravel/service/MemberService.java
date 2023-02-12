@@ -67,9 +67,9 @@ public class MemberService {
 		
 	}
 
-	public MemberDto boardModify(String loginId) {
+	public int boardModify(MemberDto memberDto) {
 		System.out.println("MemberService - 마이페이지 회원정보수정");
-		MemberDto updateResult =memdao.updateBoard(loginId);
+		int updateResult =memdao.updateBoard(memberDto);
 //		try {
 //			updateResult = memdao.updateBoard(loginId);
 //		}catch(Exception e) {

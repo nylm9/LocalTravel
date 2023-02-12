@@ -15,7 +15,9 @@
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
 
-
+<script
+	src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
+	
  <!-- theme meta -->
     <meta name="theme-name" content="revolve" />
 
@@ -118,10 +120,12 @@ function change_btn(e) {
 </script> -->
 
 <!-- 버튼 눌렷을때 색 바뀌는 이벤트 -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
-function change_btn(e) {
-	e.classList.toggle("active");
+/* function change_btn(e) {
+	e.classList.toggle("active"); */
+	
+	
   //var btns = document.querySelectorAll(".button");
   //btns.forEach(function (btn, i) {
 /*     if (e.currentTarget == btn) {
@@ -135,19 +139,33 @@ function change_btn(e) {
 
 
 </script>
-<!-- 버튼 하나만 눌리게 하는 이벤트 -->
+버튼 하나만 눌리게 하는 이벤트
 <script type="text/javascript">
-function change_btn(selectedBtn) {
-  const buttons = document.querySelectorAll('.button');
-  buttons.forEach(button => {
-    if (button === selectedBtn) {
-      button.classList.add('active');
-    } else {
-      button.classList.remove('active');
-    }
-  });
+function change_btn(selectedBtn, group) {
+	 const buttons = document.querySelectorAll(`.button[data-group="${group}"]`);
+	  buttons.forEach(button => {
+	    if (button === selectedBtn) {
+	      button.classList.add('active');
+	    } else {
+	      button.classList.remove('active');
+	    }
+	  });
+	}
 }
-</script>
+
+<script type="text/javascript">
+function change_btn(selectedBtn, group) {
+	 const buttons = document.querySelectorAll(`.button[data-group="${group}"]`);
+	  buttons.forEach(button => {
+	    if (button === selectedBtn) {
+	      button.classList.add('active');
+	    } else {
+	      button.classList.remove('active');
+	    }
+	  });
+}
+</script> -->
+
 </head>
 <body>
 
@@ -161,31 +179,67 @@ function change_btn(selectedBtn) {
 	
 			<div class="card" style=" margin-left:680px; margin-top:40px;">
 				<div class="card-body" >
-				<div class="e" id="moving-text">
-				<h5>인원</h5>
-					<button  class="button"  onclick="change_btn(this)">가족과함께</button>
-					<button  class="button"  onclick="change_btn(this)">혼자</button>
-					<button  class="button"  onclick="change_btn(this)">데이트</button>
-					<button  class="button"  onclick="change_btn(this)">우정</button>
+				<div class="e" >
+				<h5>함께</h5>
+<!-- 				<button  class="button"  onclick="change_btn(this, 'person')">가족과함께</button>
+					<button  class="button"  onclick="change_btn(this, 'person')">혼자</button>
+					<button  class="button"  onclick="change_btn(this, 'person')">데이트</button>
+					<button  class="button"  onclick="change_btn(this, 'person')">우정</button> -->
+					
+					<label class="button" onclick="clickPerson(this)" for="">#가족과
+ 						 <input class="d-none" type="radio" value="family" id="selFamily" >
+					</label>
+					<label class="button" onclick="clickPerson(this)" for="">#혼자
+						<input class="d-none" type="radio" value="alone"  id="alone">
+					</label>
+					<label class="button" onclick="clickPerson(this)" for="">#데이트
+						<input class="d-none" type="radio" value="date"  id="date">
+					</label>
+					<label class="button" onclick="clickPerson(this)" for="">#우정
+						<input class="d-none" type="radio" value="friend"  id="friend">
+					</label>
+					
 				</div>
 				
-				<div class="e" id="moving-text" style="margin-top:5px;">	
+				<div class="e"  style="margin-top:5px;">	
 				<h5>계절</h5>		
-				<button class="button"  onclick="change_btn(this)">봄</button>
-				<button class="button"  onclick="change_btn(this)">여름</button>
-				<button class="button"  onclick="change_btn(this)">가을</button>
-				<button class="button"  onclick="change_btn(this)">겨울</button>
+				<label class="button" onclick="clickPerson(this)" for="">#봄
+					<input class="d-none" type="radio" value="spring"  id="selSpring">
+				</label>
+				<label class="button" onclick="clickPerson(this)" for="">#여름
+					<input class="d-none" type="radio" value="summer"  id="selSummer">
+				</label>
+				<label class="button" onclick="clickPerson(this)" for="">#가을
+					<input class="d-none" type="radio" value="fall"  id="selFall">
+				</label>
+				<label class="button" onclick="clickPerson(this)" for="">#겨울
+					<input class="d-none" type="radio" value="winter"  id="selWinter">
+				</label>
 				</div>
 				
-				<div class="e" id="moving-text" style="margin-top:5px;">	
-				<h5>무엇을?</h5>
-				<button  class="button"  onclick="change_btn(this)">사진명소</button>
-				<button  class="button"  onclick="change_btn(this)"">익스트림</button>
-				<button  class="button"  onclick="change_btn(this)">힐링</button>
-				<button  class="button"  onclick="change_btn(this)">자연</button>
-				<button  class="button"  onclick="change_btn(this)">체험</button>
-				<button  class="button"  onclick="change_btn(this)">문화</button>
-				<button  class="button"  onclick="change_btn(this)">상점</button>
+				<div class="e"  style="margin-top:5px;">	
+				<h5>공간</h5>
+				<label class="button" onclick="clickPerson(this)" for="">#사진명소
+					<input class="d-none" type="radio" value="takePicture"  id="selPicture">
+				</label>
+				<label class="button" onclick="clickPerson(this)" for="">#익스트림
+					<input class="d-none" type="radio" value="extreme"  id="selExtreme">
+				</label>
+				<label class="button" onclick="clickPerson(this)" for="">#힐링
+					<input class="d-none" type="radio" value="hilling"  id="selHilling">
+				</label>
+				<label class="button" onclick="clickPerson(this)" for="">#자연
+					<input class="d-none" type="radio" value="natural"  id="selNatural">
+				</label>
+				<label class="button" onclick="clickPerson(this)" for="">#체험
+					<input class="d-none" type="radio" value="experience"  id="selPicture">
+				</label>
+				<label class="button" onclick="clickPerson(this)" for="">#문화
+					<input class="d-none" type="radio" value="culture"  id="selCulure">
+				</label>
+				<label class="button" onclick="clickPerson(this)" for="">#상점
+					<input class="d-none" type="radio" value="shop"  id="selShop">
+				</label>
 				</div>
 				
 				</div>
@@ -274,6 +328,64 @@ function change_btn(selectedBtn) {
 
 
 </body>
+
+<script type="text/javascript">
+
+	
+
+function clickPerson(selBtn) {
+  // 기존에 선택된 버튼의 색을 원래대로 되돌림
+  const selectedButton = document.querySelector('.active');
+  if (selectedButton) {
+    selectedButton.classList.remove('active');
+  } 
+
+  // 선택한 버튼의 색을 변경
+  selBtn.classList.add('active');
+  clickAjax(selBtn);
+} 
+
+function clickAjax(selBtn) {
+	
+  // selectedLabel.querySelector('input') 로 input 태그를 찾을 수 있음.
+  const input = selBtn.querySelector('input');
+  const selectEnjoyTag = input.value;
+  if (input) {
+    console.log(input.value); // "family"
+  } else {
+    console.error('input 태그를 찾을 수 없습니다.');
+  }
+  
+		$.ajax({
+				type : "get",
+				url : "${pageContext.request.contextPath }/getEnjoyResult",
+				data : { "selEnjoyTag" : selectEnjoyTag },
+				dataType : "json",
+				async:false,
+				success: function(enjoyList) {
+					console.log(enjoyList)
+					var output = "";
+					for(var enjoyInfo of enjoyList){
+						if(enjoyInfo.length == 0){
+							console.log("검색결과 없음");
+						} else {
+							console.log("검색결과 있음")
+							//output += "<span style=\"cursor: pointer;\" onclick=\"select(this);\">"+"\""+foodinfo.fcode+"\""+""+"\""+foodinfo.fname+"\""+""+"\""+foodinfo.faddr+"\""+"</span> <br/><hr>";
+						}
+					}
+	 				$("#foodListArea").html(output);
+					/* $("#selectMovie").focus();
+					$("#selectMovie").click();  */
+			}
+	});
+
+
+	}
+  
+
+
+</script>
+
 
 
 

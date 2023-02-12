@@ -201,9 +201,17 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/MenuDataPopOpen")
-	public String MenuDataPopOpen() {
-		return "admin/menuDataPop";
+	public ModelAndView ModelAndView(String selectFcode) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("MenuDataPopUp_Menu목록 조회");
+		ArrayList<MenuDto> selectFmenu = adsvc.getSelectFMenu(selectFcode);
+		System.out.println(selectFmenu);
+		mav.addObject("selectFmenu",selectFmenu);
+		mav.setViewName("admin/menuDataPop");
+		return mav;
 	}
+	
+	
 	
 	
 	

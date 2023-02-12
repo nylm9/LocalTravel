@@ -41,15 +41,17 @@ public interface AdminDao {
 	ArrayList<FoodDto> selectAllFoodList(String inputval);
 
 	
-	  @Insert("INSERT INTO MENU(MENUFCODE,MENUNAME1,MENUPRICE1,MENUEXPLAIN1, " +
-			  	"MENUNAME2,MENUPRICE2,MENUEXPLAIN2,MENUNAME3,MENUPRICE3,MENUEXPLAIN3,MENUTHCODE) "
-			  	+ "VALUES( #{menufcode}, #{menuname1}, #{menuprice1}, #{menuexplain1}, "
-			  	+ "#{menuname2}, #{menuprice2}, #{menuexplain2}, #{menuname3}, #{menuprice3}, #{menuexplain3}, "
+	  @Insert("INSERT INTO MENU(MENUFCODE,MPICTURE1,MENUNAME1,MENUPRICE1,MENUEXPLAIN1, " +
+			  	"MPICTURE2,MENUNAME2,MENUPRICE2,MENUEXPLAIN2,MPICTURE3,MENUNAME3,MENUPRICE3,MENUEXPLAIN3,MENUTHCODE) "
+			  	+ "VALUES( #{menufcode}, #{mpicture1},#{menuname1}, #{menuprice1}, #{menuexplain1}, "
+			  	+ "#{mpicture2},#{menuname2}, #{menuprice2}, #{menuexplain2}, #{mpicture3},#{menuname3}, #{menuprice3}, #{menuexplain3}, "
 			  	+ "#{menuthcode} )")
-	 
 	int insertMdata(MenuDto menu);
 
 	 @Select("SELECT * FROM FOOD")
 	ArrayList<FoodDto> selectFoodList();
+
+	@Select("SELECT * FROM MENU WHERE MENUFCODE = #{selectFcode}")
+	ArrayList<MenuDto> selectFoodMenu(String selectFcode);
 
 }

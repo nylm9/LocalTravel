@@ -126,13 +126,13 @@ img {
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${foodList }" var="foodList">
+				<c:forEach items="${foodList }" var="foodList"  >
 					<tr>
 						<td><img src="${pageContext.request.contextPath }/resources/FoodPicture/${foodList.fpicture }"></td>
 						<td>${foodList.fcode }</td>
 						<td>${foodList.fname }</td>
 						<td>${foodList.faddr }</td>
-						<td><input type="button" value="메뉴보기" onclick="openChild()"></td>
+						<td><input type="button" value="메뉴보기" onclick="openChild('${foodList.fcode }')"></td>
 						<td><input type="hidden" id="pInput" value="${foodList.fcode }"></td>
 					</tr>
 				</c:forEach>
@@ -157,13 +157,12 @@ img {
 	
 let openWin;
 
-function openChild() {
+function openChild(selectFcode) {
     // window.name = "부모창 이름"; 
     window.name = "parentForm";
-    
-    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-    openWin = window.open("MenuDataPopOpen", "a", "width=800, height=500, left=100, top=50");
-    setChildText();
+    //let selectFcode = document.getElementById("pInput").value;
+    openWin = window.open("MenuDataPopOpen?selectFcode="+selectFcode, "a", "width=800, height=500, left=100, top=50");
+   /*  setChildText(); */
 }
 
 function setChildText(){

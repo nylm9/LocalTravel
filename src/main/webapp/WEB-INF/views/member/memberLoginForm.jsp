@@ -61,7 +61,7 @@
 							</div>
 
 							<form class="row g-3" action="${pageContext.request.contextPath }/memberLogin" 
-							                      method="post" >
+							                      method="post" onsubmit="return joinFormCheck(this)" >
 
 								<div class="col-md-12">
 									<label for="inputMid" class="form-label">아이디</label>
@@ -111,5 +111,20 @@
     	if(Msg.length > 0 ){
     		alert(Msg);
     	}
+    	function joinFormCheck(joinForm){
+			var formMid = joinForm.mid;
+			if(formMid.value == 0){
+				alert('아이디를 입력 해주세요!');
+				formMid.focus();
+				return false;
+			}
+			var formMpw = joinForm.mpw;
+			if(formMpw.value == 0){
+				alert('비밀번호를 입력 해주세요!');
+				formMpw.focus();
+				return false;
+			}
+			
+		}
     </script>
 </html>

@@ -47,7 +47,7 @@
 		<section class="section"  style="margin-top: 40px;">
 			<div class="row mx-auto" style="max-width:1200px;min-width:700px;">
 			    
-			    <form onsubmit="return modifyForm(this)" action="${pageContext.request.contextPath }/memberModify">
+			    <form onsubmit="return modifyFormCheck(modifyForm)" action="${pageContext.request.contextPath }/memberModify">
 			<%-- 	<c:forEach items="${memInfo }" var="memInfo"> --%>
 				
 				<div class="col-12">
@@ -65,8 +65,8 @@
 							> --%>
 							
 							<div class="col-md-6">
-								<label class="form-label">아이디</label> 
-									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
+								<label class="form-label" style="flaot:left">아이디 </label><p style="color:red; font-size:1px; float:right">아이디는 수정불가능합니다.</p>
+									<div>
 										<input type="text" name="mid" class="form-control" id="inputMid"
 									 value="${memInfo.mid }" readonly>
 										
@@ -83,13 +83,14 @@
 							<div class="col-md-6">
 								<label class="form-label">생년월일</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
-									<input type="text" name="mbirth" class="form-control" id="inputMid"
+									<input type="text" name="mbirth" class="form-control" id="inputDate"
 									 value="${memInfo.mbirth }">
 									</div>
 							</div>
 							<div class="col-md-6">
 								<label class="form-label">성별</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
+									
 											<%-- <c:choose>
 											<c:when test="${memInfo.MGENDER == '1' }">
 												<p style="font-size:20px; padding-left:10px;  padding-top:10px;">남자</p>
@@ -115,6 +116,7 @@
 									<option value="0">선택하지 않음</option>
 
 								</select>
+								
 									</div>
 										
 
@@ -153,12 +155,14 @@
 				</div>
 			
 		</section>
-			<script type="text/javascript">
+<script type="text/javascript">
 /* 	function writeReview(loginId,mname){
 		window.open('${pageContext.request.contextPath }/memberModifyPage?loginId='+loginId+"&mname="+mname,'memberModify',"width=750,heigh=400, top=100, left=500");
 	}
  */
-	function modifyForm(formObj){
+
+	
+/* 	 function modifyForm(formObj){
 		var mid = formObj.mid.value;
 		var mname =formObj.mname.value;
 		var mbirth = formObj.mbirth.value;
@@ -189,7 +193,28 @@
 //		window.opener.location.reload();
 		window.close();
 		return false;
+	} 
+  */
+  var Msg = '${Msg}';
+	if(Msg.length > 0 ){
+		alert(Msg);
 	}
+
+  function modifyFormCheck(modifyForm){
+	   var modifyForm = modifyForm.mgender;
+	   if(modifyForm.value == 0){
+	      alert('성별을 눌러주세요!');
+	      modifyForm.focus();
+	      return false;
+	   }
+	}
+
+		
+		
+	}
+ 
 	</script> 
+	<script
+   src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
 </body>
 </html>
