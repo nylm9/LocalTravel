@@ -245,7 +245,7 @@ thead {
 						</table>
 						<hr>
 						<!-- 열차 스케쥴 정보를 담는 부분 -->
-						<div style="overflow: scroll; height: 300px" id="scheduleListArea">
+						<div style="overflow: scroll; height: 350px" id="scheduleListArea">
 							<div class="card">
 								<div class="card-body" style="padding: 5px;">
 									<table class="cleanTable">
@@ -309,6 +309,7 @@ thead {
 	<script type="text/javascript">
 	// 출발역 누를 경우 1, 아닌 경우 0  - 초기화 기능
 	var DepStaionBtnAct = 0;
+	var ArrStaionBtnAct = 0;
 	
 	// 역 정보 저장 기능
 	var DepStationid= "";
@@ -322,6 +323,14 @@ thead {
 	// 1.1. 출발 :: 지역 선택 -> 역 출력 
 	function DepLoctaionSelect(Btn, citycode){
 		console.log(citycode);
+		if(ArrStaionBtnAct == 1){
+			var result = confirm("출발역을 기준으로 출발역을 고르시겠습니까?");
+			if(result){
+			    location.href="${pageContext.request.contextPath }/reservePage";
+			}else{
+			    return false;
+			}
+		}
 		var cityCode = citycode;
 		//역 목록을 감싸는 DIV 
 		var sl = document.getElementById("stationList"+cityCode);
@@ -417,7 +426,7 @@ thead {
 		$('#ArrStaDisplay').html(nodename+"역");
 		$('#scDateListArea').removeClass("d-none");
 		ArrStationname = nodename;
-		console.log('출발역 : '+DepStationid+", 도착역 : "+ArrStationid)
+		console.log('출발역 : '+DepStationid+", 도착역 : "+ArrStationid);
 	}
 	
 	// 2.1. 도착역 선택 기준 :: 도착역을 선택하기 
@@ -466,17 +475,83 @@ thead {
 			}
 		});
 	}
-	// 도착역 기준 :: 도착역을 선택하기
-	function AtoDStationSelect(Btn, nodeid, nodename){
-		
+	
+	
+	
+	
+	// 2.2 도착역 기준 :: 도착역을 선택하기
+	function AtoDStationSelect(btn, nodeid, nodename){
+		ArrStaionBtnAct = 1;
+		console.log('ArrStaionBtnAct : '+ArrStaionBtnAct+' - 도착역 선택')
+		ArrStationname = nodename;
+		console.log('도착역 아이디 저장 : '+ArrStationid);
+		console.log(btn);
+		console.log(nodeid);
+		$('.stationBtn').removeClass('stationBtnAct');
+		$(btn).addClass('stationBtnAct');
+		$('#ArrStaDisplay').html(nodename+"역");
+		$.ajax({
+			type: "get",
+			url: "${pageContext.request.contextPath }/ArrStationSelect",
+			data: {
+				"nodename" : nodename
+			},
+			dataType: "json",
+			async : false,
+			success: function(arrStaList){
+				for(var i =0; i < 40; i++){
+					$("#stationList"+i).addClass('d-none');
+					$('#DepLoctaion'+i).removeClass('LocationSelcetAct');
+				}
+				var DepStaouput = "";
+				var ccode = "";
+				for(j = 11; j < 39; j++){
+					ccode = j+"";
+					$('#DepLoctaion'+ccode).addClass('LocationSelcetInact');
+					for(i = 0; i < arrStaList.length; i++){
+						if(ccode === arrStaList[i].citycode){
+							//console.log(arrStaList[i].nodename);
+							DepStaouput += "<div class='stationBtn' id='AtoDstaBtn"+i+"' onclick='DepStationSelected(this, "+"\""+arrStaList[i].nodeid+"\","+"\""+arrStaList[i].nodename+"\")'>";
+							DepStaouput += arrStaList[i].nodename+"역";
+							DepStaouput += "</div>";
+							$('#DepLoctaion'+ccode).addClass('LocationSelcetAct');
+							$('#DepLoctaion'+ccode).removeClass('LocationSelcetInact');
+							$("#stationList"+ccode).removeClass('d-none');
+						} 
+					}
+					$('#stationView'+ccode).html(DepStaouput);
+					DepStaouput = "";
+				}
+			}				
+		});
 	}
-	
-	
+	// 2.3. 도착역 선택 기준 :: 출발역을 선택하기 
+	function DepStationSelected(Btn, nodeid, nodename) {
+		// 출발역을 먼저 누른경우 
+		console.log(nodename);
+		for(var i =0; i < 100; i++){
+			$('#AtoDstaBtn'+i).removeClass('LocationSelcetAct');
+		}
+		$(Btn).addClass("LocationSelcetAct");
+		$('#DepStaDisplay').html(nodename+"역");
+		$('#scDateListArea').removeClass("d-none");
+		DepStationname = nodename;
+		console.log('출발역 : '+DepStationid+", 도착역 : "+ArrStationid)
+	}
 	
 	// 3.1 날짜를 선택 후 열차조회 버튼 입력
 	function serchTrainInfoBtn(){
 		TrainTime = $('#InputDate').val();
 		console.log(TrainTime);
+		// 오늘 기준 전날 열차 정보 조회 불가능
+		var today = new Date();
+		var targetDate = new Date(TrainTime);
+		targetDate.setDate(targetDate.getDate()+1);
+		if (today > targetDate) {
+			alert('이전의 시간대는 선택하실 수 없습니다!');
+			return false;
+		}
+		
 		if(DepStationname.length == 0){
 			alert('출발역을 입력해주세요')
 			return false;
@@ -512,33 +587,43 @@ thead {
 				if(scList.length > 0){
 					for(var i = 0; i < scList.length; i++){
 						console.log(scList[i].trainno);
+						
 						var deptime = scList[i].depplandtime+'';
 						var arrtime = scList[i].arrplandtime+'';
 						var deptimeData = deptime.substr(0, 4)+"/"+deptime.substr(4, 2)+"/"+deptime.substr(6, 2)+" "+deptime.substr(8, 2)+":"+deptime.substr(10, 2)+":00";
-						console.log(deptimeData);
 						var arrtimeData = arrtime.substr(0, 4)+"/"+arrtime.substr(4, 2)+"/"+arrtime.substr(6, 2)+" "+arrtime.substr(8, 2)+":"+arrtime.substr(10, 2)+":00";
-						console.log(arrtimeData);
-						deptime = deptime.substr(8, 2)+":"+deptime.substr(10, 2);
-						arrtime = arrtime.substr(8, 2)+":"+arrtime.substr(10, 2);
 						
+						// 현재시간 기준 출발 열차 지정
+						var now = new Date();
+						var deptimeCheck = new Date(deptimeData);
+						console.log(deptimeCheck);
+						if (deptimeCheck < now){
+							continue;
+						}
+						// 열차 출/도착시간 지정
+						var ScDeptime = deptime.substr(8, 2)+":"+deptime.substr(10, 2);
+						var ScArrtime = arrtime.substr(8, 2)+":"+arrtime.substr(10, 2);
 						
-						const dateA = new Date(arrtimeData+'');
-						const dateB = new Date(deptimeData+'');
-						const diffMSec = dateA.getTime() - dateB.getTime();
-						const diffHour = diffMSec / (60 * 60 * 1000);
-						var diffhour = Math.abs(Math.round(diffHour));
-						var diffMin =  Math.abs((diffMSec / (60 * 1000)) - 120);
-						//if(diffMin >= 60){
-						//	diffMin = diffMin - 60;
-						//}
-						diffMin = diffMin.toString().padStart(2, '0');
+						//열차 소요시간 계산
+						var date = new Date(deptimeData);
+						var hour = arrtime.substr(8, 2) - deptime.substr(8, 2);
+						if(hour < 0){
+							hour = 24 - Math.abs(hour);
+						}
+						var min = arrtime.substr(10, 2) - deptime.substr(10, 2);
+						if(min < 0){
+							min = 60 - Math.abs(min);
+							hour = hour - 1;
+						}
+						min = min.toString().padStart(2, '0');
+						console.log("소요 시간 : "+ hour + ":" + min);
+						var timeRequired = hour + ":" + min;
 						
-						var timeRequired = diffhour + ":" + diffMin;
 						// 스케줄 선택 버튼 입력부분
 						output +='<div class="card" style="margin-bottom: 3px;">';
 						output +='<div class="card-body" style="padding: 5px;">';
 						output +='<table class="cleanTable">';
-						output +='	<tr class="cleanTable">';
+						output +='<tr class="cleanTable">';
 						output +='<th class="scheduleInfoTitle" >출발지</th>';
 						output +='<th class="scheduleInfoTitle" >도착지</th>';
 						output +='<th class="scheduleInfoTitle" >출발 시간</th>';
@@ -551,8 +636,8 @@ thead {
 						output +='<tr class="cleanTable">';
 						output +='<td class="scheduleInfoContent" >'+scList[i].depplacename+'</td>';
 						output +='<td class="scheduleInfoContent" >'+scList[i].arrplacename+'</td>';
-						output +='<td class="scheduleInfoContent" >'+deptime+'</td>';
-						output +='<td class="scheduleInfoContent" >'+arrtime+'</td>';
+						output +='<td class="scheduleInfoContent" >'+ScDeptime+'</td>';
+						output +='<td class="scheduleInfoContent" >'+ScArrtime+'</td>';
 						output +='<td class="scheduleInfoContent" >'+timeRequired+'</td>';
 						output +='<td class="scheduleInfoContent" >'+scList[i].trainno+'</td>';
 						output +='<td class="scheduleInfoContent" >'+scList[i].adultcharge+'원</td>';
@@ -560,9 +645,11 @@ thead {
 						output +='</table>';
 						output +='</div>';
 						output +='</div>';
+						$("#scheduleListArea").html(output);
 					}
 					
 				}
+				
 				$("#scheduleListArea").html(output);
 			}
 		});

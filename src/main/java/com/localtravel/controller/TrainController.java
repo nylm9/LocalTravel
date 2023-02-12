@@ -83,6 +83,16 @@ public class TrainController {
 		return arrStaList;
 	}
 	
+	// 도착 :: 역 선택 -> 도착역 정보 출력
+		@RequestMapping(value ="/ArrStationSelect")
+		public @ResponseBody String ArrStationSelect(String nodename) {
+			System.out.println("선택한 역 이름 : " + nodename);
+			String arrStaList = treser.getArrStationList(nodename);
+			System.err.println("도착할 역 정보 : ");
+			System.out.println(arrStaList);
+			return arrStaList;
+		}
+		
 	// 공통 :: 날짜입력후 열차스케줄 체크
 	@RequestMapping(value ="/searchTRSchedule")
 	public @ResponseBody String searchTRSchedule(TRInputScheduleDto scheduleInfo) throws Exception {
