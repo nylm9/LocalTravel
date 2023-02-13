@@ -11,6 +11,7 @@ import com.google.gson.JsonObject;
 import com.localtravel.dao.TrainDao;
 import com.localtravel.dto.TRCityCodeDto;
 import com.localtravel.dto.TRInputScheduleDto;
+import com.localtravel.dto.TRSeatDto;
 import com.localtravel.dto.TRStationDto;
 
 @Service
@@ -69,6 +70,27 @@ public class TrainReserveService {
 		
 		
 		return ScheduleList;
+	}
+	public ArrayList<TRSeatDto> seatSelect() {
+		
+		ArrayList<TRSeatDto> seatList = trdao.selectSeatInfo();
+		
+		return seatList;
+	}
+	public String getFirstSeatData() {
+		ArrayList<TRSeatDto> seatList = trdao.selectSeatInfo();
+		JsonArray jsonArray = new JsonArray();
+		Gson gson = new Gson();
+		for(int i = 0; i < seatList.size(); i++) {
+			JsonObject obj = new JsonObject();
+			obj.addProperty("car", seatList.get(i).getCar());
+			obj.addProperty("nscode", seatList.get(i).getNscode());
+			obj.addProperty("seatnum",seatList.get(i).getSeatnum());			
+			jsonArray.add(obj);
+			
+		}
+		
+		return gson.toJson(jsonArray);
 	}
 
 }

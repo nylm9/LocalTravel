@@ -1,5 +1,7 @@
 package com.localtravel.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.JsonArray;
 import com.localtravel.dto.TRInputScheduleDto;
+import com.localtravel.dto.TRSeatDto;
 import com.localtravel.service.TrainReserveService;
 import com.localtravel.service.TrainService;
 
@@ -40,6 +42,16 @@ public class TrainController {
 		
 		return null;
 	}
+	
+	// 열차 - 좌석코드 가져오기
+		@RequestMapping(value ="/getSeatInfo")
+		public ModelAndView getSeatInfo() throws Exception {
+			System.out.println("TrainController - 열차 역코드 가져오기");
+			
+			int insertReult = trsvc.getSeatInfo();
+			
+			return null;
+		}
 	
 	// 열차시간정보 가져오기 RequestData( 출발역, 도착역, YYYY-MM-DD )
 	@RequestMapping(value = "/getTrainSchedule")
@@ -101,6 +113,26 @@ public class TrainController {
 		System.out.println(scheduleList);
 		return scheduleList;
 	}
+	
+	//좌석 선택부분
+	@RequestMapping(value ="/SeatSelect")
+	public ModelAndView SeatSelect() throws Exception {
+		System.out.println("TrainController - 열차 좌석 정보 가져오기");
+		ModelAndView mav = new ModelAndView();
+		ArrayList<TRSeatDto> seatList = treser.seatSelect();
+		mav.addObject("seatList", seatList);
+		mav.setViewName("reserve/seatSelect");
+		return mav;
+	}
+	
+	// 좌석 정보 가져오기 - 처음
+		@RequestMapping(value ="/getSeatData")
+		public @ResponseBody String getSeatData() throws Exception {
+			String seatList = treser.getFirstSeatData();
+//			System.out.println(seatList);
+			return seatList;
+		}
+	
 	
 	
 	

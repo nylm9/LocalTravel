@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import com.localtravel.dto.TRCityCodeDto;
 import com.localtravel.dto.TRInputScheduleDto;
 import com.localtravel.dto.TRRouteDto;
+import com.localtravel.dto.TRSeatDto;
 import com.localtravel.dto.TRStationDto;
 
 public interface TrainDao {
@@ -62,6 +63,14 @@ public interface TrainDao {
 	// 예매부분 출발역을 누를경우 도착역이 띄워짐
 	@Select("SELECT DISTINCT * FROM TRSTATIONCODE WHERE NODENAME IN (SELECT DISTINCT ARRSTA FROM TRROUTE WHERE DEPSTA = #{nodename}) OR NODENAME IN (SELECT DISTINCT DEPSTA FROM TRROUTE WHERE ARRSTA = #{nodename})")
 	ArrayList<TRStationDto> selectArrStaion(String nodename);
+	
+	// 좌석정보 입력 부분
+	@Insert("INSERT INTO TRSEAT(CAR, NSCODE, SEATNUM) "
+			+ "VALUES(#{car}, #{nscode}, #{seatnum})")
+	void insertSeatInfo(TRSeatDto trSeatDto);
+	
+	@Select("SELECT * FROM TRSEAT WHERE CAR = '5'")
+	ArrayList<TRSeatDto> selectSeatInfo();
 
 	
 	

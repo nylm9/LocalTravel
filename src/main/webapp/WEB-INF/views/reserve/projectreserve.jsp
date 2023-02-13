@@ -170,6 +170,19 @@ thead {
 	border: 0px solid white;
 	padding: 2px;
 }
+.textleft{
+	text-align: left;
+}
+.ReserveTitle{
+	font-size: small; padding: 3px;
+}
+.ReserveTitle2{
+	font-size: large; padding: 3px;
+}
+.ReserveContent{
+	padding: 3px; font-size: x-large;
+	padding-bottom: 10px;
+}
 </style>
 
 
@@ -284,11 +297,48 @@ thead {
 				<div class="card">
 					<div class="card-body p-3">
 						<div class="row">
-							<div class="col-6">
+							<div class="col-8">
+								<table style="text-align: left;">
+									<tr>
+										<th class="ReserveTitle" colspan="5" id="ReserveDateDisplay">디</th>
+									</tr>
+									<tr>
+										<th class="textleft ReserveTitle" style="width: 200px;">출발역</th>
+										<th class="textleft ReserveTitle" style="width: 200px;">도착역</th>	
+										<th class="textleft ReserveTitle" style="width: 180px;">열차번호</th>	
+										<th class="textleft ReserveTitle" style="width: 110px;">호차번호</th>	
+										<th class="textleft ReserveTitle" style="width: 110px;">좌석번호</th>	
+									</tr>
+									<tr>
+										<td class="textleft ReserveContent" id="DepStaDisplay" style="">00역</td>
+										<td class="textleft ReserveContent" id="ArrStaDisplay" style="">00역</td>
+										<td class="textleft ReserveContent" style="">KTX 0</td>
+										<td class="textleft ReserveContent" style="">0호차</td>
+										<td class="textleft ReserveContent" style="">00A</td>
+										
+									</tr>
+									<tr>
+										<th class="textleft ReserveTitle" style="">출발시간</th>
+										<th class="textleft ReserveTitle" style="">도착시간</th>
+										<th class="textleft ReserveTitle" style="">탑승인원</th>
+										<th class="textleft ReserveTitle"  style="">총결제금액</th>
+										
+										
+									</tr>
+									<tr>
+										<td class="textleft ReserveContent" style="">00:00</td>
+										<td class="textleft ReserveContent" style="">02:00</td>
+										<td class="textleft ReserveContent" style="">어른 0명</td>
+										<td class="textleft ReserveContent" colspan="2" style="">0원</td>
+									</tr>
+								</table>
+							
+							<!-- 
 								<h3 style="float: left;">출발</h3>
 								<p style="float: left;" id="DepStaDisplay"></p>
 								<p style="float: right;" id="ArrStaDisplay"></p>
 								<h3 style="float: right;">도착</h3>
+							 -->
 							</div>
 
 							<div class="col" style="text-align: center;">
@@ -341,7 +391,7 @@ thead {
 				"citycode" : citycode
 			},
 			dataType: "json",
-			async : false,
+			async : true,
 			success: function(scList){
 				console.log(scList);
 				output = "";
@@ -543,6 +593,8 @@ thead {
 	function serchTrainInfoBtn(){
 		TrainTime = $('#InputDate').val();
 		console.log(TrainTime);
+		$("#ReserveDateDisplay").html(TrainTime); 
+		
 		// 오늘 기준 전날 열차 정보 조회 불가능
 		var today = new Date();
 		var targetDate = new Date(TrainTime);
@@ -551,7 +603,6 @@ thead {
 			alert('이전의 시간대는 선택하실 수 없습니다!');
 			return false;
 		}
-		
 		if(DepStationname.length == 0){
 			alert('출발역을 입력해주세요')
 			return false;
@@ -655,7 +706,10 @@ thead {
 		});
 	}
 	
-	
+	// 3.2 열차 조회 -> 열차 좌석 선택 
+	function selectSchedule(){
+		window.open("${pageContext.request.contextPath }/SeatSelect", "좌석 선택창", "width=400, height=600, resizable=no");
+	}
 	
 </script>
 

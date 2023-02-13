@@ -24,6 +24,7 @@ import com.localtravel.dao.TrainDao;
 import com.localtravel.dto.TRCityCodeDto;
 import com.localtravel.dto.TRInputScheduleDto;
 import com.localtravel.dto.TRRouteDto;
+import com.localtravel.dto.TRSeatDto;
 import com.localtravel.dto.TRStationDto;
 
 @Service
@@ -31,7 +32,27 @@ public class TrainService {
 
 	@Autowired
 	TrainDao trdao;
-
+	
+	// 좌석 정보 넣기 호차, 특실여부, D, C, B, A  
+	public void inputSeatData() {
+		System.out.println("특실 정보");
+		//호차 변수
+		int carNumber = 0;
+		//특실 여부  
+		String NormalAndSpecial = "N";
+		//각 좌석 번호 부여
+		String seatCode = "D";
+		
+		for(int i = 14; i == 1; i--) {
+			System.out.println(i);
+		}
+		
+	}
+	
+	
+	
+	
+	
 	// 3. 열차 스케줄 가져오기 ( 예매시 사용할 스케쥴 기능 )
 	public String searchSchedule(TRInputScheduleDto inputSchedule) throws Exception {
 		System.out.println("Service - searchSchedule()");
@@ -435,6 +456,156 @@ public class TrainService {
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
 			}
 		}
+	}
+
+
+
+
+
+	public int getSeatInfo() {
+		System.out.println("좌석 정보 가져오기");
+		ArrayList<TRSeatDto> seatList = new ArrayList<TRSeatDto>();
+		TRSeatDto seats = new TRSeatDto(); 
+		// 호차 변수 j
+		
+		// 특실 여부
+		String NormalAndSpecial = "";
+		// 각 좌석 번호 부여 seat + i
+		String seat = "";
+		
+
+		for (int j = 0; j < 19; j++) {
+			if (j == 1 || j == 5 || j == 6 || j == 8 || j == 11 || j == 13 || j == 15 || j == 17 || j == 18) {
+				System.out.println("객차번호 : " + j);
+				System.out.println("N");
+				NormalAndSpecial = "N";
+				for (int i = 0; i < 14; i++) {
+					seats = new TRSeatDto();
+					seat = "D" + Math.abs(i - 14);
+					System.out.print(seat+" ");
+					seats.setCar(j+"");
+					seats.setNscode(NormalAndSpecial);
+					seats.setSeatnum(seat);
+					seatList.add(seats);
+				}
+				for (int i = 0; i < 14; i++) {
+					seats = new TRSeatDto();
+					seat = "C" + Math.abs(i - 14);
+					System.out.print(seat+" ");
+					seats.setCar(j+"");
+					seats.setNscode(NormalAndSpecial);
+					seats.setSeatnum(seat);
+					seatList.add(seats);
+				}
+				for (int i = 0; i < 14; i++) {
+					seats = new TRSeatDto();
+					seat = "B" + Math.abs(i - 14);
+					System.out.print(seat+" ");
+					seats.setCar(j+"");
+					seats.setNscode(NormalAndSpecial);
+					seats.setSeatnum(seat);
+					seatList.add(seats);
+				}
+				for (int i = 0; i < 14; i++) {
+					seats = new TRSeatDto();
+					seat = "A" + Math.abs(i - 14);
+					System.out.print(seat+" ");
+					seats.setCar(j+"");
+					seats.setNscode(NormalAndSpecial);
+					seats.setSeatnum(seat);
+					seatList.add(seats);
+				}
+			}
+			if(j == 2 || j == 3 || j == 4) {
+				System.out.println("객차번호 : " + j);
+				System.out.println("S");
+				NormalAndSpecial = "S";
+				for (int i = 0; i < 14; i++) {
+					seats = new TRSeatDto();
+					seat = "C" + Math.abs(i - 12);
+					seats.setCar(j+"");
+					seats.setNscode(NormalAndSpecial);
+					seats.setSeatnum(seat);
+					seatList.add(seats);
+				}
+				for (int i = 0; i < 14; i++) {
+					seats = new TRSeatDto();
+					seat = "B" + Math.abs(i - 12);
+					seats.setCar(j+"");
+					seats.setNscode(NormalAndSpecial);
+					seats.setSeatnum(seat);
+					seatList.add(seats);
+				}
+				for (int i = 0; i < 14; i++) {
+					seats = new TRSeatDto();
+					seat = "A" + Math.abs(i - 12);
+					seats.setCar(j+"");
+					seats.setNscode(NormalAndSpecial);
+					seats.setSeatnum(seat);
+					seatList.add(seats);
+				}
+			}
+			if (j == 7 || j == 9 || j == 10 || j == 12 || j == 14 || j == 16) {
+				System.out.println("객차번호 : " + j);
+				System.out.println("N");
+				NormalAndSpecial = "N";
+				for (int i = 0; i < 14; i++) {
+					seats = new TRSeatDto();
+					seat = "D" + Math.abs(i - 14);
+					seats.setCar(j+"");
+					seats.setNscode(NormalAndSpecial);
+					seats.setSeatnum(seat);
+					seatList.add(seats);	
+				}
+				for (int i = 0; i < 14; i++) {
+					seats = new TRSeatDto();
+					seat = "C" + Math.abs(i - 14);
+					seats.setCar(j+"");
+					seats.setNscode(NormalAndSpecial);
+					seats.setSeatnum(seat);
+					seatList.add(seats);
+				}
+				
+				for (int i = 0; i < 14; i++) {
+					seats = new TRSeatDto();
+					seat = "B" + Math.abs(i - 14);
+					seats.setCar(j+"");
+					seats.setNscode(NormalAndSpecial);
+					seats.setSeatnum(seat);
+					seatList.add(seats);	
+				}
+				
+				for (int i = 0; i < 14; i++) {
+					seats = new TRSeatDto();
+					seat = "A" + Math.abs(i - 14);
+					seats.setCar(j+"");
+					seats.setNscode(NormalAndSpecial);
+					seats.setSeatnum(seat);
+					seatList.add(seats);	
+				}
+				
+			}
+
+		}
+		System.out.println("총출력");
+		System.out.println(seatList);
+		String car = "";
+		String nscode = "";
+		String seatnum = "";
+		for(int i = 0; i < seatList.size(); i++) {
+			car = seatList.get(i).getCar();
+			nscode = seatList.get(i).getNscode();
+			seatnum = seatList.get(i).getSeatnum();
+			seats = new TRSeatDto();
+			seats.setCar(car);
+			seats.setNscode(nscode);
+			seats.setSeatnum(seatnum);
+			System.out.println(seats);
+			trdao.insertSeatInfo(seats);
+			
+		}
+		System.out.println("fin");
+		return 0;
 	}
 	
 }
