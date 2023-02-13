@@ -1,5 +1,7 @@
 package com.localtravel.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +46,12 @@ public class TourService {
 		EnjoyDto enjoyresult = tourdao.enjoyInfodao(encode);
 		
 		return enjoyresult;
+	}
+
+	public ArrayList<EnjoyDto> getSearchEnjoyList(String thcode) {
+		ArrayList<EnjoyDto> eList = tourdao.getEnjoySelectList(thcode);
+		System.out.println("eList : " + eList);
+		return eList;
 	}
 
 }

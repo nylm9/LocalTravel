@@ -185,61 +185,71 @@ function change_btn(selectedBtn, group) {
 					<button  class="button"  onclick="change_btn(this, 'person')">혼자</button>
 					<button  class="button"  onclick="change_btn(this, 'person')">데이트</button>
 					<button  class="button"  onclick="change_btn(this, 'person')">우정</button> -->
+					<label class="button together" onclick="clickSection(this, 'together')" for="selFamily">
+					#가족과</label>
+ 					<input class="d-none" type="radio" name="toRadio" value="01" id="selFamily" >
+ 					
+					<label class="button together" onclick="clickSection(this, 'together')" for="alone">
+					#혼자</label>
+					<input class="d-none" type="radio" name="toRadio" value="02"  id="alone">
 					
-					<label class="button" onclick="clickPerson(this)" for="">#가족과
- 						 <input class="d-none" type="radio" value="family" id="selFamily" >
-					</label>
-					<label class="button" onclick="clickPerson(this)" for="">#혼자
-						<input class="d-none" type="radio" value="alone"  id="alone">
-					</label>
-					<label class="button" onclick="clickPerson(this)" for="">#데이트
-						<input class="d-none" type="radio" value="date"  id="date">
-					</label>
-					<label class="button" onclick="clickPerson(this)" for="">#우정
-						<input class="d-none" type="radio" value="friend"  id="friend">
-					</label>
-					
+					<label class="button together" onclick="clickSection(this, 'together')" for="date">
+					#데이트</label>
+						<input class="d-none" type="radio" name="toRadio" value="03"  id="date">
+						
+					<label class="button together" onclick="clickSection(this, 'together')" for="friend">
+					#우정</label>
+						<input class="d-none" type="radio" name="toRadio" value="04"  id="friend">
 				</div>
 				
 				<div class="e"  style="margin-top:5px;">	
 				<h5>계절</h5>		
-				<label class="button" onclick="clickPerson(this)" for="">#봄
-					<input class="d-none" type="radio" value="spring"  id="selSpring">
-				</label>
-				<label class="button" onclick="clickPerson(this)" for="">#여름
-					<input class="d-none" type="radio" value="summer"  id="selSummer">
-				</label>
-				<label class="button" onclick="clickPerson(this)" for="">#가을
-					<input class="d-none" type="radio" value="fall"  id="selFall">
-				</label>
-				<label class="button" onclick="clickPerson(this)" for="">#겨울
-					<input class="d-none" type="radio" value="winter"  id="selWinter">
-				</label>
+				<label class="button season" onclick="clickSection(this, 'season')" for="selSpring">
+				#봄</label>
+					<input class="d-none" type="radio" name="seasonRadio" value="a"  id="selSpring">
+				
+				<label class="button season" onclick="clickSection(this, 'season')" for="selSummer">
+				#여름</label>
+					<input class="d-none" type="radio" name="seasonRadio" value="b"  id="selSummer">
+				
+				<label class="button season" onclick="clickSection(this, 'season')" for="selFall">
+				#가을</label>
+					<input class="d-none" type="radio" name="seasonRadio" value="c"  id="selFall">
+					
+				<label class="button season" onclick="clickSection(this, 'season')" for="selWinter">
+				#겨울</label>
+					<input class="d-none" type="radio" name="seasonRadio" value="d"  id="selWinter">
 				</div>
 				
 				<div class="e"  style="margin-top:5px;">	
 				<h5>공간</h5>
-				<label class="button" onclick="clickPerson(this)" for="">#사진명소
-					<input class="d-none" type="radio" value="takePicture"  id="selPicture">
-				</label>
-				<label class="button" onclick="clickPerson(this)" for="">#익스트림
-					<input class="d-none" type="radio" value="extreme"  id="selExtreme">
-				</label>
-				<label class="button" onclick="clickPerson(this)" for="">#힐링
-					<input class="d-none" type="radio" value="hilling"  id="selHilling">
-				</label>
-				<label class="button" onclick="clickPerson(this)" for="">#자연
-					<input class="d-none" type="radio" value="natural"  id="selNatural">
-				</label>
-				<label class="button" onclick="clickPerson(this)" for="">#체험
-					<input class="d-none" type="radio" value="experience"  id="selPicture">
-				</label>
-				<label class="button" onclick="clickPerson(this)" for="">#문화
-					<input class="d-none" type="radio" value="culture"  id="selCulure">
-				</label>
-				<label class="button" onclick="clickPerson(this)" for="">#상점
-					<input class="d-none" type="radio" value="shop"  id="selShop">
-				</label>
+				<label class="button subject" onclick="clickSection(this, 'subject')" for="selPicture">
+				#사진명소</label>
+					<input class="d-none" type="radio" name="subRadio" value="50"  id="selPicture">
+					
+				<label class="button subject" onclick="clickSection(this, 'subject')" for="selExtreme">
+				#익스트림</label>
+					<input class="d-none" type="radio" name="subRadio" value="51"  id="selExtreme">
+					
+				<label class="button subject" onclick="clickSection(this, 'subject')" for="selHilling">
+				#힐링</label>
+					<input class="d-none" type="radio" name="subRadio" value="52"  id="selHilling">
+					
+				<label class="button subject" onclick="clickSection(this, 'subject')" for="selNatural">
+				#자연</label>
+					<input class="d-none" type="radio" name="subRadio" value="53"  id="selNatural">
+					
+				<label class="button subject" onclick="clickSection(this, 'subject')" for="selPicture">
+				#체험</label>
+					<input class="d-none" type="radio" name="subRadio" value="54"  id="selPicture">
+					
+				<label class="button subject" onclick="clickSection(this, 'subject')" for="selCulure">
+				#문화</label>
+					<input class="d-none" type="radio" name="subRadio" value="55"  id="selCulure">
+					
+				<label class="button subject" onclick="clickSection(this, 'subject')" for="selShop">
+				#상점</label>
+					<input class="d-none" type="radio" name="subRadio" value="56"  id="selShop">
 				</div>
 				
 				</div>
@@ -289,33 +299,45 @@ function change_btn(selectedBtn, group) {
 
 <!-- 패키지 출력 -->
 	<section class="section">
+	
 			<div class="row mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:30px;" >
 				
-				
+			
 			<c:forEach items="${enList}" var="enjoy" varStatus="status">
-				<div class="col-3">
-					<div class="card">
-						<div class="card-body">
-							 <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
-							 <div style="height:200px;width:5px;">
-							<a href="${pageContext.request.contextPath }/playInfo?mvcode=${enjoy.ecode }">
-							<img class="img-fluid" 
-							     alt="" src="${enjoy.epicture }" >
-							</a>
-							</div>
-							
-							<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="${enjoy.ename }" >${enjoy.ename }</h6>
-							
-							<p class="small mb-1">${enjoy.eaddr }</p>
-							
+            <div class="col-3">
+               <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
+                      <div style="height:200px;width:5px;">
+                     <a href="${pageContext.request.contextPath }/playInfo?mvcode=${enjoy.ecode }">
+                     <img class="img-fluid" 
+                          alt="" src="${enjoy.epicture }" >
+                     </a>
+                     </div>
+                     
+                     <h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="${enjoy.ename }" >${enjoy.ename }</h6>
+                     
+                     <p class="small mb-1">${enjoy.eaddr }</p>
+                     <c:choose>
+                        <c:when test="${sessionScope.loginId == 'admin' }">
+                           <a class="btn-dark btn-sm btn"
+                    		 href="${pageContext.request.contextPath }/BlogWritePage?ecode=${enjoy.ecode }">블로그쓰기</a>
 							<a class="btn-dark btn-sm btn"
-							href="${pageContext.request.contextPath }/playInfo?ecode=${enjoy.ecode }">상세보기</a>
-							
-						
-						</div>
-					</div>
-				</div>
-			</c:forEach>				
+                   			  href="${pageContext.request.contextPath }/playInfo?ecode=${enjoy.ecode }">상세보기</a>
+                        </c:when>
+                        <c:otherwise>
+                     <a class="btn-dark btn-sm btn"
+                     href="${pageContext.request.contextPath }/playInfo?ecode=${enjoy.ecode }">상세보기</a>
+                        </c:otherwise>
+
+                     </c:choose>
+                     
+                  
+                  </div>
+               </div>
+            </div>
+            
+         </c:forEach>				
 						 <!--  <script type="text/javascript">
 						 	function ticketPage(selMvcode){
 						 		location.href= "${pageContext.request.contextPath }/ticketPage?selectmovie="+selMvcode;
@@ -331,35 +353,148 @@ function change_btn(selectedBtn, group) {
 
 <script type="text/javascript">
 
+	/* 
+	h5의 내용을 기준으로 버튼이 하나씩만 눌리게 만들고 싶음.
+	버튼은 총 1~3개 클릭되고, 버튼이 눌릴때마다 ajax로 select 하고싶음. (테마코드ethcode로 select) 
+	사용자가 버튼을 몇 개 누를지 모르기때문에 ajax로 data를 어떤형태로 전송해야할지 잘 모르겠음.
+	만약 1,2,3 모두 누르면 해당하는 테마코드가 완성되어 select 되게 만들고싶음.(각 주제마다 주어진 자릿수가 있음) 
+	*/
 	
-
-function clickPerson(selBtn) {
+	$(document).ready(function(){
+		$("input:radio[name=toRadio]").on("change",searchEnjoy);
+		$("input:radio[name=seasonRadio]").on("change",searchEnjoy);
+		$("input:radio[name=subRadio]").on("change",searchEnjoy);
+	})
+	
+	function searchEnjoy(){
+		console.log("searchEnjoy");
+		
+		var togetherVal = $("input:radio[name=toRadio]:checked").val(); // undefined
+		if(togetherVal == undefined){
+			togetherVal = '__';
+		}
+		console.log("함께 : "+ togetherVal );
+		
+		var seasonVal = $("input:radio[name=seasonRadio]:checked").val();
+		if(seasonVal == undefined){
+			seasonVal = '_';
+		}
+		console.log("계절 : " + seasonVal);
+		
+		var subjectVal = $("input:radio[name=subRadio]:checked").val();
+		if(subjectVal == undefined) {
+			subjectVal = "__";
+		}
+		console.log("공간 : " + subjectVal);
+		
+		var thcode = seasonVal + togetherVal + subjectVal;
+		
+		clickAjax(thcode)
+		
+		
+	}
+	
+	
+	function clickSection(clickBtn, cnm){
+		// 버튼 클릭 스크립트
+		$("."+cnm).removeClass('active');
+		$(clickBtn).addClass('active');
+		
+	}
+	
+	
+/* 
+function clickPerson1(selBtn1, cnm) {
   // 기존에 선택된 버튼의 색을 원래대로 되돌림
-  const selectedButton = document.querySelector('.active');
+  console.log(cnm)
+  
+  const selectedButton = document.querySelector('.'+cnm);
   if (selectedButton) {
     selectedButton.classList.remove('active');
   } 
 
-  // 선택한 버튼의 색을 변경
-  selBtn.classList.add('active');
-  clickAjax(selBtn);
+  // 선택한 버튼의 색을 변경(누름효과)
+  selBtn1.classList.add('active');
+  clickAjax(selBtn1);
+
 } 
 
-function clickAjax(selBtn) {
+function clickPerson2(selBtn2) {
+	  // 기존에 선택된 버튼의 색을 원래대로 되돌림
+	  const selectedButton = document.querySelector('.active');
+	  if (selectedButton) {
+	    selectedButton.classList.remove('active');
+	  } 
+
+	  // 선택한 버튼의 색을 변경(누름효과)
+	  selBtn2.classList.add('active');
+	  clickAjax(selBtn2);
+
+	} 
+
+function clickPerson3(selBtn3) {
+	  // 기존에 선택된 버튼의 색을 원래대로 되돌림
+	  const selectedButton = document.querySelector('.active');
+	  if (selectedButton) {
+	    selectedButton.classList.remove('active');
+	  } 
+
+	  // 선택한 버튼의 색을 변경(누름효과)
+	  selBtn3.classList.add('active');
+	  clickAjax(selBtn3);
+
+	}  */
+
+function clickAjax(thcode) {
+	
 	
   // selectedLabel.querySelector('input') 로 input 태그를 찾을 수 있음.
-  const input = selBtn.querySelector('input');
-  const selectEnjoyTag = input.value;
-  if (input) {
-    console.log(input.value); // "family"
+  /* const input = selBtn.querySelector('input');
+	var selToBtn = $('input:radio[name=toRadio]:checked').val();
+	var selSeasonBtn = $('input:radio[name=seasonRadio]:checked').val();
+	var selSubBtn = $('input:radio[name=subRadio]:checked').val();
+	var listVar = $('input[name=toRadio]:checked').val();
+  	var thcode = ""; */
+  	
+  //const selectEnjoyTag = input.value;
+  
+ /*  if (input) {
+	  selToBtn = selToBtn || 0;
+	  selSeasonBtn = selSeasonBtn || 0;
+	  selSubBtn = selSubBtn || 0;
+
+    //console.log("input.value : "+input.value); // "family"
+    console.log("selToBtn : " + selToBtn);
+    console.log("selSeasonBtn : " + selSeasonBtn);
+    console.log("selSubBtn : " + selSubBtn);
+    thcode = selSeasonBtn + selToBtn + selSubBtn;
+    console.log("thcode : "+thcode);
+    
   } else {
     console.error('input 태그를 찾을 수 없습니다.');
-  }
+  } */
+  
+  // 함께 >> 01 02 03 04 , __
+  
+  // 계절 >> a,b,c,d , _
+  
+  // 공간 >> 50 51 52 , __
+  
+  //'e0050'
+  
+  // input태그중에 name이 ""인것중에 check된 radio의 value를 가져오기!
+/*   const selToBtn = document.querySelector('input[name="toRadio"]:checked').value;
+  const selSeasonBtn = document.querySelector('input[name="seasonRadio"]:checked').value;
+  const selSubBtn = document.querySelector('input[name="subRadio"]:checked').value;
+  const selThcode = selToBtn + selSeasonBtn + selSubBtn; */
+  // 문자열 결합하여 한줄의 thcode를 만든다음 ajax로 전송 
+  
+  // console.log(selThcode);
   
 		$.ajax({
 				type : "get",
 				url : "${pageContext.request.contextPath }/getEnjoyResult",
-				data : { "selEnjoyTag" : selectEnjoyTag },
+				data : { "thcode" : thcode },
 				dataType : "json",
 				async:false,
 				success: function(enjoyList) {
@@ -371,9 +506,18 @@ function clickAjax(selBtn) {
 						} else {
 							console.log("검색결과 있음")
 							//output += "<span style=\"cursor: pointer;\" onclick=\"select(this);\">"+"\""+foodinfo.fcode+"\""+""+"\""+foodinfo.fname+"\""+""+"\""+foodinfo.faddr+"\""+"</span> <br/><hr>";
+									
+							output += "<h5 class='card-title py-2' style='text-align: center;' >No." + (status.index + 1) + "</h5>";
+							output += "<div style='height:200px;width:5px;'>";
+							output += "<a href='" + pageContext.request.contextPath + "/playInfo?ecode=" + enjoy.ecode + "'>";
+							output += "<img class='img-fluid' alt='' src='" + pageContext.request.contextPath + "/resources/EnjoyPicture/" + enjoy.epicture + "'></a>";
+							output += "</div>";
+							output += "<h6 class='listTitle mt-2 mb-0' style='color: #012970; font-weight: 700;' title='" + enjoy.ename + "'>" + enjoy.ename + "</h6>";
+							output += "<p class='small mb-1'>" + enjoy.eaddr + "</p>";
+							output += "<a class='btn-dark btn-sm btn' href='" + pageContext.request.contextPath + "/playInfo?ecode=" + enjoy.ecode + "'>상세보기</a>";		
 						}
 					}
-	 				$("#foodListArea").html(output);
+	 				$("#selBtnEnjoyListArea").html(output);
 					/* $("#selectMovie").focus();
 					$("#selectMovie").click();  */
 			}
