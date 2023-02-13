@@ -8,11 +8,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.google.gson.Gson;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.FoodReviewDto;
@@ -173,5 +172,16 @@ public class TourController {
 		mav.setViewName("Play/playInfo");
 		return mav;
 	}
+	
+	@RequestMapping(value="/getEnjoyResult")
+	public @ResponseBody String getEnjoyResult(String thcode) {
+		System.out.println("Ajax_놀거리 정보 조회");
+		System.out.println("thcode : " + thcode);
+		ArrayList<EnjoyDto> searchEnjoyList = toursvc.getSearchEnjoyList(thcode);
+		
+		return new Gson().toJson(searchEnjoyList);
+		
+	}
+	
 
 }

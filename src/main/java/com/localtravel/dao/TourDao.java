@@ -1,5 +1,7 @@
 package com.localtravel.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -19,4 +21,10 @@ public interface TourDao {
 	@Select("SELECT * FROM ENJOY WHERE ECODE = #{ecode}")
 	EnjoyDto enjoyInfodao(String encode);
 
+	
+	@Select("SELECT * FROM ENJOY "
+			+ "WHERE ETHCODE LIKE '%'||#{thcode}||'%' ")
+	ArrayList<EnjoyDto> getEnjoySelectList(String thcode);
+	
+	
 }
