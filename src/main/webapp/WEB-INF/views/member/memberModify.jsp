@@ -47,7 +47,7 @@
 		<section class="section"  style="margin-top: 40px;">
 			<div class="row mx-auto" style="max-width:1200px;min-width:700px;">
 			    
-			    <form onsubmit="return modifyFormCheck(modifyForm)" action="${pageContext.request.contextPath }/memberModify">
+			    <form onsubmit="return modifyFormCheck(this)" action="${pageContext.request.contextPath }/memberModify">
 			<%-- 	<c:forEach items="${memInfo }" var="memInfo"> --%>
 				
 				<div class="col-12">
@@ -88,7 +88,7 @@
 									</div>
 							</div>
 							<div class="col-md-6">
-								<label class="form-label">성별</label> 
+								<label class="form-label">성별</label> <p style="color:red; font-size:1px; float:right">기존 성별 그대로 선택가능.</p>
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 									
 											<%-- <c:choose>
@@ -110,7 +110,7 @@
 											<p style="font-size:15px; padding-left:10px;  padding-top:10px;">선택하지않음</p>
 										</c:if>
 								 <select name="mgender" id="gender-select" class="form-control">
-									<option value="" disabled selected>--선택해주세요--</option>
+									<option value="a" disabled selected>--선택해주세요--</option>
 									<option value="1">남성</option>
 									<option value="2">여성</option>
 									<option value="0">선택하지 않음</option>
@@ -201,17 +201,25 @@
 	}
 
   function modifyFormCheck(modifyForm){
-	   var modifyForm = modifyForm.mgender;
-	   if(modifyForm.value == 0){
+	   //var modifyForm = modifyForm.gender-select;
+	   console.log(modifyForm.mgender.value);
+	   if(modifyForm.mgender.value == 'a'){
+		   alert('성별을 눌러주세요!');
+	   return false;
+	   }
+	   
+	   
+	   
+	  /*  if(modifyForm.value == 0){
 	      alert('성별을 눌러주세요!');
 	      modifyForm.focus();
 	      return false;
-	   }
+	   } */
 	}
 
 		
 		
-	}
+	
  
 	</script> 
 	<script

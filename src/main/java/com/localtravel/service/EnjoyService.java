@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.localtravel.dao.EnjoyDao;
+import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.MenuDto;
@@ -71,6 +72,27 @@ public class EnjoyService {
 		System.out.println(fdreviewList);
 		return fdreviewList;
 	}
+
+	public String getBlogList(BlogDto bto) {
+		System.out.println("enjoyservice - 블로그글작성");
+		int WriteResult =endao.getBlogListdao(bto);
+		
+		return WriteResult+"";
+	}
+
+	public ArrayList<BlogDto> getbloglist() {
+		System.out.println("enjoyservice - 블로그글메인창에 출력");
+		ArrayList<BlogDto> bList = endao.selectbList();
+		System.out.println(bList);
+		return bList;
+		
+	}
+
+
+
+
+
+
 
 
 

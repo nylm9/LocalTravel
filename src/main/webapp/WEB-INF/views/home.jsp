@@ -94,6 +94,7 @@
 	               </div>
 	            </div>
 
+
 	            <div class="slider-item">
 	               <div class="slider-item-content">
 						<div class="post-thumb mb-4">
@@ -150,12 +151,55 @@
 	             
 		</div>
 	</div>
+	</section>
+	<section class="section">
+ 	<div class="row "  >
+			<c:forEach items="${enList}" var="enjoy" varStatus="status">
+				<div class="col-3">
+					<div class="card">
+						<div class="card-body">
+						
+							 <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
+							 <div>
+							<a href="${pageContext.request.contextPath }/playInfo?mvcode=${enjoy.ecode }">
+							<img class="img-fluid" 
+							     alt="" src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enjoy.epicture }"
+							     style="height:200px;width:100px;" >
+							</a>
+							</div>
+							
+							<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="${enjoy.ename }" >${enjoy.ename }</h6>
+							
+							<p class="small mb-1">${enjoy.eaddr }</p>
+							
+							<a class="btn-dark btn-sm btn"
+							href="${pageContext.request.contextPath }/BlogView?ecode=${enjoy.ecode }">글보기</a>
+							
+						
+						</div>
+					</div>
+				</div>
+			</c:forEach>				
+		</div>
+		 
+		 <%-- <div class="row mx-auto" style="min-width: 600px; max-width: 1200px;">
+		 <h5>dddd</h5>
+		<c:forEach items="${enList}" var="enjoy" varStatus="status">
+			<div class="col-3">
+					<div class="card">
+						<div class="card-body">
+							<h6>ddd</h6>
+						</div>
+					</div>
+				</div>
+		</c:forEach>
+		 </div> --%>
 </section>
 
 
 
 
-<!-- THEME JAVASCRIPT FILES
+ <!-- THEME JAVASCRIPT FILES
 ================================================== -->
 <!-- initialize jQuery Library -->
 <script src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
@@ -172,7 +216,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 <script src="${pageContext.request.contextPath }/resources/plugins/google-map/gmap.js"></script>
 <!-- main js -->
-<script src="${pageContext.request.contextPath }/resources/js/custom.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/custom.js"></script> 
 
 
 </body>
