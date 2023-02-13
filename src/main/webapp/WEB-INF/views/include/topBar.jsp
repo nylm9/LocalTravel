@@ -5,10 +5,14 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-2 col-md-4 text-center d-none d-lg-block">
-          <a class="navbar-brand " href="${pageContext.request.contextPath }/mainPage">
+      <!-- 로고 -->
+      	<div class="navbar-brand " style="margin-left:-5px;">
+          <a href="${pageContext.request.contextPath }/mainPage">
+          	<span style="float:left; margin-right:1px; margin-top:12px;">sourceTree</span>
            <img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image"
            style="width:40px; height:40px;">
           </a>
+         </div>
       </div>
 
       <div class="col-lg-8 col-md-12">
@@ -52,6 +56,7 @@
 												href="${pageContext.request.contextPath }/AdminPage">데이터 입력</a> <a
 												class="dropdown-item"
 												href="${pageContext.request.contextPath }/AdminDataPage">데이터 조회</a>
+												
 										</div>
 									</li>
 								</c:when>

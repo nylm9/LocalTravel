@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
+import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.MenuDto;
@@ -38,6 +39,14 @@ public interface EnjoyDao {
 
 	@Select("SELECT * FROM MENU MN INNER JOIN FOOD FD ON MN.MENUFCODE = FD.FCODE  WHERE FD.FCODE =#{fcode}")
 	ArrayList<MenuDto> selectMenuList_Rank(String fcode);
+
+
+
+	@Insert("INSERT INTO BLOG(BCODE,BCONTENT) VALUES (#{bcode},#{bcontent})")
+	int getBlogListdao(BlogDto bto);
+
+	@Select("SELECT * FROM BLOG")
+	ArrayList<BlogDto> selectbList();
 
 
 	

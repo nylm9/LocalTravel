@@ -171,7 +171,6 @@ public class MemberController {
 			System.out.println("회원정보수정 실패");
 			ra.addFlashAttribute("Msg", "회원정보수정 실패하였습니다.");
 			mav.setViewName("redirect:/myPage");
-			
 		}
 		return mav;
 	}
