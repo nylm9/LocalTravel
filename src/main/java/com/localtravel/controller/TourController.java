@@ -183,5 +183,12 @@ public class TourController {
 		
 	}
 	
+	
+	@RequestMapping(value="/readyGetEnjoyList")
+	public @ResponseBody String readyGetEnjoyList() {
+		ArrayList<EnjoyDto> allEnjoyList = toursvc.getenjoyList();
+		return new Gson().toJson(allEnjoyList);
+	}
+	
 
 }

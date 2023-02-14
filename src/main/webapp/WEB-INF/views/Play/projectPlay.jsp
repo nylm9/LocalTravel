@@ -177,7 +177,7 @@ function change_btn(selectedBtn, group) {
 <section class="section" style="margin-top:40px; margin:auto;">
 	<div class="row align-items-center">
 	
-			<div class="card" style=" margin-left:680px; margin-top:40px;">
+			<div class="card" style=" margin-left:620px; margin-top:40px;">
 				<div class="card-body" >
 				<div class="e" >
 				<h5>함께</h5>
@@ -305,13 +305,13 @@ function change_btn(selectedBtn, group) {
 			
 			<c:forEach items="${enList}" var="enjoy" varStatus="status">
             <div class="col-3">
-               <div class="card">
-                  <div class="card-body">
-                      <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
+               <div class="card" >
+                  <div class="card-body" id="selBtnEnjoyListArea">
+<%--                       <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
                       <div style="height:200px;width:5px;">
-                     <a href="${pageContext.request.contextPath }/playInfo?mvcode=${enjoy.ecode }">
-                     <img class="img-fluid" 
-                          alt="" src="${enjoy.epicture }" >
+                     <a href="${pageContext.request.contextPath }/playInfo?ecode=${enjoy.ecode }">
+					 <img  alt="" src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enjoy.epicture }" 
+                          style="height:200px;width:237px;">                          
                      </a>
                      </div>
                      
@@ -330,7 +330,7 @@ function change_btn(selectedBtn, group) {
                      href="${pageContext.request.contextPath }/playInfo?ecode=${enjoy.ecode }">상세보기</a>
                         </c:otherwise>
 
-                     </c:choose>
+                     </c:choose> --%>
                      
                   
                   </div>
@@ -364,6 +364,46 @@ function change_btn(selectedBtn, group) {
 		$("input:radio[name=toRadio]").on("change",searchEnjoy);
 		$("input:radio[name=seasonRadio]").on("change",searchEnjoy);
 		$("input:radio[name=subRadio]").on("change",searchEnjoy);
+		
+		$.ajax({
+			type : "get",
+			url : "${pageContext.request.contextPath }/readyGetEnjoyList",
+			dataType : "json",
+			async:false,
+			success:function(allEnList){
+				var output = "";
+				var loginId = '${sessionScope.loginId}';
+				for(var enInfo of allEnList){
+					if(enInfo.length == 0){
+						console.log("검색결과 없음");
+					} else {
+						var statusNum = '${status.index + 1 }';
+						output += '<h5 class="card-title py-2" style="text-align: center;" >No.' + statusNum  + '<h5>';
+						output += '<div style="height:200px;width:5px;">';
+						output += '<a href="${pageContext.request.contextPath }/playInfo?ecode='+enInfo.ecode+'">';
+						output += '<img alt="" src="${pageContext.request.contextPath }/resources/EnjoyPicture/'+enInfo.epicture+'" style="height:200px;width:237px;" > </a>';
+						output += '</div>';
+						output += '<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="'+enInfo.ename+'" >'+enInfo.ename+' </h6>';
+						output += '<p class="small mb-1">'+enInfo.eaddr+' </p>';
+						
+						if( loginId == 'admin' ) {
+						output += '<a class="btn-dark btn-sm btn"';
+						output += 'href="${pageContext.request.contextPath }/BlogWritePage?ecode='+enInfo.ecode+'">블로그쓰기</a>'
+						output += '<a class="btn-dark btn-sm btn"';
+						output += 'href="${pageContext.request.contextPath }/playInfo?ecode='+enInfo.ecode+' ">상세보기</a>';
+						} else {
+						output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/playInfo?ecode='+enInfo.ecode+' ">상세보기</a>';
+						}
+					}
+				}
+				$("#selBtnEnjoyListArea").html(output);
+				/* $("#selectMovie").focus();
+				$("#selectMovie").click(); */
+			}
+		});	
+		
+		
+		
 	})
 	
 	function searchEnjoy(){
@@ -490,7 +530,8 @@ function clickAjax(thcode) {
   // 문자열 결합하여 한줄의 thcode를 만든다음 ajax로 전송 
   
   // console.log(selThcode);
-  
+  	var loginId = '${sessionScope.loginId}';
+  	console.log("loginId : " + loginId);
 		$.ajax({
 				type : "get",
 				url : "${pageContext.request.contextPath }/getEnjoyResult",
@@ -504,23 +545,30 @@ function clickAjax(thcode) {
 						if(enjoyInfo.length == 0){
 							console.log("검색결과 없음");
 						} else {
-							console.log("검색결과 있음")
-							//output += "<span style=\"cursor: pointer;\" onclick=\"select(this);\">"+"\""+foodinfo.fcode+"\""+""+"\""+foodinfo.fname+"\""+""+"\""+foodinfo.faddr+"\""+"</span> <br/><hr>";
-									
-							output += "<h5 class='card-title py-2' style='text-align: center;' >No." + (status.index + 1) + "</h5>";
-							output += "<div style='height:200px;width:5px;'>";
-							output += "<a href='" + pageContext.request.contextPath + "/playInfo?ecode=" + enjoy.ecode + "'>";
-							output += "<img class='img-fluid' alt='' src='" + pageContext.request.contextPath + "/resources/EnjoyPicture/" + enjoy.epicture + "'></a>";
-							output += "</div>";
-							output += "<h6 class='listTitle mt-2 mb-0' style='color: #012970; font-weight: 700;' title='" + enjoy.ename + "'>" + enjoy.ename + "</h6>";
-							output += "<p class='small mb-1'>" + enjoy.eaddr + "</p>";
-							output += "<a class='btn-dark btn-sm btn' href='" + pageContext.request.contextPath + "/playInfo?ecode=" + enjoy.ecode + "'>상세보기</a>";		
+							var statusNumb = '${status.index + 1 }';
+							output +=  '<h5 class="card-title py-2" style="text-align: center;" >No.' + statusNumb + '<h5>';
+							output += '<div style="height:200px;width:5px;">';
+							output += '<a href="${pageContext.request.contextPath }/playInfo?ecode='+enjoyInfo.ecode+'">';
+							output += '<img alt="" src="${pageContext.request.contextPath }/resources/EnjoyPicture/'+enjoyInfo.epicture+'" style="height:200px;width:237px;" > </a>';
+							output += '</div>';
+							output += '<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="'+enjoyInfo.ename+'" >'+enjoyInfo.ename+' </h6>';
+							output += '<p class="small mb-1">'+enjoyInfo.eaddr+' </p>';
+							
+							if( loginId == 'admin' ) {
+							output += '<a class="btn-dark btn-sm btn"';
+							output += 'href="${pageContext.request.contextPath }/BlogWritePage?ecode='+enjoyInfo.ecode+'">블로그쓰기</a>'
+							output += '<a class="btn-dark btn-sm btn"';
+							output += 'href="${pageContext.request.contextPath }/playInfo?ecode='+enjoyInfo.ecode+' ">상세보기</a>';
+							} else {
+							output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/playInfo?ecode='+enjoyInfo.ecode+' ">상세보기</a>';
+							}
 						}
 					}
+				
 	 				$("#selBtnEnjoyListArea").html(output);
 					/* $("#selectMovie").focus();
 					$("#selectMovie").click();  */
-			}
+				}
 	});
 
 
