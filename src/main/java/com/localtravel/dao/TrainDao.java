@@ -68,10 +68,13 @@ public interface TrainDao {
 	@Insert("INSERT INTO TRSEAT(CAR, NSCODE, SEATNUM) "
 			+ "VALUES(#{car}, #{nscode}, #{seatnum})")
 	void insertSeatInfo(TRSeatDto trSeatDto);
-	
+	// 처음 좌석 출력
 	@Select("SELECT * FROM TRSEAT WHERE CAR = '5'")
 	ArrayList<TRSeatDto> selectSeatInfo();
-
+	
+	// 좌석 값 입력 후 출력
+	@Select("SELECT * FROM TRSEAT WHERE CAR = #{carNum}")
+	ArrayList<TRSeatDto> selectSeatInput(String carNum);
 	
 	
 	

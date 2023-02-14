@@ -77,6 +77,7 @@ public class TrainReserveService {
 		
 		return seatList;
 	}
+	// 좌석정보 가져오기
 	public String getFirstSeatData() {
 		ArrayList<TRSeatDto> seatList = trdao.selectSeatInfo();
 		JsonArray jsonArray = new JsonArray();
@@ -90,6 +91,24 @@ public class TrainReserveService {
 			
 		}
 		
+		return gson.toJson(jsonArray);
+	}
+	public String getInputSeatData(String carNum) {
+		// 8호차 배치가 이상한 관계로 변형
+		if(carNum.equals("8")){
+			carNum = "5";
+		}
+		ArrayList<TRSeatDto> seatList = trdao.selectSeatInput(carNum);
+		JsonArray jsonArray = new JsonArray();
+		Gson gson = new Gson();
+		for(int i = 0; i < seatList.size(); i++) {
+			JsonObject obj = new JsonObject();
+			obj.addProperty("car", seatList.get(i).getCar());
+			obj.addProperty("nscode", seatList.get(i).getNscode());
+			obj.addProperty("seatnum",seatList.get(i).getSeatnum());			
+			jsonArray.add(obj);
+			
+		}
 		return gson.toJson(jsonArray);
 	}
 

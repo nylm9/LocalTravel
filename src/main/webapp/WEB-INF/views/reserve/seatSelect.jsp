@@ -54,7 +54,7 @@ table {
 th, td {
 	border: 1px solid #444444;
 	text-align: center;
-	padding: 8px;
+	padding: 5px;
 }
 
 thead {
@@ -83,11 +83,19 @@ thead {
 	background-color: lightgray;
 	cursor: pointer;
 }
+
+.seatBtn-Th-Act {
+	cursor: pointer;
+	background-color: gray;
+}
 </style>
 <script
 	src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		var urlParams = new URLSearchParams(window.location.search);
+		var pNum = urlParams.get("pNum");
+		
 		console.log('좌석데이터 가져오기')
 		$.ajax({
 			type : "GET",
@@ -97,10 +105,43 @@ thead {
 	        success : function(arrayList) {
 	        	console.log(arrayList[0].seatnum);
 	        	var arr1 = [];
-	        	for(var i = 0; i < arrayList.length; i++){
+	        	var arr2 = [];
+	        	var arr3 = [];
+	        	var arr4 = [];
+	        	for(var i = 0; i < 14; i++){
 	        		console.log(arrayList[i].seatnum);
+	        		arr1.push(arrayList[i].seatnum);
 	        	}
-	        	
+	        	for(var i = 14; i < 28; i++){
+	        		console.log(arrayList[i].seatnum);
+	        		arr2.push(arrayList[i].seatnum);
+	        	}
+	        	for(var i = 28; i < 42; i++){
+	        		console.log(arrayList[i].seatnum);
+	        		arr3.push(arrayList[i].seatnum);
+	        	}
+	        	for(var i = 42; i < 56; i++){
+	        		console.log(arrayList[i].seatnum);
+	        		arr4.push(arrayList[i].seatnum);
+	        	}
+	        	console.log('============================');
+	        	console.log(arr1);
+	        	console.log(arr2);
+	        	console.log(arr3);
+	        	console.log(arr4);
+	        	var output = "<table>";
+	        	for(var i = 0; i < 14; i++){
+	        		output += '<tr>';
+	        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr1[i]+'</th>';
+	        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr2[i]+'</th>';
+	        		output += '<th></th>';
+	        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr3[i]+'</th>';
+	        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr4[i]+'</th>';
+	        		output += '</tr>';
+					
+	        	}
+	        	output += '</table>';
+	        	$('#outputSeatNum').html(output);
 	        }
 		});
 			
@@ -112,32 +153,271 @@ thead {
 	기차예매 - 좌석선택
 	<div class="col-12">
 		<div style="margin-bottom: 10px;">
-			<button type="button" class="btn" style="text-align: left;">이전</button>
-			<h4
-				Style="display: inline-block; margin-left: 55px; margin-right: 60px;">5호차</h4>
-			<button type="button" class="btn" style="text-align: right;">다음</button>
+			<button id="previousBtn" type="button" class="btn btn-danger" onclick="return previousBtn(this)" style="float: left;">이전</button>
+			<h4 id="carCaption" Style="display: inline-block; margin-left: 0px auto; margin-right: 0px auto;">5호차</h4>
+			<button id="nextBtn" type="button" class="btn btn-danger" onclick="nextBtn(this)" style="float: right;">다음</button><input type="hidden" value="5" id="carNum">
 		</div>
 		<div class="card">
-			<div class="card-body">
-				<table>
-					
-						<tr>
-							<th></th>
-							<th></th>
-							<th>
-							<th></th>
-							<th></th>
-						</tr>
-					
-				</table>
+			<div class="card-body" id="outputSeatNum">
+				
 			</div>
+			<button id="nextBtn" type="button" class="btn btn-danger" onclick="selectComplete()" style="float: center;">선택완료</button>
 		</div>
 	</div>
 
 </body>
 <script type="text/javascript">
-	function re9() {
-		alert('sks')
+	var pCount = [];
+	//선택완료
+	
+	function selectComplete(){
+		var urlParams = new URLSearchParams(window.location.search);
+		var pNum = parseInt(urlParams.get("pNum"));
+		console.log(pNum+", "+pCount.length)
+		if(pCount.length == pNum){
+			var result = confirm('선택된 좌석 정보 : '+pCount);
+			if(result){
+				window.opener.receiveData(pCount);
+		        window.close();
+			}else{
+			    return false;
+			}
+		} else {
+			alert('인원에 맞는 좌석수를 선택하세요')
+		}
+		
+	}
+	
+	// 이전 버튼
+	function previousBtn(btn) {
+		var carNum = $('#carNum').val();
+		console.log('호차넘버 : '+ carNum);
+		if(carNum == 1){
+			alert('맨앞 차량입니다.');
+			return false;
+		}
+		var previouscar = carNum - 1; 
+		$('#carNum').val(previouscar);
+		if(previouscar == 1){
+			$('#previousBtn').removeClass('btn-danger');
+		}
+		$('#nextBtn').addClass('btn-danger');
+		$('#carCaption').html(previouscar+'호차');
+		console.log('좌석데이터 가져오기')
+		$.ajax({
+			type : "GET",
+			dataType: "json",
+			async : false,
+			data: {
+				"carNum" : previouscar
+			},
+	        url : "${pageContext.request.contextPath }/getSeatData2",
+	        success : function(arrayList) {
+	        	console.log(arrayList[0].seatnum);
+	        	var arr1 = [];
+	        	var arr2 = [];
+	        	var arr3 = [];
+	        	var arr4 = [];
+	        	if(arrayList.length > 50){
+	        		for(var i = 0; i < 14; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr1.push(arrayList[i].seatnum);
+		        	}
+		        	for(var i = 14; i < 28; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr2.push(arrayList[i].seatnum);
+		        	}
+		        	for(var i = 28; i < 42; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr3.push(arrayList[i].seatnum);
+		        	}
+		        	for(var i = 42; i < 56; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr4.push(arrayList[i].seatnum);
+		        	}
+		        	console.log('============================');
+		        	console.log(arr1);
+		        	console.log(arr2);
+		        	console.log(arr3);
+		        	console.log(arr4);
+		        	var output = "<table>";
+		        	for(var i = 0; i < 14; i++){
+		        		output += '<tr>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr1[i]+'</th>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr2[i]+'</th>';
+		        		output += '<th></th>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr3[i]+'</th>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr4[i]+'</th>';
+		        		output += '</tr>';
+						
+		        	}
+		        	output += '</table>';
+	        	} else {
+	        		for(var i = 2; i < 14; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr1.push(arrayList[i].seatnum);
+		        	}
+		        	for(var i = 16; i < 28; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr2.push(arrayList[i].seatnum);
+		        	}
+		        	for(var i = 30; i < 42; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr3.push(arrayList[i].seatnum);
+		        	}
+		        	console.log('============================');
+		        	console.log(arr1);
+		        	console.log(arr2);
+		        	console.log(arr3);
+		        	console.log(arr4);
+		        	var output = "<table>";
+		        	for(var i = 0; i < 12; i++){
+		        		output += '<tr>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr1[i]+'</th>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr2[i]+'</th>';
+		        		output += '<th></th>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr3[i]+'</th>';
+		        		output += '</tr>';
+						
+		        	}
+		        	output += '</table>';
+	        	}
+	        	
+	        	$('#outputSeatNum').html(output);
+	        }
+		});
+	}
+	
+	
+	// 다음버튼
+	function nextBtn(btn) {
+		var carNum = $('#carNum').val();
+		console.log('호차넘버 : '+ carNum);
+		if(carNum == 18){
+			alert('맨뒤 차량입니다.');
+			return false;
+		}
+		var nextcar = parseInt(carNum) + 1; 
+		$('#carNum').val(nextcar);
+		if(nextcar == 18){
+			$('#nextBtn').removeClass('btn-danger');
+		}
+		$('#previousBtn').addClass('btn-danger');
+		$('#carCaption').html(nextcar+'호차');
+		console.log('좌석데이터 가져오기')
+		$.ajax({
+			type : "GET",
+			dataType: "json",
+			async : false,
+			data: {
+				"carNum" : nextcar
+			},
+	        url : "${pageContext.request.contextPath }/getSeatData2",
+	        success : function(arrayList) {
+	        	console.log(arrayList[0].seatnum);
+	        	console.log('좌석 수 :' + arrayList.length);
+	        	var arr1 = [];
+	        	var arr2 = [];
+	        	var arr3 = [];
+	        	var arr4 = [];
+	        	if(arrayList.length > 50){
+	        		for(var i = 0; i < 14; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr1.push(arrayList[i].seatnum);
+		        	}
+		        	for(var i = 14; i < 28; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr2.push(arrayList[i].seatnum);
+		        	}
+		        	for(var i = 28; i < 42; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr3.push(arrayList[i].seatnum);
+		        	}
+		        	for(var i = 42; i < 56; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr4.push(arrayList[i].seatnum);
+		        	}
+		        	console.log('============================');
+		        	console.log(arr1);
+		        	console.log(arr2);
+		        	console.log(arr3);
+		        	console.log(arr4);
+		        	var output = "<table>";
+		        	for(var i = 0; i < 14; i++){
+		        		output += '<tr>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr1[i]+'</th>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr2[i]+'</th>';
+		        		output += '<th></th>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr3[i]+'</th>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr4[i]+'</th>';
+		        		output += '</tr>';
+						
+		        	}
+		        	output += '</table>';
+	        	} else {
+	        		for(var i = 2; i < 14; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr1.push(arrayList[i].seatnum);
+		        	}
+		        	for(var i = 16; i < 28; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr2.push(arrayList[i].seatnum);
+		        	}
+		        	for(var i = 30; i < 42; i++){
+		        		console.log(arrayList[i].seatnum);
+		        		arr3.push(arrayList[i].seatnum);
+		        	}
+		        	console.log('============================');
+		        	console.log(arr1);
+		        	console.log(arr2);
+		        	console.log(arr3);
+		        	console.log(arr4);
+		        	var output = "<table>";
+		        	for(var i = 0; i < 12; i++){
+		        		output += '<tr>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr1[i]+'</th>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr2[i]+'</th>';
+		        		output += '<th></th>';
+		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr3[i]+'</th>';
+		        		output += '</tr>';
+						
+		        	}
+		        	output += '</table>';
+	        	}
+	        	
+	        	$('#outputSeatNum').html(output);
+	        }
+		});
+	}
+	
+	// 시트버튼
+	function seatBtn(btn){
+		var urlParams = new URLSearchParams(window.location.search);
+		var pNum = parseInt(urlParams.get("pNum"));
+		console.log(pCount.length+" "+pNum);
+		console.log('부모창으로부터 받은 데이터2 : '+pNum);
+		console.log($('#carNum').val()+$(btn).html());
+		var pSeat = $('#carNum').val()+"-"+$(btn).html();
+		if(pCount.includes(pSeat)){
+			var index = pCount.indexOf(pSeat);
+			if (index > -1) {
+				pCount.splice(index, 1);
+			}
+			console.log(pCount);
+			$(btn).removeClass('seatBtn-Th-Act');
+		} else {
+			pCount.push(pSeat);
+			console.log(pCount);
+			$(btn).addClass('seatBtn-Th-Act');
+		}
+		console.log(pCount.length+" "+pNum);
+		if(pCount.length == pNum + 1){
+			alert('예매인원보다 많은 좌석을 가질 수 없습니다.');
+			$(btn).removeClass('seatBtn-Th-Act');
+			pCount.pop(pSeat);
+		}
+		
+		
 	}
 </script>
 <!-- THEME JAVASCRIPT FILES
