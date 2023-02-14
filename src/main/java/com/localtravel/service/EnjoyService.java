@@ -81,11 +81,39 @@ public class EnjoyService {
 	}
 
 	public ArrayList<BlogDto> getbloglist() {
+		System.out.println("service - 블로그내용블로그페이지에출력");
+		ArrayList<BlogDto> blList = endao.selectblogList();
+		System.out.println(blList);
+		return blList;
+		
+	}
+
+	public ArrayList<EnjoyDto> getenjoyListBlog(String ecode) {
+		System.out.println("service - 놀거리블로그페이지에출력");
+		ArrayList<EnjoyDto> enList = endao.selectenjoyListBlog(ecode);
+		System.out.println(enList);
+		return enList;
+	}
+
+	public ArrayList<BlogDto> getbloglistBlog(String ecode) {
+		System.out.println("service - 블로그내용블로그페이지에출력");
+		ArrayList<BlogDto> blList = endao.selectblogListBlog(ecode);
+		System.out.println(blList);
+		return blList;
+	}
+
+	public BlogDto getbloglistBllog(String ecode) {
+		System.out.println("service - 블로그내용블로그페이지에출력");
+		BlogDto blList = endao.selectblogListBllog(ecode);
+		System.out.println(blList);
+		return blList;
+	}
+
+	public EnjoyDto getenjoyList2() {
 		System.out.println("enjoyservice - 블로그글메인창에 출력");
-		ArrayList<BlogDto> bList = endao.selectbList();
+		EnjoyDto bList = endao.selectbList2();
 		System.out.println(bList);
 		return bList;
-		
 	}
 
 
