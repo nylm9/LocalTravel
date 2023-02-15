@@ -315,8 +315,6 @@ thead {
 			<div class="col-12">
 				<div class="card">
 					<div class="card-body p-3">
-					
-					
 						<div class="row">
 							<div class="col-8">
 								<table  class="cleanTable" style="text-align: left;">
