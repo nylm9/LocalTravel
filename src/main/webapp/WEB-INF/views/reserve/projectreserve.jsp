@@ -371,7 +371,7 @@ thead {
 
 							<div class="col" style="text-align: center;">
 								<button class="btn btn-danger font-bold mb-1 w-40 h-30"
-									onclick="reserveMovie_kakaoPay()">예매하기_결제</button>
+									onclick="reserveTrain()">예매하기_결제</button>
 							</div>
 						</div>
 
@@ -383,7 +383,9 @@ thead {
 
 		</div>
 	</section>
-
+	
+	
+	
 	<script type="text/javascript">
 	// 출발역 누를 경우 1, 아닌 경우 0  - 초기화 기능
 	var DepStaionBtnAct = 0;
