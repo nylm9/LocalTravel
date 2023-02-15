@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
@@ -27,6 +28,7 @@ import com.localtravel.service.TrainReserveService;
  */
 @Controller
 public class HomeController {
+	
 	
 	@Autowired
 	TrainReserveService treserve;
@@ -47,15 +49,19 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		System.out.println("메인페이지에 놀거리 출력");
-		ArrayList<EnjoyDto> enList = ensvc.getenjoyList();
+//		ArrayList<EnjoyDto> enList = ensvc.getenjoyList();
 		ModelAndView mav = new ModelAndView();
 		
-		ArrayList<BlogDto> blist = ensvc.getbloglist();
+		EnjoyDto enlist = ensvc.getenjoyList2();
+		mav.addObject("enlist", enlist);
+		System.out.println("enlist:"+enlist);
 		
-		mav.addObject("enList", enList);
-		mav.addObject("blist", blist);
-		System.out.println("enList:"+enList);
-		System.out.println("blist:"+blist);
+		
+//		ArrayList<BlogDto> blist = ensvc.getbloglist();
+//		mav.addObject("enList", enList);
+//		mav.addObject("blist", blist);
+//		System.out.println("enList:"+enList);
+//		System.out.println("blist:"+blist);
 		mav.setViewName("home");
 		return mav;
 	}
@@ -67,8 +73,10 @@ public class HomeController {
 		System.out.println("메인페이지에 놀거리 출력");
 		ArrayList<EnjoyDto> enList = ensvc.getenjoyList();
 		ModelAndView mav = new ModelAndView();
-		
+		ArrayList<BlogDto> blist = ensvc.getbloglist();
+		mav.addObject("blist", blist);
 		mav.addObject("enList", enList);
+		System.out.println("blist:"+blist);
 		System.out.println("enList:"+enList);
 		mav.setViewName("home");
 		return mav;
@@ -100,25 +108,34 @@ public class HomeController {
 	 * @Autowired private HttpSession session;
 	 */
 	@RequestMapping(value="/BlogWrite")
-	public String BlogWrite(BlogDto bto,String bcode) {
+	public String BlogWrite(BlogDto bto,String bcode,RedirectAttributes ra) {
 		
 		System.out.println("놀거리코드"+bcode);
 		System.out.println("블로그작성");
 		bto.setBcode(bcode);
 		System.out.println(bto);
-//		ArrayList<BlogDto> BlogList = ensvc.getBlogList(ecode);
-//		System.out.println(BlogList); mav.addObject("BlogList",BlogList);
-//		mav.setViewName("review/BlogWrite");
+
 		String writeResult = ensvc.getBlogList(bto);
+		if(writeResult != null) {
+			System.out.println("블로그작성 성공");
+			ra.addFlashAttribute("Msg", "블로그작성 성공하였습니다.");
+		}
 		return writeResult;
 		
 	}
 	@RequestMapping(value="/BlogView")
-	public ModelAndView BlogView() {
+	public ModelAndView BlogView(String ecode) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("블로그보기페이지");
-	
-		 
+		ArrayList<EnjoyDto> enList = ensvc.getenjoyListBlog(ecode);
+		ArrayList<BlogDto> blist = ensvc.getbloglistBlog(ecode);
+		System.out.println(ecode);
+		mav.addObject("enList", enList);
+		mav.addObject("blist", blist);
+		System.out.println("enList:"+enList);
+		System.out.println("blist:"+blist);
+		
+		
 		mav.setViewName("review/BlogView");
 		return mav;
 	}

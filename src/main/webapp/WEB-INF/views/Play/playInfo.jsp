@@ -77,7 +77,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
               			
               		</div> -->
               		<div class="col-12">
-                		<div class="card-body" s> 
+                		<div class="card-body"> 
                 		<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enInfo.epicture }" 
                 		style="width: 300px; height: 400px; float:left" 
                 		     class="img-fluid rounded-start" alt="...">

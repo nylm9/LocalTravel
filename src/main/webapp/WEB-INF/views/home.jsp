@@ -153,27 +153,28 @@
 	</div>
 	</section>
 	<section class="section">
- 	<div class="row "  >
-			<c:forEach items="${enList}" var="enjoy" varStatus="status">
+		<p style="text-align : center;font-size: 30px;font-weight: bold; margin-top:10px;">블로그</p>
+ 	<div class="row mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:50px;"  >
+			<c:forEach items="${blist}" var="blog" varStatus="status">
 				<div class="col-3">
-					<div class="card">
-						<div class="card-body">
+					<div class="card" style="margin-bottom:13px;">
+						<div class="card-body" >
 						
 							 <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
 							 <div>
-							<a href="${pageContext.request.contextPath }/playInfo?mvcode=${enjoy.ecode }">
+							<a href="${pageContext.request.contextPath }/BlogView?ecode=${blog.bcode }">
 							<img class="img-fluid" 
-							     alt="" src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enjoy.epicture }"
-							     style="height:200px;width:100px;" >
+							     alt="" src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enList[status.index].epicture }"
+							    style="height:200px;width:237px;" >
 							</a>
-							</div>
+							</div> 
 							
-							<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="${enjoy.ename }" >${enjoy.ename }</h6>
+							<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="${enList[status.index].ename }" >${enList[status.index].ename }</h6>
 							
-							<p class="small mb-1">${enjoy.eaddr }</p>
+							<p class="small mb-1">${enList[status.index].eaddr }</p>
 							
 							<a class="btn-dark btn-sm btn"
-							href="${pageContext.request.contextPath }/BlogView?ecode=${enjoy.ecode }">글보기</a>
+							href="${pageContext.request.contextPath }/BlogView?ecode=${blog.bcode }">블로그글보기</a>
 							
 						
 						</div>

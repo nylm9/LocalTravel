@@ -48,6 +48,21 @@ public interface EnjoyDao {
 	@Select("SELECT * FROM BLOG")
 	ArrayList<BlogDto> selectbList();
 
+	@Select("SELECT * FROM ENJOY WHERE ECODE = #{ecode}")
+	ArrayList<EnjoyDto> selectenjoyListBlog(String ecode);
+
+	@Select("SELECT * FROM BLOG WHERE BCODE = #{bcode}")
+	ArrayList<BlogDto> selectblogListBlog(String ecode);
+	
+	@Select("SELECT * FROM BLOG WHERE BCODE = #{bcode}")
+	BlogDto selectblogListBllog(String ecode);
+
+	@Select("SELECT * FROM BLOG")
+	EnjoyDto selectbList2();
+	
+	@Select("SELECT * FROM BLOG")
+	ArrayList<BlogDto> selectblogList();
+
 
 	
 

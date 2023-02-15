@@ -54,4 +54,9 @@ public class TourService {
 		return eList;
 	}
 
+	public ArrayList<EnjoyDto> getenjoyList() {
+		ArrayList<EnjoyDto> allEnList = tourdao.getAllEnjoyList();
+		return allEnList;
+	}
+
 }
