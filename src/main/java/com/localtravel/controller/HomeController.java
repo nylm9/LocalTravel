@@ -48,14 +48,14 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		System.out.println("메인페이지에 놀거리 출력");
-//		ArrayList<EnjoyDto> enList = ensvc.getenjoyList();
+//		System.out.println("메인페이지에 놀거리 출력");
+////		ArrayList<EnjoyDto> enList = ensvc.getenjoyList();
 		ModelAndView mav = new ModelAndView();
-		
-		EnjoyDto enlist = ensvc.getenjoyList2();
-		mav.addObject("enlist", enlist);
-		System.out.println("enlist:"+enlist);
-		
+//		
+//		EnjoyDto enlist = ensvc.getenjoyList2();
+//		mav.addObject("enlist", enlist);
+//		System.out.println("enlist:"+enlist);
+//		
 		
 //		ArrayList<BlogDto> blist = ensvc.getbloglist();
 //		mav.addObject("enList", enList);
