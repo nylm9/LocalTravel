@@ -25,6 +25,9 @@ public interface TourDao {
 	@Select("SELECT * FROM ENJOY "
 			+ "WHERE ETHCODE LIKE '%'||#{thcode}||'%' ")
 	ArrayList<EnjoyDto> getEnjoySelectList(String thcode);
+
+	@Select("SELECT * FROM ENJOY")
+	ArrayList<EnjoyDto> getAllEnjoyList();
 	
 	
 }
