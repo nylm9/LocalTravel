@@ -43,14 +43,14 @@
 	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
 	<!-- End Header -->
 	<section class="section">
-			<div class="row mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:30px;" >
+			<div   >
 				<form onsubmit="return reviewForm(this)" action="${pageContext.request.contextPath }/memberModify ">
 					<input type="text" name="bcode" value="${param.ecode }">
-					<div class="col-12 mt-2">
-	             		<div>
+					<div class="col-12 mt-2" >
+	             		<div >
 	             			<textarea class="form-control" rows="5" name="bcontent"></textarea>
+	             				<button type="submit" class="btn btn-primary " >관람평 등록</button>
 	             		</div>
-	             		<button type="submit" class="btn btn-primary " >관람평 등록</button>
 	             	</div>
 				</form>
 			
@@ -59,6 +59,11 @@
 		<script
    src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
 	<script type="text/javascript">
+	var Msg = '${Msg}';
+	if(Msg.length > 0 ){
+		alert(Msg);
+	}
+	
 	function reviewForm(formObj){
 		var bcode = formObj.bcode.value;
 		var bcontent =formObj.bcontent.value;
@@ -73,8 +78,10 @@
 			data:{"bcode":bcode, "bcontent":bcontent},
 			async:false,
 			success :function(result){
-				if(bcontent == '0'){
+				if(bcontent == null){
 					alert("작성실패");
+				}else{
+					alert("작성완료");
 				}
 				
 			}
