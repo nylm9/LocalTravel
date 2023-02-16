@@ -15,7 +15,9 @@
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
 
-
+<script
+	src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
+	
  <!-- theme meta -->
     <meta name="theme-name" content="revolve" />
 
@@ -36,6 +38,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.css">
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+
 
 <style type="text/css">
 
@@ -106,7 +109,7 @@ function change_btn(e) {
 </script> -->
 
 <!-- 버튼 눌렷을때 이벤트 -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 function change_btn(e) {
 	e.classList.toggle("active");
@@ -122,7 +125,7 @@ function change_btn(e) {
  // console.log(e.currentTarget);
 }
 </script>
-<!-- 버튼 하나만 눌리게 하는 이벤트 -->
+버튼 하나만 눌리게 하는 이벤트
 <script type="text/javascript">
 function change_btn(selectedBtn) {
   const buttons = document.querySelectorAll('.button');
@@ -134,7 +137,7 @@ function change_btn(selectedBtn) {
     }
   });
 }
-</script>
+</script> -->
 
 
 
@@ -149,16 +152,39 @@ function change_btn(selectedBtn) {
 <section class="section" style="margin-top:40px; margin:auto;">
 	<div class="row align-items-center">
 	
-		<div class="card" style=" margin-left:680px; margin-top:40px;">
+		<div class="card" style=" margin-left:620px; margin-top:40px; margin:40px auto; ">
 			<div class="card-body" >
 				<div class="e" id="moving-text" style="margin-top:5px;">	
 				<h5>먹거리</h5>		
-				<button class="button"  onclick="change_btn(this)">양식</button>
-				<button class="button"  onclick="change_btn(this)">중식</button>
-				<button class="button"  onclick="change_btn(this)">일식</button>
-				<button class="button"  onclick="change_btn(this)">한식</button>
-				<button class="button"  onclick="change_btn(this)">동남아</button>
-				<button class="button"  onclick="change_btn(this)">카페</button>
+ 				
+ 				<label class="button food" onclick="clickSection(this, 'food')" for="selFamily">
+				#가족과</label>
+ 				<input class="d-none" type="radio" name="fRadio" value="01" id="selFamily" >
+ 				
+ 				<label class="button food" onclick="clickSection(this, 'food')" for="selWestern">
+ 				#양식</label>
+ 				<input class="d-none" type="radio" name="fRadio" value="01" id="selWestern">
+ 				
+ 				<label class="button food" onclick="clickSection(this, 'food')" for="selChinese">
+ 				#중식</label>
+ 				<input class="d-none" type="radio" name="fRadio" value="01" id="selChinese">
+ 				
+ 				 <label class="button food" onclick="clickSection(this, 'food')" for="selJapanese">
+ 				#일식</label>
+ 				<input class="d-none" type="radio" name="fRadio" value="01" id="selJapanese">
+ 				
+ 				<label class="button food" onclick="clickSection(this, 'food')" for="selKorean">
+ 				#한식</label>
+ 				<input class="d-none" type="radio" name="fRadio" value="01" id="selKorean">
+ 				
+ 				<label class="button food" onclick="clickSection(this, 'food')" for="selSoutheast">
+ 				#아시안</label>
+ 				<input class="d-none" type="radio" name="fRadio" value="01" id="selSoutheast">
+ 				
+ 				<label class="button food" onclick="clickSection(this, 'food')" for="selCafe">
+ 				#카페</label>
+ 				<input class="d-none" type="radio" name="fRadio" value="01" id="selCafe">
+ 								
 				</div>
 			</div>
 		</div>
@@ -202,6 +228,17 @@ function change_btn(selectedBtn) {
 
 
 </body>
+
+<script type="text/javascript">
+
+function clickSection(clickBtn, cnm){
+	// 버튼 클릭 스크립트
+	$("."+cnm).removeClass('active');
+	$(clickBtn).addClass('active');
+	
+}
+
+</script>
 
 
 

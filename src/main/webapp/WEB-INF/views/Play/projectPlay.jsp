@@ -177,7 +177,7 @@ function change_btn(selectedBtn, group) {
 <section class="section" style="margin-top:40px; margin:auto;">
 	<div class="row align-items-center">
 	
-			<div class="card" style=" margin-left:620px; margin-top:40px;">
+			<div class="card" style=" margin-left:620px; margin-top:40px; margin:40px auto;">
 				<div class="card-body" >
 				<div class="e" >
 				<h5>함께</h5>
@@ -300,14 +300,15 @@ function change_btn(selectedBtn, group) {
 <!-- 패키지 출력 -->
 	<section class="section">
 	
-			<div class="row mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:30px;" >
 				
 			
 			<c:forEach items="${enList}" var="enjoy" varStatus="status">
-            <div class="col-3">
-               <div class="card" >
-                  <div class="card-body" id="selBtnEnjoyListArea">
-<%--                       <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
+			<div class="row mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:30px;" id="selBtnEnjoyListArea">
+            <!-- <div class="col-3" >
+               <div class="card"style="margin-bottom:13px; width: auto; height:auto;" >
+                  <div class="card-body"  > --> 
+                  
+                       <%-- <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
                       <div style="height:200px;width:5px;">
                      <a href="${pageContext.request.contextPath }/playInfo?ecode=${enjoy.ecode }">
 					 <img  alt="" src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enjoy.epicture }" 
@@ -330,12 +331,12 @@ function change_btn(selectedBtn, group) {
                      href="${pageContext.request.contextPath }/playInfo?ecode=${enjoy.ecode }">상세보기</a>
                         </c:otherwise>
 
-                     </c:choose> --%>
-                     
+                     </c:choose> --%> 
                   
                   </div>
-               </div>
+               <!-- </div>
             </div>
+			</div> -->
             
          </c:forEach>				
 						 <!--  <script type="text/javascript">
@@ -345,7 +346,6 @@ function change_btn(selectedBtn, group) {
 						 
 						 </script> -->
 							
-			</div>
 		</section>
 
 
@@ -370,30 +370,36 @@ function change_btn(selectedBtn, group) {
 			url : "${pageContext.request.contextPath }/readyGetEnjoyList",
 			dataType : "json",
 			async:false,
-			success:function(allEnList){
+			success:function(enList){
 				var output = "";
 				var loginId = '${sessionScope.loginId}';
-				for(var enInfo of allEnList){
-					if(enInfo.length == 0){
+				for (var i = 0; i < enList.length; i++){
+					if(enList.length == 0){
 						console.log("검색결과 없음");
 					} else {
-						var statusNum = '${status.index + 1 }';
+						/* var statusNum = '${status.index + 1 }'; */
+						var enjoy = enList[i];
+						var statusNum = i + 1;
+						output += '<div class="col-3" >';
+						output += '<div class="card"style="margin-bottom:13px; width: auto; height:auto;" >';
+						output += '<div class="card-body" >';
 						output += '<h5 class="card-title py-2" style="text-align: center;" >No.' + statusNum  + '<h5>';
 						output += '<div style="height:200px;width:5px;">';
-						output += '<a href="${pageContext.request.contextPath }/playInfo?ecode='+enInfo.ecode+'">';
-						output += '<img alt="" src="${pageContext.request.contextPath }/resources/EnjoyPicture/'+enInfo.epicture+'" style="height:200px;width:237px;" > </a>';
+						output += '<a href="${pageContext.request.contextPath }/playInfo?ecode='+enList[i].ecode+'">';
+						output += '<img alt="" src="${pageContext.request.contextPath }/resources/EnjoyPicture/'+enList[i].epicture+'" style="height:200px;width:237px;" > </a>';
 						output += '</div>';
-						output += '<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="'+enInfo.ename+'" >'+enInfo.ename+' </h6>';
-						output += '<p class="small mb-1">'+enInfo.eaddr+' </p>';
+						output += '<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="'+enList[i].ename+'" >'+enList[i].ename+' </h6>';
+						output += '<p class="small mb-1">'+enList[i].eaddr+' </p>';
 						
 						if( loginId == 'admin' ) {
+						output += '<a class="btn-dark btn-sm btn" style="margin-bottom:5px;"';
+						output += 'href="${pageContext.request.contextPath }/BlogWritePage?ecode='+enList[i].ecode+'">블로그쓰기</a>'
 						output += '<a class="btn-dark btn-sm btn"';
-						output += 'href="${pageContext.request.contextPath }/BlogWritePage?ecode='+enInfo.ecode+'">블로그쓰기</a>'
-						output += '<a class="btn-dark btn-sm btn"';
-						output += 'href="${pageContext.request.contextPath }/playInfo?ecode='+enInfo.ecode+' ">상세보기</a>';
+						output += 'href="${pageContext.request.contextPath }/playInfo?ecode='+enList[i].ecode+' ">상세보기</a>';
 						} else {
-						output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/playInfo?ecode='+enInfo.ecode+' ">상세보기</a>';
+						output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/playInfo?ecode='+enList[i].ecode+' ">상세보기</a>';
 						}
+						output += '</div></div></div>'
 					}
 				}
 				$("#selBtnEnjoyListArea").html(output);
@@ -464,7 +470,7 @@ function clickPerson2(selBtn2) {
 	  const selectedButton = document.querySelector('.active');
 	  if (selectedButton) {
 	    selectedButton.classList.remove('active');
-	  } 
+	  }  
 
 	  // 선택한 버튼의 색을 변경(누름효과)
 	  selBtn2.classList.add('active');
@@ -541,31 +547,35 @@ function clickAjax(thcode) {
 				success: function(enjoyList) {
 					console.log(enjoyList)
 					var output = "";
-					for(var enjoyInfo of enjoyList){
-						if(enjoyInfo.length == 0){
+					for(var i = 0; i < enjoyList.length; i++) {
+						if(enjoyList.length == 0){
 							console.log("검색결과 없음");
 						} else {
-							var statusNumb = '${status.index + 1 }';
-							output +=  '<h5 class="card-title py-2" style="text-align: center;" >No.' + statusNumb + '<h5>';
+							var enjoy = enjoyList[i];
+							var statusNum = i + 1;
+							output += '<div class="col-3" >';
+							output += '<div class="card"style="margin-bottom:13px; width: auto; height:auto;" >';
+							output += '<div class="card-body" >';
+							output += '<h5 class="card-title py-2" style="text-align: center;" >No.' + statusNum  + '<h5>';
 							output += '<div style="height:200px;width:5px;">';
-							output += '<a href="${pageContext.request.contextPath }/playInfo?ecode='+enjoyInfo.ecode+'">';
-							output += '<img alt="" src="${pageContext.request.contextPath }/resources/EnjoyPicture/'+enjoyInfo.epicture+'" style="height:200px;width:237px;" > </a>';
+							output += '<a href="${pageContext.request.contextPath }/playInfo?ecode='+enjoyList[i].ecode+'">';
+							output += '<img alt="" src="${pageContext.request.contextPath }/resources/EnjoyPicture/'+enjoyList[i].epicture+'" style="height:200px;width:237px;" > </a>';
 							output += '</div>';
-							output += '<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="'+enjoyInfo.ename+'" >'+enjoyInfo.ename+' </h6>';
-							output += '<p class="small mb-1">'+enjoyInfo.eaddr+' </p>';
+							output += '<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="'+enjoyList[i].ename+'" >'+enjoyList[i].ename+' </h6>';
+							output += '<p class="small mb-1">'+enjoyList[i].eaddr+' </p>';
 							
 							if( loginId == 'admin' ) {
+							output += '<a class="btn-dark btn-sm btn" style="margin-bottom:5px;"';
+							output += 'href="${pageContext.request.contextPath }/BlogWritePage?ecode='+enjoyList[i].ecode+'">블로그쓰기</a>'
 							output += '<a class="btn-dark btn-sm btn"';
-							output += 'href="${pageContext.request.contextPath }/BlogWritePage?ecode='+enjoyInfo.ecode+'">블로그쓰기</a>'
-							output += '<a class="btn-dark btn-sm btn"';
-							output += 'href="${pageContext.request.contextPath }/playInfo?ecode='+enjoyInfo.ecode+' ">상세보기</a>';
+							output += 'href="${pageContext.request.contextPath }/playInfo?ecode='+enjoyList[i].ecode+' ">상세보기</a>';
 							} else {
-							output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/playInfo?ecode='+enjoyInfo.ecode+' ">상세보기</a>';
+							output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/playInfo?ecode='+enjoyList[i].ecode+' ">상세보기</a>';
 							}
+							output += '</div></div></div>'
 						}
 					}
-				
-	 				$("#selBtnEnjoyListArea").html(output);
+					$("#selBtnEnjoyListArea").html(output);
 					/* $("#selectMovie").focus();
 					$("#selectMovie").click();  */
 				}
