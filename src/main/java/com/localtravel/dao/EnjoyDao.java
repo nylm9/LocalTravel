@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
+import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.MenuDto;
 
 public interface EnjoyDao {
@@ -62,6 +63,9 @@ public interface EnjoyDao {
 	
 	@Select("SELECT * FROM BLOG")
 	ArrayList<BlogDto> selectblogList();
+
+	@Insert("INSERT INTO LIKEBTN(LECODE) VALUES(#{lecode})")
+	LikeBtnDto insertEnjoyLike(String lecode);
 
 
 	
