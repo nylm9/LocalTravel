@@ -190,6 +190,7 @@ thead {
 	
 	// 이전 버튼
 	function previousBtn(btn) {
+		pCount = [];
 		var carNum = $('#carNum').val();
 		console.log('호차넘버 : '+ carNum);
 		if(carNum == 1){
@@ -291,6 +292,7 @@ thead {
 	
 	// 다음버튼
 	function nextBtn(btn) {
+		pCount = [];
 		var carNum = $('#carNum').val();
 		console.log('호차넘버 : '+ carNum);
 		if(carNum == 18){

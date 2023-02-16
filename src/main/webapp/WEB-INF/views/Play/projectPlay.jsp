@@ -306,7 +306,8 @@ function change_btn(selectedBtn, group) {
 			<c:forEach items="${enList}" var="enjoy" varStatus="status">
             <div class="col-3">
                <div class="card" >
-                  <div class="card-body" id="selBtnEnjoyListArea">
+                  <div class="card-body">
+                  <div id="selBtnEnjoyListArea">
 <%--                       <h5 class="card-title py-2" style="text-align: center;" >No.${status.index + 1 }</h5>
                       <div style="height:200px;width:5px;">
                      <a href="${pageContext.request.contextPath }/playInfo?ecode=${enjoy.ecode }">
@@ -332,11 +333,11 @@ function change_btn(selectedBtn, group) {
 
                      </c:choose> --%>
                      
-                  
                   </div>
-               </div>
+                  </div>
             </div>
             
+               </div>
          </c:forEach>				
 						 <!--  <script type="text/javascript">
 						 	function ticketPage(selMvcode){
