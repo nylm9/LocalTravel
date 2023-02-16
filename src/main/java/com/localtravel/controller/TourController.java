@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.FoodReviewDto;
+import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.MenuDto;
 import com.localtravel.dto.ReviewDto;
 import com.localtravel.service.EnjoyService;
@@ -28,7 +29,7 @@ public class TourController {
 	private EnjoyService ensvc;
 	
 	//놀거리
-	@RequestMapping(value="enjoyPage")
+	@RequestMapping(value="/enjoyPage")
 	public ModelAndView enjoyPage() {
 		System.out.println("놀거리 페이지 이동 요청");
 		
@@ -54,6 +55,11 @@ public class TourController {
 				ArrayList<Map<String,String>> reviewList = ensvc.getReviewList(ecode);
 				mav.addObject("reviewList",reviewList);
 				
+				//좋아요버튼
+//				LikeBtnDto lelike = ensvc.getenjoylike(ecode);
+//				mav.addObject("lelike",lelike);
+//				String writeResult = ensvc.getenjoylike(lelike);
+//				mav.addObject("writeResult",writeResult);
 				
 		mav.setViewName("Play/playInfo");
 		return mav;
@@ -124,6 +130,7 @@ public class TourController {
 				  ArrayList<MenuDto> mnList = ensvc.getMenuList(fcode);
 				  mav.addObject("mnList", mnList);
 				  System.out.println("메뉴목록"+mnList);
+				 
 				 
 				
 		mav.setViewName("Play/foodInfo");

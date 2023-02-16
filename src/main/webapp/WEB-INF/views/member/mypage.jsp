@@ -145,6 +145,36 @@
 				</div>
 			
 		</section>
+		<section class="section"  style="margin-top: 40px;">
+			<div class="row mx-auto" style="max-width:1200px;min-width:700px;">
+			   <c:forEach items="${likeList }" var="likeList">
+				
+				<div class="col-12">
+					<div class="card mb-3" style="padding:20px;">
+						<div class="row g-0" >
+						
+						
+						
+							<div class="col-12">
+								<p class="text-center pb-0 fs-4" style="font-weight:bold;color:black;">저장한 목록</p>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">놀거리저장리스트</label> 
+									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
+								<p>${likeList.lbcode }</p>
+									 
+								</div>
+							</div>
+						
+						</div>
+					</div>
+				</div>
+				
+				 </c:forEach> 
+				
+				</div>
+			
+		</section>
 		
 </body>
 </html>

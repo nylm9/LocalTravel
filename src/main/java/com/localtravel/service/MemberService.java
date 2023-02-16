@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.localtravel.dao.MemberDao;
 import com.localtravel.dto.FoodDto;
+import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.MemberDto;
 import com.localtravel.dto.MenuDto;
 
@@ -76,6 +77,14 @@ public class MemberService {
 //			e.printStackTrace();
 //		}
 		return updateResult;
+	}
+
+
+	public ArrayList<LikeBtnDto> getlikeList(String loginId) {
+		System.out.println("MemberService - 좋아요리스트출력");
+		ArrayList<LikeBtnDto> likeList = memdao.selectlikeList(loginId);
+		System.out.println(likeList);
+		return likeList;
 	}
 
 

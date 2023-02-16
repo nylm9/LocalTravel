@@ -14,11 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
+import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.TRCityCodeDto;
 import com.localtravel.service.EnjoyService;
 import com.localtravel.service.TrainReserveService;
@@ -141,6 +143,31 @@ public class HomeController {
 		mav.setViewName("review/BlogView");
 		return mav;
 	}
+	
+	@Autowired
+	private HttpSession session;
+	
+	@RequestMapping(value="/likeplay")
+	public ModelAndView likeplay(String lbcode, LikeBtnDto lelike,RedirectAttributes ra) {
+		System.out.println("놀거리 좋아요버튼 클릭");
+		ModelAndView mav = new ModelAndView();
+		System.out.println("좋아요코드: "+lbcode);
+		String loginId = (String) session.getAttribute("loginId");
+		System.out.println(loginId);
+		if(loginId == null) {
+			System.out.println("아이디없음");
+			ra.addFlashAttribute("Msg", "로그인해주세요");
+			mav.setViewName("member/memberLoginForm");
+		}else {
+			lelike.setLbmid(loginId);
+			String leList = ensvc.setleList(lelike);
+			System.out.println("leList:"+leList);
+			mav.setViewName("redirect:/enjoyPage");
+		}
+		return mav;
+	}
+
+
 
  	
 	

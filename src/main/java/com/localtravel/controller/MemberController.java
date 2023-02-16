@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.localtravel.dto.FoodDto;
+import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.MemberDto;
 import com.localtravel.service.MemberService;
 
@@ -124,6 +125,9 @@ public class MemberController {
 		ArrayList<Map<String, String>> memberList = memsvc.getmembersList(loginId);
 		mav.addObject("memberList" ,memberList);
 		
+		ArrayList<LikeBtnDto> likeList = memsvc.getlikeList(loginId);
+		mav.addObject("likeList",likeList);	
+		System.out.println(likeList);
 		
 		mav.setViewName("member/mypage");
 		return mav;
@@ -174,5 +178,6 @@ public class MemberController {
 		}
 		return mav;
 	}
+
 	
 }
