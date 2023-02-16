@@ -370,7 +370,7 @@ thead {
 							</div>
 
 							<div class="col" style="text-align: center;">
-								<button class="btn btn-danger font-bold mb-1 w-40 h-30"
+								<button class="btn btn-danger font-bold w-40 h-30" style="margin-top: 90px; margin-bottom: auto;"
 									onclick="reserveTrain()">예매하기_결제</button>
 							</div>
 						</div>
@@ -383,10 +383,10 @@ thead {
 
 		</div>
 	</section>
-	
-	
-	
 	<script type="text/javascript">
+	// 예매버튼 사용 여부
+	var ReserveBtnActive = 0;
+	
 	// 출발역 누를 경우 1, 아닌 경우 0  - 초기화 기능
 	var DepStaionBtnAct = 0;
 	var ArrStaionBtnAct = 0;
@@ -397,13 +397,25 @@ thead {
 	var ArrStationid= "";
 	var ArrStationname= "";
 	var TrainTime = "";
-	//
-	var Trainno = "";
-	var Adultcharge = "";
-	var Scdeptime = "";
-	var Scarrtime = "";
-	var Timerequired = "";
-	var PeopleCount = "";
+	
+	// 예매정보 저장
+	var Trainno = ""; 		// 열차번호
+	var Adultcharge = "";	// 운임비
+	var Scdeptime = "";		// 출발시간
+	var Scarrtime = "";		// 도착시간
+	var Timerequired = "";	// 소요시간
+	var PeopleCount = "";	// 인원수
+	
+	function reserveTrain(){
+		alert('예매되었습니다.');
+		//예매의 조건 :: 출도착의 역 정보가 띄워질 것 예매정보가 모두 존재할 것
+		
+	}
+	</script>
+	
+	
+	<script type="text/javascript">
+	
 	
 	// 좌석 선택 후 받는 데이터
 	function receiveData(data) {
@@ -413,7 +425,7 @@ thead {
         var AllCharge = parseInt(Adultcharge) * parseInt(PeopleCount); 
         // 좌석 부분
         if(data.length > 1){
-        	$('#SeatNumDisplay').html(seatList[1]+"<p Style='display: inline-block; margin: 0px;'>그외</p>");
+        	$('#SeatNumDisplay').html(seatList[1]+"<p Style='display: inline-block; margin: 0px; font-size: small;'>그외</p>");
         } else {
         	$('#SeatNumDisplay').html(seatList[1]);
         }
@@ -476,6 +488,12 @@ thead {
 	// 1.2. 출발역 선택 기준 ::  역 선택 -> 역정보 입력 -> 이동 가능한 역 정보 띄우기
 	function DepStationSelect(btn, nodeid, nodename){
 		DepStaionBtnAct = 1;
+		// 출발역 선택을 하면 도착역이 초기화 된다.
+		ArrStationid= "";
+		ArrStationname= "";
+		$('#ArrStaDisplay').html('-');
+		
+		
 		console.log('DepStaionBtnAct : '+DepStaionBtnAct+' - 출발역 선택')
 		DepStationname = nodename;
 		console.log('출발역 아이디 저장 : '+DepStationid);
@@ -588,6 +606,11 @@ thead {
 	// 2.2 도착역 기준 :: 도착역을 선택하기
 	function AtoDStationSelect(btn, nodeid, nodename){
 		ArrStaionBtnAct = 1;
+		// 도착역을 선택하면 출발역이 초기화
+		DepStationid= "";
+		DepStationname= "";
+		$('#DepStaDisplay').html('-');
+		
 		console.log('ArrStaionBtnAct : '+ArrStaionBtnAct+' - 도착역 선택')
 		ArrStationname = nodename;
 		console.log('도착역 아이디 저장 : '+ArrStationid);
