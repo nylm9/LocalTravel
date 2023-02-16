@@ -117,12 +117,30 @@ public class EnjoyService {
 		return bList;
 	}
 
-	public LikeBtnDto getleList(String lecode) {
+
+
+
+
+
+
+	public String setleList(LikeBtnDto lelike) {
 		System.out.println("enjoyService - 놀거리페이지 좋아요버튼");
-		LikeBtnDto leList = endao.insertEnjoyLike(lecode);
-		System.out.println(leList);
-		return leList;
+		int lelikeResult = endao.insertEnjoyLike(lelike);
+		System.out.println(lelikeResult);
+		return lelikeResult+"";
 	}
+
+//	public int getleList(LikeBtnDto lelike) {
+//	    System.out.println("enjoyService - 놀거리페이지 좋아요버튼");
+//	    Integer lelikeResult = endao.insertEnjoyLike(lelike);
+//	    System.out.println(lelikeResult);
+//	    return lelikeResult != null ? lelikeResult.intValue() : 0;
+//	}
+
+
+
+
+
 
 
 

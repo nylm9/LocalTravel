@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.localtravel.dto.FoodDto;
+import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.MemberDto;
 
 public interface MemberDao {
@@ -44,6 +45,10 @@ int updateBoard(MemberDto memberDto);
 
 	@Select("SELECT * FROM MEMBERS WHERE MID=#{mid}")
 	ArrayList<Map<String, String>> selectMemberList_Rank(String loginId);
+
+
+@Select("SELECT * FROM LIKEBTN WHERE LBMID=#{lbmid}")
+	ArrayList<LikeBtnDto> selectlikeList(String loginId);
 
 
 

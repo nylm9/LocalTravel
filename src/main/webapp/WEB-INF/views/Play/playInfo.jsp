@@ -97,16 +97,16 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 							   href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
 							   </div>
 							
-							<c:forEach items="${leList}" var="elike">
-							<h5>ddd</h5>
-							<%-- <div >
+							
+							
+							<div >
 								<label class="form-label btn-outline-primary btn-lg mx-auto p-3"
 		             				   onclick="selecteRecommend('1')" id="recommendGood" tabindex="-1">
-		             					 <a href="${pageContext.request.contextPath }/likeplay?lecode=${elike.lecode }">좋아요</a>
+		             					 <a href="${pageContext.request.contextPath }/likeplay?lbcode=${enInfo.ecode }">저장해놓기</a>
 		             					<input class="d-none"  type="radio" value='1' name="rvrecommend">
 		             			</label>
-							</div> --%>
-							</c:forEach>
+							</div> 
+							
 						
                 		</div>
               		</div>
@@ -173,6 +173,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
               	</div>
          </div>
          </section>
-
+	<script type="text/javascript">
+	var Msg = '${Msg}';
+	if(Msg.length > 0 ){
+		alert(Msg);
+	}
+	</script>
 </body>
 </html>

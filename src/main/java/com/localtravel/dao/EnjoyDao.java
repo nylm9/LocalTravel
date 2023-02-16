@@ -64,8 +64,10 @@ public interface EnjoyDao {
 	@Select("SELECT * FROM BLOG")
 	ArrayList<BlogDto> selectblogList();
 
-	@Insert("INSERT INTO LIKEBTN(LECODE) VALUES(#{lecode})")
-	LikeBtnDto insertEnjoyLike(String lecode);
+
+	
+	@Insert("INSERT INTO LIKEBTN(LBCODE,LBMID) VALUES(#{lbcode},#{lbmid})")
+	int insertEnjoyLike(LikeBtnDto lelike);
 
 
 	
