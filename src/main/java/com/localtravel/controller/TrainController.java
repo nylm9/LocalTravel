@@ -143,14 +143,6 @@ public class TrainController {
 		return seatList;
 	}
 	
-	@RequestMapping(value = "/TestPayment")
-	public ModelAndView TestPayment() {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("reserve/paymentPage");
-		return mav;
-	}
-	
 	
 	
 	

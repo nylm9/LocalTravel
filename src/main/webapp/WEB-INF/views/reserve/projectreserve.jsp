@@ -82,6 +82,8 @@ thead {
 	border: 1px solid black;
 	text-align: center;
 	margin-bottom: 3px;
+	padding-top: 5px;
+	padding-bottom:  5px;
 }
 
 .LocationSelcet:hover {
@@ -128,8 +130,10 @@ thead {
 	display: inline-block;
 	border: 1px solid black;
 	margin: 3px;
-	padding-left: 5px;
-	padding-right: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .stationBtn:hover {

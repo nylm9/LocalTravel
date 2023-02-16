@@ -6,7 +6,7 @@
     <title>*** NHN KCP API SAMPLE ***</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi">  
-    <link href="../static/css/style.css" rel="stylesheet" type="text/css" id="cssLink"/>
+    <link href="${pageContext.request.contextPath }/resources/css/paymentStyle.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript">
         /****************************************************************/
         /* m_Completepayment  설명                                      */
@@ -68,7 +68,8 @@
     </script>
 </head>
 <body>
-    <form name="order_info" method="post" action="../kcp_api_pay.jsp">
+	<!-- 결제후 이동페이지 -->
+    <form name="order_info" method="post" action="../contoller/mainPage">
         <div class="wrap">
             <!-- header -->
             <div class="header">
