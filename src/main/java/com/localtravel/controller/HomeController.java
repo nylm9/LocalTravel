@@ -48,19 +48,21 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-//		System.out.println("메인페이지에 놀거리 출력");
-////		ArrayList<EnjoyDto> enList = ensvc.getenjoyList();
 		ModelAndView mav = new ModelAndView();
-//		
+		System.out.println("메인페이지에 놀거리 출력");
+		
+		ArrayList<EnjoyDto> enList = ensvc.getenjoyList();
+		ArrayList<BlogDto> blist = ensvc.getbloglist();
+		mav.addObject("blist", blist);
+		mav.addObject("enList", enList);
+		System.out.println("blist:"+blist);
+		System.out.println("enList:"+enList);
+		
 //		EnjoyDto enlist = ensvc.getenjoyList2();
 //		mav.addObject("enlist", enlist);
 //		System.out.println("enlist:"+enlist);
-//		
-		
 //		ArrayList<BlogDto> blist = ensvc.getbloglist();
-//		mav.addObject("enList", enList);
 //		mav.addObject("blist", blist);
-//		System.out.println("enList:"+enList);
 //		System.out.println("blist:"+blist);
 		mav.setViewName("home");
 		return mav;
@@ -71,8 +73,8 @@ public class HomeController {
 	@RequestMapping("/mainPage")
 	public ModelAndView mainPage() {
 		System.out.println("메인페이지에 놀거리 출력");
-		ArrayList<EnjoyDto> enList = ensvc.getenjoyList();
 		ModelAndView mav = new ModelAndView();
+		ArrayList<EnjoyDto> enList = ensvc.getenjoyList();
 		ArrayList<BlogDto> blist = ensvc.getbloglist();
 		mav.addObject("blist", blist);
 		mav.addObject("enList", enList);

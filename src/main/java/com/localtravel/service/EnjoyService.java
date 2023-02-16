@@ -12,6 +12,7 @@ import com.localtravel.dao.EnjoyDao;
 import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
+import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.MenuDto;
 
 
@@ -114,6 +115,13 @@ public class EnjoyService {
 		EnjoyDto bList = endao.selectbList2();
 		System.out.println(bList);
 		return bList;
+	}
+
+	public LikeBtnDto getleList(String lecode) {
+		System.out.println("enjoyService - 놀거리페이지 좋아요버튼");
+		LikeBtnDto leList = endao.insertEnjoyLike(lecode);
+		System.out.println(leList);
+		return leList;
 	}
 
 
