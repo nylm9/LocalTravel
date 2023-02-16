@@ -142,6 +142,22 @@ public class TrainController {
 		System.out.println(seatList);
 		return seatList;
 	}
+	
+	@RequestMapping(value = "/TestPayment")
+	public ModelAndView TestPayment() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("reserve/paymentPage");
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// 테스트 - 역 스케줄 입력 및 출력 페이지 이동
 	@RequestMapping(value = "/TestSchedule")

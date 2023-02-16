@@ -174,6 +174,7 @@ thead {
 .textleft {
 	text-align: left;
 }
+
 .textcenter {
 	text-align: center;
 }
@@ -191,7 +192,7 @@ thead {
 .ReserveContent {
 	padding: 3px;
 	font-size: xx-large;
-	font-weight:bold;
+	font-weight: bold;
 	padding-bottom: 10px;
 }
 </style>
@@ -317,50 +318,61 @@ thead {
 					<div class="card-body p-3">
 						<div class="row">
 							<div class="col-8">
-								<table  class="cleanTable" style="text-align: left;">
+								<table class="cleanTable" style="text-align: left;">
 									<tr class="cleanTable">
-										<th class="cleanTable ReserveTitle" colspan="5" id="ReserveDateDisplay">--월 --일</th>
+										<th class="cleanTable ReserveTitle" colspan="5"
+											id="ReserveDateDisplay">--월 --일</th>
 									</tr>
 									<tr class="cleanTable">
-										<th class="cleanTable textleft ReserveTitle" style="width: 200px;">출발역</th>
-										<th class="cleanTable textleft ReserveTitle" style="width: 200px;">도착역</th>
-										<th class="cleanTable textleft ReserveTitle" style="width: 180px;">열차번호</th>
-										<th class="cleanTable textleft ReserveTitle" style="width: 110px;">호차번호</th>
-										<th class="cleanTable textleft ReserveTitle" style="width: 110px;">좌석번호</th>
+										<th class="cleanTable textleft ReserveTitle"
+											style="width: 200px;">출발역</th>
+										<th class="cleanTable textleft ReserveTitle"
+											style="width: 200px;">도착역</th>
+										<th class="cleanTable textleft ReserveTitle"
+											style="width: 180px;">열차번호</th>
+										<th class="cleanTable textleft ReserveTitle"
+											style="width: 110px;">호차번호</th>
+										<th class="cleanTable textleft ReserveTitle"
+											style="width: 110px;">좌석번호</th>
 									</tr>
 									<tr class="cleanTable">
-										<td class="cleanTable textcenter ReserveContent" id="DepStaDisplay"
-											style="">-</td>
-										<td class="cleanTable textcenter ReserveContent" id="ArrStaDisplay"
-											style="">-</td>
-										<td class="cleanTable textcenter ReserveContent" id="TrainNoDisplay"
-										style="">-</td>
-										<td class="cleanTable textcenter ReserveContent" id="CarNumDisplay"
-										style="">-</td>
-										<td class="cleanTable textcenter ReserveContent" id="SeatNumDisplay"
-										style="">-</td>
+										<td class="cleanTable textcenter ReserveContent"
+											id="DepStaDisplay" style="">-</td>
+										<td class="cleanTable textcenter ReserveContent"
+											id="ArrStaDisplay" style="">-</td>
+										<td class="cleanTable textcenter ReserveContent"
+											id="TrainNoDisplay" style="">-</td>
+										<td class="cleanTable textcenter ReserveContent"
+											id="CarNumDisplay" style="">-</td>
+										<td class="cleanTable textcenter ReserveContent"
+											id="SeatNumDisplay" >-</td>
 
 									</tr>
 									<tr class="cleanTable">
-										<th class="cleanTable textleft ReserveTitle" style="padding-top: 30px;">출발시간</th>
-										<th class="cleanTable textleft ReserveTitle" style="padding-top: 30px;">도착시간</th>
-										<th class="cleanTable textleft ReserveTitle" style="padding-top: 30px;">탑승인원</th>
-										<th class="cleanTable textleft ReserveTitle" style="padding-top: 30px;">총결제금액</th>
+										<th class="cleanTable textleft ReserveTitle"
+											style="padding-top: 30px;">출발시간</th>
+										<th class="cleanTable textleft ReserveTitle"
+											style="padding-top: 30px;">도착시간</th>
+										<th class="cleanTable textleft ReserveTitle"
+											style="padding-top: 30px;">탑승인원</th>
+										<th class="cleanTable textleft ReserveTitle"
+											style="padding-top: 30px;">총결제금액</th>
 
 
 									</tr>
 									<tr class="cleanTable">
-										<td class="cleanTable textcenter ReserveContent" id="DepTimeDisplay"
-										style="">--:--</td>
-										<td class="cleanTable textcenter ReserveContent" id="ArrTimeDisplay"
-										style="">--:--</td>
-										<td class="cleanTable textcenter ReserveContent" id="pCountDisplay"
-										style="">-</td>
-										<td class="cleanTable textcenter ReserveContent" id="CashDisplay"
-										colspan="2" style="">-</td>
+										<td class="cleanTable textcenter ReserveContent"
+											id="DepTimeDisplay" style="">--:--</td>
+										<td class="cleanTable textcenter ReserveContent"
+											id="ArrTimeDisplay" style="">--:--</td>
+										<td class="cleanTable textcenter ReserveContent"
+											id="pCountDisplay" style="">-</td>
+										<td class="cleanTable textcenter ReserveContent"
+											id="CashDisplay" colspan="2" style="">-</td>
 									</tr>
 								</table>
-
+								<input type="hidden" value="" id="HiddenSeatNum">
+								
 								<!-- 
 								<h3 style="float: left;">출발</h3>
 								<p style="float: left;" id="DepStaDisplay"></p>
@@ -370,7 +382,8 @@ thead {
 							</div>
 
 							<div class="col" style="text-align: center;">
-								<button class="btn btn-danger font-bold w-40 h-30" style="margin-top: 90px; margin-bottom: auto;"
+								<button class="btn btn-danger font-bold w-40 h-30"
+									style="margin-top: 90px; margin-bottom: auto;"
 									onclick="reserveTrain()">예매하기_결제</button>
 							</div>
 						</div>
@@ -407,25 +420,41 @@ thead {
 	var PeopleCount = "";	// 인원수
 	
 	function reserveTrain(){
-		alert('예매되었습니다.');
+		console.log("역정보 : "+DepStationname+DepStationid+" -> "+ArrStationname+ArrStationid);
+		//#SeatNumDisplay
+		var seatNum = $('#SeatNumDisplay').html();
+		console.log("예매전 최종 확인 : "+Trainno+","+Adultcharge+","+Scdeptime+","+Scarrtime+","+Timerequired+","+PeopleCount+","+seatNum);
 		//예매의 조건 :: 출도착의 역 정보가 띄워질 것 예매정보가 모두 존재할 것
+		if(Trainno.length > 0 && Adultcharge.length > 0 && Scdeptime.length > 0 && Scarrtime.length > 0 && Timerequired.length > 0 && PeopleCount.length > 0 && DepStationname.length > 0 && ArrStationname.length > 0){
+			alert('예매되었습니다.');
+			location.href = "${pageContext.request.contextPath }/TestPayment";
+		} else {
+			alert('해당 예매과정 중 필요한 정보가 존재하지 않습니다.');
+			location.href = "${pageContext.request.contextPath }/TestPayment";
+		}
+		
 		
 	}
 	</script>
-	
-	
+
+
 	<script type="text/javascript">
 	
 	
 	// 좌석 선택 후 받는 데이터
 	function receiveData(data) {
         console.log("Received data in parent window:", data);
-        var seatList = data[0].split("-");
+        var seatList = data[0].split("-"); // 5-d7 형식
+        var seatNumList = [];				// d7의 형식
+        for(var i = 0; i < data.length; i++){
+        	var d = data[i].split("-");
+        	seatNumList.push(d[1]);
+        }
         console.log(Trainno+","+Adultcharge+","+Scdeptime+","+Scarrtime+","+Timerequired+","+PeopleCount);
         var AllCharge = parseInt(Adultcharge) * parseInt(PeopleCount); 
         // 좌석 부분
         if(data.length > 1){
-        	$('#SeatNumDisplay').html(seatList[1]+"<p Style='display: inline-block; margin: 0px; font-size: small;'>그외</p>");
+        	$('#SeatNumDisplay').html(seatList[1]+"<p data-bs-toggle='tooltip' data-bs-placement='bottom' title='"+seatNumList+"' Style='display: inline-block; margin: 0px; font-size: small; font-weight: bold; cursor: help;'>그외</p>");
         } else {
         	$('#SeatNumDisplay').html(seatList[1]);
         }
@@ -435,6 +464,8 @@ thead {
         $('#ArrTimeDisplay').html(Scarrtime);
         $('#pCountDisplay').html("어른 "+PeopleCount+"명");
         $('#CashDisplay').html(AllCharge+"원");
+        $('#HiddenSeatNum').val(seatNumList);
+       
         
      }
 	
@@ -795,7 +826,7 @@ thead {
 		Scdeptime = scdeptime;
 		Scarrtime = scarrtime;
 		Timerequired = timerequired;
-		window.open("${pageContext.request.contextPath }/SeatSelect?pNum="+peopleConut, "좌석 선택창", "width=400, height=600, resizable=no");
+		window.open("${pageContext.request.contextPath }/SeatSelect?pNum="+peopleConut, "좌석 선택창", "width=400, height=650, resizable=no");
 	}
 	
 </script>
