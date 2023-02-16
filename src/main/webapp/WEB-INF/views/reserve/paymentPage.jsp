@@ -26,7 +26,7 @@
                 <p class="txt-type-1">이 페이지는 표준 STANDARD 결제를 요청하는 샘플 페이지입니다.</p>
                 <ul class="list-btn-1">
                     <li><a href="${pageContext.request.contextPath }/PCPayment" class="btn-type-1">PC 결제요청<span class="icon-arrow"></span></a></li>
-                    <li><a href="mobile_sample/trade_reg.html" class="btn-type-1">MOBILE 결제요청<span class="icon-arrow"></span></a></li>
+                    <li><a href="${pageContext.request.contextPath }/MobilePayment" class="btn-type-1">MOBILE 결제요청<span class="icon-arrow"></span></a></li>
                 </ul>
                 <!-- footer -->
                 <div class="footer">

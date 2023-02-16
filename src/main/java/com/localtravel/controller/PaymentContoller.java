@@ -15,6 +15,8 @@ public class PaymentContoller {
 		return mav;
 	}
 	
+	/* =========== PC 결제 부분 =============================*/
+	
 	@RequestMapping(value = "/PCPayment")
 	public ModelAndView PCPayment() {
 		ModelAndView mav = new ModelAndView();
@@ -23,4 +25,30 @@ public class PaymentContoller {
 		return mav;
 	}
 	
+	
+	/* =========== 모바일 결제 부분 =============================*/
+	
+	@RequestMapping(value = "/MobilePayment")
+	public ModelAndView MobilePayment() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("payment/mobile_order");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/MobilePaymentProcess")
+	public ModelAndView MobilePaymentProcess() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("payment/kcp_api_trade_reg");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/MobilComplete")
+	public ModelAndView MobilComplete() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("payment/mobile_order_complete");
+		return mav;
+	}
 }

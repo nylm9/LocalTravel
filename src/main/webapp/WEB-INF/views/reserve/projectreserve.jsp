@@ -431,10 +431,10 @@ thead {
 		//예매의 조건 :: 출도착의 역 정보가 띄워질 것 예매정보가 모두 존재할 것
 		if(Trainno.length > 0 && Adultcharge.length > 0 && Scdeptime.length > 0 && Scarrtime.length > 0 && Timerequired.length > 0 && PeopleCount.length > 0 && DepStationname.length > 0 && ArrStationname.length > 0){
 			alert('예매되었습니다.');
-			location.href = "${pageContext.request.contextPath }/TestPayment";
+			window.open("${pageContext.request.contextPath }/TestPayment", "기차예매결제", "width=400, height=650, resizable=no");
 		} else {
 			alert('해당 예매과정 중 필요한 정보가 존재하지 않습니다.');
-			location.href = "${pageContext.request.contextPath }/TestPayment";
+			window.open("${pageContext.request.contextPath }/TestPayment", "기차예매결제", "width=400, height=650, resizable=no");
 		}
 		
 		
