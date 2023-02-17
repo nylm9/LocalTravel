@@ -389,7 +389,7 @@ public class TrainService {
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
-			} else if (trainno > 100 && trainno < 113 || trainno > 161 && trainno < 166) {
+			} else if (trainno > 100 && trainno < 113 || trainno > 160 && trainno < 166) {
 //				System.out.println("(구포 경유) 경부선");
 				Routedata.setRoutecode("KBGP");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());
@@ -440,7 +440,7 @@ public class TrainService {
 				if(routeInfo != null) {
 					scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
 				}
-			} else if (trainno > 800 && trainno < 829 || trainno > 840 && trainno < 865) {
+			} else if (trainno > 800 && trainno < 829 || trainno > 840 && trainno < 866) {
 //				System.out.println("강릉선");
 				Routedata.setRoutecode("GL");
 				Routedata.setDepsta(scheduleArray.get(i).getAsJsonObject().get("depplacename").getAsString());

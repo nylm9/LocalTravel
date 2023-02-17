@@ -87,6 +87,7 @@ thead {
 .seatBtn-Th-Act {
 	cursor: pointer;
 	background-color: gray;
+	
 }
 </style>
 <script
@@ -130,6 +131,9 @@ thead {
 	        	console.log(arr3);
 	        	console.log(arr4);
 	        	var output = "<table>";
+	        	output += '<tr>';
+        		output += "<th colspan='5'; style='font-size: small; padding: 0px;'>일반실</th>";
+        		output += '</tr>';
 	        	for(var i = 0; i < 14; i++){
 	        		output += '<tr>';
 	        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr1[i]+'</th>';
@@ -173,7 +177,7 @@ thead {
 	function selectComplete(){
 		var urlParams = new URLSearchParams(window.location.search);
 		var pNum = parseInt(urlParams.get("pNum"));
-		console.log(pNum+", "+pCount.length)
+		console.log(pNum+", "+pCount.length);
 		if(pCount.length == pNum){
 			var result = confirm('선택된 좌석 정보 : '+pCount);
 			if(result){
@@ -242,6 +246,9 @@ thead {
 		        	console.log(arr3);
 		        	console.log(arr4);
 		        	var output = "<table>";
+		        	output += '<tr>';
+	        		output += "<th colspan='5'; style='font-size: small; padding: 0px;'>일반실</th>";
+	        		output += '</tr>';
 		        	for(var i = 0; i < 14; i++){
 		        		output += '<tr>';
 		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr1[i]+'</th>';
@@ -272,6 +279,9 @@ thead {
 		        	console.log(arr3);
 		        	console.log(arr4);
 		        	var output = "<table>";
+		        	output += '<tr>';
+	        		output += "<th colspan='4'; style='font-size: small; padding: 0px;'>특실</th>";
+	        		output += '</tr>';
 		        	for(var i = 0; i < 12; i++){
 		        		output += '<tr>';
 		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr1[i]+'</th>';
@@ -345,6 +355,9 @@ thead {
 		        	console.log(arr3);
 		        	console.log(arr4);
 		        	var output = "<table>";
+		        	output += '<tr>';
+	        		output += "<th colspan='5'; style='font-size: small; padding: 0px;'>일반실</th>";
+	        		output += '</tr>';
 		        	for(var i = 0; i < 14; i++){
 		        		output += '<tr>';
 		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr1[i]+'</th>';
@@ -375,6 +388,9 @@ thead {
 		        	console.log(arr3);
 		        	console.log(arr4);
 		        	var output = "<table>";
+		        	output += '<tr>';
+	        		output += "<th colspan='4'; style='font-size: small; padding: 0px;'>특실</th>";
+	        		output += '</tr>';
 		        	for(var i = 0; i < 12; i++){
 		        		output += '<tr>';
 		        		output += '<th class="seatBtn-Th" onclick="return seatBtn(this)">'+arr1[i]+'</th>';
@@ -399,6 +415,9 @@ thead {
 		console.log(pCount.length+" "+pNum);
 		console.log('부모창으로부터 받은 데이터2 : '+pNum);
 		console.log($('#carNum').val()+$(btn).html());
+		var roomSortation = $('#carNum').val();
+		
+		
 		var pSeat = $('#carNum').val()+"-"+$(btn).html();
 		if(pCount.includes(pSeat)){
 			var index = pCount.indexOf(pSeat);

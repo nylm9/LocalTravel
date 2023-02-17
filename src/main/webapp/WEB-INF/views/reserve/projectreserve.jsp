@@ -386,8 +386,8 @@ thead {
 							</div>
 
 							<div class="col" style="text-align: center;">
-								<button class="btn btn-danger font-bold w-40 h-30"
-									style="margin-top: 90px; margin-bottom: auto;"
+								<button class="btn btn-danger font-bold w-100 h-50"
+									style="margin-top: 50px; margin-bottom: auto;"
 									onclick="reserveTrain()">예매하기_결제</button>
 							</div>
 						</div>
@@ -437,7 +437,7 @@ thead {
 			window.open("${pageContext.request.contextPath }/TestPayment?depSta="+DepStationname+"&arrSta="+ArrStationname+"&trainNo="+Trainno+"&deptime="+Scdeptime+"&arrtime="+Scarrtime+"&carNum="+carNumber+"&seatNum="+seatNum+"&reserveDate="+reDate+"&adultCharge="+Adultcharge+"", "기차예매결제", "width=400, height=650, resizable=no");
 		} else {
 			alert('해당 예매과정 중 필요한 정보가 존재하지 않습니다.');
-			window.open("${pageContext.request.contextPath }/TestPayment?depSta=서울&arrSta=부산&trainNo=103&deptime=13:10&arrtime=	16:22&carNum=5&seatNum=B5&reserveDate=2023-02-17&adultCharge=30000", "기차예매결제", "width=400, height=650, resizable=no");
+			//window.open("${pageContext.request.contextPath }/TestPayment?depSta=서울&arrSta=부산&trainNo=103&deptime=13:10&arrtime=16:22&carNum=5&seatNum=B5&reserveDate=2023-02-17&adultCharge=30000", "기차예매결제", "width=800, height=700, resizable=no");
 		}
 		
 		
@@ -456,6 +456,11 @@ thead {
         for(var i = 0; i < data.length; i++){
         	var d = data[i].split("-");
         	seatNumList.push(d[1]);
+        }
+        var rooms = parseInt(seatList[0]);
+        if( rooms < 5 && rooms > 1 ){
+        	alert('2~4호실은 특실이므로 금액이 변경됩니다.');
+        	//Ajax 요금 일반 -> 특실 
         }
         console.log(Trainno+","+Adultcharge+","+Scdeptime+","+Scarrtime+","+Timerequired+","+PeopleCount);
         var AllCharge = parseInt(Adultcharge) * parseInt(PeopleCount); 
