@@ -283,6 +283,13 @@ select::-ms-expand {
 									name="fname" class="form-control" id="inputFname"
 									onkeyup="joinFNameCheck(this.value)">
 							</div>
+							
+							<div class="col-md-6">
+								<label for="inputF1ex" class="form-label">가게 한줄소개</label> <input
+									type="text" name="f1ex" class="form-control" placeholder="필수사항 아님"
+									id="inputF1ex">
+							</div>
+							
 							<div class="col-md-6">
 								<label for="inputFaddr" class="form-label">가게 주소</label> <span
 									class="small" id="FaddrCheckMsg">⠀</span> <input type="text"

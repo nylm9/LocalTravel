@@ -179,7 +179,37 @@ function change_btn(selectedBtn, group) {
 	
 			<div class="card" style=" margin-left:620px; margin-top:40px; margin:40px auto;">
 				<div class="card-body" >
-				<div class="e" >
+
+					<div class="e">
+						<label>지역 선택</label>
+						 <select name="province" onchange="searchEnjoy()">
+						 	<option value="99">--선택하세요--</option>
+							<option value="11">서울특별시</option>
+							<option value="21">부산광역시</option>
+							<option value="22">대구광역시</option>
+							<option value="23">인천광역시</option>
+							<option value="24">광주광역시</option>
+							<option value="25">대전광역시</option>
+							<option value="26">울산광역시</option>
+							<option value="31">경기도</option>
+							<option value="32">강원도</option>
+							<option value="33">충청북도</option>
+							<option value="34">충청남도</option>
+							<option value="12">세종특별시</option>
+							<option value="35">전라북도</option>
+							<option value="36">전라남도</option>
+							<option value="37">경상북도</option>
+							<option value="38">경상남도</option>
+							<option value="39">제주특별자치도</option>
+						</select>
+						
+
+
+
+
+					</div>
+
+					<div class="e" >
 				<h5>함께</h5>
 <!-- 				<button  class="button"  onclick="change_btn(this, 'person')">가족과함께</button>
 					<button  class="button"  onclick="change_btn(this, 'person')">혼자</button>
@@ -412,6 +442,8 @@ function change_btn(selectedBtn, group) {
 		
 	})
 	
+	
+	
 	function searchEnjoy(){
 		console.log("searchEnjoy");
 		
@@ -433,9 +465,15 @@ function change_btn(selectedBtn, group) {
 		}
 		console.log("공간 : " + subjectVal);
 		
-		var thcode = seasonVal + togetherVal + subjectVal;
+		var procode = $("select[name=province]").val();
+		console.log("procode : " + procode);
+		if(procode == 99) {
+			alert("지역을 선택해주세요!");
+			location.reload();
+		}
 		
-		clickAjax(thcode)
+		var thcode = seasonVal + togetherVal + subjectVal;
+		clickAjax(thcode, procode)
 		
 		
 	}
@@ -491,7 +529,7 @@ function clickPerson3(selBtn3) {
 
 	}  */
 
-function clickAjax(thcode) {
+function clickAjax(thcode, procode) {
 	
 	
   // selectedLabel.querySelector('input') 로 input 태그를 찾을 수 있음.
@@ -536,12 +574,13 @@ function clickAjax(thcode) {
   // 문자열 결합하여 한줄의 thcode를 만든다음 ajax로 전송 
   
   // console.log(selThcode);
+  
   	var loginId = '${sessionScope.loginId}';
   	console.log("loginId : " + loginId);
 		$.ajax({
 				type : "get",
 				url : "${pageContext.request.contextPath }/getEnjoyResult",
-				data : { "thcode" : thcode },
+				data : { "thcode" : thcode , "procode" : procode},
 				dataType : "json",
 				async:false,
 				success: function(enjoyList) {
@@ -589,6 +628,12 @@ function clickAjax(thcode) {
 </script>
 
 
+    <script type="text/javascript">
+     var Msg = '${Msg}';
+     if (Msg.trim().length > 0) { // 빈 문자열이 아닐 때만 alert 창 띄우기
+       alert(Msg);
+     }
+   </script>
 
 
 </html>

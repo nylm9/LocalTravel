@@ -22,6 +22,13 @@ public class AdminController {
 	@Autowired
 	private AdminService adsvc;
 	
+	@RequestMapping(value="/testMainPage")
+	public ModelAndView testMainPage() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin/testMain");
+		return mav;
+	}
+	
 	@RequestMapping(value="/insertMenuData")
 	public ModelAndView insertMenuData(MenuDto menu, RedirectAttributes ra) throws IllegalStateException, IOException {
 		ModelAndView mav = new ModelAndView();
