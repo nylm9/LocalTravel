@@ -57,7 +57,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   		}
   </script>
 	
-	
+<script src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
+		 <script type="text/javascript">
+		  var Msg = '${Msg}';
+		  if (Msg.trim().length > 0) { // 빈 문자열이 아닐 때만 alert 창 띄우기
+		    alert(Msg);
+		  }
+		</script>
 
 </head>
 <body>
@@ -69,45 +75,73 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	<!-- 상세보기 -->
 		<section class="section">
 			<div class="card mb-3 p-5 mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:40px;">
-			
-			
             	<div class="row g-0">
-              		<!-- <div class="col-12 " style="text-align: center;" >
-              			사진
-              			
-              		</div> -->
               		<div class="col-12">
                 		<div class="card-body"> 
-                		<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enInfo.epicture }" 
-                		style="width: 300px; height: 400px; float:left" 
-                		     class="img-fluid rounded-start" alt="...">
-                		     <div style="padding-left:350px;">
-                  			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${enInfo.ename }</h5>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >주소: ${enInfo.eaddr }</span>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >평점: ${enInfo.erepute }</span>
-                  		
-                  			 <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-up"></i></span>
-                  			<span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-down"></i></span>
-                  			</p>
-                  			<hr>
-                  			<p class="card-text mb-1">전화번호: ${enInfo.etell }</p>
-                  			<p class="card-text mb-1">${enInfo.eexplain }</p>
-                  			<p class="card-text mb-1"><a>지도</a></p>
-                  			 <a class="btn btn-sm btn-danger"
-							   href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
-							   </div>
+		                	<!-- 사진 -->
+		                	<form onsubmit="return joinFormCheck(this)">
+		                	<p id="ecodecheck"  onkeyup="joinecodeCheck(this.value)">${enInfo.ecode }</p>
+		                	<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enInfo.epicture }" 
+		                		style="width: 300px; height: 400px; float:left" 
+		                		     class="img-fluid rounded-start" alt="...">
+		                		     <!-- 정보출력 -->
+                		  			<div style="padding-left:350px;">
+			                  			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${enInfo.ename }</h5>
+			                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >주소: ${enInfo.eaddr }</span>
+				                  			<div>
+												<c:if test="${enInfo.erepute == '0'}">
+													<p style="font-size: 17px; ">평점: ☆☆☆☆☆(0) </p>
+												</c:if>
+												<c:if test="${enInfo.erepute == '1'}">
+													<p style="font-size: 17px; ">평점: ★☆☆☆☆ </p>
+												</c:if>
+												<c:if test="${enInfo.erepute == '2'}">
+													<p style="font-size: 17px; ">평점: ★★☆☆☆ </p>
+												</c:if>
+												<c:if test="${enInfo.erepute == '3'}">
+													<p style="font-size: 17px; ">평점: ★★★☆☆ </p>
+												</c:if>
+												<c:if test="${enInfo.erepute == '4'}">
+													<p style="font-size: 17px; ">평점: ★★★★☆ </p>
+												</c:if>
+												<c:if test="${enInfo.erepute == '5'}">
+													<p style="font-size: 17px; ">평점: ★★★★★</p>
+												</c:if>
+											</div>
+			                  		
+			                  			 <!-- <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-up"></i></span>
+			                  			 <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-down"></i></span> -->
+			                  			
+			                  				<hr>
+					                  			<c:choose>
+							       	   				<c:when test="${enInfo.etell == null }">
+														<p style="font-size: 17px; ">전화번호: 없음</p>
+													</c:when>
+													<c:otherwise>
+							       	   					<p  style="font-size: 20px; " >전화번호: ${enInfo.etell }</p>
+													</c:otherwise>
+												</c:choose>
+			                  			
+			                  			<p class="card-text mb-1" style="font-size: 17px; margin-top:-15px; ">${enInfo.eexplain }</p>
+				                  			
+				                  			<div style="float:left">
+					                  			 <a class="btn btn-sm btn-danger"
+												   href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
+												   
+												<div style="float:left; margin-right:7px;">
+													<label class="btn btn-sm btn-primary">
+							             					 <a type="submit" href="${pageContext.request.contextPath }/likeplay?lbcode=${enInfo.ecode }">저장해놓기</a>
+							             					<input class="d-none"  type="radio" value='1' name="rvrecommend">
+							             			</label>
+												</div> 
+											</div>
+								
+									</div>
 							
 							
 							
-							<div >
-								<label class="form-label btn-outline-primary btn-lg mx-auto p-3"
-		             				   onclick="selecteRecommend('1')" id="recommendGood" tabindex="-1">
-		             					 <a href="${pageContext.request.contextPath }/likeplay?lbcode=${enInfo.ecode }">저장해놓기</a>
-		             					<input class="d-none"  type="radio" value='1' name="rvrecommend">
-		             			</label>
-							</div> 
 							
-						
+							</form>
                 		</div>
               		</div>
             	</div>
@@ -173,11 +207,26 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
               	</div>
          </div>
          </section>
-	<script type="text/javascript">
-	var Msg = '${Msg}';
-	if(Msg.length > 0 ){
-		alert(Msg);
-	}
-	</script>
+
+<script type="text/javascript">
+function joinecodeCheck(idVal) {
+	console.log("놀거리코드 : " + idVal);
+
+		/* $.ajax( { 
+			type : "get",	
+			url : "${pageContext.request.contextPath }/enjoycodeCheck", 
+			data : { "ecode" : idVal },
+			success : function(checkResult) {
+				console.log("checkResult : " + checkResult);
+				alert('틀렸음');
+				return false;
+				
+			}
+		} ); */
+	
+}
+</script>
+
 </body>
+
 </html>

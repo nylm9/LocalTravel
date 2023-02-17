@@ -125,18 +125,40 @@ public class EnjoyService {
 
 	public String setleList(LikeBtnDto lelike) {
 		System.out.println("enjoyService - 놀거리페이지 좋아요버튼");
+		String checkLike = endao.selectCheckLike(lelike);
+		if(checkLike == null) {
+			return "0";
+		}
+		// SELECT CODE FROM TBL WHERE 아이디 = ? AND 코드 = ?;
+		
 		int lelikeResult = endao.insertEnjoyLike(lelike);
 		System.out.println(lelikeResult);
 		return lelikeResult+"";
 	}
 
-//	public int getleList(LikeBtnDto lelike) {
-//	    System.out.println("enjoyService - 놀거리페이지 좋아요버튼");
-//	    Integer lelikeResult = endao.insertEnjoyLike(lelike);
-//	    System.out.println(lelikeResult);
-//	    return lelikeResult != null ? lelikeResult.intValue() : 0;
-//	}
+	public String enjoycodeCheck(String ecode) {
+		System.out.println("놀거리코드 중복체크 서비스");
+		String ecodeCheckResult = "OK";
+		String ecodeLike = endao.ecodeLike(ecode);
+		if(ecodeLike != null) {
+			ecodeCheckResult = "NO";
+		}
+		return ecodeCheckResult;
+	}
 
+
+
+//	public String memberIdCheck(String inputId) {
+//		System.out.println("MemberService memberIdCheck() 호출");
+//		String idCheckResult = "OK";
+//		//아이디 확인 
+//		String MemberId = memdao.idCheck(inputId);
+//		
+//		if(MemberId != null) {
+//			idCheckResult = "NO";
+//		}
+//		return idCheckResult;
+//	}
 
 
 

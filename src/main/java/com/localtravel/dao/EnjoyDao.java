@@ -64,10 +64,15 @@ public interface EnjoyDao {
 	@Select("SELECT * FROM BLOG")
 	ArrayList<BlogDto> selectblogList();
 
-
-	
 	@Insert("INSERT INTO LIKEBTN(LBCODE,LBMID) VALUES(#{lbcode},#{lbmid})")
 	int insertEnjoyLike(LikeBtnDto lelike);
+
+	@Select("SELECT ECODE FROM ENJOY WHERE ECODE=#{ecode}")
+	String ecodeLike(String ecode);
+
+	// SELECT CODE FROM TBL WHERE 아이디 = ? AND 코드 = ?;
+	@Select("SELECT LBCODE FROM LIKEBTN WHERE LBMID=#{lbmid} AND LBCODE = #{lbcode}")
+	String selectCheckLike(LikeBtnDto lelike);
 
 
 	

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.MemberDto;
@@ -49,6 +50,16 @@ int updateBoard(MemberDto memberDto);
 
 @Select("SELECT * FROM LIKEBTN WHERE LBMID=#{lbmid}")
 	ArrayList<LikeBtnDto> selectlikeList(String loginId);
+
+
+@Select("SELECT * FROM ENJOY WHERE ECODE=#{lbcode}")
+ArrayList<EnjoyDto> selectenjoyList();
+
+
+@Select("SELECT * FROM ENJOY WHERE ECODE = #{ecode}")
+EnjoyDto selectecodelikeList(String ecode);
+
+
 
 
 
