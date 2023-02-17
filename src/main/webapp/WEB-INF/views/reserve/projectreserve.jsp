@@ -426,15 +426,18 @@ thead {
 	function reserveTrain(){
 		console.log("역정보 : "+DepStationname+DepStationid+" -> "+ArrStationname+ArrStationid);
 		//#SeatNumDisplay
-		var seatNum = $('#SeatNumDisplay').html();
+		var seatNum = $('#HiddenSeatNum').val();
+		var reDate = $('#ReserveDateDisplay').html();
+		var carNumber = $('#CarNumDisplay').html();
+		
 		console.log("예매전 최종 확인 : "+Trainno+","+Adultcharge+","+Scdeptime+","+Scarrtime+","+Timerequired+","+PeopleCount+","+seatNum);
 		//예매의 조건 :: 출도착의 역 정보가 띄워질 것 예매정보가 모두 존재할 것
 		if(Trainno.length > 0 && Adultcharge.length > 0 && Scdeptime.length > 0 && Scarrtime.length > 0 && Timerequired.length > 0 && PeopleCount.length > 0 && DepStationname.length > 0 && ArrStationname.length > 0){
 			alert('예매되었습니다.');
-			window.open("${pageContext.request.contextPath }/TestPayment", "기차예매결제", "width=400, height=650, resizable=no");
+			window.open("${pageContext.request.contextPath }/TestPayment?depSta="+DepStationname+"&arrSta="+ArrStationname+"&trainNo="+Trainno+"&deptime="+Scdeptime+"&arrtime="+Scarrtime+"&carNum="+carNumber+"&seatNum="+seatNum+"&reserveDate="+reDate+"&adultCharge="+Adultcharge+"", "기차예매결제", "width=400, height=650, resizable=no");
 		} else {
 			alert('해당 예매과정 중 필요한 정보가 존재하지 않습니다.');
-			window.open("${pageContext.request.contextPath }/TestPayment", "기차예매결제", "width=400, height=650, resizable=no");
+			window.open("${pageContext.request.contextPath }/TestPayment?depSta=서울&arrSta=부산&trainNo=103&deptime=13:10&arrtime=	16:22&carNum=5&seatNum=B5&reserveDate=2023-02-17&adultCharge=30000", "기차예매결제", "width=400, height=650, resizable=no");
 		}
 		
 		

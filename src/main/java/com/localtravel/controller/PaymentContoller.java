@@ -4,13 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.localtravel.dto.TRServeDto;
+
 @Controller
 public class PaymentContoller {
 	
 	@RequestMapping(value = "/TestPayment")
-	public ModelAndView TestPayment() {
+	public ModelAndView TestPayment(TRServeDto reserveData) {
 		ModelAndView mav = new ModelAndView();
-		
+		System.out.println(reserveData);
+		mav.addObject("reserveData", reserveData);
 		mav.setViewName("reserve/paymentPage");
 		return mav;
 	}
