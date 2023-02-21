@@ -81,7 +81,7 @@
           <div class="header-socials-2 text-right d-none d-lg-block">
             <ul class="list-inline mb-0">
               <li class="list-inline-item"><a href="${pageContext.request.contextPath }/memberLoginForm">로그인</a></li>
-              <li class="list-inline-item"><a href="${pageContext.request.contextPath }/memberJoinForm">회원가입</a></li>  
+              <li class="list-inline-item"><a href="${pageContext.request.contextPath }/testMemberJoinCheckForm">회원가입</a></li>  
              
             </ul>
           </div>
