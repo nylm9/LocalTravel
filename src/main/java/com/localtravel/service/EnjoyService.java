@@ -127,13 +127,17 @@ public class EnjoyService {
 		System.out.println("enjoyService - 놀거리페이지 좋아요버튼");
 		String checkLike = endao.selectCheckLike(lelike);
 		if(checkLike == null) {
-			return "0";
+			System.out.println("insert");
+			int lelikeResult = endao.insertEnjoyLike(lelike);
+			System.out.println(lelikeResult);
+			return lelikeResult+"";
+			
 		}
 		// SELECT CODE FROM TBL WHERE 아이디 = ? AND 코드 = ?;
-		
-		int lelikeResult = endao.insertEnjoyLike(lelike);
-		System.out.println(lelikeResult);
-		return lelikeResult+"";
+		else {
+			System.out.println("이미 이 아이디로 저장되어 있음");
+			return "0";
+		}
 	}
 
 	public String enjoycodeCheck(String ecode) {

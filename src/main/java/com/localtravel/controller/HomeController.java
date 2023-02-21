@@ -162,14 +162,34 @@ public class HomeController {
 			
 			lelike.setLbmid(loginId);
 			String leList = ensvc.setleList(lelike);// 코드, 아이디
-			
+			if(leList == null) {
+				System.out.println("저장되었습니다");
 				ra.addFlashAttribute("Msg", "저장완료되었습니다");
 				System.out.println("leList:"+leList);
 				mav.setViewName("redirect:/enjoyPage");
+			}else {
+				System.out.println("이미 저장되어있음");
+				ra.addFlashAttribute("Msg", "이미 저장되어있습니다.");
+				mav.setViewName("redirect:/enjoyPage");
+			}
 			
 		}
 		return mav;
 	}
+//	@RequestMapping(value = "/enjoycodeCheck") 
+//	public @ResponseBody String memberIdCheck(String ecode) { //ajax를 쓸 때의 return 타입은 ModelAndView가 아님. 
+//		//@ResponseBody : String은 '페이지 이름'을 의미한다. 따라서 응답해주는 값을 '데이터를 주고받는 형식'으로 씀을 의미하는 어노테이션
+//		System.out.println("놀거리코드 중복체크");
+//		System.out.println("입력한 아이디 : " + ecode);
+//		
+//		//1. 아이디 중복 확인 기능 호출
+//		String ecodeCheckResult = ensvc.enjoycodeCheck(ecode);
+//		//2. 중복확인 결과값 리턴
+//		return ecodeCheckResult;
+//	}
+	
+	
+	
 //	@RequestMapping(value="/likeFood")
 //	public ModelAndView likeFood(String lbcode, LikeBtnDto lelike,RedirectAttributes ra) {
 //		System.out.println("먹거리 좋아요버튼 클릭");
@@ -194,17 +214,6 @@ public class HomeController {
 //		}
 //		return mav;
 //	}
-	@RequestMapping(value = "/enjoycodeCheck") 
-	public @ResponseBody String memberIdCheck(String ecode) { //ajax를 쓸 때의 return 타입은 ModelAndView가 아님. 
-		//@ResponseBody : String은 '페이지 이름'을 의미한다. 따라서 응답해주는 값을 '데이터를 주고받는 형식'으로 씀을 의미하는 어노테이션
-		System.out.println("놀거리코드 중복체크");
-		System.out.println("입력한 아이디 : " + ecode);
-		
-		//1. 아이디 중복 확인 기능 호출
-		String ecodeCheckResult = ensvc.enjoycodeCheck(ecode);
-		//2. 중복확인 결과값 리턴
-		return ecodeCheckResult;
-	}
 //	@RequestMapping(value="/likeFood")
 //	public ModelAndView likeFood(String lbcode, LikeBtnDto lelike, RedirectAttributes ra) {
 //	    System.out.println("먹거리 좋아요버튼 클릭");
