@@ -201,7 +201,6 @@ thead {
 }
 </style>
 
-
 </head>
 <body>
 
@@ -213,7 +212,7 @@ thead {
 	<!-- 예매창 main창-->
 	<section class="section">
 		<div class="row" style="min-width: 565px;">
-		<h2>예매는 성공되었다</h2>
+			<h2>예매는 성공되었다</h2>
 		</div>
 	</section>
 	<script type="text/javascript">
@@ -226,6 +225,14 @@ thead {
 	<!-- initialize jQuery Library -->
 	<script
 		src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			alert('예매가 완료되었습니다.')
+			var reservationCode = "ABC123"; // 예약 코드 생성
+			window.opener.receiveReservationCode(reservationCode); // 부모 창으로 값 전달
+			window.close();
+		});
+	</script>
 	<!-- Bootstrap jQuery -->
 	<script
 		src="${pageContext.request.contextPath }/resources/plugins/bootstrap/js/bootstrap.min.js"></script>

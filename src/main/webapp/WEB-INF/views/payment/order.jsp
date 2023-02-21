@@ -206,7 +206,7 @@ function generateRandomNumber() {
 </head>
 <body>
 	<!-- 결제후 이동페이지 -->
-	<form name="order_info" method="post" action="../contoller/mainPage">
+	<form name="order_info" method="post" action="../contoller/pay_success">
 		<div class="wrap">
 			<!-- header -->
 			<div class="header">

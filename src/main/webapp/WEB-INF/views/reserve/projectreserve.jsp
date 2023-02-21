@@ -423,6 +423,17 @@ thead {
 	var Timerequired = "";	// 소요시간
 	var PeopleCount = "";	// 인원수
 	
+	
+	function receiveReservationCode(code) {
+		  // 전달받은 코드를 사용하여 작업 수행
+		console.log("예약 코드: " + code);
+		var seatNum = $('#HiddenSeatNum').val();
+		var reDate = $('#ReserveDateDisplay').html();
+		var carNumber = $('#CarNumDisplay').html();
+		location.href ="${pageContext.request.contextPath }/reservationAdd?depSta="+DepStationname+"&arrSta="+ArrStationname+"&trainNo="+Trainno+"&deptime="+Scdeptime+"&arrtime="+Scarrtime+"&carNum="+carNumber+"&seatNum="+seatNum+"&reserveDate="+reDate+"&adultCharge="+Adultcharge+"";
+	};
+	
+	// 예매 결제하기 
 	function reserveTrain(){
 		console.log("역정보 : "+DepStationname+DepStationid+" -> "+ArrStationname+ArrStationid);
 		//#SeatNumDisplay

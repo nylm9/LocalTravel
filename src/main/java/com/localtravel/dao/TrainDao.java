@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import com.localtravel.dto.ReservationDto;
 import com.localtravel.dto.TRCityCodeDto;
 import com.localtravel.dto.TRInputScheduleDto;
 import com.localtravel.dto.TRRouteDto;
@@ -75,6 +76,11 @@ public interface TrainDao {
 	// 좌석 값 입력 후 출력
 	@Select("SELECT * FROM TRSEAT WHERE CAR = #{carNum}")
 	ArrayList<TRSeatDto> selectSeatInput(String carNum);
+	
+	// 예매코드 입력하기
+	@Insert("INSERT INTO RESERVATION(REMID, RECODE, DEPSTA, ARRSTA, TRAINNO, DEPTIME, ARRTIME, CARNUM, SEATNUM, TRIANDATE, REDATE, CHARGE, RESTATES) "
+			+ "VALUES()")
+	void insertReservationCode(ReservationDto reserveData);
 	
 	
 	

@@ -1,13 +1,18 @@
 package com.localtravel.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.localtravel.dto.TRServeDto;
+import com.localtravel.service.TrainReserveService;
 
 @Controller
 public class PaymentContoller {
+	
+	@Autowired
+	TrainReserveService trsvc;
 	
 	@RequestMapping(value = "/TestPayment")
 	public ModelAndView TestPayment(TRServeDto reserveData) {
@@ -65,6 +70,15 @@ public class PaymentContoller {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/reservationAdd")
+	public ModelAndView reservationAdd(TRServeDto reserveData) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println(reserveData);
+		
+		trsvc.reservationAdd(reserveData);
+		
+		return null;
+	}
 	
 	
 	
