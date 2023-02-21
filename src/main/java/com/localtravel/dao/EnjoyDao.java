@@ -10,6 +10,7 @@ import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.LikeBtnDto;
+import com.localtravel.dto.LikeFoodBtnDto;
 import com.localtravel.dto.MenuDto;
 
 public interface EnjoyDao {
@@ -63,19 +64,23 @@ public interface EnjoyDao {
 	
 	@Select("SELECT * FROM BLOG")
 	ArrayList<BlogDto> selectblogList();
+	
+	@Select("SELECT LBCODE FROM LIKEBTN WHERE LBMID=#{lbmid} AND LBCODE = #{lbcode}")
+	String selectCheckLike(LikeBtnDto lelike);
 
 	@Insert("INSERT INTO LIKEBTN(LBCODE,LBMID) VALUES(#{lbcode},#{lbmid})")
 	int insertEnjoyLike(LikeBtnDto lelike);
 
-	@Select("SELECT ECODE FROM ENJOY WHERE ECODE=#{ecode}")
-	String ecodeLike(String ecode);
+	
+	@Select("SELECT LBFCODE FROM LIKEFOODBTN WHERE LBFMID=#{lbfmid} AND LBFCODE = #{lbfcode}")
+	String selectFoodCheckLike(LikeFoodBtnDto leflike);
+	
+	@Insert("INSERT INTO LIKEFOODBTN(LBFCODE,LBFMID) VALUES(#{lbfcode},#{lbfmid})")
+	int insertFoodLike(LikeFoodBtnDto leflike);
 
-//	// SELECT CODE FROM TBL WHERE 아이디 = ? AND 코드 = ?;
-//	@Select("SELECT LBCODE FROM LIKEBTN WHERE LBMID=#{lbmid} AND LBCODE = #{lbcode}")
-//	String selectCheckLike(LikeBtnDto lelike);
+	@Select("SELECT * FROM BLOG WHERE BCODE = #{bcode}")
+	ArrayList<BlogDto> selectBlogList_Rank(String ecode);
 
-	@Select("SELECT LBCODE FROM LIKEBTN WHERE LBMID=#{lbmid} AND LBCODE = #{lbcode}")
-	String selectCheckLike(LikeBtnDto lelike);
 
 	
 

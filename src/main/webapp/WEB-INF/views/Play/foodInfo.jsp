@@ -139,7 +139,7 @@
 											<div style="float:left; margin-right:7px;">
 													<label class="btn btn-sm btn-primary"
 								             		onclick="selecteRecommend('1')" id="recommendGood" tabindex="-1">
-								             		<a href="${pageContext.request.contextPath }/likeFood?lbcode=${fdInfo.fcode }">저장해놓기</a>
+								             		<a href="${pageContext.request.contextPath }/likeFood?lbfcode=${fdInfo.fcode }">저장해놓기</a>
 								             		<input class="d-none"  type="radio" value='1' name="rvrecommend">
 								             	</label>
 											</div> 
@@ -195,7 +195,11 @@
           	
 		</section>
 		
-		<!-- 기차예매 -->
+		
+		
+		
+		
+		<!-- <!-- 기차예매 -->
 		<section class="section">
 		<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
 				<div class="row g-0">
@@ -209,6 +213,6 @@
               	</div>
          </div>
          </section>
-
+ -->
 </body>
 </html>

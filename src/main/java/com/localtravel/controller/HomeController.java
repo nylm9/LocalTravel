@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.LikeBtnDto;
+import com.localtravel.dto.LikeFoodBtnDto;
 import com.localtravel.dto.TRCityCodeDto;
 import com.localtravel.service.EnjoyService;
 import com.localtravel.service.TrainReserveService;
@@ -162,13 +163,13 @@ public class HomeController {
 			
 			lelike.setLbmid(loginId);
 			String leList = ensvc.setleList(lelike);// 코드, 아이디
-			if(leList == null) {
-				System.out.println("저장되었습니다");
+			if(leList.equals("1")) {
+				System.out.println("controller-저장완료");
 				ra.addFlashAttribute("Msg", "저장완료되었습니다");
 				System.out.println("leList:"+leList);
 				mav.setViewName("redirect:/enjoyPage");
 			}else {
-				System.out.println("이미 저장되어있음");
+				System.out.println("controller-이미 저장되어있음");
 				ra.addFlashAttribute("Msg", "이미 저장되어있습니다.");
 				mav.setViewName("redirect:/enjoyPage");
 			}
@@ -176,18 +177,36 @@ public class HomeController {
 		}
 		return mav;
 	}
-//	@RequestMapping(value = "/enjoycodeCheck") 
-//	public @ResponseBody String memberIdCheck(String ecode) { //ajax를 쓸 때의 return 타입은 ModelAndView가 아님. 
-//		//@ResponseBody : String은 '페이지 이름'을 의미한다. 따라서 응답해주는 값을 '데이터를 주고받는 형식'으로 씀을 의미하는 어노테이션
-//		System.out.println("놀거리코드 중복체크");
-//		System.out.println("입력한 아이디 : " + ecode);
-//		
-//		//1. 아이디 중복 확인 기능 호출
-//		String ecodeCheckResult = ensvc.enjoycodeCheck(ecode);
-//		//2. 중복확인 결과값 리턴
-//		return ecodeCheckResult;
-//	}
-	
+
+	@RequestMapping(value="/likeFood")
+	public ModelAndView likeFood(String lbfcode, LikeFoodBtnDto leflike,RedirectAttributes ra) {
+		System.out.println("먹거리 좋아요버튼 클릭");
+		ModelAndView mav = new ModelAndView();
+		System.out.println("먹거리 좋아요코드: "+lbfcode);
+		String loginId = (String) session.getAttribute("loginId");
+		System.out.println(loginId);
+		if(loginId == null) {
+			System.out.println("아이디없음");
+			ra.addFlashAttribute("Msg", "로그인해주세요");
+			mav.setViewName("member/memberLoginForm");
+		}else {
+			leflike.setLbfmid(loginId);
+			String leLFist = ensvc.setleListFood(leflike);// 코드, 아이디
+			System.out.println("코드+아이디:"+leLFist);
+			if(leLFist.equals("1")) {
+				System.out.println("controller-저장완료");
+				ra.addFlashAttribute("Msg", "저장완료되었습니다");
+				System.out.println("leFList:"+leLFist);
+				mav.setViewName("redirect:/foodPage");
+			}else {
+				System.out.println("controller-이미 저장되어있음");
+				ra.addFlashAttribute("Msg", "이미 저장되어있습니다.");
+				mav.setViewName("redirect:/foodPage");
+			}
+			
+		}
+		return mav;
+	}
 	
 	
 //	@RequestMapping(value="/likeFood")

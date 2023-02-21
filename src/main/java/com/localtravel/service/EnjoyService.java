@@ -13,6 +13,7 @@ import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.LikeBtnDto;
+import com.localtravel.dto.LikeFoodBtnDto;
 import com.localtravel.dto.MenuDto;
 
 
@@ -127,7 +128,7 @@ public class EnjoyService {
 		System.out.println("enjoyService - 놀거리페이지 좋아요버튼");
 		String checkLike = endao.selectCheckLike(lelike);
 		if(checkLike == null) {
-			System.out.println("insert");
+			System.out.println("service-인서트작동");
 			int lelikeResult = endao.insertEnjoyLike(lelike);
 			System.out.println(lelikeResult);
 			return lelikeResult+"";
@@ -135,34 +136,40 @@ public class EnjoyService {
 		}
 		// SELECT CODE FROM TBL WHERE 아이디 = ? AND 코드 = ?;
 		else {
-			System.out.println("이미 이 아이디로 저장되어 있음");
+			System.out.println("service-이미 이 아이디로 저장되어 있음");
 			return "0";
 		}
 	}
 
-	public String enjoycodeCheck(String ecode) {
-		System.out.println("놀거리코드 중복체크 서비스");
-		String ecodeCheckResult = "OK";
-		String ecodeLike = endao.ecodeLike(ecode);
-		if(ecodeLike != null) {
-			ecodeCheckResult = "NO";
+	public String setleListFood(LikeFoodBtnDto leflike) {
+		System.out.println("enjoyService - 먹거리페이지 좋아요버튼");
+		String checkFLike = endao.selectFoodCheckLike(leflike);
+		if(checkFLike == null) {
+			System.out.println("service-인서트작동");
+			int lelikeResult = endao.insertFoodLike(leflike);
+			System.out.println("놀거리인서트:"+lelikeResult);
+			return lelikeResult+"";
+			
 		}
-		return ecodeCheckResult;
+		// SELECT CODE FROM TBL WHERE 아이디 = ? AND 코드 = ?;
+		else {
+			System.out.println("service-이미 이 아이디로 저장되어 있음");
+			return "0";
+		}
 	}
 
 
 
-//	public String memberIdCheck(String inputId) {
-//		System.out.println("MemberService memberIdCheck() 호출");
-//		String idCheckResult = "OK";
-//		//아이디 확인 
-//		String MemberId = memdao.idCheck(inputId);
-//		
-//		if(MemberId != null) {
-//			idCheckResult = "NO";
-//		}
-//		return idCheckResult;
-//	}
+	public ArrayList<BlogDto> getBlogList(String ecode) {
+		System.out.println("enjoyService -블로그 추천 띄우기");
+		ArrayList<BlogDto> blList = endao.selectBlogList_Rank(ecode);
+		System.out.println(blList);
+		return blList;
+	}
+
+
+
+
 
 
 
