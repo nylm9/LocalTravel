@@ -54,4 +54,18 @@ public class PaymentContoller {
 		mav.setViewName("payment/mobile_order_complete");
 		return mav;
 	}
+	
+	/* ========================= 결제 성공 부분 =============================== */
+	
+	@RequestMapping(value = "/pay_success")
+	public ModelAndView pay_success() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("reserve/trainReservationSuccess");
+		return mav;
+	}
+	
+	
+	
+	
 }

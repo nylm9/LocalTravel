@@ -433,7 +433,7 @@ thead {
 		console.log("예매전 최종 확인 : "+Trainno+","+Adultcharge+","+Scdeptime+","+Scarrtime+","+Timerequired+","+PeopleCount+","+seatNum);
 		//예매의 조건 :: 출도착의 역 정보가 띄워질 것 예매정보가 모두 존재할 것
 		if(Trainno.length > 0 && Adultcharge.length > 0 && Scdeptime.length > 0 && Scarrtime.length > 0 && Timerequired.length > 0 && PeopleCount.length > 0 && DepStationname.length > 0 && ArrStationname.length > 0){
-			alert('예매되었습니다.');
+			
 			window.open("${pageContext.request.contextPath }/TestPayment?depSta="+DepStationname+"&arrSta="+ArrStationname+"&trainNo="+Trainno+"&deptime="+Scdeptime+"&arrtime="+Scarrtime+"&carNum="+carNumber+"&seatNum="+seatNum+"&reserveDate="+reDate+"&adultCharge="+Adultcharge+"", "기차예매결제", "width=400, height=650, resizable=no");
 		} else {
 			alert('해당 예매과정 중 필요한 정보가 존재하지 않습니다.');
@@ -458,10 +458,7 @@ thead {
         	seatNumList.push(d[1]);
         }
         var rooms = parseInt(seatList[0]);
-        if( rooms < 5 && rooms > 1 ){
-        	alert('2~4호실은 특실이므로 금액이 변경됩니다.');
-        	//Ajax 요금 일반 -> 특실 
-        }
+        
         console.log(Trainno+","+Adultcharge+","+Scdeptime+","+Scarrtime+","+Timerequired+","+PeopleCount);
         var AllCharge = parseInt(Adultcharge) * parseInt(PeopleCount); 
         // 좌석 부분
@@ -477,6 +474,13 @@ thead {
         $('#pCountDisplay').html("어른 "+PeopleCount+"명");
         $('#CashDisplay').html(AllCharge+"원");
         $('#HiddenSeatNum').val(seatNumList);
+        if( rooms < 5 && rooms > 1 ){
+        	var specialChange = $('#spcial'+Trainno).val();
+        	alert('2~4호실은 특실이므로 금액이 변경됩니다. \n 일반요금 '+AllCharge+'원 → 특실요금 '+specialChange+'원');
+        	$('#CashDisplay').html(specialChange+"원");
+        	Adultcharge = $('#spcial'+Trainno).val();
+        	//Ajax 요금 일반 -> 특실 
+        }
        
         
      }
@@ -814,6 +818,7 @@ thead {
 						output +='<td class="scheduleInfoContent" >'+timeRequired+'</td>';
 						output +='<td class="scheduleInfoContent" >'+scList[i].trainno+'</td>';
 						output +='<td class="scheduleInfoContent" >'+scList[i].adultcharge+'원</td>';
+						output +='<input type="hidden" id="spcial'+scList[i].trainno+'" value="'+scList[i].specialcharge+'">';
 						output +='</tr>';
 						output +='</table>';
 						output +='</div>';

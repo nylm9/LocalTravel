@@ -389,6 +389,7 @@ public class TrainService {
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("specialcharge", routeInfo.getSpecialfare());
 			} else if (trainno > 100 && trainno < 113 || trainno > 160 && trainno < 166) {
 //				System.out.println("(구포 경유) 경부선");
 				Routedata.setRoutecode("KBGP");
@@ -396,6 +397,7 @@ public class TrainService {
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("specialcharge", routeInfo.getSpecialfare());
 			} else if (trainno > 120 && trainno < 129 || trainno > 169 && trainno < 174) {
 //				System.out.println("(수원 경유) 경부선");
 				Routedata.setRoutecode("KBSWSG");
@@ -403,6 +405,7 @@ public class TrainService {
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("specialcharge", routeInfo.getSpecialfare());
 			} else if (trainno > 200 && trainno < 225 || trainno > 281 && trainno < 289) {
 //				System.out.println("경전선 ( 진주행 )");
 				Routedata.setRoutecode("KJ");
@@ -410,6 +413,7 @@ public class TrainService {
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("specialcharge", routeInfo.getSpecialfare());
 			} else if (trainno > 230 && trainno < 255 || trainno > 290 && trainno < 299) {
 //				System.out.println("동해선 ( 포항행 )");
 				Routedata.setRoutecode("DH");
@@ -417,6 +421,7 @@ public class TrainService {
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("specialcharge", routeInfo.getSpecialfare());
 			} else if (trainno > 400 && trainno < 441 || trainno > 490 && trainno < 493) {
 //				System.out.println("호남선");
 				Routedata.setRoutecode("HN");
@@ -424,6 +429,7 @@ public class TrainService {
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("specialcharge", routeInfo.getSpecialfare());
 			} else if (trainno > 470 && trainno < 487 || trainno > 490 && trainno < 493) {
 //				System.out.println("호남선 - 서대전 경유");
 				Routedata.setRoutecode("HNGJ");
@@ -431,6 +437,7 @@ public class TrainService {
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("specialcharge", routeInfo.getSpecialfare());
 			} else if (trainno > 500 && trainno < 525 || trainno > 540 && trainno < 591) {
 //				System.out.println("전라선");
 				Routedata.setRoutecode("JL");
@@ -439,6 +446,7 @@ public class TrainService {
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				if(routeInfo != null) {
 					scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+					scheduleArray.get(i).getAsJsonObject().addProperty("specialcharge", routeInfo.getSpecialfare());
 				}
 			} else if (trainno > 800 && trainno < 829 || trainno > 840 && trainno < 866) {
 //				System.out.println("강릉선");
@@ -447,6 +455,7 @@ public class TrainService {
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("specialcharge", routeInfo.getSpecialfare());
 			} else if (trainno > 700 && trainno < 715 || trainno > 780 && trainno < 783) {
 //				System.out.println("중앙선");
 				Routedata.setRoutecode("JA");
@@ -454,6 +463,7 @@ public class TrainService {
 				Routedata.setArrsta(scheduleArray.get(i).getAsJsonObject().get("arrplacename").getAsString());
 				TRRouteDto routeInfo = settingRouteFare(Routedata);
 				scheduleArray.get(i).getAsJsonObject().addProperty("adultcharge", routeInfo.getNormalfare());
+				scheduleArray.get(i).getAsJsonObject().addProperty("specialcharge", routeInfo.getSpecialfare());
 			}
 		}
 	}

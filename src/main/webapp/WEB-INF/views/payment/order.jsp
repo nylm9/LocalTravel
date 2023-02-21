@@ -164,7 +164,8 @@
 						output += "</table>";
 						output += "</table>";
 						output += "<input type='hidden' name='ordr_idxx' value='"+reservationCode+"' maxlength='40' />";
-						output += "<input type='hidden' name='good_mny' value='"+sumCharge+"' maxlength='9' />";
+						// 결제 금액 설정 및 정보 출력
+						output += "<input type='hidden' name='good_mny' value='"+1+"' maxlength='9' />";
 						output += "<input type='hidden' name='good_name' value='"+depSta+"→"+arrSta+"행 "+trainNo+","+carNum+","+roomSortation+"|"+seatNum+"' />";
 						console.log(output);
 						$('#skipCont').html(output);

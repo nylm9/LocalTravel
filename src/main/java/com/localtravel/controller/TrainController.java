@@ -71,7 +71,7 @@ public class TrainController {
 			ra.addFlashAttribute("redirect", "TestSchedule");
 		}
 
-//		System.out.println(scheduleList);
+		System.out.println(scheduleList);
 		return scheduleList;
 	}
 
