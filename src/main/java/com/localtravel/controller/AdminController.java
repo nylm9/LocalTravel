@@ -22,6 +22,13 @@ public class AdminController {
 	@Autowired
 	private AdminService adsvc;
 	
+	@RequestMapping(value="/testMemberJoinCheckForm")
+	public ModelAndView testMemberJoinCheckForm() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("member/memberJoinCheckBox");
+		return mav;
+	}
+	
 	@RequestMapping(value="/testMainPage")
 	public ModelAndView testMainPage() {
 		ModelAndView mav = new ModelAndView();

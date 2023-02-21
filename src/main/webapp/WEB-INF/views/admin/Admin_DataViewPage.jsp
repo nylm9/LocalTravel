@@ -86,6 +86,7 @@ img {
 		</div> --%>
 
 <a href="${pageContext.request.contextPath }/testMainPage">테스트메인페이지 이동</a>
+<a href="${pageContext.request.contextPath }/testMemberJoinCheckForm">회원가입 약관 테스트 페이지 이동</a>
 
 <details>
     <summary>놀거리 Enjoy</summary>
