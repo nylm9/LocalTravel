@@ -13,7 +13,7 @@ public class ReservationDto {
 	private String arrtime; //도착시간
 	private String carnum; //열차칸(호차)
 	private String seatnum; //좌석번호
-	private String triandate; //출발날짜
+	private String traindate; //출발날짜
 	private String redate; //예매한 날짜
 	private String charge; //금액
 }
