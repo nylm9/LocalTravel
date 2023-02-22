@@ -1,10 +1,14 @@
 package com.localtravel.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.localtravel.dto.ReservationDto;
 import com.localtravel.dto.TRServeDto;
 import com.localtravel.service.TrainReserveService;
 
@@ -75,9 +79,18 @@ public class PaymentContoller {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(reserveData);
 		
-		trsvc.reservationAdd(reserveData);
+		ReservationDto reList = trsvc.reservationAdd(reserveData);
 		
-		return null;
+		String seatNumStr = reserveData.getSeatNum();
+		String[] seatcount = seatNumStr.split(",");
+		reList.setCharge(Integer.toString(Integer.parseInt(reserveData.getAdultCharge()) * seatcount.length));
+		LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH:mm");
+        String formattedDateTime = now.format(formatter);
+        reList.setRedate(formattedDateTime);
+		mav.addObject("reList", reList);
+		mav.setViewName("reserve/reservationSuccessPage");
+		return mav;
 	}
 	
 	

@@ -162,7 +162,6 @@
 						output += "<td colspan='3' class='reserveContent' style='padding-top: 10px; font-weight: bold; text-align: center;'>금액₩ "+threecommaCharge+"원</td>";
 						output += "</tr>";
 						output += "</table>";
-						output += "</table>";
 						output += "<input type='hidden' name='ordr_idxx' value='"+reservationCode+"' maxlength='40' />";
 						// 결제 금액 설정 및 정보 출력
 						output += "<input type='hidden' name='good_mny' value='"+1+"' maxlength='9' />";

@@ -158,7 +158,7 @@ thead {
 	<div class="col-12">
 		<div style="margin-bottom: 10px;">
 			<button id="previousBtn" type="button" class="btn btn-danger" onclick="return previousBtn(this)" style="float: left;">이전</button>
-			<h4 id="carCaption" Style="display: inline-block; margin-left: 0px auto; margin-right: 0px auto;">5호차</h4>
+			<h4 id="carCaption" Style="display: inline-block; margin-left: 60px ;">5호차</h4>
 			<button id="nextBtn" type="button" class="btn btn-danger" onclick="nextBtn(this)" style="float: right;">다음</button><input type="hidden" value="5" id="carNum">
 		</div>
 		<div class="card">

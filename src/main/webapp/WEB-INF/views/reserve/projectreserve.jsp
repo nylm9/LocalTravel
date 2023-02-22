@@ -209,11 +209,11 @@ thead {
 	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
 	<!-- End Header -->
 
-
+	
 	<!-- 예매창 main창-->
 	<section class="section">
 		<div class="row" style="min-width: 565px;">
-
+			
 			<!-- 출발역 선택표 -->
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="card" style="margin-top: 40px; margin-left: 40px;">
