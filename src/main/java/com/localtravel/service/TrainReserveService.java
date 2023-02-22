@@ -126,7 +126,7 @@ public class TrainReserveService {
 		return gson.toJson(jsonArray);
 	}
 
-	public void reservationAdd(TRServeDto reserveData) {
+	public ReservationDto reservationAdd(TRServeDto reserveData) {
 		
 		ReservationDto reservationData = new ReservationDto();
 		String sessionLoginId = (String)session.getAttribute("loginId");
@@ -156,6 +156,8 @@ public class TrainReserveService {
 		reservationData.setCharge(reserveData.getAdultCharge());
 
 		trdao.insertReservationCode(reservationData);
+		
+		return reservationData;
 	}
 
 }

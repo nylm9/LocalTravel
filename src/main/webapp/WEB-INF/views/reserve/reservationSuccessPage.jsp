@@ -204,6 +204,12 @@ thead {
  table, tr, th, td {
   border: 0px solid white;
 }
+body {
+        -webkit-user-select: none; /* 크롬, 사파리, 엣지 등 */
+        -moz-user-select: none; /* 파이어폭스 */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none; /* 표준 문법 */
+    }
     </style>
 </head>
 <body>
@@ -225,57 +231,57 @@ thead {
             <table class="table">
               <tr>
                 <th>예매 아이디</th>
-                <td>12345</td>
+                <td>${reList.remid }</td>
               </tr>
               <tr>
                 <th>예매 코드</th>
-                <td>67890</td>
+                <td>${reList.recode }</td>
               </tr>
               <tr>
                 <th>열차 날짜</th>
-                <td>2023년 3월 1일</td>
+                <td>${reList.traindate }</td>
               </tr>
               <tr>
                 <th>출발역</th>
-                <td>서울역</td>
+                <td>${reList.depsta }</td>
               </tr>
               <tr>
                 <th>도착역</th>
-                <td>부산역</td>
+                <td>${reList.arrsta }</td>
               </tr>
               <tr>
                 <th>열차 번호</th>
-                <td>KTX100</td>
+                <td>${reList.trainno }</td>
               </tr>
               <tr>
                 <th>출발 시간</th>
-                <td>09:00</td>
+                <td>${reList.deptime }</td>
               </tr>
               <tr>
                 <th>도착 시간</th>
-                <td>12:30</td>
+                <td>${reList.arrtime }</td>
               </tr>
               <tr>
                 <th>호차</th>
-                <td>1</td>
+                <td>${reList.carnum }</td>
               </tr>
               <tr>
                 <th>좌석 번호</th>
-                <td>12A</td>
+                <td>${reList.seatnum }</td>
               </tr>
               <tr>
                 <th>예매 날짜</th>
-                <td>2023년 2월 28일</td>
+                <td>${reList.redate }</td>
               </tr>
               <tr>
-                <th>가격</th>
-                <td>50,000원</td>
+                <th>예매요금</th>
+                <td>${reList.charge }</td>
               </tr>
             </table>
           </div>
           <div class="text-center mt-4">
-            <a href="/" class="btn btn-primary">홈으로 가기</a>
-            <a href="/mypage" class="btn btn-secondary">마이페이지로 가기</a>
+            <a href="${pageContext.request.contextPath }/mainPage" class="btn btn-primary">홈으로 가기</a>
+            <a href="${pageContext.request.contextPath }/myPage" class="btn btn-secondary">마이페이지로 가기</a>
           </div>
         </div>
       </div>

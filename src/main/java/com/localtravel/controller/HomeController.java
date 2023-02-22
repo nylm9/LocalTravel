@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,6 +31,8 @@ import com.localtravel.service.TrainReserveService;
 @Controller
 public class HomeController {
 	
+	@Autowired
+	private HttpSession session;
 	
 	@Autowired
 	TrainReserveService treserve;
@@ -90,15 +91,25 @@ public class HomeController {
 	
 	// 예매페이지 이동 
 	@RequestMapping(value="/reservePage")
-	public ModelAndView reservePage() {
+	public ModelAndView reservePage(RedirectAttributes ra) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("예약페이지 이동");
-		ArrayList<TRCityCodeDto> cityList = treserve.getCityList();
-		System.out.println(cityList);
-		mav.addObject("cityList",cityList);
-		mav.setViewName("reserve/projectreserve");
+		String loginId = (String) session.getAttribute("loginId");
+		if(loginId == null) {
+			//로그인이 되지 않은 상태
+			mav.setViewName("member/memberLoginForm");
+			ra.addFlashAttribute("loginMsg","로그인 후 이용가능한 서비스입니다.");
+		} else {
+			// 로그인이 되어있는 상태
+			ArrayList<TRCityCodeDto> cityList = treserve.getCityList();
+			System.out.println(cityList);
+			mav.addObject("cityList",cityList);
+			mav.setViewName("reserve/projectreserve");
+		}
+		
 		return mav;
 	}
+	
 	@RequestMapping(value="/BlogWritePage")
 	public ModelAndView BlogWritePage() {
 		ModelAndView mav = new ModelAndView();
@@ -145,8 +156,7 @@ public class HomeController {
 		return mav;
 	}
 	
-	@Autowired
-	private HttpSession session;
+	
 	
 	@RequestMapping(value="/likeplay")
 	public ModelAndView likeplay(String lbcode, LikeBtnDto lelike,RedirectAttributes ra) {
