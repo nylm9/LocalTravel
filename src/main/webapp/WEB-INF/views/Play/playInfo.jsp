@@ -127,10 +127,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 		                	<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enInfo.epicture }" 
 		                		style="width: 300px; height: 400px; float:left" 
 		                		     class="img-fluid rounded-start" alt="...">
-<<<<<<< HEAD
-=======
-		                		     
->>>>>>> origin/MinSeo
 		                		     <!-- 정보출력 -->
                 		  			<div style="padding-left:350px;">
 			                  			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${enInfo.ename }</h5>
@@ -171,9 +167,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 			                  			
 			                  			<p class="card-text mb-1" style="font-size: 17px; margin-top:-15px; ">${enInfo.eexplain }</p>
 				                  			
-<<<<<<< HEAD
 				                  			<div style="float:left">
-=======
 				                  					         <!-- 지도 -->
 								<div class="map_wrap" style="margin-left: 250px;">
 									<div id="map"
@@ -196,7 +190,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 								</div>
 
 								<div style="float:left">
->>>>>>> origin/MinSeo
 					                  			 <a class="btn btn-sm btn-danger"
 												   href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
 												   
@@ -225,7 +218,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
 				<div class="row g-0">
               		<div class="col-12 " style="text-align: center;" >
-                		<p style="font-size:25px;">리뷰</p>
+                		<p style="font-size:25px;">다른 이용자들의 후기</p>
               		</div>
               		<hr>
               		
@@ -299,8 +292,6 @@ function joinecodeCheck(idVal) {
 }
 </script>
 
-<<<<<<< HEAD
-=======
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=93b4f3f3d42ca1981b8841a71a59e4c7&libraries=services,clusterer,drawing"></script>
    <script>
 // 마커를 담을 배열입니다

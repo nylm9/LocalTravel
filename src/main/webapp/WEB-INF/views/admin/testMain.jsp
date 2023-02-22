@@ -24,8 +24,9 @@ div {
 }
 
 .image1 {
-    background: url(https://cdn.pixabay.com/photo/2020/07/14/16/18/snow-5404785_960_720.jpg) no-repeat;
+    /* background: url(https://cdn.pixabay.com/photo/2020/07/14/16/18/snow-5404785_960_720.jpg) no-repeat; */
     /* background: url(https://wallpapercave.com/dwp2x/wp5973934.jpg) no-repeat; 벚꽃사진 */
+     background: url("${pageContext.request.contextPath }/resources/newMainPage/main1.jpg") no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
@@ -52,6 +53,7 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
   text-align: center;
   color: #fff;
   background: #1e3932;
+  /* 여기에 색깔 코드 넣으면 됨. */
   font-size: .9rem;
 }
 
