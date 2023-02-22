@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<header class="header-top justify-content-center" style="background: #FFEBFF;">
+<header class="header-top justify-content-center" style="background: #EAC7C7;">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-2 col-md-4 text-center d-none d-lg-block">
       <!-- 로고 -->
       	<div class="navbar-brand " style="margin-left:-5px;">
-          <a href="${pageContext.request.contextPath }/mainPage">
+          <a href="${pageContext.request.contextPath }/testMainPage">
           	<span style="float:left; margin-right:1px; margin-top:12px;">sourceTree</span>
            <img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image"
            style="width:40px; height:40px;">
