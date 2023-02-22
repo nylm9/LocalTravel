@@ -69,51 +69,85 @@
 	<!-- 상세보기 -->
 		 <section class="section">
 			<div class="card mb-3 p-5 mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:40px;">
-			
-			
             	<div class="row g-0">
-              		<div class="col-12 " style="text-align: center;" >
+              		<div class="col-12 ">
+              			<div class="card-body"> 
               			<!-- 사진 -->
-                		<img src="${fdInfo.fpicture }" style="width: 700px; height: 400px;" 
-                		     class="img-fluid rounded-start" alt="...">
-              		</div>
-              		<div class="col-12">
-                		<div class="card-body">
-                  			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${fdInfo.fname }</h5>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >주소: ${fdInfo.faddr }</span>
-                  			<p class="card-text"><span style="font-size: 18px;font-weight: bold;" >평점: ${fdInfo.frepute }</span>
-                  		
-                  			 <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-up"></i></span>
-                  			<span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-down"></i></span>
-                  			</p>
-                  			<hr>
-                			<p class="card-text mb-1">전화번호: ${fdInfo.ftell }</p>
-                  			<p class="card-text mb-1">${fdInfo.fexplain }</p>
-                  			<hr>
-                  			<c:forEach items="${mnList }" var="menu">
-              		<div class="col-6">
-                		<div class="card-body">
-                			<div class="row">
-                				<div class="col">
-									<h4 >메뉴</h4>
-									<h7>${menu.menuname1} : ${menu.menuexplain1}</h7>
-									<h6>${menu.menuprice1}</h6>
-									<h7>${menu.menuname2} : ${menu.menuexplain2}</h7>
-									<h6>${menu.menuprice2}</h6>
-									<h7>${menu.menuname3} : ${menu.menuexplain3}</h7>
-									<h6>${menu.menuprice3}</h6>
-                				</div>
-                			</div>
-                		</div>
-                		<hr>
-              		</div>
-					</c:forEach>             
-                  			<p class="card-text mb-1"><a>지도</a></p>
-                  			 <a class="btn btn-sm btn-danger"
-							   href="${pageContext.request.contextPath }/fdreviewForm?fcode=${fdInfo.fcode }">리뷰작성</a>
-                		</div>
+              			<img src="${pageContext.request.contextPath }/resources/FoodPicture/${fdInfo.fpicture }" 
+		                		style="width: 300px; height: 400px; float:left" 
+		                		     class="img-fluid rounded-start" alt="...">
+                		
+              		<!-- 정보출력 -->
+		              		<div style="padding-left:350px;">
+		                		<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${fdInfo.fname }</h5>
+					               <p class="card-text"><span style="font-size: 18px;font-weight: bold;" >주소: ${fdInfo.faddr }</span>
+			                  			 <div>
+											<c:if test="${fdInfo.frepute == '0'}">
+												<p style="font-size: 17px; ">평점: ☆☆☆☆☆(0) </p>
+											</c:if>
+											<c:if test="${fdInfo.frepute== '1'}">
+												<p style="font-size: 17px; ">평점: ★☆☆☆☆ </p>
+											</c:if>
+											<c:if test="${fdInfo.frepute == '2'}">
+												<p style="font-size: 17px; ">평점: ★★☆☆☆ </p>
+											</c:if>
+											<c:if test="${fdInfo.frepute == '3'}">
+												<p style="font-size: 17px; ">평점: ★★★☆☆ </p>
+											</c:if>
+											<c:if test="${fdInfo.frepute == '4'}">
+												<p style="font-size: 17px; ">평점: ★★★★☆ </p>
+											</c:if>
+											<c:if test="${fdInfo.frepute == '5'}">
+												<p style="font-size: 17px; ">평점: ★★★★★</p>
+											</c:if>
+										</div>
+		                  			<hr>
+				                  			<c:choose>
+											    <c:when test="${enInfo.etell == null }">
+													<p style="font-size: 17px; ">전화번호: 없음</p>
+												</c:when>
+												<c:otherwise>
+											       	 <p  style="font-size: 20px; " >전화번호: ${fdInfo.ftell }</p>
+												</c:otherwise>
+											</c:choose>
+		                  			<p class="card-text mb-1">${fdInfo.fexplain }</p>
+		                  			<hr>
+			                  			<c:forEach items="${mnList }" var="menu">
+						              		<div class="col-6">
+						                		<div class="card-body">
+						                			<div class="row">
+						                				<div class="col">
+															<h4 >메뉴</h4>
+															<h7>${menu.menuname1} : ${menu.menuexplain1}</h7>
+															<h6>${menu.menuprice1}</h6>
+															<h7>${menu.menuname2} : ${menu.menuexplain2}</h7>
+															<h6>${menu.menuprice2}</h6>
+															<h7>${menu.menuname3} : ${menu.menuexplain3}</h7>
+															<h6>${menu.menuprice3}</h6>
+						                				</div>
+						                			</div>
+						                		</div>
+						                		<hr>
+						              		</div>
+										</c:forEach>             
+		                  			
+		                  			
+		                			<div style="float:left">
+					                  		 <a class="btn btn-sm btn-danger"
+									   href="${pageContext.request.contextPath }/fdreviewForm?fcode=${fdInfo.fcode }">리뷰작성</a>
+												   
+											<div style="float:left; margin-right:7px;">
+													<label class="btn btn-sm btn-primary"
+								             		onclick="selecteRecommend('1')" id="recommendGood" tabindex="-1">
+								             		<a href="${pageContext.request.contextPath }/likeFood?lbfcode=${fdInfo.fcode }">저장해놓기</a>
+								             		<input class="d-none"  type="radio" value='1' name="rvrecommend">
+								             	</label>
+											</div> 
+									</div>
+		              		</div>
               		</div>
             	</div>
+            </div>
             	
 
            	
@@ -161,7 +195,11 @@
           	
 		</section>
 		
-		<!-- 기차예매 -->
+		
+		
+		
+		
+		<!-- <!-- 기차예매 -->
 		<section class="section">
 		<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
 				<div class="row g-0">
@@ -175,6 +213,6 @@
               	</div>
          </div>
          </section>
-
+ -->
 </body>
 </html>

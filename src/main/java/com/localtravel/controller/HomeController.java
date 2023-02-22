@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.LikeBtnDto;
+import com.localtravel.dto.LikeFoodBtnDto;
 import com.localtravel.dto.TRCityCodeDto;
 import com.localtravel.service.EnjoyService;
 import com.localtravel.service.TrainReserveService;
@@ -159,13 +160,115 @@ public class HomeController {
 			ra.addFlashAttribute("Msg", "로그인해주세요");
 			mav.setViewName("member/memberLoginForm");
 		}else {
+			
 			lelike.setLbmid(loginId);
-			String leList = ensvc.setleList(lelike);
-			System.out.println("leList:"+leList);
-			mav.setViewName("redirect:/enjoyPage");
+			String leList = ensvc.setleList(lelike);// 코드, 아이디
+			if(leList.equals("1")) {
+				System.out.println("controller-저장완료");
+				ra.addFlashAttribute("Msg", "저장완료되었습니다");
+				System.out.println("leList:"+leList);
+				mav.setViewName("redirect:/enjoyPage");
+			}else {
+				System.out.println("controller-이미 저장되어있음");
+				ra.addFlashAttribute("Msg", "이미 저장되어있습니다.");
+				mav.setViewName("redirect:/enjoyPage");
+			}
+			
 		}
 		return mav;
 	}
+
+	@RequestMapping(value="/likeFood")
+	public ModelAndView likeFood(String lbfcode, LikeFoodBtnDto leflike,RedirectAttributes ra) {
+		System.out.println("먹거리 좋아요버튼 클릭");
+		ModelAndView mav = new ModelAndView();
+		System.out.println("먹거리 좋아요코드: "+lbfcode);
+		String loginId = (String) session.getAttribute("loginId");
+		System.out.println(loginId);
+		if(loginId == null) {
+			System.out.println("아이디없음");
+			ra.addFlashAttribute("Msg", "로그인해주세요");
+			mav.setViewName("member/memberLoginForm");
+		}else {
+			leflike.setLbfmid(loginId);
+			String leLFist = ensvc.setleListFood(leflike);// 코드, 아이디
+			System.out.println("코드+아이디:"+leLFist);
+			if(leLFist.equals("1")) {
+				System.out.println("controller-저장완료");
+				ra.addFlashAttribute("Msg", "저장완료되었습니다");
+				System.out.println("leFList:"+leLFist);
+				mav.setViewName("redirect:/foodPage");
+			}else {
+				System.out.println("controller-이미 저장되어있음");
+				ra.addFlashAttribute("Msg", "이미 저장되어있습니다.");
+				mav.setViewName("redirect:/foodPage");
+			}
+			
+		}
+		return mav;
+	}
+	
+	
+//	@RequestMapping(value="/likeFood")
+//	public ModelAndView likeFood(String lbcode, LikeBtnDto lelike,RedirectAttributes ra) {
+//		System.out.println("먹거리 좋아요버튼 클릭");
+//		ModelAndView mav = new ModelAndView();
+//		System.out.println("좋아요코드: "+lbcode);
+//		String loginId = (String) session.getAttribute("loginId");
+//		System.out.println(loginId);
+//		if(loginId == null) {
+//			System.out.println("아이디없음");
+//			ra.addFlashAttribute("Msg", "로그인해주세요");
+//			mav.setViewName("member/memberLoginForm");
+//		}else {
+//			lelike.setLbmid(loginId);
+//			String leList=null;
+//		
+//			
+//				leList = ensvc.setleList(lelike);
+//				ra.addFlashAttribute("Msg", "저장완료되었습니다");
+//				System.out.println("leList:"+leList);
+//				mav.setViewName("redirect:/foodPage");
+//			
+//		}
+//		return mav;
+//	}
+//	@RequestMapping(value="/likeFood")
+//	public ModelAndView likeFood(String lbcode, LikeBtnDto lelike, RedirectAttributes ra) {
+//	    System.out.println("먹거리 좋아요버튼 클릭");
+//	    ModelAndView mav = new ModelAndView();
+//	    System.out.println("좋아요코드: " + lbcode);
+//	    String loginId = (String) session.getAttribute("loginId");
+//	    System.out.println(loginId);
+//	    if (loginId == null) {
+//	        System.out.println("아이디없음");
+//	        ra.addFlashAttribute("Msg", "로그인해주세요");
+//	        mav.setViewName("member/memberLoginForm");
+//	    } else {
+//	        lelike.setLbmid(loginId);
+//	        ArrayList<LikeBtnDto> likeList = memsvc.getlikeList(loginId);
+//	        boolean exists = false;
+//	        for (LikeBtnDto like : likeList) {
+//	            if (like.getLbcode().equals(lbcode)) {
+//	                exists = true;
+//	                break;
+//	            }
+//	        }
+//	        if (exists) {
+//	            System.out.println("이미 저장하셨습니다");
+//	            ra.addFlashAttribute("Msg", "이미 저장하셨습니다");
+//	            mav.setViewName("redirect:/foodPage");
+//	        } else {
+//	            String leList = ensvc.setleList(lelike);
+//	            ra.addFlashAttribute("Msg", "저장완료되었습니다");
+//	            System.out.println("leList:" + leList);
+//	            mav.setViewName("redirect:/foodPage");
+//	        }
+//	    }
+//	    return mav;
+//	}
+
+
 
 
 

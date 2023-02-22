@@ -2,6 +2,7 @@ package com.localtravel.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.MemberDto;
@@ -111,7 +113,7 @@ public class MemberController {
 		
 	}
 	@RequestMapping(value = "/myPage")
-	public ModelAndView myPage() {
+	public ModelAndView myPage(String lbcode ) {
 		System.out.println("마이페이지이동");
 		ModelAndView mav = new ModelAndView();
 		
@@ -125,12 +127,16 @@ public class MemberController {
 		ArrayList<Map<String, String>> memberList = memsvc.getmembersList(loginId);
 		mav.addObject("memberList" ,memberList);
 		
-		ArrayList<LikeBtnDto> likeList = memsvc.getlikeList(loginId);
-		mav.addObject("likeList",likeList);	
-		System.out.println(likeList);
+		ArrayList<EnjoyDto> enjoyList = memsvc.getEnjoyList(loginId);
+		mav.addObject("enjoyList",enjoyList);	
+		System.out.println(enjoyList);
+		
+
 		
 		mav.setViewName("member/mypage");
 		return mav;
+
+		
 	}
 	
 	/* 테마 버튼을 클릭하여 ajax로 관련 정보를 조회할 때는 총 1~3개의 버튼이 눌리므로 

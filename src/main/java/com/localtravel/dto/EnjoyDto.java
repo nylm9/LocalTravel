@@ -17,5 +17,6 @@ public class EnjoyDto {
 	private String ethcode; //놀거리테마코드
 	private MultipartFile efile; // 업로드한 사진파일
 	private String epicture; // 사진파일코드
+
 	
 }

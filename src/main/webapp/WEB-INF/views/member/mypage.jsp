@@ -37,6 +37,14 @@
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 
+<script src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
+		 <script type="text/javascript">
+		  var Msg = '${Msg}';
+		  if (Msg.trim().length > 0) { // 빈 문자열이 아닐 때만 alert 창 띄우기
+		    alert(Msg);
+		  }
+		</script>
+
 
 </head>
 <body>
@@ -147,34 +155,30 @@
 		</section>
 		<section class="section"  style="margin-top: 40px;">
 			<div class="row mx-auto" style="max-width:1200px;min-width:700px;">
-			   <c:forEach items="${likeList }" var="likeList">
 				
 				<div class="col-12">
 					<div class="card mb-3" style="padding:20px;">
 						<div class="row g-0" >
 						
-						
-						
 							<div class="col-12">
 								<p class="text-center pb-0 fs-4" style="font-weight:bold;color:black;">저장한 목록</p>
 							</div>
-							<div class="col-md-6">
-								<label class="form-label">놀거리저장리스트</label> 
-									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
-								<p>${likeList.lbcode }</p>
-									 
+							
+			 				  <c:forEach items="${enjoyList }" var="enjoyList">
+								<div style="width:990px; height:50px; margin-left:90px; float: left; border: 1px solid #f0f1f4 ; background-color:#f0f1f4;">
+									<div style="line-height:50px; text-align: center; float: left; width:300px; margin-right:10px;">
+									${enjoyList.ename}
+									</div>
+									<div style="line-height:50px; text-align: center; float: left;">
+									${enjoyList.eaddr}
+									</div>	 
 								</div>
-							</div>
-						
+				 			 </c:forEach> 
 						</div>
 					</div>
 				</div>
-				
-				 </c:forEach> 
-				
-				</div>
-			
+			</div>
 		</section>
-		
 </body>
+
 </html>

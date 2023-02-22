@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.localtravel.dao.MemberDao;
+import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.MemberDto;
@@ -71,20 +72,24 @@ public class MemberService {
 	public int boardModify(MemberDto memberDto) {
 		System.out.println("MemberService - 마이페이지 회원정보수정");
 		int updateResult =memdao.updateBoard(memberDto);
-//		try {
-//			updateResult = memdao.updateBoard(loginId);
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
+
 		return updateResult;
 	}
 
 
-	public ArrayList<LikeBtnDto> getlikeList(String loginId) {
+	public ArrayList<EnjoyDto> getEnjoyList(String loginId) {
 		System.out.println("MemberService - 좋아요리스트출력");
 		ArrayList<LikeBtnDto> likeList = memdao.selectlikeList(loginId);
 		System.out.println(likeList);
-		return likeList;
+		ArrayList<EnjoyDto> enjoyList = new ArrayList<EnjoyDto>();
+		for(LikeBtnDto likeInfo : likeList) {
+			String ecode = likeInfo.getLbcode();
+			EnjoyDto enjoy = memdao.selectecodelikeList(ecode);
+			enjoyList.add(enjoy);
+		}
+		
+		
+		return enjoyList;
 	}
 
 

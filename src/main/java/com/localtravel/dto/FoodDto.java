@@ -8,6 +8,7 @@ import lombok.Data;
 public class FoodDto {
 	private String fcode; //식당코드
 	private String fname; //식당이름
+	private String f1ex; // 식당한줄소개
 	private int flcode;  //식당지역코드
 	private String faddr;  //식당주소
 	private String ftell; //식당전화번호

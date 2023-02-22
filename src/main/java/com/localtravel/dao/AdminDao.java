@@ -33,8 +33,8 @@ public interface AdminDao {
 	@Select("SELECT MAX(FCODE) AS FCODE FROM FOOD")
 	String selectMaxFcode();
 
-	@Insert("INSERT INTO FOOD(FCODE, FNAME, FLCODE, FADDR, FTELL, FREPUTE, FEXPLAIN, FTHCODE, FPICTURE) "
-			+ "VALUES( #{fcode}, #{fname}, #{flcode}, #{faddr}, #{ftell}, '0', #{fexplain}, #{fthcode}, #{fpicture} ) ")
+	@Insert("INSERT INTO FOOD(FCODE, FNAME, F1EX,FLCODE, FADDR, FTELL, FREPUTE, FEXPLAIN, FTHCODE, FPICTURE) "
+			+ "VALUES( #{fcode}, #{fname}, #{f1ex}, #{flcode}, #{faddr}, #{ftell}, '0', #{fexplain}, #{fthcode}, #{fpicture} ) ")
 	int insertFdata(FoodDto food);
 
 	@Select("SELECT * FROM FOOD WHERE FNAME LIKE  '%'||#{inputval}||'%' ")

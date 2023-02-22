@@ -13,6 +13,7 @@ import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.LikeBtnDto;
+import com.localtravel.dto.LikeFoodBtnDto;
 import com.localtravel.dto.MenuDto;
 
 
@@ -125,17 +126,49 @@ public class EnjoyService {
 
 	public String setleList(LikeBtnDto lelike) {
 		System.out.println("enjoyService - 놀거리페이지 좋아요버튼");
-		int lelikeResult = endao.insertEnjoyLike(lelike);
-		System.out.println(lelikeResult);
-		return lelikeResult+"";
+		String checkLike = endao.selectCheckLike(lelike);
+		if(checkLike == null) {
+			System.out.println("service-인서트작동");
+			int lelikeResult = endao.insertEnjoyLike(lelike);
+			System.out.println(lelikeResult);
+			return lelikeResult+"";
+			
+		}
+		// SELECT CODE FROM TBL WHERE 아이디 = ? AND 코드 = ?;
+		else {
+			System.out.println("service-이미 이 아이디로 저장되어 있음");
+			return "0";
+		}
 	}
 
-//	public int getleList(LikeBtnDto lelike) {
-//	    System.out.println("enjoyService - 놀거리페이지 좋아요버튼");
-//	    Integer lelikeResult = endao.insertEnjoyLike(lelike);
-//	    System.out.println(lelikeResult);
-//	    return lelikeResult != null ? lelikeResult.intValue() : 0;
-//	}
+	public String setleListFood(LikeFoodBtnDto leflike) {
+		System.out.println("enjoyService - 먹거리페이지 좋아요버튼");
+		String checkFLike = endao.selectFoodCheckLike(leflike);
+		if(checkFLike == null) {
+			System.out.println("service-인서트작동");
+			int lelikeResult = endao.insertFoodLike(leflike);
+			System.out.println("놀거리인서트:"+lelikeResult);
+			return lelikeResult+"";
+			
+		}
+		// SELECT CODE FROM TBL WHERE 아이디 = ? AND 코드 = ?;
+		else {
+			System.out.println("service-이미 이 아이디로 저장되어 있음");
+			return "0";
+		}
+	}
+
+
+
+	public ArrayList<BlogDto> getBlogList(String ecode) {
+		System.out.println("enjoyService -블로그 추천 띄우기");
+		ArrayList<BlogDto> blList = endao.selectBlogList_Rank(ecode);
+		System.out.println(blList);
+		return blList;
+	}
+
+
+
 
 
 

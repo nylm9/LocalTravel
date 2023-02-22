@@ -22,6 +22,20 @@ public class AdminController {
 	@Autowired
 	private AdminService adsvc;
 	
+	@RequestMapping(value="/testMemberJoinCheckForm")
+	public ModelAndView testMemberJoinCheckForm() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("member/memberJoinCheckBox");
+		return mav;
+	}
+	
+	@RequestMapping(value="/testMainPage")
+	public ModelAndView testMainPage() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin/testMain");
+		return mav;
+	}
+	
 	@RequestMapping(value="/insertMenuData")
 	public ModelAndView insertMenuData(MenuDto menu, RedirectAttributes ra) throws IllegalStateException, IOException {
 		ModelAndView mav = new ModelAndView();

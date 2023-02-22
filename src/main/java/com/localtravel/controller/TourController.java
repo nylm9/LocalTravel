@@ -181,10 +181,12 @@ public class TourController {
 	}
 	
 	@RequestMapping(value="/getEnjoyResult")
-	public @ResponseBody String getEnjoyResult(String thcode) {
+	public @ResponseBody String getEnjoyResult(String thcode, String procode) {
 		System.out.println("Ajax_놀거리 정보 조회");
 		System.out.println("thcode : " + thcode);
-		ArrayList<EnjoyDto> searchEnjoyList = toursvc.getSearchEnjoyList(thcode);
+		System.out.println("procode : " + procode);
+		
+		ArrayList<EnjoyDto> searchEnjoyList = toursvc.getSearchEnjoyList(thcode,procode );
 		
 		return new Gson().toJson(searchEnjoyList);
 		
@@ -195,6 +197,20 @@ public class TourController {
 	public @ResponseBody String readyGetEnjoyList() {
 		ArrayList<EnjoyDto> allEnjoyList = toursvc.getenjoyList();
 		return new Gson().toJson(allEnjoyList);
+	}
+	
+	@RequestMapping(value="/getFoodResult")
+	public @ResponseBody String getFoodResult(String fthcode, String procode) {
+		System.out.println("fthcode : " + fthcode);
+		System.out.println("procode : " + procode);
+		ArrayList<FoodDto> searchFoodList = toursvc.getFoodList(fthcode, procode);
+		return new Gson().toJson(searchFoodList);
+	}
+	
+	@RequestMapping(value="/readyGetAllEnjoyList")
+	public @ResponseBody String readyGetAllEnjoyList() {
+		ArrayList<FoodDto> allFoodList = toursvc.getAllFoodList();
+		return new Gson().toJson(allFoodList);
 	}
 	
 
