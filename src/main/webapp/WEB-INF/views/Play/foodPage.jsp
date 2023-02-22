@@ -402,7 +402,7 @@ $(document).ready(function(){
 					    } else {
 					      output += '<p class="small mb-1">'+foodList[i].faddr+' </p>';
 					    }
-					output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/playInfo?ecode='+foodList[i].fcode+' ">상세보기</a>';
+					output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/foodInfo?fcode='+foodList[i].fcode+' ">상세보기</a>';
 					output += '</div></div></div>'
 				}
 			}

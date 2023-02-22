@@ -10,8 +10,10 @@ import com.localtravel.dao.MemberDao;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.LikeBtnDto;
+import com.localtravel.dto.LikeFoodBtnDto;
 import com.localtravel.dto.MemberDto;
 import com.localtravel.dto.MenuDto;
+import com.localtravel.dto.ReservationDto;
 
 @Service
 public class MemberService {
@@ -78,7 +80,7 @@ public class MemberService {
 
 
 	public ArrayList<EnjoyDto> getEnjoyList(String loginId) {
-		System.out.println("MemberService - 좋아요리스트출력");
+		System.out.println("MemberService - 놀거리좋아요리스트출력");
 		ArrayList<LikeBtnDto> likeList = memdao.selectlikeList(loginId);
 		System.out.println(likeList);
 		ArrayList<EnjoyDto> enjoyList = new ArrayList<EnjoyDto>();
@@ -90,6 +92,30 @@ public class MemberService {
 		
 		
 		return enjoyList;
+	}
+
+
+	public ArrayList<FoodDto> getFoodList(String loginId) {
+		System.out.println("MemberService - 먹거리좋아요리스트출력");
+		ArrayList<LikeFoodBtnDto> likeList = memdao.selectlikeFoodList(loginId);
+		System.out.println(likeList);
+		ArrayList<FoodDto> FoodList = new ArrayList<FoodDto>();
+		for(LikeFoodBtnDto likeInfo : likeList) {
+			String fcode = likeInfo.getLbfcode();
+			FoodDto food = memdao.selectecodelikeFoodList(fcode);
+			FoodList.add(food);
+		}
+		
+		
+		return FoodList;
+	}
+
+
+	public ArrayList<ReservationDto> getreservationList(String loginId) {
+		System.out.println("MemberService - 예매리스트출력");
+		ArrayList<ReservationDto> reservationList = memdao.selectreservationList(loginId);
+		System.out.println(reservationList);
+		return reservationList;
 	}
 
 

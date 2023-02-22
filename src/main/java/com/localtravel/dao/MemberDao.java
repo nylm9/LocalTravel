@@ -11,7 +11,9 @@ import org.apache.ibatis.annotations.Update;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.LikeBtnDto;
+import com.localtravel.dto.LikeFoodBtnDto;
 import com.localtravel.dto.MemberDto;
+import com.localtravel.dto.ReservationDto;
 
 public interface MemberDao {
 	@Insert("INSERT INTO MEMBERS (MID, MPW, MNAME, MBIRTH, MGENDER, MEMAIL, MPHONE, MSTATE) "
@@ -58,6 +60,20 @@ ArrayList<EnjoyDto> selectenjoyList();
 
 @Select("SELECT * FROM ENJOY WHERE ECODE = #{ecode}")
 EnjoyDto selectecodelikeList(String ecode);
+
+@Select("SELECT * FROM LIKEFOODBTN WHERE LBFMID=#{lbfmid}")
+ArrayList<LikeFoodBtnDto> selectlikeFoodList(String loginId);
+
+@Select("SELECT * FROM FOOD WHERE FCODE = #{fcode}")
+FoodDto selectecodelikeFoodList(String fcode);
+
+
+/* @Select("SELECT * FROM RESERVATION WHERE REMID = #{remid}") */
+@Select("SELECT DEPSTA, ARRSTA, TRAINNO, DEPTIME, ARRTIME, CARNUM, SEATNUM, TO_DATE(TRIANDATE,'YYYY-MM-DD')AS TRIANDATE, REDATE, CHARGE, RESTATES FROM"
+		+ " RESERVATION WHERE REMID=#{remid}")
+ArrayList<ReservationDto> selectreservationList(String loginId);
+
+
 
 
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.localtravel.dto.BlogDto;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.FoodReviewDto;
@@ -55,15 +56,18 @@ public class TourController {
 				ArrayList<Map<String,String>> reviewList = ensvc.getReviewList(ecode);
 				mav.addObject("reviewList",reviewList);
 				
-				//좋아요버튼
-//				LikeBtnDto lelike = ensvc.getenjoylike(ecode);
-//				mav.addObject("lelike",lelike);
-//				String writeResult = ensvc.getenjoylike(lelike);
-//				mav.addObject("writeResult",writeResult);
+
+				
+				//블로그추천
+				  ArrayList<BlogDto> blList = ensvc.getBlogList(ecode);
+				  mav.addObject("blList", blList);
+				  System.out.println("블로그:"+blList);
 				
 		mav.setViewName("Play/playInfo");
 		return mav;
 	}
+
+
 	@RequestMapping(value = "/reviewForm")
 	public ModelAndView reviewForm(String reencode) {
 		System.out.println("리뷰페이지이동");

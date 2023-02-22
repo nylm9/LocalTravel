@@ -127,10 +127,18 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 		                	<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enInfo.epicture }" 
 		                		style="width: 300px; height: 400px; float:left" 
 		                		     class="img-fluid rounded-start" alt="...">
-<<<<<<< HEAD
-=======
+		                		     <div style="position:absolute; bottom:65px;left:50px;">
+					                  	<a class="btn btn-sm btn-danger"
+										href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
+												   
+										<div style="float:left; margin-right:7px;">
+											<label class="btn btn-sm btn-primary">
+							             		<a type="submit" href="${pageContext.request.contextPath }/likeplay?lbcode=${enInfo.ecode }">저장해놓기</a>
+							             	<input class="d-none"  type="radio" value='1' name="rvrecommend">
+							             	</label>
+										</div> 
+									</div>
 		                		     
->>>>>>> origin/MinSeo
 		                		     <!-- 정보출력 -->
                 		  			<div style="padding-left:350px;">
 			                  			<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${enInfo.ename }</h5>
@@ -171,9 +179,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 			                  			
 			                  			<p class="card-text mb-1" style="font-size: 17px; margin-top:-15px; ">${enInfo.eexplain }</p>
 				                  			
-<<<<<<< HEAD
-				                  			<div style="float:left">
-=======
 				                  					         <!-- 지도 -->
 								<div class="map_wrap" style="margin-left: 250px;">
 									<div id="map"
@@ -194,25 +199,17 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 										<div id="pagination"></div>
 									</div>
 								</div>
-
-								<div style="float:left">
->>>>>>> origin/MinSeo
-					                  			 <a class="btn btn-sm btn-danger"
-												   href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
-												   
-												<div style="float:left; margin-right:7px;">
-													<label class="btn btn-sm btn-primary">
-							             					 <a type="submit" href="${pageContext.request.contextPath }/likeplay?lbcode=${enInfo.ecode }">저장해놓기</a>
-							             					<input class="d-none"  type="radio" value='1' name="rvrecommend">
-							             			</label>
-												</div> 
-											</div>
+								<c:forEach items="${blList }" var="blList">
+				              		<a href="${pageContext.request.contextPath }/BlogView?ecode=${enInfo.ecode }">
+				              		<p>${enInfo.ename }블로그 글도 함께 읽어보세요!</p>
+				              		</a>
+				              		
+								</c:forEach>
 								
-									</div>
-							
-							
-							
-							
+
+								
+								
+								</div>
 							</form>
                 		</div>
               		</div>
@@ -299,8 +296,6 @@ function joinecodeCheck(idVal) {
 }
 </script>
 
-<<<<<<< HEAD
-=======
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=93b4f3f3d42ca1981b8841a71a59e4c7&libraries=services,clusterer,drawing"></script>
    <script>
 // 마커를 담을 배열입니다
@@ -521,7 +516,6 @@ function removeAllChildNods(el) {
 }
 </script>
 
->>>>>>> origin/MinSeo
 </body>
 
 </html>

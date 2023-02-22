@@ -18,6 +18,7 @@ import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.MemberDto;
+import com.localtravel.dto.ReservationDto;
 import com.localtravel.service.MemberService;
 
 @Controller
@@ -130,6 +131,14 @@ public class MemberController {
 		ArrayList<EnjoyDto> enjoyList = memsvc.getEnjoyList(loginId);
 		mav.addObject("enjoyList",enjoyList);	
 		System.out.println(enjoyList);
+		
+		ArrayList<FoodDto> FoodList = memsvc.getFoodList(loginId);
+		mav.addObject("FoodList",FoodList);	
+		System.out.println(FoodList);
+		
+		ArrayList<ReservationDto> reservationList = memsvc.getreservationList(loginId);
+		mav.addObject("reservationList",reservationList);	
+		System.out.println("예매리스트출력"+reservationList);
 		
 
 		
