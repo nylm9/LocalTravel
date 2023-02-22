@@ -75,9 +75,9 @@ public class PaymentContoller {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(reserveData);
 		
-		trsvc.reservationAdd(reserveData);
-		
-		return null;
+		//trsvc.reservationAdd(reserveData);
+		mav.setViewName("reserve/reservationSuccessPage");
+		return mav;
 	}
 	
 	
