@@ -79,7 +79,7 @@ public interface TrainDao {
 	
 	// 예매코드 입력하기
 	@Insert("INSERT INTO RESERVATION(REMID, RECODE, DEPSTA, ARRSTA, TRAINNO, DEPTIME, ARRTIME, CARNUM, SEATNUM, TRIANDATE, REDATE, CHARGE, RESTATES) "
-			+ "VALUES()")
+			+ "VALUES(#{remid},#{recode},#{depsta},#{arrsta},#{trainno},#{deptime},#{arrtime},#{carnum},#{seatnum},#{traindate},SYSDATE,#{charge}, '0')")
 	void insertReservationCode(ReservationDto reserveData);
 	
 	

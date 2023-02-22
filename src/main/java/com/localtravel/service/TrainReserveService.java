@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,10 @@ import com.localtravel.dto.TRStationDto;
 
 @Service
 public class TrainReserveService {
-
+	
+	@Autowired
+	HttpSession session;
+	
 	@Autowired
 	TrainDao trdao;
 
@@ -124,7 +129,7 @@ public class TrainReserveService {
 	public void reservationAdd(TRServeDto reserveData) {
 		
 		ReservationDto reservationData = new ReservationDto();
-		
+		String sessionLoginId = (String)session.getAttribute("loginId");
 		// 예매코드만들기
 		String reservationCode = "T";
 		Date date = new Date();
@@ -133,12 +138,12 @@ public class TrainReserveService {
 		String dateCode = formattedDate.substring(2);
 
 		Random random = new Random();
-		int number = random.nextInt(9000) + 1000;
+		int num = (int)(Math.random() * 900) + 100;
 
-		reservationCode = reservationCode + dateCode + number;
+		reservationCode = reservationCode + dateCode + num;
 		System.out.println(reservationCode);
 		reservationData.setRecode(reservationCode);
-		reservationData.setRemid("");
+		reservationData.setRemid(sessionLoginId);
 		reservationData.setDepsta(reserveData.getDepSta());
 		reservationData.setDeptime(reserveData.getDeptime());
 		reservationData.setArrsta(reserveData.getArrSta());
