@@ -52,7 +52,7 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
   align-items: center;
   text-align: center;
   color: #fff;
-  background: #1e3932;
+  background: #A0C3D2;
   /* 여기에 색깔 코드 넣으면 됨. */
   font-size: .9rem;
 }

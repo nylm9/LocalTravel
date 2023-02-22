@@ -280,7 +280,7 @@ function change_btn(selectedBtn, group) {
             
 					<div class="e" style="float:left; margin-right:20px; /* margin-top:35px; */">
 						<h5 style="text-align:center;">지역 선택</h5>
-						 <select name="province" onchange="searchFood()">
+						 <select name="province" onchange="searchEnjoy()">
 						 	<option value="99">--선택하세요--</option>
 							<option value="11">서울특별시</option>
 							<option value="31">경기도</option>
