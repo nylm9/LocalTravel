@@ -119,6 +119,7 @@ public class AdminService {
 	
 	public int insertFData(FoodDto food) throws IllegalStateException, IOException {
 		System.out.println("Admin_Food데이터 삽입 서비스");
+			System.out.println("f1ex : " + food.getF1ex());
 		//Food F 코드 생성 "F001", "F002", "F003"......;
 				//1. Food코드 최대값 조회
 				String maxFcode = adao.selectMaxFcode();

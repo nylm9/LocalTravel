@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.localtravel.dao.TourDao;
 import com.localtravel.dto.EnjoyDto;
+import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.FoodReviewDto;
 import com.localtravel.dto.ReviewDto;
 
@@ -48,8 +49,8 @@ public class TourService {
 		return enjoyresult;
 	}
 
-	public ArrayList<EnjoyDto> getSearchEnjoyList(String thcode) {
-		ArrayList<EnjoyDto> eList = tourdao.getEnjoySelectList(thcode);
+	public ArrayList<EnjoyDto> getSearchEnjoyList(String thcode, String procode) {
+		ArrayList<EnjoyDto> eList = tourdao.getEnjoySelectList(thcode, procode);
 		System.out.println("eList : " + eList);
 		return eList;
 	}
@@ -57,6 +58,17 @@ public class TourService {
 	public ArrayList<EnjoyDto> getenjoyList() {
 		ArrayList<EnjoyDto> allEnList = tourdao.getAllEnjoyList();
 		return allEnList;
+	}
+
+	
+	public ArrayList<FoodDto> getFoodList(String fthcode, String procode) {
+		ArrayList<FoodDto> selFoodList = tourdao.getFoodSelectList(fthcode, procode);
+		return selFoodList;
+	}
+
+	public ArrayList<FoodDto> getAllFoodList() {
+		ArrayList<FoodDto> allFoodList = tourdao.getAllFoodList();
+		return allFoodList;
 	}
 
 }
