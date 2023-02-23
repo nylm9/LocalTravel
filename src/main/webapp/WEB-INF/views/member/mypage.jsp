@@ -216,9 +216,10 @@
 							<div id="skipCont">
 								<table style='width: 100%;'>
 									<tr>
-										<th class='reserveTitle' style="padding-left:100px;text-align:center">열차번호<br><p>KTX ${reservationList.trainno }</p></th>
-										<th class='reserveTitle' style="padding-left:30px;">승차일자<br><p>${reservationList.triandate }</p></th> 
-										 <th class='reserveTitle' style="padding-left:20px;text-align:center">출발날짜<br><p>KTX ${reservationList.triandate }</p></th>
+										<th class='reserveTitle' style="padding-left:100px;text-align:center"><br><p>${reservationList.recode }</p></th>
+										<th class='reserveTitle' style="padding-left:20px;text-align:center">열차번호<br><p>KTX ${reservationList.trainno }</p></th>
+										<th class='reserveTitle' style="padding-left:30px;">승차일자<br><p>${reservationList.traindate }</p></th> 
+										 
 										<th class='reserveTitle'style="padding-left:20px;text-align:center">출발역 [출발시간]<p> ${reservationList.depsta } ${reservationList.deptime }</p></th>
 										<th>→ </th>
 										<th class='reserveTitle'style=" text-align:center">  도착역 [도착시간]<p>${reservationList.arrsta } ${reservationList.arrtime }</p></th>

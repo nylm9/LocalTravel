@@ -30,18 +30,27 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.css">
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+<style type="text/css">
+.square{
+      width: 100px;
+      height: 100px;
+      background: pink;
+}
+</style>
 </head>
-<body>
+<body style="background:#F7F5EB;">
 
 	<!-- ======= Header ======= -->
 	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
 	<!-- End Header -->
-
+ <div>
+	<p style="font-size:100px; position:absolute; left:100px;top: 140px;">이랏샤이마세</p>
+ </div> 
 
 <!-- 사진 움직이기 -->
 <section class="slider mt-4">
-	<div class="container-fluid">
-		<div class="row no-gutters">
+	<div class="container-fluid" >
+		<div class="row no-gutters" style="margin-top:500px;">
 			<div class="col-lg-12 col-sm-12 col-md-12 slider-wrap">
 	            <div class="slider-item">
 	               <div class="slider-item-content">
@@ -152,7 +161,9 @@
 		</div>
 	</div>
 	</section>
-	<section class="section">
+	
+	<!-- 블로그부분 -->
+<%-- 	<section class="section">
 		<p style="text-align : center;font-size: 30px;font-weight: bold; margin-top:10px;">블로그</p>
  	<div class="row mx-auto" style="min-width: 700px; max-width: 1200px; margin-top:50px;"  >
 			<c:forEach items="${blist}" var="blog" varStatus="status">
@@ -183,7 +194,7 @@
 			</c:forEach>				
 		</div>
 		 
-		 <%-- <div class="row mx-auto" style="min-width: 600px; max-width: 1200px;">
+		 <div class="row mx-auto" style="min-width: 600px; max-width: 1200px;">
 		 <h5>dddd</h5>
 		<c:forEach items="${enList}" var="enjoy" varStatus="status">
 			<div class="col-3">
@@ -194,8 +205,8 @@
 					</div>
 				</div>
 		</c:forEach>
-		 </div> --%>
-</section>
+		 </div>
+</section> --%>
 
 
 
