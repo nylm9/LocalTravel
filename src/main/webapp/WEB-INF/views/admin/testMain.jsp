@@ -74,7 +74,7 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
 
 <div class="text">
   <h2>
-  [] 웹페이지 방문을 환영합니다!
+  여행을 떠나시나요?
 <!--     background-attachment <br><br>
     - scroll (기본) <br>
     - fixed (고정)<br> -->
@@ -86,7 +86,7 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
 
 <div class="text">
   <h2>
-  메인페이지로 이동시켜드릴게요
+  [이름]이 도와드릴게요!
 <!--     background-attachment <br><br>
     - scroll (기본) <br>
     - fixed (고정)<br> -->
