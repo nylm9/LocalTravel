@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.localtravel.dao.TrainDao;
+import com.localtravel.dto.MemberDto;
 import com.localtravel.dto.ReservationDto;
 import com.localtravel.dto.TRCityCodeDto;
 import com.localtravel.dto.TRInputScheduleDto;
@@ -154,10 +155,19 @@ public class TrainReserveService {
 		reservationData.setTraindate(reserveData.getReserveDate());
 		reservationData.setRedate("");
 		reservationData.setCharge(reserveData.getAdultCharge());
-
+		System.out.println("입력 직전 결과 : "+reservationData);
+		
+		
 		trdao.insertReservationCode(reservationData);
 		
 		return reservationData;
+	}
+
+	public MemberDto getMemberInfo(String loginId) {
+		
+		MemberDto memInfo = trdao.getMemberInfo(loginId);
+		
+		return memInfo;
 	}
 
 }

@@ -287,21 +287,12 @@ function generateRandomNumber() {
 					</div>
 					<div class="right">
 						<div class="ipt-type-1 pc-wd-2">
-							<input type="text" name="buyr_name" value="홍길동" />
+							<input type="text" name="buyr_name" value="${memInfo.mname}" />
 						</div>
 					</div>
 				</li>
 				<!-- 주문자 연락처1(buyr_tel1) -->
-				<li>
-					<div class="left">
-						<p class="title">전화번호</p>
-					</div>
-					<div class="right">
-						<div class="ipt-type-1 pc-wd-2">
-							<input type="text" name="buyr_tel1" value="02-0000-0000" />
-						</div>
-					</div>
-				</li>
+				
 				<!-- 휴대폰번호(buyr_tel2) -->
 				<li>
 					<div class="left">
@@ -309,7 +300,7 @@ function generateRandomNumber() {
 					</div>
 					<div class="right">
 						<div class="ipt-type-1 pc-wd-2">
-							<input type="text" name="buyr_tel2" value="010-0000-0000" />
+							<input type="text" name="buyr_tel2" value="${memInfo.mphone}" />
 						</div>
 					</div>
 				</li>
@@ -320,7 +311,7 @@ function generateRandomNumber() {
 					</div>
 					<div class="right">
 						<div class="ipt-type-1 pc-wd-2">
-							<input type="text" name="buyr_mail" value="test@test.co.kr" />
+							<input type="text" name="buyr_mail" value="${memInfo.memail}" />
 						</div>
 					</div>
 				</li>

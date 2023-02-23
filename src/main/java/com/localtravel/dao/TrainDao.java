@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import com.localtravel.dto.MemberDto;
 import com.localtravel.dto.ReservationDto;
 import com.localtravel.dto.TRCityCodeDto;
 import com.localtravel.dto.TRInputScheduleDto;
@@ -78,9 +79,13 @@ public interface TrainDao {
 	ArrayList<TRSeatDto> selectSeatInput(String carNum);
 	
 	// 예매코드 입력하기
-	@Insert("INSERT INTO RESERVATION(REMID, RECODE, DEPSTA, ARRSTA, TRAINNO, DEPTIME, ARRTIME, CARNUM, SEATNUM, TRIANDATE, REDATE, CHARGE, RESTATES) "
-			+ "VALUES(#{remid},#{recode},#{depsta},#{arrsta},#{trainno},#{deptime},#{arrtime},#{carnum},#{seatnum},#{traindate},SYSDATE,#{charge}, '0')")
+	@Insert("INSERT INTO RESERVATION(REMID, RECODE, DEPSTA, ARRSTA, TRAINNO, DEPTIME, ARRTIME, CARNUM, SEATNUM, TRAINDATE, REDATE, CHARGE, RESTATES) "
+			+ "VALUES(#{remid},#{recode},#{depsta},#{arrsta},#{trainno},#{deptime},#{arrtime},#{carnum},#{seatnum},TO_DATE(#{traindate}, 'YYYY-MM-DD'),SYSDATE,#{charge}, '0')")
 	void insertReservationCode(ReservationDto reserveData);
+	
+	//예매시 회원정보 가져오기
+	@Select("SELECT * FROM MEMBERS WHERE MID = #{loginId}")
+	MemberDto getMemberInfo(String loginId);
 	
 	
 	
