@@ -3,17 +3,23 @@ package com.localtravel.controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.localtravel.dto.MemberDto;
 import com.localtravel.dto.ReservationDto;
 import com.localtravel.dto.TRServeDto;
 import com.localtravel.service.TrainReserveService;
 
 @Controller
 public class PaymentContoller {
+	
+	@Autowired
+	HttpSession session;
 	
 	@Autowired
 	TrainReserveService trsvc;
@@ -32,7 +38,9 @@ public class PaymentContoller {
 	@RequestMapping(value = "/PCPayment")
 	public ModelAndView PCPayment() {
 		ModelAndView mav = new ModelAndView();
-		
+		String loginId = (String)session.getAttribute("loginId");
+		MemberDto memInfo = trsvc.getMemberInfo(loginId);
+		mav.addObject("memInfo", memInfo);
 		mav.setViewName("payment/order");
 		return mav;
 	}
