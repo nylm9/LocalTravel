@@ -106,11 +106,17 @@
 
 
 </body>
+
+<c:if test="${not empty Msg}">
+    <script>
+        alert('${Msg}');
+    </script>
+</c:if>
+
+
+
     <script type="text/javascript">
-    	var Msg = '${Msg}';
-    	if(Msg.length > 0 ){
-    		alert(Msg);
-    	}
+    	
     	function joinFormCheck(joinForm){
 			var formMid = joinForm.mid;
 			if(formMid.value == 0){

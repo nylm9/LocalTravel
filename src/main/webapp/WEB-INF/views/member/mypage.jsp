@@ -116,13 +116,17 @@
 										</c:choose> --%>
 										
 										<c:if test="${memInfo.MGENDER == '1' }">
-											<p style="font-size:15px; padding-left:10px;  padding-top:10px;">남자</p>
+											<!-- <p style="font-size:15px; padding-left:10px;  padding-top:10px;">남자</p> -->
+											<input type="text" name="mid" class="form-control" id="inputMid"
+											 value="남자" readonly>
 										</c:if>
 										<c:if test="${memInfo.MGENDER == '2' }">
-											<p style="font-size:15px; padding-left:10px;  padding-top:10px;">여자</p>
+										<input type="text" name="mid" class="form-control" id="inputMid"
+											 value="여자" readonly>
 										</c:if>
 										<c:if test="${memInfo.MGENDER == '0' }">
-											<p style="font-size:15px; padding-left:10px;  padding-top:10px;">선택하지않음</p>
+											<input type="text" name="mid" class="form-control" id="inputMid"
+											 value="선택하지않음" readonly>
 										</c:if>
 									</div>
 							</div>
@@ -175,7 +179,7 @@
 			 				 <c:forEach items="${enjoyList }" var="enjoyList">
 								<div style="width:990px; height:50px; margin-left:90px; float: left; border: 1px solid #f0f1f4 ; background-color:#f0f1f4;">
 									<div style="line-height:50px; text-align: center; float: left; width:300px; margin-right:10px;">
-									${enjoyList.ename}
+									<a href="${pageContext.request.contextPath }/playInfo?ecode=${ enjoyList.ecode}">${enjoyList.ename}</a>
 									</div>
 									<div style="line-height:50px; text-align: center; float: left;">
 									${enjoyList.eaddr}

@@ -84,7 +84,7 @@ public class MemberController {
 		} else {
 			System.out.println("로그인 실패");
 			ra.addFlashAttribute("Msg", "아이디/비밀번호를 다시 확인해주세요.");
-			mav.setViewName("member/memberLoginForm");
+			mav.setViewName("redirect:/memberLoginForm");
 		}
 		return mav;
 	}
