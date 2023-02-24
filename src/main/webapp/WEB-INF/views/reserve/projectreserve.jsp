@@ -79,38 +79,44 @@ thead {
 <style>
 /* 지역 선택시 */
 .LocationSelcet {
-	border: 1px solid black;
+	border: 1px solid lightgray;
 	text-align: center;
-	margin-bottom: 3px;
+	margin-bottom: 5px;
+	margin-top: 5px;
 	padding-top: 5px;
 	padding-bottom:  5px;
 }
 
 .LocationSelcet:hover {
-	border: 1px solid black;
+	border: 1px solid lightgray;
 	color: white;
 	background-color: black;
 	text-align: center;
 	cursor: pointer;
-	margin-bottom: 3px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .LocationSelcetAct {
-	border: 1px solid black;
-	color: white;
-	background-color: lightsalmon;
+	border: 1px solid #EFEDE3;
+	color: balck;
+	font-weight:bold;
+	background-color: #EFEDE3;
 	text-align: center;
 	cursor: pointer;
-	margin-bottom: 3px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 .LocationSelcetInact {
-	border: 1px solid black;
-	color: white;
+	border: 0px solid black;
+	color: lightgray;
 	background-color: darkgray;
 	text-align: center;
 	cursor: pointer;
-	margin-bottom: 3px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 /* 목록 제목부분 */
 .card-header {
@@ -128,7 +134,7 @@ thead {
 /* 역 버튼  */
 .stationBtn {
 	display: inline-block;
-	border: 1px solid black;
+	border: 1px solid lightgray;
 	margin: 3px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -146,12 +152,14 @@ thead {
 }
 
 .stationBtnAct {
-	border: 1px solid black;
-	color: white;
-	background-color: lightsalmon;
+	border: 1px solid #EFEDE3;
+	font-weight:bold;
+	color: black;
+	background-color: #EFEDE3;
 	text-align: center;
 	cursor: pointer;
 	margin-bottom: 3px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .cleanTable {
@@ -199,12 +207,15 @@ thead {
 	font-weight: bold;
 	padding-bottom: 10px;
 }
+
+
 </style>
 
 
 </head>
 <body>
-
+	
+   
 	<!-- ======= Header ======= -->
 	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
 	<!-- End Header -->
@@ -222,7 +233,7 @@ thead {
 						<!-- 출발역 선택창 -->
 						<c:forEach items="${cityList }" var="citylist">
 							<!-- 지역 목록 -->
-							<div class="LocationSelcet" id="DepLoctaion${citylist.citycode }"
+							<div class="LocationSelcet rounded" id="DepLoctaion${citylist.citycode }"
 								onclick="DepLoctaionSelect(this,${citylist.citycode })">${citylist.cityname }</div>
 							<div id="stationList${citylist.citycode }" class="d-none">
 								<div id="stationView${citylist.citycode }">
@@ -242,7 +253,7 @@ thead {
 						<!-- 출발역 선택창 -->
 						<c:forEach items="${cityList }" var="citylist">
 							<!-- 지역 목록 -->
-							<div class="LocationSelcet" id="ArrLoctaion${citylist.citycode }"
+							<div class="LocationSelcet rounded" id="ArrLoctaion${citylist.citycode }"
 								onclick="return ArrLoctaionSelect(this,${citylist.citycode })">${citylist.cityname }</div>
 							<div id="ArrstationList${citylist.citycode }" class="">
 								<div id="arrStationView${citylist.citycode }">
@@ -523,7 +534,7 @@ thead {
 				output = "";
 				for(var i = 0; i < scList.length; i++){
 					// 역의 클래스 stationBtn과 아이디 staBtncode+고유넘버로 이루어져있음
-					output += "<div class='stationBtn' id='staBtncode"+citycode+i+"' onclick='DepStationSelect(this, "+"\""+scList[i].nodeid+"\","+"\""+scList[i].nodename+"\")'>";
+					output += "<div class='stationBtn rounded' id='staBtncode"+citycode+i+"' onclick='DepStationSelect(this, "+"\""+scList[i].nodeid+"\","+"\""+scList[i].nodename+"\")'>";
 					output += scList[i].nodename+"역";
 					output += "</div>";
 				}
@@ -581,7 +592,7 @@ thead {
 					for(i = 0; i < arrStaList.length; i++){
 						if(ccode === arrStaList[i].citycode){
 							//console.log(arrStaList[i].nodename);
-							ArrStaouput += "<div class='stationBtn' id='DtoAstaBtn"+i+"' onclick='ArrStationSelected(this, "+"\""+arrStaList[i].nodeid+"\","+"\""+arrStaList[i].nodename+"\")'>";
+							ArrStaouput += "<div class='stationBtn rounded' id='DtoAstaBtn"+i+"' onclick='ArrStationSelected(this, "+"\""+arrStaList[i].nodeid+"\","+"\""+arrStaList[i].nodename+"\")'>";
 							ArrStaouput += arrStaList[i].nodename+"역";
 							ArrStaouput += "</div>";
 							$('#ArrLoctaion'+ccode).addClass('LocationSelcetAct');
@@ -638,7 +649,7 @@ thead {
 				output = "";
 				for(var i = 0; i < scList.length; i++){
 					// 역의 클래스 stationBtn과 아이디 staBtncode+고유넘버로 이루어져있음
-					output += "<div class='stationBtn' id='staBtncode"+citycode+i+"' onclick='AtoDStationSelect(this, "+"\""+scList[i].nodeid+"\","+"\""+scList[i].nodename+"\")'>";
+					output += "<div class='stationBtn rounded' id='staBtncode"+citycode+i+"' onclick='AtoDStationSelect(this, "+"\""+scList[i].nodeid+"\","+"\""+scList[i].nodename+"\")'>";
 					output += scList[i].nodename+"역";
 					output += "</div>";
 				}
@@ -698,7 +709,7 @@ thead {
 					for(i = 0; i < arrStaList.length; i++){
 						if(ccode === arrStaList[i].citycode){
 							//console.log(arrStaList[i].nodename);
-							DepStaouput += "<div class='stationBtn' id='AtoDstaBtn"+i+"' onclick='DepStationSelected(this, "+"\""+arrStaList[i].nodeid+"\","+"\""+arrStaList[i].nodename+"\")'>";
+							DepStaouput += "<div class='stationBtn rounded' id='AtoDstaBtn"+i+"' onclick='DepStationSelected(this, "+"\""+arrStaList[i].nodeid+"\","+"\""+arrStaList[i].nodename+"\")'>";
 							DepStaouput += arrStaList[i].nodename+"역";
 							DepStaouput += "</div>";
 							$('#DepLoctaion'+ccode).addClass('LocationSelcetAct');
