@@ -198,21 +198,12 @@
 		
 		
 		
-		
-		<!-- <!-- 기차예매 -->
-		<section class="section">
-		<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
-				<div class="row g-0">
-              		<div class="col-12 " style="text-align: center;" >
-                		<p style="font-size:25px;">기차예매</p>
-              		</div>
-              		<hr>
-              		<div>
-              		<h5>갈수있는 열차랑 예매버튼</h5>
-              		</div>
-              	</div>
-         </div>
-         </section>
- -->
+
+    <script type="text/javascript">
+    	var Msg = '${Msg}';
+    	if(Msg.length > 0 ){
+    		alert(Msg);
+    	}
+    </script>
 </body>
 </html>

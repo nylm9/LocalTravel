@@ -108,7 +108,7 @@
             <!-- 등록버튼 -->
             <div class="card-footer px-4 " style="text-align: center;">
               <button type="submit" class="btn btn-primary " >관람평 등록</button>
-              <button type="button" class="btn btn-secondary " onclick="window.close()">창닫기</button>
+             
                <a class="btn btn-secondary"
 							   href="${pageContext.request.contextPath }/enjoyPage">창닫기</a>
             </div>
@@ -166,12 +166,13 @@
 			success :function(result){
 				if(result =="N_login"){
 					alert("로그인후에 다시 작성해주세요");
-					window.opener.location.reload();
+					window.location.href = "${pageContext.request.contextPath }/memberLoginForm";
 				}else if(result =='1'){
 					alert("작성완료되었습니다");
-					window.opener.location.reload();
+					window.location.href = "${pageContext.request.contextPath }/enjoyPage";
 				}else{
 					alert("작성실패");
+					window.location.href = "${pageContext.request.contextPath }/enjoyPage";
 				}
 			}
 		})

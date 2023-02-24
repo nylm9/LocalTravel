@@ -7,12 +7,9 @@ public class FoodReviewDto {
 	private String rvcomment;
 	private String rvrecommend;
 	private String rvdate;
-	private String rvfdthcode;
-	@Override
-	public String toString() {
-		return "FoodReviewDto [rvfdcode=" + rvfdcode + ", rvmid=" + rvmid + ", rvcomment=" + rvcomment
-				+ ", rvrecommend=" + rvrecommend + ", rvdate=" + rvdate + ", rvfdthcode=" + rvfdthcode + "]";
-	}
+
+	/* private String rvfdthcode; */
+
 	public String getRvfdcode() {
 		return rvfdcode;
 	}
@@ -43,12 +40,17 @@ public class FoodReviewDto {
 	public void setRvdate(String rvdate) {
 		this.rvdate = rvdate;
 	}
-	public String getRvfdthcode() {
-		return rvfdthcode;
+	/*
+	 * public String getRvfdthcode() { return rvfdthcode; } public void
+	 * setRvfdthcode(String rvfdthcode) { this.rvfdthcode = rvfdthcode; }
+	 */
+	@Override
+	public String toString() {
+		return "FoodReviewDto [rvfdcode=" + rvfdcode + ", rvmid=" + rvmid + ", rvcomment=" + rvcomment
+				+ ", rvrecommend=" + rvrecommend + ", rvdate=" + rvdate + "]";
 	}
-	public void setRvfdthcode(String rvfdthcode) {
-		this.rvfdthcode = rvfdthcode;
-	}
+	
+	
 
 	
 }

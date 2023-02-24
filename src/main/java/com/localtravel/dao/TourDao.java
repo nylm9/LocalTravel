@@ -16,8 +16,8 @@ public interface TourDao {
 			+ " VALUES(#{rvencode}, #{rvmid}, #{rvcomment}, #{rvrecommend}, SYSDATE)")
 	int insertReviewWrite(ReviewDto review);
 
-	@Insert("INSERT INTO FDREVIEWES(RVFDCODE, RVMID, RVCOMMENT, RVRECOMMEND, RVDATE, RVFDTHCODE)"
-			+ " VALUES(#{rvfdcode}, #{rvmid}, #{rvcomment}, #{rvrecommend}, SYSDATE, #{rvfdthcode})")
+	@Insert("INSERT INTO FDREVIEWES(RVFDCODE, RVMID, RVCOMMENT, RVRECOMMEND, RVDATE)"
+			+ " VALUES(#{rvfdcode}, #{rvmid}, #{rvcomment}, #{rvrecommend}, SYSDATE)")
 	int insertfdReviewWrite(FoodReviewDto fdreview);
 	
 	@Select("SELECT * FROM ENJOY WHERE ECODE = #{ecode}")

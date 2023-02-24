@@ -123,7 +123,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
                 		<div class="card-body"> 
 		                	<!-- 사진 -->
 		                	<form onsubmit="return joinFormCheck(this)">
-		                	<p id="ecodecheck"  onkeyup="joinecodeCheck(this.value)">${enInfo.ecode }</p>
 		                	<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enInfo.epicture }" 
 		                		style="width: 300px; height: 400px; float:left" 
 		                		     class="img-fluid rounded-start" alt="...">
@@ -163,26 +162,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 													<p style="font-size: 17px; ">평점: ★★★★★</p>
 												</c:if>
 											</div>
-			                  		
-			                  			 <!-- <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-up"></i></span>
-			                  			 <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-down"></i></span> -->
-			                  			
-			                  				<hr>
-					                  			<c:choose>
-							       	   				<c:when test="${enInfo.etell == null }">
-														<p style="font-size: 17px; ">전화번호: 없음</p>
-													</c:when>
-													<c:otherwise>
-							       	   					<p  style="font-size: 20px; " >전화번호: ${enInfo.etell }</p>
-													</c:otherwise>
-												</c:choose>
-			                  			
-			                  			<p class="card-text mb-1" style="font-size: 17px; margin-top:-15px; ">${enInfo.eexplain }</p>
-				                  			
-				                  					         <!-- 지도 -->
-								<div class="map_wrap" style="margin-left: 250px;">
+								<!-- 지도 -->
+								<div class="map_wrap" style="margin-left: 50px;">
 									<div id="map"
-										style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+										style="width: 80%; height: 80%; position: relative; overflow: hidden;"></div>
 
 									<div id="menu_wrap" class="bg_white">
 										<div class="option">
@@ -199,6 +182,23 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 										<div id="pagination"></div>
 									</div>
 								</div>
+			                  		
+			                  			 <!-- <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-up"></i></span>
+			                  			 <span style="font-size: 18px;font-weight: bold;" ><i class="bi bi-hand-thumbs-down"></i></span> -->
+			                  			
+			                  				<hr>
+					                  			<c:choose>
+							       	   				<c:when test="${enInfo.etell == null }">
+														<p style="font-size: 17px; ">전화번호: 없음</p>
+													</c:when>
+													<c:otherwise>
+							       	   					<p  style="font-size: 20px; " >전화번호: ${enInfo.etell }</p>
+													</c:otherwise>
+												</c:choose>
+			                  			
+			                  			<p class="card-text mb-1" style="font-size: 17px; margin-top:-15px; ">${enInfo.eexplain }</p>
+				                  			
+
 								<c:forEach items="${blList }" var="blList">
 				              		<a href="${pageContext.request.contextPath }/BlogView?ecode=${enInfo.ecode }">
 				              		<p>${enInfo.ename }블로그 글도 함께 읽어보세요!</p>
@@ -263,7 +263,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 		</section>
 		
 		<!-- 기차예매 -->
-		<section class="section">
+		<!-- <section class="section">
 		<div class="card mb-3 p-5 mx-auto" style="min-width: 600px; max-width: 1200px;">
 				<div class="row g-0">
               		<div class="col-12 " style="text-align: center;" >
@@ -275,23 +275,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
               		</div>
               	</div>
          </div>
-         </section>
+         </section> -->
 
 <script type="text/javascript">
-function joinecodeCheck(idVal) {
-	console.log("놀거리코드 : " + idVal);
-
-		/* $.ajax( { 
-			type : "get",	
-			url : "${pageContext.request.contextPath }/enjoycodeCheck", 
-			data : { "ecode" : idVal },
-			success : function(checkResult) {
-				console.log("checkResult : " + checkResult);
-				alert('틀렸음');
-				return false;
-				
-			}
-		} ); */
 	
 }
 </script>

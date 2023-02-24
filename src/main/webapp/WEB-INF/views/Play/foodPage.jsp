@@ -224,7 +224,12 @@ function change_btn(selectedBtn) {
 }
 </script> -->
 
-
+   <script type="text/javascript">
+    	var Msg = '${Msg}';
+    	if(Msg.length > 0 ){
+    		alert(Msg);
+    	}
+    </script>
 
 </head>
 <body>

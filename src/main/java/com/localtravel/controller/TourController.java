@@ -143,8 +143,8 @@ public class TourController {
 	@RequestMapping(value = "/fdreviewForm")
 	public ModelAndView fdreviewForm(String refdcode) {
 		System.out.println("먹거리 리뷰페이지이동");
-		System.out.println(refdcode);
-		String rvfdthcode ="11111";
+		/* System.out.println(refdcode); */
+		/* String rvfdthcode ="11111"; */
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("review/FoodReviewForm");

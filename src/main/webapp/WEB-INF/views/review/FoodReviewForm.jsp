@@ -46,6 +46,7 @@
   		display: inline-block;
   	}
 	</style>
+	
 </head>
 <body>
 	<!-- ======= Header ======= -->
@@ -62,7 +63,7 @@
 		<form onsubmit="return FoodreviewForm(this)" >
 		
 			 <input type="text" name="rvfdcode" value="${param.fcode }"><!--  value="${param.reencode }" 놀거리 코드 집어넣어야함 -->
-			  <input type="text" name="rvfdthcode" value="${param.rvfdthcode }"><!-- 임시테마코드 -->
+			<%--   <input type="text" name="rvfdthcode" value="${param.rvfdthcode }"><!-- 임시테마코드 --> --%>
 			 
            <div class="card-header">
             	<h2 class="card-title mb-0 py-1" style="text-align: center;font-size: 30px;font-weight: bold;">${param.fname }</h2>
@@ -110,7 +111,6 @@
             <!-- 등록버튼 -->
             <div class="card-footer px-4 " style="text-align: center;">
               <button type="submit" class="btn btn-primary " >관람평 등록</button>
-              <button type="button" class="btn btn-secondary " onclick="window.close()">창닫기</button>
                <a class="btn btn-secondary"
 							   href="${pageContext.request.contextPath }/foodPage">창닫기</a>
             </div>
@@ -153,7 +153,7 @@
 		var rvfdcode = formObj.rvfdcode.value;
 		var rvrecommend =formObj.rvrecommend.value;
 		var rvcomment = formObj.rvcomment.value;
-		var rvfdthcode = formObj.rvfdthcode.value;
+		/* var rvfdthcode = formObj.rvfdthcode.value; */
 		if(rvrecommend.length == 0){
 			alert('관람평 추천을 선택해주세요');
 			return false;
@@ -161,21 +161,22 @@
 		console.log(rvfdcode);
 		console.log(rvrecommend);
 		console.log(rvcomment);
-		console.log(rvfdthcode);
+		/* console.log(rvfdthcode); */
 		$.ajax({
 			url:"${pageContext.request.contextPath }/fdreviewWrite",
 			type:"post",
-			data:{"rvfdcode":rvfdcode, "rvrecommend":rvrecommend, "rvcomment":rvcomment, "rvfdthcode":rvfdthcode },
+			data:{"rvfdcode":rvfdcode, "rvrecommend":rvrecommend, "rvcomment":rvcomment/* , "rvfdthcode":rvfdthcode */ },
 			async:false,
 			success :function(result){
 				if(result =="N_login"){
 					alert("로그인후에 다시 작성해주세요");
-					window.opener.location.reload();
+					window.location.href = "${pageContext.request.contextPath }/memberLoginForm";
 				}else if(result =='1'){
 					alert("작성완료되었습니다");
-					window.opener.location.reload();
+					window.location.href = "${pageContext.request.contextPath }/foodPage";
 				}else{
 					alert("작성실패");
+					window.location.href = "${pageContext.request.contextPath }/foodPage";
 				}
 			}
 		})
