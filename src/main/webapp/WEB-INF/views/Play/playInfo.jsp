@@ -234,7 +234,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
                 				<div class="col">
 									<h8 class="card-title p-0 mb-1"> 
                 					<c:choose>
-										<c:when test="${review.RVRECOMMEND == '1' }">
+										<c:when test="${review.RVRECOMMEND == '0' }">
 											<span style="font-weight: bold; color: pink;">
 												<i class="bi bi-hand-thumbs-up "></i>
 												<h8>좋아요</h8>

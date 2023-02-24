@@ -168,7 +168,7 @@
                 				<div class="col">
 									<h8 class="card-title p-0 mb-1"> 
                 					<c:choose>
-										<c:when test="${fdreview.RVRECOMMEND == '1' }">
+										<c:when test="${fdreview.RVRECOMMEND == '0' }">
 											<span style="font-weight: bold; color: pink;">
 												<h8>좋아요</h8>
 											</span>

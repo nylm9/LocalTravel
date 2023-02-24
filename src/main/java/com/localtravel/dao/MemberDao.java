@@ -3,6 +3,7 @@ package com.localtravel.dao;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -72,6 +73,13 @@ FoodDto selectecodelikeFoodList(String fcode);
 @Select("SELECT RECODE, DEPSTA, ARRSTA, TRAINNO, DEPTIME, ARRTIME, CARNUM, SEATNUM, TO_DATE(TRAINDATE,'YYYY-MM-DD')AS TRAINDATE, REDATE, CHARGE, RESTATES FROM"
 		+ " RESERVATION WHERE REMID=#{remid}")
 ArrayList<ReservationDto> selectreservationList(String loginId);
+
+@Delete("DELETE  FROM LIKEBTN WHERE LBMID =#{lbmid} AND LBCODE =#{lbcode}")
+int deleteenjoyResult(@Param("lbmid") String lbmid, @Param("lbcode") String lbcode);
+
+
+@Delete("DELETE  FROM LIKEFOODBTN WHERE LBFMID =#{lbfmid} AND LBFCODE =#{lbfcode}")
+int deleteFoodResult(@Param("lbfmid")String loginId, @Param("lbfcode")String fcode);
 
 
 
