@@ -301,7 +301,7 @@ body {
 		src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			alert('예매가 완료되었습니다.')
+			
 			var reservationCode = "ABC123"; // 예약 코드 생성
 			window.opener.receiveReservationCode(reservationCode); // 부모 창으로 값 전달
 			window.close();

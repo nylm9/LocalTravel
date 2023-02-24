@@ -30,7 +30,7 @@
 		GetField(frm, FormOrJson);
 
 		if (frm.res_cd.value == "0000") {
-			alert("결제 승인 요청 전,\n\n반드시 결제창에서 고객님이 결제 인증 완료 후\n\n리턴 받은 ordr_chk 와 업체 측 주문정보를\n\n다시 한번 검증 후 결제 승인 요청하시기 바랍니다."); //업체 연동 시 필수 확인 사항.
+			//alert("결제 승인 요청 전,\n\n반드시 결제창에서 고객님이 결제 인증 완료 후\n\n리턴 받은 ordr_chk 와 업체 측 주문정보를\n\n다시 한번 검증 후 결제 승인 요청하시기 바랍니다."); //업체 연동 시 필수 확인 사항.
 			/*
 			                    가맹점 리턴값 처리 영역
 			 */
@@ -164,7 +164,7 @@
 						output += "</table>";
 						output += "<input type='hidden' name='ordr_idxx' value='"+reservationCode+"' maxlength='40' />";
 						// 결제 금액 설정 및 정보 출력
-						output += "<input type='hidden' name='good_mny' value='"+1+"' maxlength='9' />";
+						output += "<input type='hidden' name='good_mny' value='"+sumCharge+"' maxlength='9' />";
 						output += "<input type='hidden' name='good_name' value='"+depSta+"→"+arrSta+"행 "+trainNo+","+carNum+","+roomSortation+"|"+seatNum+"' />";
 						console.log(output);
 						$('#skipCont').html(output);

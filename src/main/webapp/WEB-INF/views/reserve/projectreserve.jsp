@@ -214,8 +214,6 @@ thead {
 
 </head>
 <body>
-	
-   
 	<!-- ======= Header ======= -->
 	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
 	<!-- End Header -->
@@ -235,7 +233,7 @@ thead {
 							<!-- 지역 목록 -->
 							<div class="LocationSelcet rounded" id="DepLoctaion${citylist.citycode }"
 								onclick="DepLoctaionSelect(this,${citylist.citycode })">${citylist.cityname }</div>
-							<div id="stationList${citylist.citycode }" class="d-none">
+							<div id="stationList${citylist.citycode }" class="d-none mb-3">
 								<div id="stationView${citylist.citycode }">
 									<!-- 역 목록 -->
 								</div>
@@ -294,33 +292,9 @@ thead {
 						<hr>
 						<!-- 열차 스케쥴 정보를 담는 부분 -->
 						<div style="overflow: scroll; height: 350px" id="scheduleListArea">
-							<div class="card">
-								<div class="card-body" style="padding: 5px;">
-									<table class="cleanTable">
-										<tr class="cleanTable">
-											<th class="scheduleInfoTitle" style="font-size: small;">출발지</th>
-											<th class="scheduleInfoTitle">도착지</th>
-											<th class="scheduleInfoTitle">출발 시간</th>
-											<th class="scheduleInfoTitle">도착 시간</th>
-											<th class="scheduleInfoTitle">소요 시간</th>
-											<th class="scheduleInfoTitle">열차 번호</th>
-											<th class="scheduleInfoTitle">운임비</th>
-											<th class="scheduleInfoTitle" rowspan="2"><button
-													type="button" onclick="selectSchedule(this)"
-													class="btn font-bold mb-1 w-10 h-10"
-													style="padding-left: 20px; padding-right: 20px; background-color: pink;">선택</button></th>
-										</tr>
-										<tr class="cleanTable">
-											<td class="scheduleInfoContent" style="font-size: small;">서울</td>
-											<td class="scheduleInfoContent">부산</td>
-											<td class="scheduleInfoContent">08:40</td>
-											<td class="scheduleInfoContent">10:40</td>
-											<td class="scheduleInfoContent">01:00</td>
-											<td class="scheduleInfoContent">12</td>
-											<td class="scheduleInfoContent">59,800원</td>
-										</tr>
-									</table>
-								</div>
+								<br>
+								<h3 style="color: gray;">&nbsp;1. 출발역, 도착역을 선택 </h3>
+								<h3 style="color: gray;">&nbsp;2. 날짜와 인원수 선택 → 열차조회 </h3>
 							</div>
 						</div>
 					</div>

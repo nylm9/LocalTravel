@@ -204,20 +204,7 @@ thead {
 </head>
 <body>
 
-	<!-- ======= Header ======= -->
-	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
-	<!-- End Header -->
-
-
-	<!-- 예매창 main창-->
-	<section class="section">
-		<div class="row" style="min-width: 565px;">
-			<h2>예매는 성공되었다</h2>
-		</div>
-	</section>
-	<script type="text/javascript">
-		
-	</script>
+	
 
 
 	<!-- THEME JAVASCRIPT FILES

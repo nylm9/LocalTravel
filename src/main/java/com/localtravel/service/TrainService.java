@@ -117,7 +117,7 @@ public class TrainService {
 
 		Gson gson = new Gson();
 		JsonElement element = JsonParser.parseString(sb.toString());
-//		System.out.println(element);
+		System.out.println(element);
 		JsonObject body = element.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject();
 		JsonArray ScheduleArray = body.get("items").getAsJsonObject().get("item").getAsJsonArray();
 		System.out.println(ScheduleArray.get(0));
