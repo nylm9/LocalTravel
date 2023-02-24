@@ -6,10 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gowun+Dodum&display=swap');
 h2 {
   transform: translateX(-50%);
   opacity: 0;
   transition: .8s;
+  font-family: 'Black Han Sans', sans-serif;
 }
 
 h2.active {
@@ -58,7 +60,8 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
 }
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
-
+ 
+ 
 * {
   font-family: Pretendard;
   padding: 0;
@@ -67,7 +70,7 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
 
 .logo-container {
   position: absolute;
-  top: 0;
+  top: 15px;
   left: 0;
 }
 
@@ -85,12 +88,12 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
 
 <div class="text">
 		
-<div class="logo-container" >
+<div class="logo-container" style="margin-bottom: 50px;" >
   <span style="margin-left: 20px; margin-right: 1px; margin-top: 12px; color: black; font-size: 20px;" >Tripick</span>
   <img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image">
 </div>
 		
-		<h2>
+		<h2 style="font-size: 3em; font-weight: 100">
 			여행을 떠나시나요?
 			<!--     background-attachment <br><br>
     - scroll (기본) <br>
@@ -108,7 +111,7 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
   <img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image">
 </div>
 
-  <h2>
+<h2 style="font-size: 3em; font-weight: 100">
   
   트립픽이 도와드릴게요!
 <!--     background-attachment <br><br>
