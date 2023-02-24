@@ -50,7 +50,7 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  /* text-align: center; */
   color: #fff;
   background: #A0C3D2;
   /* 여기에 색깔 코드 넣으면 됨. */
@@ -65,6 +65,17 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
   margin: 0;
 }
 
+.logo-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.logo-container img {
+  width: 40px;
+  height: 40px;
+}
+
 </style>
 			<!-- newMainTest JS -->
 </head>
@@ -73,20 +84,33 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
 <body>
 
 <div class="text">
-  <h2>
-  여행을 떠나시나요?
-<!--     background-attachment <br><br>
+		
+<div class="logo-container" >
+  <span style="margin-left: 20px; margin-right: 1px; margin-top: 12px; color: black; font-size: 20px;" >Tripick</span>
+  <img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image">
+</div>
+		
+		<h2>
+			여행을 떠나시나요?
+			<!--     background-attachment <br><br>
     - scroll (기본) <br>
     - fixed (고정)<br> -->
-  </h2>
-</div>
+		</h2>
+	</div>
 
 
   <div class="image1"></div>
 
 <div class="text">
+
+<div class="logo-container" >
+  <span style="margin-left: 20px; margin-right: 1px; margin-top: 12px; color: black; font-size: 20px;" >Tripick</span>
+  <img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image">
+</div>
+
   <h2>
-  [이름]이 도와드릴게요!
+  
+  트립픽이 도와드릴게요!
 <!--     background-attachment <br><br>
     - scroll (기본) <br>
     - fixed (고정)<br> -->

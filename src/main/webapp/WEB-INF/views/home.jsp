@@ -44,8 +44,11 @@
 	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
 	<!-- End Header -->
  <div>
-	<p style="font-size:100px; position:absolute; left:100px;top: 140px;">이랏샤이마세</p>
- </div> 
+	<p style="font-size:70px; position:absolute; left:80px;top: 50px;">KTX 예약부터 
+	<p style="font-size:70px; position:absolute; left:100px;top: 140px;">여행지 추천까지
+	
+	</p>
+ </div>  
 
 <!-- 사진 움직이기 -->
 <section class="slider mt-4">

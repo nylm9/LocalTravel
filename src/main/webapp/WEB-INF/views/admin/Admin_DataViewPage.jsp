@@ -40,6 +40,9 @@
 <!-- manin stylesheet -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/style.css">
+	
+<%-- <link href="${pageContext.request.contextPath }/resources/css/Menubutton.css" rel="stylesheet" type="text/css"/> --%>
+	
 
 <style type="text/css">
 table {
@@ -59,9 +62,11 @@ img {
 }
 
 
+
+
 </style>
 
-
+ 
 </head>
 <body>
 	<!-- ======= Header ======= -->
@@ -90,6 +95,11 @@ img {
 <a href="${pageContext.request.contextPath }/testMainPage">테스트메인페이지 이동</a> <br/>
 <a href="${pageContext.request.contextPath }/testMemberJoinCheckForm">회원가입 약관 테스트 페이지 이동</a>
 <hr>
+
+
+
+
+
 <hr>
 
 
