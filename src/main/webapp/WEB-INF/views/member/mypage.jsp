@@ -172,6 +172,7 @@
 					<div class="card mb-3" style="padding:20px;">
 						<div class="row g-0" >
 						
+				<!-- 놀거리 저장목록 -->
 							<div class="col-12">
 								<p class="text-center pb-0 fs-4" style="font-weight:bold;color:black;">놀거리 저장 목록</p>
 							</div>
@@ -184,11 +185,16 @@
 									<div style="line-height:50px; text-align: center; float: left;">
 									${enjoyList.eaddr}
 									</div>	 
+									<a class="btn" style="position:absolute; right:7%;"
+									href="${pageContext.request.contextPath }/deleteenjoyInfo?ecode=${ enjoyList.ecode}"> 삭제 </a>
 								</div>
 				 			 </c:forEach>  
-				 			 <div class="col-12">
-				 			 <div style="border-top: 1px solid #444444; margin: 20px 420px; width: 300px; "></div>
-								<p class="text-center pb-0 fs-4" style="font-weight:bold;color:black;">먹거리 저장 목록</p>
+				 			 
+				 		<!-- 먹거리저장목록 -->
+				 			<div class="col-12">
+				 				<!-- 구분선 -->
+				 				<div style="border-top: 1px solid #444444; margin: 20px 420px; width: 300px; "></div>
+									<p class="text-center pb-0 fs-4" style="font-weight:bold;color:black;">먹거리 저장 목록</p>
 							</div>
 							
 			 				 <c:forEach items="${FoodList }" var="FoodList">
@@ -198,7 +204,9 @@
 									</div>
 									<div style="line-height:50px; text-align: center; float: left;">
 									${FoodList.faddr}
-									</div>	 
+									</div>	
+									<a class="btn" style="position:absolute; right:7%;"
+									href="${pageContext.request.contextPath }/deleteFoodInfo?fcode=${ FoodList.fcode}"> 삭제 </a> 
 								</div>
 				 			 </c:forEach>
 						</div>

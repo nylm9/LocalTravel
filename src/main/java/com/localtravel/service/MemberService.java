@@ -119,6 +119,29 @@ public class MemberService {
 	}
 
 
+//	public int deleteenjoyInfo(LikeBtnDto likeList) {
+//		System.out.println("MemberService - 마이페이지 놀거리 삭제");
+//		int deleteResult = memdao.deleteResult(likeList);
+//		System.out.println("service - ecode : "+ likeList);
+//		return deleteResult;
+//	}
+
+
+	public int deleteenjoyInfo(String loginId, String ecode) {
+		System.out.println("MemberService - 마이페이지 놀거리 삭제");
+		int deleteResult = memdao.deleteenjoyResult(loginId, ecode);
+		return deleteResult;
+	}
+
+
+	public int deleteFoodInfo(String loginId, String fcode) {
+		System.out.println("MemberService - 마이페이지 먹거리 삭제");
+		int deleteResult = memdao.deleteFoodResult(loginId, fcode);
+		System.out.println("service : "+ fcode + loginId);
+		return deleteResult;
+	}
+
+
 
 
 

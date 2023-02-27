@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.LikeBtnDto;
+import com.localtravel.dto.LikeFoodBtnDto;
 import com.localtravel.dto.MemberDto;
 import com.localtravel.dto.ReservationDto;
 import com.localtravel.service.MemberService;
@@ -144,10 +145,51 @@ public class MemberController {
 		
 		mav.setViewName("member/mypage");
 		return mav;
-
-		
 	}
-	
+	@RequestMapping(value = "/deleteenjoyInfo")
+	public ModelAndView deleteenjoyInfo(String ecode, LikeBtnDto likeList,RedirectAttributes ra) {
+		System.out.println("마이페이지 놀거리삭제 요청");
+		ModelAndView mav = new ModelAndView();
+		String loginId = (String)session.getAttribute("loginId");
+		System.out.println(loginId);
+		likeList.setLbmid(loginId);
+		System.out.println("ecode : "+ ecode);
+		int deleteenjoyInfo  = memsvc.deleteenjoyInfo(loginId, ecode);
+		System.out.println("놀거리삭제여부 : "+deleteenjoyInfo);
+
+		if(deleteenjoyInfo > 0) {
+			System.out.println("놀거리 삭제 성공");
+			ra.addFlashAttribute("Msg", "놀거리 삭제에 성공하였습니다.");
+			mav.setViewName("redirect:/myPage");
+		} else {
+			System.out.println("놀거리 삭제 실패");
+			ra.addFlashAttribute("Msg", "놀거리삭제에 실패하였습니다.");
+			mav.setViewName("redirect:/myPage");
+		}
+		return mav;
+	}
+	@RequestMapping(value = "/deleteFoodInfo")
+	public ModelAndView deleteFoodInfo(String fcode, LikeFoodBtnDto likeList,RedirectAttributes ra) {
+		System.out.println("마이페이지 먹거리삭제 요청");
+		ModelAndView mav = new ModelAndView();
+		String loginId = (String)session.getAttribute("loginId");
+		System.out.println(loginId);
+		likeList.setLbfcode(loginId);
+		System.out.println("fcode : "+ fcode);
+		int deleteFoodInfo  = memsvc.deleteFoodInfo(loginId, fcode);
+		System.out.println("먹거리삭제여부 : "+deleteFoodInfo);
+
+		if(deleteFoodInfo > 0) {
+			System.out.println("먹거리 삭제 성공");
+			ra.addFlashAttribute("Msg", "먹거리 삭제에 성공하였습니다.");
+			mav.setViewName("redirect:/myPage");
+		} else {
+			System.out.println("먹거리 삭제 실패");
+			ra.addFlashAttribute("Msg", "먹거리삭제에 실패하였습니다.");
+			mav.setViewName("redirect:/myPage");
+		}
+		return mav;
+	}
 	/* 테마 버튼을 클릭하여 ajax로 관련 정보를 조회할 때는 총 1~3개의 버튼이 눌리므로 
 	 * ajax문을 1개로 써서 파라메터 3개를 전송한다. (1개만 눌릴때는 2개를 null로)
 	 * null인 파라메터는 서비스 switch case같은 제어문으로 처리하거나 mapper에서 조건문을 나누어 처리! */

@@ -45,6 +45,75 @@
   		width: 100%;
   		display: inline-block;
   	}
+  	.like-content {
+    display: inline-block;
+    width: 100%;
+    font-size: 18px;
+    border-top: 10px dashed #eee;
+    text-align: center;
+}
+.like-content span {
+  color: #9d9da4;
+  font-family: monospace;
+}
+.like-content .btn-secondary {
+    display: block;
+   
+    text-align: center;
+    background: #ed2553;
+    border-radius: 3px;
+    box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+    padding: 10px 17px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+.like-content .btn-second {
+    display: block;
+    
+    text-align: center;
+    background: #0100FF;
+    border-radius: 3px;
+    box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+    padding: 10px 17px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+.like-content .btn-secondary:hover {
+    transform: translateY(-3px);
+}
+.like-content .btn-secondary .fa {
+    margin-right: 5px;
+}
+.animate-like {
+/*   animation-name: likeAnimation;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.65s; */
+  background:#7286D3
+}
+.animate-hate {
+/*   animation-name: likeAnimation;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.65s; */
+  background:#FD8A8A
+}
+@keyframes likeAnimation {
+  0%   { transform: scale(30); }
+  100% { transform: scale(1); }
+}
 	</style>
 </head>
 <body>
@@ -53,52 +122,37 @@
 	<!-- End Header -->
 	
 <main id="main" class="main mt-2 mx-0">
-	<!-- 	<div class="pagetitle">
-			<h1>projectReviewForm.jsp</h1>
-		</div> -->
 		<!-- End Page Title -->
 		<section class="section">
 		<div class="card mx-auto " style="width: 700px; margin-top:40px;" >
 		<form onsubmit="return reviewForm(this)" >
-		
-			 <input type="text" name="rvencode" value="${param.ecode }"><!--  value="${param.reencode }" 놀거리 코드 집어넣어야함 -->
-			 
-           <div class="card-header">
-            	<h2 class="card-title mb-0 py-1" style="text-align: center;font-size: 30px;font-weight: bold;">${param.ename }</h2>
-            </div> 
             
-            <div class="card-body pb-1">
+            <div class="card-body pb-1" style="background:#eee">
+            	<input type="hidden" name="rvencode"  value="${param.ecode }" readonly>
              	<div class="row p-3"  style="text-align: center;">
              	
              	<!-- 좋아요 -->
-             		<div class="col d-flex align-items-center">
-             			<label class="form-label btn-outline-primary btn-lg mx-auto p-3"
+             		<div class="like-content col d-flex align-items-center row p-3"  style="text-align: center;">
+             			<label class="btn-lg mx-auto p-3 btn-secondary like-review"
              				   onclick="selecteRecommend('1')" id="recommendGood" tabindex="-1">
-             				<i class="bi bi-hand-thumbs-up "></i> 좋았어요~!
+             				<i class="fa fa-heart" aria-hidden="true"></i> 좋아요
              				<input class="d-none"  type="radio" value='1' name="rvrecommend">
              			</label>
              		</div>
              		
-             		<!-- 중앙아이디 -->
-             		<div class="col">
-<%--              		<img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" 
-	                style="width: 36px; object-fit: cover; object-position: center; " alt="Profile" class="rounded-circle"> --%>
-             			<p class="mb-0" style="margin-top:13px;">${sessionScope.loginId }</p>
-             		</div>
-             		
              		<!-- 별로에요 -->
-             		<div class="col d-flex align-items-center">
-             			<label class="form-label btn-outline-danger btn-lg  mx-auto p-3"
+             		<div class="like-content col d-flex align-items-center">
+             			<label class="btn-lg mx-auto p-3 btn-second like-hate"
              			       onclick="selecteRecommend('0')" id="recommendBad" tabindex="-1">
-             				<i class="bi bi-hand-thumbs-down"></i> 별로에요...
+             				<i class="fa fa-heart" aria-hidden="true"></i> 싫어요
              				<input class="d-none" type="radio" value='0' name="rvrecommend">
              			</label>
              		</div>
              		
              		<!-- 관람평작성 -->
 	             	<div class="col-12 mt-2">
-	             		<div>
-	             			<textarea class="form-control" rows="5" name="rvcomment"></textarea>
+	             		<div  style="background:#FFFFFF">
+	             			<textarea style="background:#FFFFFF" class="form-control" rows="5" name="rvcomment"></textarea>
 	             		</div>
 	             	</div>
 	             	
@@ -135,18 +189,30 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		
 	<script type="text/javascript">
+	$(function(){
+		  $(document).one('click', '.like-review', function(e) {
+		    $(this).html('<i class="fa " aria-hidden="true"></i>You liked this ☺️');
+		    $(this).children('.fa-heart').addClass('animate-like');
+		  });
+		});
+	$(function(){
+		  $(document).one('click', '.like-hate', function(e) {
+		    $(this).html('<i class="" aria-hidden="true"></i> You hate this 😒');
+		    $(this).children('.fa-heart').addClass('animate-hate');
+		  });
+		});
 	function writeReview(reencode,ename){
 		window.open('${pageContext.request.contextPath }/reviewForm?reencode='+reencode+"&ename="+ename,'reviewFormPage',"width=750,heigh=400, top=100, left=500");
 	}
-	function selecteRecommend(checkVal){
+/* 	function selecteRecommend(checkVal){
  		if(checkVal== '1'){
-		$("#recommendGood").removeClass('btn-outline-primary').addClass('btn-primary');
-		$("#recommendBad").removeClass('btn-danger').addClass('btn-outline-danger');
+		$("#recommendGood").removeClass('btn-secondary').addClass('animate-like');
+		$("#recommendBad").removeClass('btn-second').addClass('animate-hate');
 		}else{
-		$("#recommendGood").removeClass('btn-primary').addClass('btn-outline-primary');
-		$("#recommendBad").removeClass('btn-outline-danger').addClass('btn-danger');
+		$("#recommendGood").removeClass('animate-like').addClass('btn-secondary ');
+		$("#recommendBad").removeClass('animate-hate').addClass('btn-second');
 		} 
-	}
+	} */
 	function reviewForm(formObj){
 		var rvencode = formObj.rvencode.value;
 		var rvrecommend =formObj.rvrecommend.value;
