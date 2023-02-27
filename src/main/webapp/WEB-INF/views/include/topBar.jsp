@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+ <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/topBarHr.css">
 <header class="header-top justify-content-center" style="background: #F7F5EB;">
   <div class="container">
     <!-- <div class="row align-items-center"> -->
@@ -8,7 +9,7 @@
       <!-- 로고 -->
       <div class="navbar-brand ">
       	<nav class="navbar navbar-expand-lg navigation-2 navigation">
-		      	<div style="margin-left:-220%;">
+		      	<div style="margin-left:-220%; margin-bottom: -50px">
 			          <a  href="${pageContext.request.contextPath }/testMainPage">
 			          	<span style="float:left; margin-right:1px; margin-top:12px;">Tripick</span>
 			           <img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image"
@@ -20,7 +21,7 @@
 	            </button>
 			
                 <div class="collapse navbar-collapse"id="navbar-collapse" style="position:absolute;left:600%;"> 
-                  <ul id="menu" class="menu navbar-nav mx-auto" >
+                  <ul id="menu" class="menu navbar-nav mx-auto" style="margin-bottom: -50px">
                       <li class="nav-item"><a href="${pageContext.request.contextPath }/reservePage" class="nav-link">예약하기</a></li>
                       <li  class="nav-item"><a href="${pageContext.request.contextPath }/enjoyPage"class="nav-link">놀거리</a></li>
                       <li  class="nav-item"><a href="${pageContext.request.contextPath }/foodPage"class="nav-link">먹거리</a></li>
@@ -55,6 +56,7 @@
 				</div>
 			</nav>
          </div>
+        
       </div>
 
       <div class="col-lg-8 col-md-12"><!-- class="col-lg-8 col-md-12" -->
@@ -69,5 +71,8 @@
 
         
     </div>
-
+<!--  <div style="border-top: 1px solid #444444; width: 100%; "></div> -->
+ <div style=" border: 0;
+  border-bottom: 2px dashed #eee;
+  background: #999;"></div>
 </header>
