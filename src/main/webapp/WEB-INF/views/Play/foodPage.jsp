@@ -174,7 +174,9 @@ body {
 
 
 
-
+.half_background {
+background: linear-gradient(to top, #A0C3D2 50%, transparent 50%);
+}
 
 
 </style>
@@ -402,7 +404,7 @@ $(document).ready(function(){
 					output += '</div>';
 					output += '<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="'+foodList[i].fname+'" >'+foodList[i].fname+' </h6>';
 					 if (foodList[i].f1ex != null && foodList[i].f1ex != undefined) {
-					      output += '<p class="small mb-1">'+foodList[i].f1ex+' </p>';
+					      output += '<p class="small mb-1 half_background">'+foodList[i].f1ex+' </p>';
 					      output += '<p class="small mb-1">'+foodList[i].faddr+' </p>';
 					    } else {
 					      output += '<p class="small mb-1">'+foodList[i].faddr+' </p>';

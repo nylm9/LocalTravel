@@ -138,7 +138,7 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
 		<script src="${pageContext.request.contextPath }/resources/newMainPage/newMainTest.js"></script>
 <script type="text/javascript">
 
-window.addEventListener('scroll', function() {
+ window.addEventListener('scroll', function() {
 	  var windowHeight = window.innerHeight; // 브라우저 창의 높이
 	  var bodyHeight = document.body.offsetHeight; // body의 전체 높이
 	  var scrollTop = document.documentElement.scrollTop; // 스크롤 위치
@@ -146,7 +146,7 @@ window.addEventListener('scroll', function() {
 	    // 스크롤이 최하단에 도달한 경우
 	    location.href = '${pageContext.request.contextPath }/mainPage'; // 메인페이지로 이동
 	  }
-	});
+	}); 
 
 
 </script>

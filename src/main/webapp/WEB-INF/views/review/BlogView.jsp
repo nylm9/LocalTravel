@@ -35,13 +35,21 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.css">
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
-	<style>
-	.jb-division-line {
-		  border-top: 1px solid #444444;
-		  margin: 30px auto;
-		  width: 300px;        
-		}
-	</style>
+    
+     <!-- 프리텐다드 폰트 -->
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+
+<style>
+.jb-division-line {
+	border-top: 1px solid #444444;
+	margin: 30px auto;
+	width: 300px;
+}
+
+p {
+font-family: 'Pretendard';
+}
+</style>
 
 </head>
 <body>

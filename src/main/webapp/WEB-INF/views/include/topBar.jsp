@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/topBarHr.css">
+ <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/topBarFont.css">
+
+  <!-- 프리텐다드 폰트 -->
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    
 <header class="header-top justify-content-center" style="background: #F7F5EB;">
   <div class="container">
     <!-- <div class="row align-items-center"> -->
@@ -21,7 +25,7 @@
 	            </button>
 			
                 <div class="collapse navbar-collapse"id="navbar-collapse" style="position:absolute;left:600%;"> 
-                  <ul id="menu" class="menu navbar-nav mx-auto" style="margin-bottom: -50px">
+                  <ul id="menu" class="menu navbar-nav mx-auto" style="margin-bottom: -70px">
                       <li class="nav-item"><a href="${pageContext.request.contextPath }/reservePage" class="nav-link">예약하기</a></li>
                       <li  class="nav-item"><a href="${pageContext.request.contextPath }/enjoyPage"class="nav-link">놀거리</a></li>
                       <li  class="nav-item"><a href="${pageContext.request.contextPath }/foodPage"class="nav-link">먹거리</a></li>

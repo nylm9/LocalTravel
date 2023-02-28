@@ -36,6 +36,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.css">
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+    
+        <!-- 프리텐다드 폰트 -->
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    
 
 <script src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
 		 <script type="text/javascript">
@@ -51,6 +55,10 @@
   margin: 30px auto;
   width: 300px;        
 }
+
+a, p, div{
+font-family: 'Pretendard';
+} 
 
 </style>
 </head>
@@ -100,7 +108,7 @@
 								<label class="form-label">생년월일</label> 
 									<div style="border: 1px solid #f0f1f4 ; background-color:#f0f1f4">
 									<input type="text" name="mid" class="form-control" id="inputMid"
-									 value="${memInfo.MBIRTH }" readonly>
+									 value="${memInfo.MBIRTH}" readonly>
 									</div>
 							</div>
 							<div class="col-md-6">

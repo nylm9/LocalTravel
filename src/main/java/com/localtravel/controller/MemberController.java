@@ -78,12 +78,12 @@ public class MemberController {
 			//로그인 성공시
 			LoginId = memberInfo.getMid();
 			System.out.println("로그인 아이디 : " + LoginId);
-			ra.addFlashAttribute("Msg", "로그인 되었습니다.");
+			ra.addFlashAttribute("successMsg", "로그인 되었습니다.");
 			session.setAttribute("loginId", memberInfo.getMid());
 			mav.setViewName("redirect:/");
 		} else {
 			System.out.println("로그인 실패");
-			ra.addFlashAttribute("Msg", "아이디/비밀번호를 다시 확인해주세요.");
+			ra.addFlashAttribute("errorMsg", "아이디/비밀번호를 다시 확인해주세요.");
 			mav.setViewName("redirect:/memberLoginForm");
 		}
 		return mav;
@@ -108,7 +108,7 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("로그아웃 요청");
 		session.invalidate();
-		ra.addFlashAttribute("Msg", "로그아웃 되었습니다.");
+		ra.addFlashAttribute("logoutMsg", "로그아웃 되었습니다.");
 		mav.setViewName("redirect:/");
 		return mav;
 		

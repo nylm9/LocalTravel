@@ -105,13 +105,16 @@
 <script src="${pageContext.request.contextPath }/resources/js/custom.js"></script> --%>
 
 
+ <!-- alert창 디자인 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
-<c:if test="${not empty Msg}">
+<%-- <c:if test="${not empty Msg}">
     <script>
         alert('${Msg}');
     </script>
-</c:if>
+</c:if> --%>
 
 
 
@@ -132,5 +135,46 @@
 			}
 			
 		}
+    	
+    	
     </script>
+    
+    <script type="text/javascript">
+
+$().ready(function () {
+    // successMsg 메시지 출력
+    var successMsg = "${successMsg}";
+    if (successMsg) {
+        Swal.fire({
+            icon: 'success',
+            title: successMsg,
+            showConfirmButton: false,
+            timer: 2000
+        });
+    }
+    
+    
+
+    
+    
+    // errorMsg 메시지 출력
+    var errorMsg = "${errorMsg}";
+    if (errorMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'error',
+            title: errorMsg,
+        });
+    }
+    
+});
+
+</script>
 </html>

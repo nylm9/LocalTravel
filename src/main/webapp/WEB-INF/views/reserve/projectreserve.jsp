@@ -41,9 +41,14 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/style.css">
 
+  <!-- 프리텐다드 폰트 -->
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
 
 <style type="text/css">
 
+* {
+font-family: 'Pretendard' !important;
+}
 /*맨 앞 역표*/
 table {
 	width: 100%;
