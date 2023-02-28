@@ -9,6 +9,7 @@ import com.localtravel.dao.TourDao;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.FoodReviewDto;
+import com.localtravel.dto.ReservationDto;
 import com.localtravel.dto.ReviewDto;
 
 
@@ -69,6 +70,13 @@ public class TourService {
 	public ArrayList<FoodDto> getAllFoodList() {
 		ArrayList<FoodDto> allFoodList = tourdao.getAllFoodList();
 		return allFoodList;
+	}
+
+	public ArrayList<ReservationDto> getreservationList(String loginId, String recode) {
+		System.out.println("Tourservice - 예매리스트출력");
+		ArrayList<ReservationDto> reservationList = tourdao.selectreservationList(loginId,recode);
+//		System.out.println(reservationList);
+		return reservationList;
 	}
 
 }

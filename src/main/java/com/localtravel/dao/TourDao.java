@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import com.localtravel.dto.EnjoyDto;
 import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.FoodReviewDto;
+import com.localtravel.dto.ReservationDto;
 import com.localtravel.dto.ReviewDto;
 
 public interface TourDao {
@@ -37,6 +38,10 @@ public interface TourDao {
 
 	@Select("SELECT * FROM FOOD")
 	ArrayList<FoodDto> getAllFoodList();
+
+	@Select("SELECT RECODE, DEPSTA, ARRSTA, TRAINNO, DEPTIME, ARRTIME, CARNUM, SEATNUM, TO_DATE(TRAINDATE,'YYYY-MM-DD')AS TRAINDATE, REDATE, CHARGE, RESTATES FROM"
+			+ " RESERVATION WHERE RECODE=#{recode} AND REMID=#{remid}")
+	ArrayList<ReservationDto> selectreservationList(@Param("remid")String loginId,@Param("recode") String recode);
 	
 	
 }

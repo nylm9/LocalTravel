@@ -18,6 +18,7 @@ import com.localtravel.dto.FoodDto;
 import com.localtravel.dto.FoodReviewDto;
 import com.localtravel.dto.LikeBtnDto;
 import com.localtravel.dto.MenuDto;
+import com.localtravel.dto.ReservationDto;
 import com.localtravel.dto.ReviewDto;
 import com.localtravel.service.EnjoyService;
 import com.localtravel.service.TourService;
@@ -215,6 +216,21 @@ public class TourController {
 	public @ResponseBody String readyGetAllEnjoyList() {
 		ArrayList<FoodDto> allFoodList = toursvc.getAllFoodList();
 		return new Gson().toJson(allFoodList);
+	}
+	
+	/* 로그인 페이지 이동 매핑*/
+	@RequestMapping(value = "/myPagerv")
+	public ModelAndView myPagereservation(String recode) {
+		ModelAndView mav = new ModelAndView();
+		String loginId = (String)session.getAttribute("loginId");
+		System.out.println(loginId);
+		
+		ArrayList<ReservationDto> reservationList = toursvc.getreservationList(loginId,recode);
+		mav.addObject("reservationList",reservationList);	
+		System.out.println("영수증예매리스트출력"+reservationList);
+		
+		mav.setViewName("member/mypagerv");
+		return mav;
 	}
 	
 
