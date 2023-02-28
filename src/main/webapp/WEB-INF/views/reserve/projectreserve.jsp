@@ -254,7 +254,7 @@ thead {
 							<div class="LocationSelcet rounded" id="ArrLoctaion${citylist.citycode }"
 								onclick="return ArrLoctaionSelect(this,${citylist.citycode })">${citylist.cityname }</div>
 							<div id="ArrstationList${citylist.citycode }" class="">
-								<div id="arrStationView${citylist.citycode }">
+								<div id="arrStationView${citylist.citycode }" style="margin-bottom: 5px">
 									<!-- 역 목록 -->
 								</div>
 							</div>
@@ -292,9 +292,12 @@ thead {
 						<hr>
 						<!-- 열차 스케쥴 정보를 담는 부분 -->
 						<div style="overflow: scroll; height: 350px" id="scheduleListArea">
-								<br>
-								<h3 style="color: gray;">&nbsp;1. 출발역, 도착역을 선택 </h3>
-								<h3 style="color: gray;">&nbsp;2. 날짜와 인원수 선택 → 열차조회 </h3>
+								<br>								
+								<h3 style="color: gray;">&nbsp;열차예매 선택 가이드 </h3>
+								<h5 style="color: gray;">&nbsp;1. 출발역, 도착역을 선택 </h5>
+								<h5 style="color: gray;">&nbsp;2. 날짜와 인원수 선택 → 열차조회 </h5>
+								<h5 style="color: gray;">&nbsp;3. 열차조회에서 출력된 열차 선택 후 좌석선택 </h5>
+								<h5 style="color: gray;">&nbsp;4. 하단에 선택정보에서 정보출력되면 예매하기 </h5>
 							</div>
 						</div>
 					</div>
