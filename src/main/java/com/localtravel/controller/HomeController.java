@@ -184,12 +184,12 @@ public class HomeController {
 			String leList = ensvc.setleList(lelike);// 코드, 아이디
 			if(leList.equals("1")) {
 				System.out.println("controller-저장완료");
-				ra.addFlashAttribute("Msg", "저장완료되었습니다");
+				ra.addFlashAttribute("markMsg", "저장완료되었습니다");
 				System.out.println("leList:"+leList);
 				mav.setViewName("redirect:/enjoyPage");
 			}else {
 				System.out.println("controller-이미 저장되어있음");
-				ra.addFlashAttribute("Msg", "이미 저장되어있습니다.");
+				ra.addFlashAttribute("errorMarkMsg", "이미 저장되어있습니다.");
 				mav.setViewName("redirect:/enjoyPage");
 			}
 			
@@ -214,12 +214,12 @@ public class HomeController {
 			System.out.println("코드+아이디:"+leLFist);
 			if(leLFist.equals("1")) {
 				System.out.println("controller-저장완료");
-				ra.addFlashAttribute("Msg", "저장완료되었습니다");
+				ra.addFlashAttribute("markMsg", "저장완료되었습니다");
 				System.out.println("leFList:"+leLFist);
 				mav.setViewName("redirect:/foodPage");
 			}else {
 				System.out.println("controller-이미 저장되어있음");
-				ra.addFlashAttribute("Msg", "이미 저장되어있습니다.");
+				ra.addFlashAttribute("errorMarkMsg", "이미 저장되어있습니다.");
 				mav.setViewName("redirect:/foodPage");
 			}
 			

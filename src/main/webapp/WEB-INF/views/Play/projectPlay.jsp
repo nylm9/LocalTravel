@@ -38,6 +38,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/magnific-popup/magnific-popup.css">
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+    
+        <!-- 프리텐다드 폰트 -->
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
 
 <style type="text/css">
 
@@ -45,7 +48,7 @@
 .button:hover,
 .button.active {
 color:white;
-            background-color: #078196;
+            background-color: #6096B4;
             border: 0;
          outline: 0;
 }
@@ -55,9 +58,9 @@ color:white;
             
 }
 .button {
-          border: 1px solid #1993A8;
+          border: 1px solid #6096B4;
             background-color: rgba(0,0,0,0);
-            color: #1993A8;
+            color: #6096B4;
             padding: 5px;
                border-top-left-radius: 5px;
             border-bottom-left-radius: 5px;
@@ -68,7 +71,8 @@ color:white;
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #1c1c1c;
   font-weight: 600;
-   font-family: sans-serif; 
+   /* font-family: sans-serif;  */
+   font-family: 'Pretendard';
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
@@ -739,7 +743,7 @@ function clickAjax(thcode, procode) {
      }
    </script>
    
-   
+
    
    
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=93b4f3f3d42ca1981b8841a71a59e4c7&libraries=services,clusterer,drawing"></script>
@@ -960,6 +964,88 @@ function removeAllChildNods(el) {
         el.removeChild (el.lastChild);
     }
 }
+</script>
+
+
+
+     <!-- alert창 디자인 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+<script type="text/javascript">
+
+$().ready(function () {
+    // successMsg 메시지 출력
+    var successMsg = "${successMsg}";
+    if (successMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: successMsg,
+        });
+    }
+    
+    
+    // errorMsg 메시지 출력
+    var errorMsg = "${errorMsg}";
+    if (errorMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'error',
+            title: errorMsg,
+        });
+    }
+    
+    
+    // markMsg 메시지 출력
+    var markMsg = "${markMsg}";
+    if (markMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: markMsg,
+        });
+    }
+    
+    // errorMarkMsg 메시지 출력
+    var errorMarkMsg = "${errorMarkMsg}";
+    if (errorMarkMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'error',
+            title: errorMarkMsg,
+        });
+    }
+    
+});
+
 </script>
 
 

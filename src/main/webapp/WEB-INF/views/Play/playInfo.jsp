@@ -37,6 +37,9 @@
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
     
+         <!-- 프리텐다드 폰트 -->
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    
 	<style type="text/css">
 	
 	.reviewComment{
@@ -44,11 +47,17 @@
 		resize: none;
 		border: none;
 	}
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6  {
   color: #1c1c1c;
   font-weight: 600;
-   font-family: sans-serif; 
+  /*  font-family: sans-serif;  */
+    font-family: 'Pretendard';
 }
+
+.p {
+font-family: 'Pretendard';
+}
+
 
 
 /* 지도 */
@@ -132,7 +141,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 												   
 										<div style="float:left; margin-right:7px;">
 											<label class="btn btn-sm btn-primary">
-							             		<a type="submit" href="${pageContext.request.contextPath }/likeplay?lbcode=${enInfo.ecode }">저장해놓기</a>
+							             		<a type="submit" href="${pageContext.request.contextPath }/likeplay?lbcode=${enInfo.ecode }">저장</a>
 							             	<input class="d-none"  type="radio" value='1' name="rvrecommend">
 							             	</label>
 										</div> 
@@ -279,7 +288,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 <script type="text/javascript">
 	
-}
+
 </script>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=93b4f3f3d42ca1981b8841a71a59e4c7&libraries=services,clusterer,drawing"></script>

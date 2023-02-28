@@ -47,7 +47,7 @@ int updateBoard(MemberDto memberDto);
 	MemberDto selectfoodInfo(String loginId);
 
 
-	@Select("SELECT * FROM MEMBERS WHERE MID=#{mid}")
+	@Select("SELECT MCODE, MID, MPW, MNAME, TO_CHAR(MBIRTH,'YYYY-MM-DD') AS MBIRTH, MGENDER, MEMAIL, MPHONE FROM MEMBERS WHERE MID=#{mid}")
 	ArrayList<Map<String, String>> selectMemberList_Rank(String loginId);
 
 
