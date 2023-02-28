@@ -256,6 +256,84 @@ font-family: 'Pretendard';
 				</div>
 			</div>
 		</section> 
+		
+		    <!-- alert창 디자인 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+    
+    $().ready(function () {
+        // delEnjoySMsg 메시지 출력
+        var delEnjoySMsg = "${delEnjoySMsg}";
+        if (delEnjoySMsg) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-center',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: delEnjoySMsg,
+            });
+        }
+        
+        // delEnjoyFMsg 메시지 출력
+        var delEnjoyFMsg = "${delEnjoyFMsg}";
+        if (delEnjoyFMsg) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-center',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+
+            Toast.fire({
+                icon: 'error',
+                title: delEnjoyFMsg,
+            });
+        }
+        
+        // delFoodSMsg 메시지 출력
+        var delFoodSMsg = "${delFoodSMsg}";
+        if (delFoodSMsg) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-center',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: delFoodSMsg,
+            });
+        }
+        
+        // delFoodSMsg 메시지 출력
+        var delFoodFMsg = "${delFoodFMsg}";
+        if (delFoodFMsg) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-center',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+
+            Toast.fire({
+                icon: 'error',
+                title: delFoodFMsg,
+            });
+        }
+    
+    });
+    
+    </script>
+    
 <script type="text/javascript">
 	var depSta = "";
 	var arrSta = "";

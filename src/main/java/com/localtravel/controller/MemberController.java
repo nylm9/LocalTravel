@@ -159,11 +159,11 @@ public class MemberController {
 
 		if(deleteenjoyInfo > 0) {
 			System.out.println("놀거리 삭제 성공");
-			ra.addFlashAttribute("Msg", "놀거리 삭제에 성공하였습니다.");
+			ra.addFlashAttribute("delEnjoySMsg", "놀거리 삭제에 성공하였습니다.");
 			mav.setViewName("redirect:/myPage");
 		} else {
 			System.out.println("놀거리 삭제 실패");
-			ra.addFlashAttribute("Msg", "놀거리삭제에 실패하였습니다.");
+			ra.addFlashAttribute("delEnjoyFMsg", "놀거리삭제에 실패하였습니다.");
 			mav.setViewName("redirect:/myPage");
 		}
 		return mav;
@@ -181,11 +181,11 @@ public class MemberController {
 
 		if(deleteFoodInfo > 0) {
 			System.out.println("먹거리 삭제 성공");
-			ra.addFlashAttribute("Msg", "먹거리 삭제에 성공하였습니다.");
+			ra.addFlashAttribute("delFoodSMsg", "먹거리 삭제에 성공하였습니다.");
 			mav.setViewName("redirect:/myPage");
 		} else {
 			System.out.println("먹거리 삭제 실패");
-			ra.addFlashAttribute("Msg", "먹거리삭제에 실패하였습니다.");
+			ra.addFlashAttribute("delFoodFMsg", "먹거리 삭제에 실패하였습니다.");
 			mav.setViewName("redirect:/myPage");
 		}
 		return mav;

@@ -82,7 +82,7 @@ select {
   -webkit-appearance: none;
   appearance: none;
   
-  font-family: "Noto Sansf KR", sans-serif;
+ font-family: 'Pretendard';
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
