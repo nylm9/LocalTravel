@@ -37,6 +37,9 @@
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
     
+       <!-- 프리텐다드 폰트 -->
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    
 	<style type="text/css">
 	
 	.reviewComment{
@@ -44,10 +47,15 @@
 		resize: none;
 		border: none;
 	}
-	h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6 {
   color: #1c1c1c;
   font-weight: 600;
-   font-family: sans-serif; 
+   font-family: 'Pretendard';
+}
+h6 {
+  color: red;
+  font-weight: 600;
+   font-family: 'Pretendard';
 }
 	</style>
 	<script type="text/javascript">
@@ -76,7 +84,22 @@
               			<img src="${pageContext.request.contextPath }/resources/FoodPicture/${fdInfo.fpicture }" 
 		                		style="width: 300px; height: 400px; float:left" 
 		                		     class="img-fluid rounded-start" alt="...">
-                		
+		                		 
+		                		 <div style="position:absolute; top:430px;left:30px;">
+									 <a class="btn btn-sm btn-danger"
+									   href="${pageContext.request.contextPath }/fdreviewForm?fcode=${fdInfo.fcode }">리뷰작성</a>												   
+										<div style="float:left; margin-right:7px;">
+											<label class="btn btn-sm btn-primary"
+								             	onclick="selecteRecommend('1')" id="recommendGood" tabindex="-1">
+								             	<a href="${pageContext.request.contextPath }/likeFood?lbfcode=${fdInfo.fcode }">저장해놓기</a>
+								             	<input class="d-none"  type="radio" value='1' name="rvrecommend">
+								             </label>
+										</div> 
+									</div>		                		 
+		                		 
+		                		 
+		                		 
+		                		     
               		<!-- 정보출력 -->
 		              		<div style="padding-left:350px;">
 		                		<h5 class="card-title" style="font-size: 30px;font-weight: bold;" >${fdInfo.fname }</h5>
@@ -117,33 +140,24 @@
 						                		<div class="card-body">
 						                			<div class="row">
 						                				<div class="col">
-															<h4 >메뉴</h4>
-															<h7>${menu.menuname1} : ${menu.menuexplain1}</h7>
-															<h6>${menu.menuprice1}</h6>
-															<h7>${menu.menuname2} : ${menu.menuexplain2}</h7>
-															<h6>${menu.menuprice2}</h6>
-															<h7>${menu.menuname3} : ${menu.menuexplain3}</h7>
-															<h6>${menu.menuprice3}</h6>
+															<h3> <메뉴> </h3>
+															<h4>${menu.menuname1}</h4>
+															<h5>${menu.menuexplain1}</h5>
+															<h6>${menu.menuprice1}원</h6>
+															<h4>${menu.menuname2}</h4>
+															<h5>${menu.menuexplain2}</h5>
+															<h6>${menu.menuprice2}원</h6>
+															<h4>${menu.menuname3}</h4>
+															<h5>${menu.menuexplain3}</h5>
+															<h6>${menu.menuprice3}원</h6>
 						                				</div>
 						                			</div>
 						                		</div>
 						                		<hr>
 						              		</div>
+						              		
 										</c:forEach>             
 		                  			
-		                  			
-		                			<div style="float:left">
-					                  		 <a class="btn btn-sm btn-danger"
-									   href="${pageContext.request.contextPath }/fdreviewForm?fcode=${fdInfo.fcode }">리뷰작성</a>
-												   
-											<div style="float:left; margin-right:7px;">
-													<label class="btn btn-sm btn-primary"
-								             		onclick="selecteRecommend('1')" id="recommendGood" tabindex="-1">
-								             		<a href="${pageContext.request.contextPath }/likeFood?lbfcode=${fdInfo.fcode }">저장해놓기</a>
-								             		<input class="d-none"  type="radio" value='1' name="rvrecommend">
-								             	</label>
-											</div> 
-									</div>
 		              		</div>
               		</div>
             	</div>

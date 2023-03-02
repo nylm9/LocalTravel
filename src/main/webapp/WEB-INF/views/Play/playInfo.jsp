@@ -135,6 +135,7 @@ font-family: 'Pretendard';
 		                	<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enInfo.epicture }" 
 		                		style="width: 300px; height: 400px; float:left" 
 		                		     class="img-fluid rounded-start" alt="...">
+		                		     
 		                		     <div style="position:absolute; bottom:80px;left:20px;">
 					                  	<a class="btn btn-sm btn-danger"
 										href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>

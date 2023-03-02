@@ -177,7 +177,8 @@ body {
 
 
 .half_background {
-background: linear-gradient(to top, #A0C3D2 50%, transparent 50%);
+ background: linear-gradient(to top, #A0C3D2 50%, transparent 50%); 
+/* box-shadow: inset 0 -20px 0 #A0C3D2; */
 }
 
 
@@ -327,6 +328,10 @@ function change_btn(selectedBtn) {
  				<label class="button food" onclick="clickSection(this, 'food')" for="selCafe">
  				#카페</label>
  				<input class="d-none" type="radio" name="fRadio" value="ca007" id="selCafe">
+ 				
+ 				<label class="button food" onclick="clickSection(this, 'food')" for="selCafe">
+ 				#술집</label>
+ 				<input class="d-none" type="radio" name="fRadio" value="pb008" id="selCafe">
  								
 				</div>
 				
@@ -738,6 +743,8 @@ function removeAllChildNods(el) {
     }
 }
 </script>
+
+
 
 
 </html>
