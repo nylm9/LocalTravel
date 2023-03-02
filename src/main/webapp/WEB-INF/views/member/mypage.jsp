@@ -186,7 +186,7 @@ font-family: 'Pretendard';
 							</div>
 							
 			 				 <c:forEach items="${enjoyList }" var="enjoyList">
-								<div style="width:990px; height:50px; margin-left:90px; float: left; border: 1px solid #f0f1f4 ; background-color:#f0f1f4;">
+								<div style="width:990px; height:50px; margin-left:90px; float: left; border: 1px solid #f0f1f4 ; background-color:#f0f1f4;margin-top:5px;">
 									<div style="line-height:50px; text-align: center; float: left; width:300px; margin-right:10px;">
 									<a href="${pageContext.request.contextPath }/playInfo?ecode=${ enjoyList.ecode}">${enjoyList.ename}</a>
 									</div>
@@ -206,7 +206,7 @@ font-family: 'Pretendard';
 							</div>
 							
 			 				 <c:forEach items="${FoodList }" var="FoodList">
-								<div style="width:990px; height:50px; margin-left:90px; float: left; border: 1px solid #f0f1f4 ; background-color:#f0f1f4;">
+								<div style="width:990px; height:50px; margin-left:90px; float: left; border: 1px solid #f0f1f4 ; background-color:#f0f1f4;margin-top:5px;">
 									<div style="line-height:50px; text-align: center; float: left; width:300px; margin-right:10px;">
 									${FoodList.fname}
 									</div>
@@ -234,9 +234,10 @@ font-family: 'Pretendard';
 							</div>
 						<c:forEach items="${reservationList }" var="reservationList">
 							<div id="skipCont">
+							<div style="width:1050px; height:80px; margin-left:60px; float: left; border: 1px solid #f0f1f4 ; background-color:#f0f1f4; margin-top:8px;">
 								<table style='width: 100%;'>
 									<tr>
-										<th class='reserveTitle' style="padding-left:100px;text-align:center"><br><p>${reservationList.recode }</p></th>
+										<th class='reserveTitle' style="padding-left:20px;text-align:center"><br><p>${reservationList.recode }</p></th>
 										<th class='reserveTitle' style="padding-left:20px;text-align:center">열차번호<br><p>KTX ${reservationList.trainno }</p></th>
 										<th class='reserveTitle' style="padding-left:30px;">승차일자<br><p>${reservationList.traindate }</p></th> 
 										 
@@ -245,10 +246,12 @@ font-family: 'Pretendard';
 										<th class='reserveTitle'style=" text-align:center">  도착역 [도착시간]<p>${reservationList.arrsta } ${reservationList.arrtime }</p></th>
 										<th class='reserveTitle' style="padding-left:20px;text-align:center"> 열차칸 [좌석번호] <br><p>${reservationList.carnum } [${reservationList.seatnum }]</p></th>
 										 <th class='reserveTitle' style="padding-left:20px;text-align:center"> 금액 <br><p>${reservationList.charge }</p></th>
+										 <th style="padding-left:20px;"><a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/myPagerv?recode=${reservationList.recode }">영수증</a></th>
 									</tr>
 									
 									
 								</table>
+							</div>
 							</div>
 			 			</c:forEach>
 						</div>
@@ -256,8 +259,7 @@ font-family: 'Pretendard';
 				</div>
 			</div>
 		</section> 
-		
-		    <!-- alert창 디자인 -->
+		          <!-- alert창 디자인 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
     
@@ -333,7 +335,8 @@ font-family: 'Pretendard';
     });
     
     </script>
-    
+
+		
 <script type="text/javascript">
 	var depSta = "";
 	var arrSta = "";
