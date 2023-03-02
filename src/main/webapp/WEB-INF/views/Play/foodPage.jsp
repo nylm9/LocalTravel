@@ -292,7 +292,6 @@ function change_btn(selectedBtn) {
 							<option value="36">전라남도</option>
 							<option value="37">경상북도</option>
 							<option value="38">경상남도</option>
-							<option value="39">제주특별자치도</option>
 						</select>
 
 					</div>
