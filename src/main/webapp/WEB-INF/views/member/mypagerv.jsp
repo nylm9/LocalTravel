@@ -11,7 +11,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>마이페이지-영수증</title>
-
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
 
@@ -43,9 +43,21 @@
 		  if (Msg.trim().length > 0) { 
 		    alert(Msg);
 		  }
+		 
+		  $(document).ready(function(){
+			  // 00:00:00 없애주는 Function
+			  var cleanTrainDate = $('#trainDateDisplay').html();
+			  console.log(cleanTrainDate);
+			  cleanTrainDate = cleanTrainDate.replace(" 00:00:00","").replace("0023","2023");
+			  console.log(cleanTrainDate);
+			  $('#trainDateDisplay').html(cleanTrainDate);
+			});
 		</script>
-		
-
+<style>
+#qrcode {
+  float: right;
+}	
+</style>
 </head>
 
 <body>
@@ -75,7 +87,7 @@
 				<table style='width: 100%;'>
 					<tr>
 						<th class='reserveTitle' style='padding-bottom: 10px;'>승차일자</th>
-						<td colspan='2' class='reserveContent'
+						<td colspan='2' class='reserveContent' id='trainDateDisplay'
 							style='padding-bottom: 10px; text-align: left; '>${reservationList.traindate }</td>
 					</tr>
 					<tr>
@@ -112,17 +124,29 @@
 						<th class='reserveTitle rightborder' style='text-align: center;'>호차번호</th>
 						<th class='reserveTitle' style='text-align: center;'>좌석번호</th>
 					</tr>
-					<tr>
-						<td class='reserveContent rightborder' style='font-size: small; text-align:center;'>역
+					<tr style='margin: 10px;'>
+						<td class='reserveContent rightborder' style='font-size: small; text-align:center; border-right: 1px solid black;'>역
 							전광판 확인</td>
-						<td class='reserveContent rightborder' style=' text-align:center; font-size:XX-Large; padding-top:5px;padding-bottom:5px; color:#868686'>${reservationList.carnum }<br>
+						<td class='reserveContent rightborder' style='border-right: 1px solid black; text-align:center; font-size:XX-Large; padding-top:5px;padding-bottom:5px; color:#868686'>${reservationList.carnum }<br>
 							<!-- <p style='font-size: small;'>일반실</p> --></td>
-						<td class='reserveContent'  style=' text-align:center;font-size:XX-Large; padding-top:5px;padding-bottom:5px; color:#868686'>${reservationList.seatnum }</td>
+						<td class='reserveContent'  style='text-align:center;font-size:XX-Large; padding-top:5px; padding-bottom:5px; color:#868686'>${reservationList.seatnum }</td>
 					</tr>
 					<tr>
-						<td colspan='3' class='reserveContent' style='padding-top: 10px; font-weight: bold; text-align: center;'>금액₩ ${reservationList.charge }</td>
+						<td colspan='1' class='reserveContent' id='chargeDisplay' style='padding-top: 10px; font-weight: bold; text-align: center;'>금액₩ ${reservationList.charge }</td>
+						<td colspan='2' class='reserveContent' style='padding-top: 10px; font-weight: bold; text-align: center; width: 100px; height: 100px;'><div id="qrcode"></div></td>
+						
 					</tr>
 				</table>
+		<script>
+		document.addEventListener("DOMContentLoaded", function() {
+    		// QR 코드 생성 라이브러리를 통해 QR 코드 이미지를 생성합니다.
+      		var qrcode = new QRCode(document.getElementById('qrcode'), {
+        	width: 100,
+        	height: 100,
+      	});
+      		qrcode.makeCode('http://localhost:8080/controller/');
+    	});
+  		</script>
 							
 						
 						</c:forEach>
