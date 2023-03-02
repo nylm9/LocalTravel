@@ -39,6 +39,8 @@
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 
+   <!-- 프리텐다드 폰트 -->
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
 
 <style type="text/css">
 
@@ -46,19 +48,19 @@
 .button:hover,
 .button.active {
 color:white;
-            background-color: #078196;
+            background-color: #6096B4;
             border: 0;
-			outline: 0;
+         outline: 0;
 }
 .button:visited {
-			color:white;
+         color:white;
             background-color: #078196;
             
 }
 .button {
- 			border: 1px solid #1993A8;
+          border: 1px solid #6096B4;
             background-color: rgba(0,0,0,0);
-            color: #1993A8;
+            color: #6096B4;
             padding: 5px;
                border-top-left-radius: 5px;
             border-bottom-left-radius: 5px;
@@ -69,7 +71,7 @@ color:white;
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #1c1c1c;
   font-weight: 600;
-   font-family: sans-serif; 
+   font-family: 'Pretendard';
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
@@ -79,7 +81,7 @@ select {
   -webkit-appearance: none;
   appearance: none;
   
-  font-family: "Noto Sansf KR", sans-serif;
+ font-family: 'Pretendard';
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;

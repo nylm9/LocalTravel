@@ -52,12 +52,13 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
   display: flex;
   justify-content: center;
   align-items: center;
-  /* text-align: center; */
+  /* text-align: center; */ 
   color: #fff;
   background: #A0C3D2;
   height:930px;
   /* 여기에 색깔 코드 넣으면 됨. */
   font-size: .9rem;
+    background-size: cover;
 }
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
@@ -119,6 +120,7 @@ https://cdn.pixabay.com/photo/2022/08/30/15/33/nature-7421337_960_720.jpg) no-re
     - scroll (기본) <br>
     - fixed (고정)<br> -->
   </h2>
+  
 </div>
 
 <!-- <div class="image2"></div>

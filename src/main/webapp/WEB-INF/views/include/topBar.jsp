@@ -26,7 +26,7 @@
 			
                 <div class="collapse navbar-collapse"id="navbar-collapse" style="position:absolute;left:600%;"> 
                   <ul id="menu" class="menu navbar-nav mx-auto" style="margin-bottom: -70px">
-                      <li class="nav-item"><a href="${pageContext.request.contextPath }/reservePage" class="nav-link">예약하기</a></li>
+                      <li class="nav-item"><a href="${pageContext.request.contextPath }/reservePage" class="nav-link">예매하기</a></li>
                       <li  class="nav-item"><a href="${pageContext.request.contextPath }/enjoyPage"class="nav-link">놀거리</a></li>
                       <li  class="nav-item"><a href="${pageContext.request.contextPath }/foodPage"class="nav-link">먹거리</a></li>
                         <c:choose>
