@@ -39,6 +39,11 @@
   		if(reMsg.length > 0){
   			alert(reMsg);
   		}
+  		var loginMsg = '${loginMsg}';
+  		console.log("로그인 메세지 : "+loginMsg);
+  		if(loginMsg.length > 0){
+  			alert(loginMsg);
+  		}
   </script>
 
 </head>
