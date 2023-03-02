@@ -106,7 +106,7 @@ public class HomeController {
 		String loginId = (String) session.getAttribute("loginId");
 		if(loginId == null) {
 			//로그인이 되지 않은 상태
-			mav.setViewName("member/memberLoginForm");
+			mav.setViewName("redirect:/memberLoginForm");
 			ra.addFlashAttribute("loginMsg","로그인 후 이용가능한 서비스입니다.");
 		} else {
 			// 로그인이 되어있는 상태

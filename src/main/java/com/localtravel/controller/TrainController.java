@@ -2,6 +2,8 @@ package com.localtravel.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.localtravel.dto.TRCityCodeDto;
 import com.localtravel.dto.TRInputScheduleDto;
 import com.localtravel.dto.TRSeatDto;
 import com.localtravel.service.TrainReserveService;
@@ -16,12 +19,17 @@ import com.localtravel.service.TrainService;
 
 @Controller
 public class TrainController {
-
+	
+	@Autowired
+	private HttpSession session;
+	
 	@Autowired
 	TrainService trsvc;
 
 	@Autowired
 	TrainReserveService treser;
+	
+	
 
 	// 열차-도시코드 가져오기
 	@RequestMapping(value = "/getCityCodeInfo")
@@ -143,8 +151,28 @@ public class TrainController {
 		return seatList;
 	}
 	
-	
-	
+	// 상세페이지에서 바로 예매하기 
+	@RequestMapping(value="/locationSelectReservePage")
+	public ModelAndView locationSelectReservePage(String elcode,RedirectAttributes ra) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("지역코드 : "+ elcode);
+		String LocationNum = elcode;
+		System.out.println("예약페이지 이동");
+		String loginId = (String) session.getAttribute("loginId");
+		if(loginId == null) {
+			//로그인이 되지 않은 상태
+			mav.setViewName("redirect:/memberLoginForm");
+			ra.addFlashAttribute("loginMsg","로그인 후 이용가능한 서비스입니다.");
+		} else {
+			// 로그인이 되어있는 상태
+			ArrayList<TRCityCodeDto> cityList = treser.getCityList();
+			System.out.println(cityList);
+			mav.addObject("cityList",cityList);
+			mav.addObject("LocationSelect",LocationNum);
+			mav.setViewName("reserve/projectreserve");
+		}
+		return mav;
+	}
 	
 	
 	

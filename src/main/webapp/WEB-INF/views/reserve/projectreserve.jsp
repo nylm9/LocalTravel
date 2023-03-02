@@ -216,6 +216,20 @@ thead {
 
 </style>
 
+<!-- initialize jQuery Library -->
+	<script src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var LocationNum = "${LocationSelect}";
+  		if (LocationNum != "") {
+  			console.log("지역번호 : " + LocationNum);
+  			var Btn = $('#ArrLoctaion'+LocationNum);
+  			console.log(Btn);
+  			ArrLoctaionSelect(Btn, LocationNum);
+  		}
+	});
+</script>
 
 </head>
 <body>
@@ -855,9 +869,7 @@ thead {
 
 	<!-- THEME JAVASCRIPT FILES
 ================================================== -->
-	<!-- initialize jQuery Library -->
-	<script
-		src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
+	
 	<!-- Bootstrap jQuery -->
 	<script
 		src="${pageContext.request.contextPath }/resources/plugins/bootstrap/js/bootstrap.min.js"></script>

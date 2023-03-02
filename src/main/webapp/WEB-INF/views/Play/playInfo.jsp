@@ -135,9 +135,10 @@ font-family: 'Pretendard';
 		                	<img src="${pageContext.request.contextPath }/resources/EnjoyPicture/${enInfo.epicture }" 
 		                		style="width: 300px; height: 400px; float:left" 
 		                		     class="img-fluid rounded-start" alt="...">
-		                		     <div style="position:absolute; bottom:65px;left:50px;">
+		                		     <div style="position:absolute; bottom:80px;left:20px;">
 					                  	<a class="btn btn-sm btn-danger"
 										href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
+											<a class="btn btn-sm" style="background:blue; color:white;" href="${pageContext.request.contextPath }/locationSelectReservePage?elcode=${enInfo.elcode }">예매하기</a>
 												   
 										<div style="float:left; margin-right:7px;">
 											<label class="btn btn-sm btn-primary">
@@ -145,6 +146,9 @@ font-family: 'Pretendard';
 							             	<input class="d-none"  type="radio" value='1' name="rvrecommend">
 							             	</label>
 										</div> 
+										<!-- 예매하기버튼 -->
+										<div style="margin-top:5px; margin-right:5px;">
+										</div>
 									</div>
 		                		     
 		                		     <!-- 정보출력 -->
