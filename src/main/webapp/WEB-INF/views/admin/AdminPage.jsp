@@ -196,8 +196,8 @@ select::-ms-expand {
 									onkeyup="joinEAddrCheck(this.value)">
 							</div>
 							<div class="col-md-6">
-								<label for="inputEtel" class="form-label">놀거리 전화번호(-는
-									제외하고 입력)</label> <input type="tel" name="etell" class="form-control"
+								<label for="inputEtel" class="form-label">놀거리 전화번호
+								</label> <input type="tel" name="etell" class="form-control"
 									id="inputEtel">
 							</div>
 							<div class="col-md-6">
@@ -335,8 +335,8 @@ select::-ms-expand {
 
 
 
-		<!-- Food insert 할 부분 시작 -->
-		<div class="row " style="float: center;">
+		<!-- Menu insert 할 부분 시작 -->
+		<div class="row " style="position: absolute;">
 			<div
 				class="col d-flex flex-column align-items-center justify-content-center"
 				style="max-width: 900px;">
