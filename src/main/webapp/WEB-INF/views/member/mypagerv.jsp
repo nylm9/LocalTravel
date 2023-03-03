@@ -123,6 +123,15 @@
 						<td colspan='3' class='reserveContent' style='padding-top: 10px; font-weight: bold; text-align: center;'>금액₩ ${reservationList.charge }</td>
 					</tr>
 				</table>
+					<footer>
+					<table>
+						<tr> 
+						<td>
+							<a style="margin-left:185%;"class="btn-danger btn" href="${pageContext.request.contextPath }/myPagerv?recode=${reservationList.recode }">예매취소하기</a>
+						</td>
+						</tr>
+						</table>
+					</footer>					
 							
 						
 						</c:forEach>
