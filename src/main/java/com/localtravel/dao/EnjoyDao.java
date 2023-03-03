@@ -78,7 +78,7 @@ public interface EnjoyDao {
 	@Insert("INSERT INTO LIKEFOODBTN(LBFCODE,LBFMID) VALUES(#{lbfcode},#{lbfmid})")
 	int insertFoodLike(LikeFoodBtnDto leflike);
 
-	@Select("SELECT * FROM BLOG WHERE BCODE = #{bcode}")
+	@Select("SELECT * FROM BLOG WHERE BCODE = #{ecode}")
 	ArrayList<BlogDto> selectBlogList_Rank(String ecode);
 
 

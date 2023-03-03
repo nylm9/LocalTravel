@@ -44,7 +44,7 @@
 	<!-- End Header -->
 	<section class="section">
 			<div   >
-				<form onsubmit="return reviewForm(this)" action="${pageContext.request.contextPath }/memberModify ">
+				<form  action="${pageContext.request.contextPath }/BlogWrite">
 					<input type="text" name="bcode" value="${param.ecode }">
 					<div class="col-12 mt-2" >
 	             		<div >
@@ -63,7 +63,7 @@
 	if(Msg.length > 0 ){
 		alert(Msg);
 	}
-	
+	/* 
 	function reviewForm(formObj){
 		var bcode = formObj.bcode.value;
 		var bcontent =formObj.bcontent.value;
@@ -89,7 +89,7 @@
 //		window.opener.location.reload();
 		window.close();
 		return false;
-	}
+	} */
 	</script>
 
 </body>
