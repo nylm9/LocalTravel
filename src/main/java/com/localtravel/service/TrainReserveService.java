@@ -170,4 +170,23 @@ public class TrainReserveService {
 		return memInfo;
 	}
 
+	public String getResevedSeat(String reserveDate, String trainno, String carNum) {
+		System.out.println("예약된 좌석 확인 - SERVICE");
+		// 정렬해 줄 좌석정보
+		ArrayList<String> replaceSeat1 = new ArrayList<String>();
+		String replaceSeat = "";
+		// 가져올 좌석 정보
+		ArrayList<String> ResevedSeat = new ArrayList<String>();
+		ResevedSeat = trdao.getgetResevedSeat(reserveDate,trainno,carNum);
+//		System.out.println(ResevedSeat.get(0));
+		for(int i = 0; i < ResevedSeat.size(); i++) {
+			replaceSeat += ResevedSeat.get(i);
+			if(i < ResevedSeat.size()-1) {
+				replaceSeat += ",";
+			}
+		}
+		System.out.println(replaceSeat);
+		return replaceSeat;
+	}
+
 }

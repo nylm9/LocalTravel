@@ -87,6 +87,10 @@ public interface TrainDao {
 	@Select("SELECT * FROM MEMBERS WHERE MID = #{loginId}")
 	MemberDto getMemberInfo(String loginId);
 	
+	// 예약된 좌석의 정보 가져오기
+	@Select("SELECT SEATNUM FROM RESERVATION WHERE TRAINDATE = TO_DATE(#{reserveDate},'YYYY-MM-DD') AND TRAINNO = #{trainno} AND CARNUM = #{carNum}")
+	ArrayList<String> getgetResevedSeat(@Param("reserveDate")String reserveDate, @Param("trainno")String trainno, @Param("carNum")String carNum);
+	
 	
 	
 	

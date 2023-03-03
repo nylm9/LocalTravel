@@ -150,6 +150,13 @@ public class TrainController {
 		System.out.println(seatList);
 		return seatList;
 	}
+	// 이미 예매된 좌석정보 가져오기 - getResevedSeat
+	@RequestMapping(value = "/getResevedSeat")
+	public @ResponseBody String getResevedSeat(String reserveDate, String Trainno, String carNum){
+		System.out.println("예매된 좌석 출력하기 : "+reserveDate +","+Trainno+","+carNum);
+		String reservedseatList = treser.getResevedSeat(reserveDate,Trainno,carNum); 
+		return reservedseatList;
+	}
 	
 	// 상세페이지에서 바로 예매하기 
 	@RequestMapping(value="/locationSelectReservePage")

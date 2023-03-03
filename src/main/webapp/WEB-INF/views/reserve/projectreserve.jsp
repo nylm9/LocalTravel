@@ -252,7 +252,7 @@ thead {
 							<!-- 지역 목록 -->
 							<div class="LocationSelcet rounded" id="DepLoctaion${citylist.citycode }"
 								onclick="DepLoctaionSelect(this,${citylist.citycode })">${citylist.cityname }</div>
-							<div id="stationList${citylist.citycode }" class="d-none mb-3">
+							<div id="stationList${citylist.citycode }" class="d-none">
 								<div id="stationView${citylist.citycode }">
 									<!-- 역 목록 -->
 								</div>
@@ -273,7 +273,7 @@ thead {
 							<div class="LocationSelcet rounded" id="ArrLoctaion${citylist.citycode }"
 								onclick="return ArrLoctaionSelect(this,${citylist.citycode })">${citylist.cityname }</div>
 							<div id="ArrstationList${citylist.citycode }" class="">
-								<div id="arrStationView${citylist.citycode }" style="margin-bottom: 5px">
+								<div id="arrStationView${citylist.citycode }" >
 									<!-- 역 목록 -->
 								</div>
 							</div>
@@ -394,8 +394,8 @@ thead {
 
 							<div class="col" style="text-align: center;">
 								<button class="btn btn-danger font-bold w-100 h-50"
-									style="margin-top: 50px; margin-bottom: auto;"
-									onclick="reserveTrain()">예매하기_결제</button>
+									style="margin-top: 50px; margin-bottom: auto; font-size: x-large; font-weight: bold;"
+									onclick="reserveTrain()">예매하기</button>
 							</div>
 						</div>
 
@@ -861,7 +861,9 @@ thead {
 		Scdeptime = scdeptime;
 		Scarrtime = scarrtime;
 		Timerequired = timerequired;
-		window.open("${pageContext.request.contextPath }/SeatSelect?pNum="+peopleConut, "좌석 선택창", "width=400, height=650, resizable=no");
+		var reserveDate = $('#ReserveDateDisplay').html();
+		
+		window.open("${pageContext.request.contextPath }/SeatSelect?pNum="+peopleConut+"&Trainno="+Trainno+"&reserveDate="+reserveDate, "좌석 선택창", "width=400, height=650, resizable=no");
 	}
 	
 </script>
