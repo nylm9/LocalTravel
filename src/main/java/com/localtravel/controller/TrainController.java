@@ -181,6 +181,15 @@ public class TrainController {
 		return mav;
 	}
 	
+	// 예매 취소하기
+	@RequestMapping(value = "/cancelReservation")
+	public ModelAndView cancelReservation(String recode) {
+		System.out.println("TrainController - 예매 취소하기");
+
+		int insertReult = trsvc.cancelReservation(recode);
+
+		return null;
+	}
 	
 	
 	

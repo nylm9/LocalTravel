@@ -617,5 +617,16 @@ public class TrainService {
 		System.out.println("fin");
 		return 0;
 	}
+
+
+
+
+
+	public int cancelReservation(String recode) {
+		
+		trdao.cancelReservation(recode);
+		
+		return 0;
+	}
 	
 }
