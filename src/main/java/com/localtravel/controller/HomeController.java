@@ -123,8 +123,8 @@ public class HomeController {
 	public ModelAndView BlogWritePage() {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("블로그작성페이지이동");
-	
-		 
+		
+		
 		mav.setViewName("review/BlogWrite");
 		return mav;
 	}
@@ -133,8 +133,8 @@ public class HomeController {
 	 * @Autowired private HttpSession session;
 	 */
 	@RequestMapping(value="/BlogWrite")
-	public String BlogWrite(BlogDto bto,String bcode,RedirectAttributes ra) {
-		
+	public ModelAndView BlogWrite(BlogDto bto,String bcode,RedirectAttributes ra) {
+		ModelAndView mav = new ModelAndView();
 		System.out.println("놀거리코드"+bcode);
 		System.out.println("블로그작성");
 		bto.setBcode(bcode);
@@ -144,8 +144,11 @@ public class HomeController {
 		if(writeResult != null) {
 			System.out.println("블로그작성 성공");
 			ra.addFlashAttribute("Msg", "블로그작성 성공하였습니다.");
+			mav.setViewName("redirect:/enjoyPage");
+			
 		}
-		return writeResult;
+		
+		return mav;
 		
 	}
 	@RequestMapping(value="/BlogView")

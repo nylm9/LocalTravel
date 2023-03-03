@@ -329,9 +329,9 @@ function change_btn(selectedBtn) {
  				#카페</label>
  				<input class="d-none" type="radio" name="fRadio" value="ca007" id="selCafe">
  				
- 				<label class="button food" onclick="clickSection(this, 'food')" for="selCafe">
+ 				<label class="button food" onclick="clickSection(this, 'food')" for="selPub">
  				#술집</label>
- 				<input class="d-none" type="radio" name="fRadio" value="pb008" id="selCafe">
+ 				<input class="d-none" type="radio" name="fRadio" value="pb008" id="selPub">
  								
 				</div>
 				
@@ -405,7 +405,7 @@ $(document).ready(function(){
 					output += '<div class="card-body">';
 					output += '<h5 class="card-title py-2" style="text-align: center;" >No.' + statusNum  + '<h5>';
 					output += '<div style="height:200px;width:5px;">';
-					output += '<a href="${pageContext.request.contextPath }/playInfo?ecode='+foodList[i].fcode+'">';
+					output += '<a href="${pageContext.request.contextPath }/foodInfo?fcode='+foodList[i].fcode+'">';
 					output += '<img alt="" src="${pageContext.request.contextPath }/resources/FoodPicture/'+foodList[i].fpicture+'" style="height:200px;width:237px;" > </a>';
 					output += '</div>';
 					output += '<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="'+foodList[i].fname+'" >'+foodList[i].fname+' </h6>';
@@ -488,18 +488,18 @@ function searchFood() {
 								output += '<div class="card-body">';
 								output += '<h5 class="card-title py-2" style="text-align: center;" >No.' + statusNum  + '<h5>';
 								output += '<div style="height:200px;width:5px;">';
-								output += '<a href="${pageContext.request.contextPath }/playInfo?ecode='+foodList[i].fcode+'">';
 								
+								output += '<a href="${pageContext.request.contextPath }/foodInfo?fcode='+foodList[i].fcode+'">';
 								output += '<img alt="" src="${pageContext.request.contextPath }/resources/FoodPicture/'+foodList[i].fpicture+'" style="height:200px;width:237px;" > </a>';
 								output += '</div>';
 								output += '<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="'+foodList[i].fname+'" >'+foodList[i].fname+' </h6>';
 								 if (foodList[i].f1ex != null && foodList[i].f1ex != undefined) {
-								      output += '<p class="small mb-1">'+foodList[i].f1ex+' </p>';
+								      output += '<p class="small mb-1 half_background">'+foodList[i].f1ex+' </p>';
 								      output += '<p class="small mb-1">'+foodList[i].faddr+' </p>';
 								    } else {
 								      output += '<p class="small mb-1">'+foodList[i].faddr+' </p>';
 								    }
-								output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/playInfo?ecode='+foodList[i].fcode+' ">상세보기</a>';
+								output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/foodInfo?fcode='+foodList[i].fcode+' ">상세보기</a>';
 								output += '</div></div></div>'
 							}
 						}
