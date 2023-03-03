@@ -137,6 +137,7 @@
 						
 					</tr>
 				</table>
+<<<<<<< HEAD
 		<script>
 		document.addEventListener("DOMContentLoaded", function() {
     		// QR 코드 생성 라이브러리를 통해 QR 코드 이미지를 생성합니다.
@@ -147,6 +148,17 @@
       		qrcode.makeCode('http://localhost:8080/controller/');
     	});
   		</script>
+=======
+					<footer>
+					<table>
+						<tr> 
+						<td>
+							<a style="margin-left:185%;"class="btn-danger btn" href="${pageContext.request.contextPath }/myPagerv?recode=${reservationList.recode }">예매취소하기</a>
+						</td>
+						</tr>
+						</table>
+					</footer>					
+>>>>>>> origin/jungeun2
 							
 						
 						</c:forEach>

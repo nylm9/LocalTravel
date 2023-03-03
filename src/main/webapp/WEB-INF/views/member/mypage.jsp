@@ -246,7 +246,7 @@ font-family: 'Pretendard';
 										<th class='reserveTitle'style=" text-align:center">  도착역 [도착시간]<p>${reservationList.arrsta } ${reservationList.arrtime }</p></th>
 										<th class='reserveTitle' style="padding-left:20px;text-align:center"> 열차칸 [좌석번호] <br><p>${reservationList.carnum } [${reservationList.seatnum }]</p></th>
 										 <th class='reserveTitle' style="padding-left:20px;text-align:center"> 금액 <br><p>${reservationList.charge }</p></th>
-										 <th style="padding-left:20px;"><a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/myPagerv?recode=${reservationList.recode }">영수증</a></th>
+										 <th style="padding-left:20px;"><a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/myPagerv?recode=${reservationList.recode }">상세보기</a></th>
 									</tr>
 									
 									
