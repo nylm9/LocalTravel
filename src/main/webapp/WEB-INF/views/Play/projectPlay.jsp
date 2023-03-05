@@ -603,7 +603,13 @@ function change_btn(selectedBtn, group) {
    function clickSection(clickBtn, cnm){
       // 버튼 클릭 스크립트
       $("."+cnm).removeClass('active');
-      $(clickBtn).addClass('active');
+      $(clickBtn).addClass('active'); 
+      
+/*       if (clickBtn.classList.contains('active')) {
+    	  clickBtn.classList.remove('active');
+    	  } else {
+    		  clickBtn.classList.add('active');
+    	  } */
       
    }
    

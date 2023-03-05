@@ -297,8 +297,7 @@ select::-ms-expand {
 									onkeyup="joinFAddrCheck(this.value)">
 							</div>
 							<div class="col-md-6">
-								<label for="inputFtel" class="form-label">가게 전화번호(-는
-									제외하고 입력)</label> <input type="tel" name="ftell" class="form-control"
+								<label for="inputFtel" class="form-label">가게 전화번호</label> <input type="tel" name="ftell" class="form-control"
 									id="inputFtel">
 							</div>
 							<div class="col-md-6">
@@ -308,7 +307,7 @@ select::-ms-expand {
 							</div>
 
 							<div class="col-md-6">
-								<label for="inputFexplain" class="form-label">놀거리
+								<label for="inputFexplain" class="form-label">가게
 									테마코드(5글자)</label> <input type="text" name="fthcode"
 									class="form-control" id="inputFexplain">
 							</div>

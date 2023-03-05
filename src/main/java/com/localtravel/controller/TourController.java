@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.openqa.selenium.devtools.v106.systeminfo.SystemInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,13 +58,11 @@ public class TourController {
 				ArrayList<Map<String,String>> reviewList = ensvc.getReviewList(ecode);
 				mav.addObject("reviewList",reviewList);
 				
-
-				
 				//블로그추천
 				  ArrayList<BlogDto> blList = ensvc.getBlogList(ecode);
+				  System.out.println("blList : " + blList);
 				  mav.addObject("blList", blList);
 				  System.out.println("블로그:"+blList);
-				
 		mav.setViewName("Play/playInfo");
 		return mav;
 	}
