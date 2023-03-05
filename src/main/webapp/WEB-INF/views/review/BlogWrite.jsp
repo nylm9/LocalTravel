@@ -36,61 +36,103 @@
     <!-- manin stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 	
-
-</head>
+ <title>내 블로그</title>
+    <style>
+      /* 작성하기 버튼 스타일링 */
+      button {
+        background-color: #008CBA;
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 10px;
+        width:300px;
+      }
+      
+      /* 작성하는 칸 스타일링 */
+      textarea {
+        width: 100%;
+        height: 400px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
+      }
+    </style>
+  </head>
 <body>
 <!-- ======= Header ======= -->
 	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
 	<!-- End Header -->
 	<section class="section">
 			<div   >
-				<form onsubmit="return reviewForm(this)" action="${pageContext.request.contextPath }/memberModify ">
+				 <form onsubmit="return reviewForm(this)" action="${pageContext.request.contextPath }/BlogWrite"> 
 					<input type="text" name="bcode" value="${param.ecode }">
-					<div class="col-12 mt-2" >
-	             		<div >
-	             			<textarea class="form-control" rows="5" name="bcontent"></textarea>
-	             				<button type="submit" class="btn btn-primary " >관람평 등록</button>
-	             		</div>
-	             	</div>
-				</form>
+					<!-- <h1>내 블로그</h1> -->
+				    <br>
+				    <textarea name="bcontent" placeholder="내용을 입력하세요"></textarea>
+				   <%--  <a href="${pageContext.request.contextPath }/BlogWrite?bcode=${param.ecode}" type="submit">작성하기</a> --%>
+				   <button type="submit" style="margin-left:40%;">작성하기</button>
+				 </form>
+				
 			
 			</div>
 		</section>
 		<script
    src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
-	<script type="text/javascript">
-	var Msg = '${Msg}';
-	if(Msg.length > 0 ){
-		alert(Msg);
-	}
+    <script type="text/javascript">
+     var Msg = '${Msg}';
+     if (Msg.trim().length > 0) { // 빈 문자열이 아닐 때만 alert 창 띄우기
+       alert(Msg);
+     }
 	
-	function reviewForm(formObj){
-		var bcode = formObj.bcode.value;
-		var bcontent =formObj.bcontent.value;
-		
-		
-		console.log(bcode);
-		console.log(bcontent);
-		
-		$.ajax({
-			url:"${pageContext.request.contextPath }/BlogWrite",
-			type:"post",
-			data:{"bcode":bcode, "bcontent":bcontent},
-			async:false,
-			success :function(result){
-				if(bcontent == null){
-					alert("작성실패");
-				}else{
-					alert("작성완료");
-				}
-				
-			}
-		})
-//		window.opener.location.reload();
-		window.close();
-		return false;
-	}
+   </script>
+	
+	<script type="text/javascript">
+	function reviewForm(formObj) {
+	    var bcode = formObj.bcode.value;
+	    var bcontent = formObj.bcontent.value;
+	    console.log(bcode);
+	    console.log(bcontent);
+	    if (result == "success") {
+            alert('작성완료');
+           /* location.replace("home.jsp");
+            window.close(); */ 
+            console.log('성공');
+        } else {
+            alert('작성실패');
+        }
+  /*   error: function () {
+        alert('error-작성 실패');
+    } */
+    }
+	
+	   /*  $.ajax({
+	        url: "${pageContext.request.contextPath }/BlogWrite",
+	        type: "POST",
+	        data: { "bcode": bcode, "bcontent": bcontent },
+	        success: function (result) {
+	            if (result == "success") {
+	                alert('작성완료');
+	               /*  location.replace("home.jsp");
+	                window.close(); 
+	                console.log('성공');
+	            } else {
+	                alert('작성실패');
+	            }
+	        },
+	        error: function () {
+	            alert('error-작성 실패');
+	        }
+	    }); */
 	</script>
+
 
 </body>
 </html>
