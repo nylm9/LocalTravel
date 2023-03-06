@@ -134,11 +134,11 @@ public class HomeController {
 		/* ArrayList<BlogDto> writeResult = ensvc.getBlogList(); */
 		if(writeResult != null) {
 			System.out.println("블로그작성 성공");
-			ra.addFlashAttribute("Msg", "저장완료되었습니다");
+			ra.addFlashAttribute("blogWriteSMsg", "저장완료되었습니다");
 			mav.setViewName("redirect:/mainPage");
 		}else {
 			System.out.println("실패");
-			ra.addFlashAttribute("Msg", "저장실패");
+			ra.addFlashAttribute("blogWriteFMsg", "저장실패");
 			mav.setViewName("redirect:/mainPage");
 		}
 		return mav;

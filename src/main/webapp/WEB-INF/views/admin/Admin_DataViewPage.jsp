@@ -122,7 +122,8 @@ img {
 						<td>${enjoyList.ecode }</td>
 						<td>${enjoyList.ename }</td>
 						<td>${enjoyList.eaddr }</td>
-						<td>dd</td>
+						<td><a class="btn" style="/* position:absolute; right:7%; */ color:black;"
+						href="${pageContext.request.contextPath }/deleteAdminEnjoy?ecode=${enjoyList.ecode }"> 삭제 </a></td>
 					</tr>
 				</c:forEach>
 
@@ -191,6 +192,69 @@ function setChildText(){
 }
 </script>
 
+    <!-- alert창 디자인 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+<script type="text/javascript">
 
 
+$().ready(function () {
+    // AdminDelSMsg 메시지 출력
+    var AdminDelSMsg = "${AdminDelSMsg}";
+    if (AdminDelSMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: AdminDelSMsg,
+        });
+    }
+    
+
+    
+    // AdminDelFMsg 메시지 출력
+    var AdminDelFMsg = "${AdminDelFMsg}";
+    if (AdminDelFMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'error',
+            title: AdminDelFMsg,
+        });
+    }
+    
+    
+    // delEnjoySMsg 메시지 출력
+    var delEnjoySMsg = "${delEnjoySMsg}";
+    if (delEnjoySMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: delEnjoySMsg,
+        });
+    }
+    
+    
+});
+
+</script>
 </html>

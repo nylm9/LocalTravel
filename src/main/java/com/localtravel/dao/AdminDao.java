@@ -3,6 +3,7 @@ package com.localtravel.dao;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -53,5 +54,20 @@ public interface AdminDao {
 
 	@Select("SELECT * FROM MENU WHERE MENUFCODE = #{selectFcode}")
 	ArrayList<MenuDto> selectFoodMenu(String selectFcode);
+
+	@Delete("DELETE FROM MENU WHERE MENUFCODE = #{fcode} ")
+	int AdminDelMenu(String fcode);
+
+	@Delete("DELETE FROM FOOD WHERE FCODE = #{fcode}")
+	int AdminDelFood(String fcode);
+
+	@Delete("DELETE FROM LIKEBTN WHERE LBCODE = #{ecode}")
+	int AdminDelLikebtn(String ecode);
+
+	@Delete("DELETE FROM REVIEWS WHERE RVENCODE = #{ecode}")
+	int AdminDelReviews(String ecode);
+
+	@Delete("DELETE FROM ENJOY WHERE ECODE = #{ecode}")
+	int AdminDelEnjoy(String ecode);
 
 }
