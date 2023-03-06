@@ -407,6 +407,10 @@ thead {
 
 		</div>
 	</section>
+	<!-- ======= Footer ======= -->
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+	<!-- End Header -->
+	
 	<script type="text/javascript">
 	// 예매버튼 사용 여부
 	var ReserveBtnActive = 0;

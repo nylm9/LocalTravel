@@ -624,9 +624,9 @@ public class TrainService {
 
 	public int cancelReservation(String recode) {
 		
-		trdao.cancelReservation(recode);
+		int insertResult = trdao.cancelReservation(recode);
 		
-		return 0;
+		return insertResult;
 	}
 	
 }
