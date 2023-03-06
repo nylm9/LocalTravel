@@ -128,10 +128,10 @@
 		<div class="card mx-auto " style="width: 700px; margin-top:40px;" >
 		<form onsubmit="return FoodreviewForm(this)" >
 		
-			 
             
             <div class="card-body pb-1" style="background:#eee">
 			 <input type="hidden" name="rvfdcode" value="${param.fcode }">
+			 <h2 style="background:#eee;" >${showname}</h2>
              	<div class="row p-3"  style="text-align: center;">
              	
              		<!-- 좋아요 -->

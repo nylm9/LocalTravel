@@ -86,7 +86,7 @@ public class TourController {
 	private TourService toursvc;
 	
 	@RequestMapping(value = "/reviewWrite")
-	public @ResponseBody String reviewWrite(ReviewDto review) {
+	public @ResponseBody String reviewWrite(ReviewDto review, String rvencode) {
 		System.out.println("관람평등록요청");
 		
 		String loginId = (String) session.getAttribute("loginId");
@@ -94,10 +94,13 @@ public class TourController {
 		 if(loginId == null) { return "N_login"; }
 		 
 		review.setRvmid(loginId);
+		review.setRvencode(rvencode);
+		System.out.println(review);
 		
 		System.out.println(review);
 
 		String writeResult = toursvc.reviewWrite_svc(review);
+		
 		return writeResult;
 	}
 	
@@ -143,12 +146,16 @@ public class TourController {
 		return mav;
 }
 	@RequestMapping(value = "/fdreviewForm")
-	public ModelAndView fdreviewForm(String refdcode) {
+	public ModelAndView fdreviewForm(String fcode) {
 		System.out.println("먹거리 리뷰페이지이동");
 		/* System.out.println(refdcode); */
 		/* String rvfdthcode ="11111"; */
 		
 		ModelAndView mav = new ModelAndView();
+		
+		System.out.println("dfsf"+fcode);
+		String showname = toursvc.showfoodname_svc(fcode);
+		mav.addObject("showname", showname);
 		mav.setViewName("review/FoodReviewForm");
 		return mav;
 	}
@@ -233,6 +240,8 @@ public class TourController {
 		mav.setViewName("member/mypagerv");
 		return mav;
 	}
+	
+
 	
 
 }

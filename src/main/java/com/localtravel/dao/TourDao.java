@@ -45,6 +45,9 @@ public interface TourDao {
 	
 	@Select("SELECT ENAME FROM ENJOY WHERE ECODE= #{ecode}")
 	String selectshowenjoyname(String reencode);
+
+	@Select("SELECT FNAME FROM FOOD WHERE FCODE= #{fcode}")
+	String selectshowfoodname(String fcode);
 	
 	
 }

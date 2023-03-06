@@ -23,6 +23,7 @@ public class TourService {
 		int reviewResult = 0;
 		try {
 			reviewResult = tourdao.insertReviewWrite(review);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("관람평등록처리예외");
@@ -83,6 +84,13 @@ public class TourService {
 		System.out.println("TourService - 리뷰폼에 이름출력");
 		String showname = tourdao.selectshowenjoyname(reencode);
 		System.out.println(reencode);
+		return showname;
+	}
+
+	public String showfoodname_svc(String fcode) {
+		System.out.println("TourService - 리뷰폼에 이름출력");
+		String showname = tourdao.selectshowfoodname(fcode);
+		System.out.println(fcode);
 		return showname;
 	}
 
