@@ -183,12 +183,21 @@ public class TrainController {
 	
 	// 예매 취소하기
 	@RequestMapping(value = "/cancelReservation")
-	public ModelAndView cancelReservation(String recode) {
+	public ModelAndView cancelReservation(String recode, RedirectAttributes ra) {
 		System.out.println("TrainController - 예매 취소하기");
+		ModelAndView mav = new ModelAndView();
 
 		int insertReult = trsvc.cancelReservation(recode);
+		System.out.println(insertReult);
+		if(insertReult > 0) {
+			mav.setViewName("redirect:/myPage");
+			ra.addFlashAttribute("Msg","예매가 취소되었습니다.");
+		} else {
+			mav.setViewName("redirect:/myPage");
+			ra.addFlashAttribute("Msg","예매 취소 실패입니다.");
+		}
 
-		return null;
+		return mav;
 	}
 	
 	

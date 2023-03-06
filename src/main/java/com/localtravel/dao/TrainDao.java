@@ -94,7 +94,7 @@ public interface TrainDao {
 	
 	// 예매 취소하기
 	@Update("UPDATE RESERVATION SET RESTATES = 1 WHERE RECODE = #{recode}")
-	void cancelReservation(String recode);
+	int cancelReservation(String recode);
 	
 	
 	

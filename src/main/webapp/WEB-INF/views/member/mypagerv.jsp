@@ -51,12 +51,30 @@
 			  cleanTrainDate = cleanTrainDate.replace(" 00:00:00","").replace("0023","2023");
 			  console.log(cleanTrainDate);
 			  $('#trainDateDisplay').html(cleanTrainDate);
+			  
+			  //
+			  var arrtime = $('#arrTimeDisplay').html();
+			  const departureTime = new Date(cleanTrainDate+' '+arrtime); // 열차 출발 시간
+				console.log(departureTime);
+			  const now = new Date(); // 현재 시간
+
+			  if (now > departureTime) { // 현재 시간이 출발 시간보다 늦을 경우
+  					console.log('열차가 이미 출발했습니다.');
+  					$('#cancelBtn').html("예매 취소 불가");
+  					$('#cancelBtn').css('background-color', 'gray');
+  					$('#cancelBtn').attr('href', '');
+  					$('#cancelBtn').addClass('d-none');
+  					$('#noCancelMsg').removeClass('d-none');
+			  } else {
+  					console.log('열차는 아직 출발하지 않았습니다.');
+			  }
 			});
 		</script>
 <style>
 #qrcode {
   float: right;
-}	
+}
+
 </style>
 </head>
 
@@ -104,7 +122,7 @@
 						<th class='reserveTitle'>도착시간</th>
 					</tr>
 					<tr>
-						<td class='reserveContent' style='font-size:XX-Large; padding-top:5px;padding-bottom:5px;color:#F2789F'><span class='reversal'>${reservationList.deptime }</span></td>
+						<td class='reserveContent' style='font-size:XX-Large; padding-top:5px;padding-bottom:5px;color:#F2789F'><span class='reversal' id='arrTimeDisplay'>${reservationList.deptime }</span></td>
 						<td class='reserveContent' style='font-size:XX-Large; padding-top:5px;padding-bottom:5px; color:#516BEB'>${reservationList.arrtime }</td>
 					</tr>
 					<tr>
@@ -136,6 +154,14 @@
 						<td colspan='2' class='reserveContent' style='padding-top: 10px; font-weight: bold; text-align: center; width: 100px; height: 100px;'><div id="qrcode"></div></td>
 						
 					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<a style="margin-left: 0 auto;"class="btn-danger btn" id="cancelBtn" href="${pageContext.request.contextPath }/cancelReservation?recode=${reservationList.recode }">예매취소하기</a>
+							<p id="noCancelMsg"class="d-none">예매 취소 불가</p>
+						</td>
+						<td></td>
+					</tr>
 				</table>
 
 		<script>
@@ -149,15 +175,7 @@
     	});
   		</script>
 
-					<footer>
-					<table>
-						<tr> 
-						<td>
-							<a style="margin-left:185%;"class="btn-danger btn" href="${pageContext.request.contextPath }/myPagerv?recode=${reservationList.recode }">예매취소하기</a>
-						</td>
-						</tr>
-						</table>
-					</footer>					
+										
 
 							
 						
