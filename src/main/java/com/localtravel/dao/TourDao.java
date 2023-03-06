@@ -44,7 +44,7 @@ public interface TourDao {
 	ArrayList<ReservationDto> selectreservationList(@Param("remid")String loginId,@Param("recode") String recode);
 	
 	@Select("SELECT ENAME FROM ENJOY WHERE ECODE= #{ecode}")
-	String selectshowenjoyname(String reencode);
+	String selectshowenjoyname(@Param("ecode")String reencode);
 
 	@Select("SELECT FNAME FROM FOOD WHERE FCODE= #{fcode}")
 	String selectshowfoodname(String fcode);

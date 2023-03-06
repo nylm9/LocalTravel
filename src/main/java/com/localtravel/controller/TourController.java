@@ -162,14 +162,14 @@ public class TourController {
 
 	
 	@RequestMapping(value = "/fdreviewWrite")
-	public @ResponseBody String fdreviewWrite(FoodReviewDto fdreview) {
+	public @ResponseBody String fdreviewWrite(FoodReviewDto fdreview, String rvfdcode) {
 		System.out.println("먹거리관람평등록요청");
 		String loginId = (String) session.getAttribute("loginId");
 		
 		 if(loginId == null) { return "N_login"; }
 		 
 		fdreview.setRvmid(loginId);
-		
+		fdreview.setRvfdcode(rvfdcode);
 		System.out.println(fdreview);
 
 		String fdwriteResult = toursvc.fdreviewWrite_svc(fdreview);

@@ -178,33 +178,47 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		
 	<script type="text/javascript">
-	function likeButtonUpdate() {
-		  var bcode = $("#bcode").val(); // 블로그 코드 가져오기
-		  $.ajax({
-		    url: "${pageContext.request.contextPath}/likebuttonupdate", // 업데이트를 실행시킬 컨트롤러 경로
-		    type: "POST",
-		    data: { "bcode": bcode },
-		    success: function(result) {
-		      console.log("좋아요 버튼 업데이트 성공!");
-		    },
-		    error: function() {
-		      console.log("좋아요 버튼 업데이트 실패...");
-		    }
-		  });
-		}
+	/* $(function(){
+	  $(document).one('click', '.like-review', function(e) {
+	    $(this).html('<i class="fa " aria-hidden="true"></i>You liked this ☺️');
+	    $(this).children('.fa-heart').addClass('animate-like');
+	  });
+	}); */
+$(function() {
+	  var liked = false;
 
-	$(function(){
-		  $(document).one('click', '.like-review', function(e) {
-		    $(this).html('<i class="fa " aria-hidden="true"></i>You liked this ☺️');
-		    $(this).children('.fa-heart').addClass('animate-like');
-		  });
-		});
-	$(function(){
-		  $(document).one('click', '.like-hate', function(e) {
-		    $(this).html('<i class="" aria-hidden="true"></i> You hate this 😒');
-		    $(this).children('.fa-heart').addClass('animate-hate');
-		  });
-		});
+	  $(document).on('click', '.like-review', function(e) {
+	    if (!liked) {
+	      $(this).html('<i class="fa fa-heart" aria-hidden="true"></i> You liked this ☺️');
+	      $(this).children('.fa-heart').addClass('animate-like');
+	      liked = true;
+	    } else {
+	      $(this).html('<i class="fa fa-heart" aria-hidden="true"></i> 좋아요');
+	      $(this).children('.fa-heart').removeClass('animate-like');
+	      liked = false;
+	    }
+	  });
+	});
+
+/* 	$(function(){
+	  $(document).one('click', '.like-hate', function(e) {
+	    $(this).html('<i class="" aria-hidden="true"></i> You hate this 😒');
+	    $(this).children('.fa-heart').addClass('animate-hate');
+	  });
+	}); */
+$(function(){
+  $(document).on('click', '.like-hate', function(e) {
+      if ($(this).hasClass('hate-selected')) { // 선택된 상태인 경우
+          $(this).html('<i class="" aria-hidden="true"></i> 싫어요');
+          $(this).removeClass('hate-selected');
+          $(this).children('.fa-heart').removeClass('animate-hate');
+      } else { // 선택되지 않은 상태인 경우
+          $(this).html('<i class="" aria-hidden="true"></i> You hate this 😒');
+          $(this).addClass('hate-selected');
+          $(this).children('.fa-heart').addClass('animate-hate');
+      }
+  });
+});
 	function writeReview(reencode,ename){
 		window.open('${pageContext.request.contextPath }/reviewForm?reencode='+reencode+"&ename="+ename,'reviewFormPage',"width=750,heigh=400, top=100, left=500");
 	}
