@@ -8,4 +8,24 @@ public class TRInputScheduleDto {
 	private String depPlaceId;
 	private String arrPlaceId;
 	private String depPlandTime;
+	public String getDepPlaceId() {
+		return depPlaceId;
+	}
+	public void setDepPlaceId(String depPlaceId) {
+		this.depPlaceId = depPlaceId;
+	}
+	public String getArrPlaceId() {
+		return arrPlaceId;
+	}
+	public void setArrPlaceId(String arrPlaceId) {
+		this.arrPlaceId = arrPlaceId;
+	}
+	public String getDepPlandTime() {
+		return depPlandTime;
+	}
+	public void setDepPlandTime(String depPlandTime) {
+		this.depPlandTime = depPlandTime;
+	}
+	
+	
 }
