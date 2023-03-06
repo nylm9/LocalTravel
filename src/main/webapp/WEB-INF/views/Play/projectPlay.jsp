@@ -767,7 +767,7 @@ function clickAjax(thcode, procode) {
 
    
    
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=93b4f3f3d42ca1981b8841a71a59e4c7&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=28118a54c0231eebfbdfad7fb931139e&libraries=services,clusterer,drawing"></script>
    <script>
 // 마커를 담을 배열입니다
 var markers = [];
