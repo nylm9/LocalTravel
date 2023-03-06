@@ -71,12 +71,8 @@
 	<%@ include file="/WEB-INF/views/include/topBar.jsp"%>
 	<!-- End Header -->
 	<section class="section">
-			<div   >
-<<<<<<< HEAD
-				 <form onsubmit="return reviewForm(this)" action="${pageContext.request.contextPath }/BlogWrite"> 
-=======
-				<form  action="${pageContext.request.contextPath }/BlogWrite">
->>>>>>> origin/MinSeo
+			<div>
+				<form onsubmit="return reviewForm(this)" action="${pageContext.request.contextPath }/BlogWrite">
 					<input type="text" name="bcode" value="${param.ecode }">
 					<!-- <h1>내 블로그</h1> -->
 				    <br>
@@ -90,14 +86,13 @@
 		</section>
 		<script
    src="${pageContext.request.contextPath }/resources/plugins/jquery/jquery.js"></script>
-<<<<<<< HEAD
-    <script type="text/javascript">
-     var Msg = '${Msg}';
-     if (Msg.trim().length > 0) { // 빈 문자열이 아닐 때만 alert 창 띄우기
-       alert(Msg);
-     }
-	
-   </script>
+
+ <script type="text/javascript">
+    	var Msg = '${Msg}';
+    	if(Msg.length > 0 ){
+    		alert(Msg);
+    	}
+    </script> 
 	
 	<script type="text/javascript">
 	function reviewForm(formObj) {
@@ -136,40 +131,7 @@
 	            alert('error-작성 실패');
 	        }
 	    }); */
-=======
-	<script type="text/javascript">
-	var Msg = '${Msg}';
-	if(Msg.length > 0 ){
-		alert(Msg);
-	}
-	/* 
-	function reviewForm(formObj){
-		var bcode = formObj.bcode.value;
-		var bcontent =formObj.bcontent.value;
-		
-		
-		console.log(bcode);
-		console.log(bcontent);
-		
-		$.ajax({
-			url:"${pageContext.request.contextPath }/BlogWrite",
-			type:"post",
-			data:{"bcode":bcode, "bcontent":bcontent},
-			async:false,
-			success :function(result){
-				if(bcontent == null){
-					alert("작성실패");
-				}else{
-					alert("작성완료");
-				}
-				
-			}
-		})
-//		window.opener.location.reload();
-		window.close();
-		return false;
-	} */
->>>>>>> origin/MinSeo
+
 	</script>
 
 

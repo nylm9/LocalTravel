@@ -123,11 +123,6 @@ public class HomeController {
 	public ModelAndView BlogWritePage() {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("블로그작성페이지이동");
-<<<<<<< HEAD
-=======
-		
-		
->>>>>>> origin/MinSeo
 		mav.setViewName("review/BlogWrite");
 		return mav;
 	}
@@ -137,23 +132,15 @@ public class HomeController {
 	 */
 	@RequestMapping(value="/BlogWrite")
 	public ModelAndView BlogWrite(BlogDto bto,String bcode,RedirectAttributes ra) {
-<<<<<<< HEAD
-		
-		ModelAndView mav = new ModelAndView();
-		System.out.println("블로그작성 놀거리코드"+bcode);
-
-=======
 		ModelAndView mav = new ModelAndView();
 		System.out.println("놀거리코드"+bcode);
 		System.out.println("블로그작성");
->>>>>>> origin/MinSeo
 		bto.setBcode(bcode);
 		System.out.println(bto);
 		String writeResult = ensvc.getBlogwriteList(bto);
 		/* ArrayList<BlogDto> writeResult = ensvc.getBlogList(); */
 		if(writeResult != null) {
 			System.out.println("블로그작성 성공");
-<<<<<<< HEAD
 			ra.addFlashAttribute("Msg", "저장완료되었습니다");
 			mav.setViewName("home");
 		}else {
@@ -161,14 +148,6 @@ public class HomeController {
 			mav.setViewName("home");
 			ra.addFlashAttribute("Msg", "저장실패");
 		}
-		System.out.println("여기까진 오긴하니");
-=======
-			ra.addFlashAttribute("Msg", "블로그작성 성공하였습니다.");
-			mav.setViewName("redirect:/enjoyPage");
-			
-		}
-		
->>>>>>> origin/MinSeo
 		return mav;
 		
 	}
