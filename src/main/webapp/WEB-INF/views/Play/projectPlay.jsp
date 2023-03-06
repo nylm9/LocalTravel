@@ -132,8 +132,24 @@ select:disabled {
   height: 100vh;
 } */
 
-body {
-  margin: 0;
+.btnblog {
+   
+        background-color: #008CBA;
+        border: none;
+        color: white;
+        padding:8px;
+        
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin-bottom: 10px;
+        width:100px;
+        /* height:40px;
+        float:center; */
+        
+        
+      
 }
 
 
@@ -527,8 +543,8 @@ function change_btn(selectedBtn, group) {
                   output += '<p class="small mb-1">'+enList[i].eaddr+' </p>';
                   
                   if( loginId == 'admin' ) {
-                  output += '<a class="btn-dark btn-sm btn" style="margin-bottom:5px;"';
-                  output += 'href="${pageContext.request.contextPath }/BlogWritePage?ecode='+enList[i].ecode+'">블로그쓰기</a>'
+                  output += '<a class="btnblog" style="margin-bottom:5px; margin-right:10px;"';
+                  output += 'href="${pageContext.request.contextPath }/BlogWritePage?ecode='+enList[i].ecode+'">블로그</a>'
                   output += '<a class="btn-dark btn-sm btn"';
                   output += 'href="${pageContext.request.contextPath }/playInfo?ecode='+enList[i].ecode+' ">상세보기</a>';
                   } else {
@@ -715,7 +731,7 @@ function clickAjax(thcode, procode) {
                      output += '<p class="small mb-1">'+enjoyList[i].eaddr+' </p>';
                      
                      if( loginId == 'admin' ) {
-                     output += '<a class="btn-dark btn-sm btn" style="margin-bottom:5px;"';
+                     output += '<a class="btnblog" style="margin-bottom:5px;"';
                      output += 'href="${pageContext.request.contextPath }/BlogWritePage?ecode='+enjoyList[i].ecode+'">블로그쓰기</a>'
                      output += '<a class="btn-dark btn-sm btn"';
                      output += 'href="${pageContext.request.contextPath }/playInfo?ecode='+enjoyList[i].ecode+' ">상세보기</a>';

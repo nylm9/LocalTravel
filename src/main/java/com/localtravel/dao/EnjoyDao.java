@@ -43,9 +43,9 @@ public interface EnjoyDao {
 	ArrayList<MenuDto> selectMenuList_Rank(String fcode);
 
 
-
-	@Insert("INSERT INTO BLOG(BCODE,BCONTENT) VALUES (#{bcode},#{bcontent})")
+	@Insert("INSERT INTO BLOG(BCODE,BCONTENT) VALUES (#{bcode}, #{bcontent, jdbcType=NVARCHAR})")
 	int getBlogListdao(BlogDto bto);
+
 
 	@Select("SELECT * FROM BLOG")
 	ArrayList<BlogDto> selectbList();

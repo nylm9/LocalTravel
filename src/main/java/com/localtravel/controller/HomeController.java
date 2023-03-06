@@ -123,8 +123,6 @@ public class HomeController {
 	public ModelAndView BlogWritePage() {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("블로그작성페이지이동");
-		
-		
 		mav.setViewName("review/BlogWrite");
 		return mav;
 	}
@@ -139,15 +137,17 @@ public class HomeController {
 		System.out.println("블로그작성");
 		bto.setBcode(bcode);
 		System.out.println(bto);
-
-		String writeResult = ensvc.getBlogList(bto);
+		String writeResult = ensvc.getBlogwriteList(bto);
+		/* ArrayList<BlogDto> writeResult = ensvc.getBlogList(); */
 		if(writeResult != null) {
 			System.out.println("블로그작성 성공");
-			ra.addFlashAttribute("Msg", "블로그작성 성공하였습니다.");
-			mav.setViewName("redirect:/enjoyPage");
-			
+			ra.addFlashAttribute("Msg", "저장완료되었습니다");
+			mav.setViewName("home");
+		}else {
+			System.out.println("실패");
+			mav.setViewName("home");
+			ra.addFlashAttribute("Msg", "저장실패");
 		}
-		
 		return mav;
 		
 	}

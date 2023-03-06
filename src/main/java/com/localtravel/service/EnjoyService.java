@@ -75,10 +75,10 @@ public class EnjoyService {
 		return fdreviewList;
 	}
 
-	public String getBlogList(BlogDto bto) {
+	public String getBlogwriteList(BlogDto bto) {
 		System.out.println("enjoyservice - 블로그글작성");
 		int WriteResult =endao.getBlogListdao(bto);
-		
+		System.out.println(WriteResult);
 		return WriteResult+"";
 	}
 

@@ -266,12 +266,12 @@ font-family: 'Gowun Dodum', sans-serif; */
 
 </body>
 
-<!--     <script type="text/javascript">
+    <script type="text/javascript">
     	var Msg = '${Msg}';
     	if(Msg.length > 0 ){
     		alert(Msg);
     	}
-    </script> -->
+    </script> 
     
 <script type="text/javascript">
 
