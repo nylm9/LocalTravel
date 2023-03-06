@@ -138,7 +138,7 @@ font-family: 'Pretendard';
 		                		     
 		                		     <div style="position:absolute; bottom:80px;left:20px;">
 					                  	<a class="btn btn-sm btn-danger"
-										href="${pageContext.request.contextPath }/reviewForm?ecode=${enInfo.ecode }">리뷰작성</a>
+										href="${pageContext.request.contextPath }/reviewForm?reencode=${enInfo.ecode }">리뷰작성</a>
 											<a class="btn btn-sm" style="background:blue; color:white;" href="${pageContext.request.contextPath }/locationSelectReservePage?elcode=${enInfo.elcode }">예매하기</a>
 												   
 										<div style="float:left; margin-right:7px;">

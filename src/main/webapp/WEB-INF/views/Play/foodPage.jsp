@@ -401,7 +401,7 @@ $(document).ready(function(){
 					var food = foodList[i];
 					var statusNum = i + 1;
 					output += '<div class="col-3">';
-					output += '<div class="card"  style=" margin-top:5px;">';
+					output += '<div class="card"  style=" margin-top:5px;margin-bottom:13px; width: 270px; height:430px;">';
 					output += '<div class="card-body">';
 					output += '<h5 class="card-title py-2" style="text-align: center;" >No.' + statusNum  + '<h5>';
 					output += '<div style="height:200px;width:5px;">';

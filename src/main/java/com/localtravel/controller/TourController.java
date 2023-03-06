@@ -74,6 +74,8 @@ public class TourController {
 		System.out.println(reencode);
 		
 		ModelAndView mav = new ModelAndView();
+		String showname = toursvc.showname_svc(reencode);
+		mav.addObject("showname", showname);
 		mav.setViewName("review/ReviewForm");
 		return mav;
 	}

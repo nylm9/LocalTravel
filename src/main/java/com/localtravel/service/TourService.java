@@ -79,4 +79,11 @@ public class TourService {
 		return reservationList;
 	}
 
+	public String showname_svc(String reencode) {
+		System.out.println("TourService - 리뷰폼에 이름출력");
+		String showname = tourdao.selectshowenjoyname(reencode);
+		System.out.println(reencode);
+		return showname;
+	}
+
 }

@@ -126,9 +126,9 @@
 		<section class="section">
 		<div class="card mx-auto " style="width: 700px; margin-top:40px;" >
 		<form onsubmit="return reviewForm(this)" >
-            
             <div class="card-body pb-1" style="background:#eee">
             	<input type="hidden" name="rvencode"  value="${param.ecode }" readonly>
+            <h2 style="background:#eee; margin-left:33%" >${showname}</h2>
              	<div class="row p-3"  style="text-align: center;">
              	
              	<!-- 좋아요 -->

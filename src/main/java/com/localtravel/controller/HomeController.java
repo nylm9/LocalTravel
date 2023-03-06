@@ -65,13 +65,6 @@ public class HomeController {
 		System.out.println("blist:"+blist);
 		System.out.println("enList:"+enList);
 		
-//		EnjoyDto enlist = ensvc.getenjoyList2();
-//		mav.addObject("enlist", enlist);
-//		System.out.println("enlist:"+enlist);
-//		ArrayList<BlogDto> blist = ensvc.getbloglist();
-//		mav.addObject("blist", blist);
-//		System.out.println("blist:"+blist);
-		
 		 Cookie[] cookies = request.getCookies();
 		
 		
@@ -142,11 +135,11 @@ public class HomeController {
 		if(writeResult != null) {
 			System.out.println("블로그작성 성공");
 			ra.addFlashAttribute("Msg", "저장완료되었습니다");
-			mav.setViewName("home");
+			mav.setViewName("redirect:/mainPage");
 		}else {
 			System.out.println("실패");
-			mav.setViewName("home");
 			ra.addFlashAttribute("Msg", "저장실패");
+			mav.setViewName("redirect:/mainPage");
 		}
 		return mav;
 		
@@ -230,70 +223,5 @@ public class HomeController {
 		return mav;
 	}
 	
-	
-//	@RequestMapping(value="/likeFood")
-//	public ModelAndView likeFood(String lbcode, LikeBtnDto lelike,RedirectAttributes ra) {
-//		System.out.println("먹거리 좋아요버튼 클릭");
-//		ModelAndView mav = new ModelAndView();
-//		System.out.println("좋아요코드: "+lbcode);
-//		String loginId = (String) session.getAttribute("loginId");
-//		System.out.println(loginId);
-//		if(loginId == null) {
-//			System.out.println("아이디없음");
-//			ra.addFlashAttribute("Msg", "로그인해주세요");
-//			mav.setViewName("member/memberLoginForm");
-//		}else {
-//			lelike.setLbmid(loginId);
-//			String leList=null;
-//		
-//			
-//				leList = ensvc.setleList(lelike);
-//				ra.addFlashAttribute("Msg", "저장완료되었습니다");
-//				System.out.println("leList:"+leList);
-//				mav.setViewName("redirect:/foodPage");
-//			
-//		}
-//		return mav;
-//	}
-//	@RequestMapping(value="/likeFood")
-//	public ModelAndView likeFood(String lbcode, LikeBtnDto lelike, RedirectAttributes ra) {
-//	    System.out.println("먹거리 좋아요버튼 클릭");
-//	    ModelAndView mav = new ModelAndView();
-//	    System.out.println("좋아요코드: " + lbcode);
-//	    String loginId = (String) session.getAttribute("loginId");
-//	    System.out.println(loginId);
-//	    if (loginId == null) {
-//	        System.out.println("아이디없음");
-//	        ra.addFlashAttribute("Msg", "로그인해주세요");
-//	        mav.setViewName("member/memberLoginForm");
-//	    } else {
-//	        lelike.setLbmid(loginId);
-//	        ArrayList<LikeBtnDto> likeList = memsvc.getlikeList(loginId);
-//	        boolean exists = false;
-//	        for (LikeBtnDto like : likeList) {
-//	            if (like.getLbcode().equals(lbcode)) {
-//	                exists = true;
-//	                break;
-//	            }
-//	        }
-//	        if (exists) {
-//	            System.out.println("이미 저장하셨습니다");
-//	            ra.addFlashAttribute("Msg", "이미 저장하셨습니다");
-//	            mav.setViewName("redirect:/foodPage");
-//	        } else {
-//	            String leList = ensvc.setleList(lelike);
-//	            ra.addFlashAttribute("Msg", "저장완료되었습니다");
-//	            System.out.println("leList:" + leList);
-//	            mav.setViewName("redirect:/foodPage");
-//	        }
-//	    }
-//	    return mav;
-//	}
 
-
-
-
-
- 	
-	
 }

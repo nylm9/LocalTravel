@@ -43,5 +43,8 @@ public interface TourDao {
 			+ " RESERVATION WHERE RECODE=#{recode} AND REMID=#{remid}")
 	ArrayList<ReservationDto> selectreservationList(@Param("remid")String loginId,@Param("recode") String recode);
 	
+	@Select("SELECT ENAME FROM ENJOY WHERE ECODE= #{ecode}")
+	String selectshowenjoyname(String reencode);
+	
 	
 }
