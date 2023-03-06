@@ -122,6 +122,7 @@ img {
 						<td>${enjoyList.ecode }</td>
 						<td>${enjoyList.ename }</td>
 						<td>${enjoyList.eaddr }</td>
+						<td>dd</td>
 					</tr>
 				</c:forEach>
 
@@ -152,6 +153,8 @@ img {
 						<td>${foodList.faddr }</td>
 						<td><input type="button" value="메뉴보기" onclick="openChild('${foodList.fcode }')"></td>
 						<td><input type="hidden" id="pInput" value="${foodList.fcode }"></td>
+						<td><a class="btn" style="/* position:absolute; right:7%; */ color:black;"
+						href="${pageContext.request.contextPath }/deleteAdminMenu?fcode=${foodList.fcode }"> 삭제 </a></td>
 					</tr>
 				</c:forEach>
 

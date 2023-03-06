@@ -22,6 +22,13 @@ public class AdminController {
 	@Autowired
 	private AdminService adsvc;
 	
+	@RequestMapping(value="/deleteAdminMenu")
+	public ModelAndView deleteAdminMenu(String fcode) {
+		System.out.println("admin_메뉴삭제");
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
+	
 	@RequestMapping(value="/testMemberJoinCheckForm")
 	public ModelAndView testMemberJoinCheckForm() {
 		ModelAndView mav = new ModelAndView();
