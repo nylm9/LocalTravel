@@ -331,6 +331,43 @@ $().ready(function () {
         });
     }
     
+    
+    // blogWriteSMsg 메시지 출력
+    var blogWriteSMsg = "${blogWriteSMsg}";
+    if (blogWriteSMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: blogWriteSMsg,
+        });
+    }
+    
+    // blogWriteFMsg 메시지 출력
+    var blogWriteFMsg = "${blogWriteFMsg}";
+    if (blogWriteFMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'error',
+            title: blogWriteFMsg,
+        });
+    }
+    
+    
+    
 });
 
 </script>

@@ -127,17 +127,19 @@
 		<div class="card mx-auto " style="width: 700px; margin-top:40px;" >
 		<form onsubmit="return reviewForm(this)" >
             <div class="card-body pb-1" style="background:#eee">
-            	<input type="hidden" name="rvencode"  value="${param.ecode }" readonly>
-            <h2 style="background:#eee; margin-left:33%" >${showname}</h2>
+            	<input type="hidden" name="rvencode"  value="${param.reencode }" readonly>
+            <h2 style="background:#eee;" >${showname}</h2>
              	<div class="row p-3"  style="text-align: center;">
              	
              	<!-- 좋아요 -->
              		<div class="like-content col d-flex align-items-center row p-3"  style="text-align: center;">
+             		
              			<label class="btn-lg mx-auto p-3 btn-secondary like-review"
              				   onclick="selecteRecommend('1')" id="recommendGood" tabindex="-1">
              				<i class="fa fa-heart" aria-hidden="true"></i> 좋아요
              				<input class="d-none"  type="radio" value='1' name="rvrecommend">
              			</label>
+             		
              		</div>
              		
              		<!-- 별로에요 -->
@@ -172,23 +174,25 @@
 		
 		</section>
 	</main>
-	<!-- End #main -->
-
-
-
-	<!-- Vendor JS Files -->
-<%-- 	<script
-		src="${pageContext.request.contextPath }/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> --%>
-
-<%-- 	<script src="${pageContext.request.contextPath }/resources/assets/vendor/tinymce/tinymce.min.js"></script><!--  -->
- --%>
-	<!-- Template Main JS File -->
-		<script
-		src="${pageContext.request.contextPath }/resources/assets/js/main.js"></script>
-		<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/assets/js/main.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		
 	<script type="text/javascript">
+	function likeButtonUpdate() {
+		  var bcode = $("#bcode").val(); // 블로그 코드 가져오기
+		  $.ajax({
+		    url: "${pageContext.request.contextPath}/likebuttonupdate", // 업데이트를 실행시킬 컨트롤러 경로
+		    type: "POST",
+		    data: { "bcode": bcode },
+		    success: function(result) {
+		      console.log("좋아요 버튼 업데이트 성공!");
+		    },
+		    error: function() {
+		      console.log("좋아요 버튼 업데이트 실패...");
+		    }
+		  });
+		}
+
 	$(function(){
 		  $(document).one('click', '.like-review', function(e) {
 		    $(this).html('<i class="fa " aria-hidden="true"></i>You liked this ☺️');
@@ -240,6 +244,8 @@
 					alert("작성실패");
 					window.location.href = "${pageContext.request.contextPath }/enjoyPage";
 				}
+				
+				
 			}
 		})
 //		window.opener.location.reload();

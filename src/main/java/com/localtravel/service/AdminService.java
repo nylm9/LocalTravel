@@ -281,6 +281,42 @@ public class AdminService {
 		ArrayList<MenuDto> selectFoodMenu = adao.selectFoodMenu(selectFcode);
 		return selectFoodMenu;
 	}
+
+	public int delMenu(String fcode) {
+		System.out.println("메뉴 삭제 서비스 호출");
+		int delResult = adao.AdminDelMenu(fcode);
+		return delResult;
+	}
+	
+	public int delFood(String fcode) {
+		System.out.println("가게 삭제 서비스 호출");
+		int FdelResult = adao.AdminDelFood(fcode);
+		return FdelResult;
+	}
+
+
+	public int dellikebtn(String ecode) {
+		System.out.println("놀거리 저장 테이블 내용 삭제");
+		int delResult = adao.AdminDelLikebtn(ecode);
+		System.out.println("삭제결과 : " + delResult);
+		return delResult;
+	}
+
+	public int delReviews(String ecode) {
+		System.out.println("놀거리 리뷰 테이블 내용 삭제");
+		int delResult = adao.AdminDelReviews(ecode);
+		return delResult;
+	}
+
+	public int delEnjoy(String ecode) {
+		System.out.println("선택한 놀거리 삭제 기능");
+		int delResult = adao.AdminDelEnjoy(ecode);
+		return delResult;
+	}
+	
+
+
+
 	
 	
 

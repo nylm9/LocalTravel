@@ -22,10 +22,48 @@ public class AdminController {
 	@Autowired
 	private AdminService adsvc;
 	
-	@RequestMapping(value="/deleteAdminMenu")
-	public ModelAndView deleteAdminMenu(String fcode) {
-		System.out.println("admin_메뉴삭제");
+	@RequestMapping(value="/deleteAdminEnjoy")
+	public ModelAndView deleteAdminEnjoy(String ecode, RedirectAttributes ra) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println("ecode : " + ecode);
+		//likebtn 테이블 컬럼삭제
+		int lbtnDelResult = adsvc.dellikebtn(ecode);
+		//reivews 테이블 컬럼 삭제
+		int reDelResult = adsvc.delReviews(ecode);
+		//enjoy테이블에서 해당 놀거리 삭제
+		int DelEnjoyResult = adsvc.delEnjoy(ecode);		
+		if(DelEnjoyResult > 0) {
+			System.out.println("enjoy 삭제성공");
+			ra.addFlashAttribute("delEnjoySMsg", "놀거리 삭제 성공");
+			mav.setViewName("redirect:/AdminDataPage");
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value="/deleteAdminMenu")
+	public ModelAndView deleteAdminMenu(String fcode, RedirectAttributes ra) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("fcode : " + fcode);
+		int AdminMDelResult = adsvc.delMenu(fcode);
+		if(AdminMDelResult > 0) {
+			System.out.println("메뉴삭제 성공");
+			int AdminFDelResult = adsvc.delFood(fcode);
+			if(AdminFDelResult > 0) {
+				System.out.println("가게삭제 성공");
+				ra.addFlashAttribute("AdminDelSMsg", "삭제 성공");
+				mav.setViewName("redirect:/AdminDataPage");
+			} else {
+				System.out.println("가게삭제 실패");
+				ra.addFlashAttribute("AdminDelFMsg", "삭제 실패");
+				mav.setViewName("redirect:/AdminDataPage");
+			}
+		} else {
+			System.out.println("메뉴삭제 실패");
+			ra.addFlashAttribute("AdminDelFMsg", "삭제 실패");
+			mav.setViewName("redirect:/AdminDataPage");
+		}
+		
+		
 		return mav;
 	}
 	
