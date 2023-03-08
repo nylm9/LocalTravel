@@ -46,11 +46,11 @@ public class MemberController {
 		int joinResult = memsvc.memberJoin(member);
 		if(joinResult > 0) {
 			System.out.println("회원가입 성공");
-			ra.addFlashAttribute("Msg", "회원가입에 성공하였습니다.");
+			ra.addFlashAttribute("joinSMsg", "회원가입에 성공하였습니다.");
 			mav.setViewName("redirect:/");
 		} else {
 			System.out.println("회원가입 실패");
-			ra.addFlashAttribute("Msg", "회원가입에 실패하였습니다.");
+			ra.addFlashAttribute("joinFMsg", "회원가입에 실패하였습니다.");
 			mav.setViewName("redirect:/memberJoinForm");
 		}
 		return mav;

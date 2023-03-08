@@ -367,6 +367,40 @@ $().ready(function () {
     }
     
     
+    // joinSMsg 메시지 출력
+    var joinSMsg = "${joinSMsg}";
+    if (joinSMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: joinSMsg,
+        });
+    }
+    
+    // joinFMsg 메시지 출력
+    var joinFMsg = "${joinFMsg}";
+    if (joinFMsg) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: 'error',
+            title: joinFMsg,
+        });
+    }
+    
     
 });
 
