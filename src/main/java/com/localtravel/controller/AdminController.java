@@ -44,21 +44,16 @@ public class AdminController {
 	public ModelAndView deleteAdminMenu(String fcode, RedirectAttributes ra) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("fcode : " + fcode);
-		int AdminMDelResult = adsvc.delMenu(fcode);
-		if(AdminMDelResult > 0) {
-			System.out.println("메뉴삭제 성공");
-			int AdminFDelResult = adsvc.delFood(fcode);
-			if(AdminFDelResult > 0) {
-				System.out.println("가게삭제 성공");
-				ra.addFlashAttribute("AdminDelSMsg", "삭제 성공");
-				mav.setViewName("redirect:/AdminDataPage");
-			} else {
-				System.out.println("가게삭제 실패");
-				ra.addFlashAttribute("AdminDelFMsg", "삭제 실패");
-				mav.setViewName("redirect:/AdminDataPage");
-			}
+		// 메뉴삭제
+		int AdminMDelResult = adsvc.delMenu(fcode); 
+		// 가게삭제
+		int AdminFDelResult = adsvc.delFood(fcode);
+		if(AdminFDelResult > 0) {
+			System.out.println("가게삭제 성공");
+			ra.addFlashAttribute("AdminDelSMsg", "삭제 성공");
+			mav.setViewName("redirect:/AdminDataPage");
 		} else {
-			System.out.println("메뉴삭제 실패");
+			System.out.println("가게삭제 실패");
 			ra.addFlashAttribute("AdminDelFMsg", "삭제 실패");
 			mav.setViewName("redirect:/AdminDataPage");
 		}
@@ -89,12 +84,12 @@ public class AdminController {
 		int insertMResult = adsvc.insertMData(menu);
 		if(insertMResult > 0) {
 			System.out.println("메뉴 등록 성공");
-			ra.addFlashAttribute("Msg", "메뉴 등록에 성공하였습니다.");
-			mav.setViewName("admin/AdminPage");
+			ra.addFlashAttribute("AdminSMsg", "등록에 성공하였습니다.");
+			mav.setViewName("redirect:/AdminPage");
 		} else {
 			System.out.println("메뉴 등록 실패");
-			ra.addFlashAttribute("Msg", "메뉴 등록에 실패하였습니다.");
-			mav.setViewName("admin/AdminPage");
+			ra.addFlashAttribute("AdminFMsg", "등록에 실패하였습니다.");
+			mav.setViewName("redirect:/AdminPage");
 			
 		}
 		return mav;
@@ -110,14 +105,14 @@ public class AdminController {
 		int insertFResult = adsvc.insertFData(food);
 		if(insertFResult > 0) {
 			System.out.println("가게 등록 성공");
-			ra.addFlashAttribute("Msg", "가게 등록에 성공하였습니다.");
+			ra.addFlashAttribute("AdminSMsg", "등록에 성공하였습니다.");
 			String fcode = food.getFcode();
 			mav.addObject("fcode",fcode);
-			mav.setViewName("admin/AdminPage");
+			mav.setViewName("redirect:/AdminPage");
 		} else {
 			System.out.println("가게 등록 실패");
-			ra.addFlashAttribute("Msg", "가게 등록에 실패하였습니다.");
-			mav.setViewName("admin/AdminPage");
+			ra.addFlashAttribute("AdminFMsg", "등록에 실패하였습니다.");
+			mav.setViewName("redirect:/AdminPage");
 		}
 		return mav;
  	}
@@ -131,13 +126,13 @@ public class AdminController {
 		int insertEResult = adsvc.insertEData(enjoy);
 		if(insertEResult > 0) {
 			System.out.println("놀거리 등록 성공");
-			ra.addFlashAttribute("Msg", "놀거리 등록에 성공하였습니다.");
+			ra.addFlashAttribute("AdminSMsg", "등록에 성공하였습니다.");
 			
-			mav.setViewName("admin/AdminPage");
+			mav.setViewName("redirect:/AdminPage");
 		} else {
 			System.out.println("놀거리 등록 실패");
-			ra.addFlashAttribute("Msg", "놀거리 등록에 실패하였습니다.");
-			mav.setViewName("admin/AdminPage");
+			ra.addFlashAttribute("AdminFMsg", "등록에 실패하였습니다.");
+			mav.setViewName("redirect:/AdminPage");
 		}
 		return mav;
  	}

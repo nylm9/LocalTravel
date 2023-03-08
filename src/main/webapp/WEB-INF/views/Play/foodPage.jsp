@@ -379,6 +379,10 @@ function change_btn(selectedBtn) {
 
 </body>
 
+
+     <!-- alert창 디자인 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -450,56 +454,86 @@ function searchFood() {
 	console.log("버튼값 : " + foodVal);
 	
 	var procode = $("select[name=province]").val();
-	console.log("procode : " + procode);
-	if(procode == 99) {
-		alert("지역을 선택해주세요!");
-		location.reload();
-	}
-	
-	clickAjax(foodVal, procode)	
-	
-	
-}
 
+	console.log("procode : " + procode);
+		if (procode == 99) {
+			/*   alert("지역을 선택해주세요!"); */
+			// errorMsg 메시지 출력
+			var infoMsg = "지역을 선택해주세요!";
+			if (infoMsg) {
+				const Toast = Swal.mixin({
+					toast : true,
+					position : 'top-center',
+					showConfirmButton : false,
+					timer : 1000,
+					timerProgressBar : true,
+				});
+
+				Toast.fire({
+					icon : 'info',
+					title : infoMsg,
+				});
+			}
+			setTimeout(function() {
+				location.reload();
+			}, 1000)
+			/* location.reload(); */
+		}
+
+		clickAjax(foodVal, procode)
+
+	}
 
 	function clickAjax(foodVal, procode) {
 		console.log("clickAjax 호출");
-		
+
 		var loginId = '${sessionScope.loginId}';
-	  	console.log("loginId : " + loginId);
-			$.ajax({
+		console.log("loginId : " + loginId);
+		$
+				.ajax({
 					type : "get",
 					url : "${pageContext.request.contextPath }/getFoodResult",
-					data : { "fthcode" : foodVal , "procode" : procode},
+					data : {
+						"fthcode" : foodVal,
+						"procode" : procode
+					},
 					dataType : "json",
-					async:false,
-					success: function(foodList) {
+					async : false,
+					success : function(foodList) {
 						console.log(foodList)
 						var output = "";
-						for(var i = 0; i < foodList.length; i++) {
-							if(foodList.length == 0){
+						for (var i = 0; i < foodList.length; i++) {
+							if (foodList.length == 0) {
 								console.log("검색결과 없음");
 							} else {
 								var food = foodList[i];
 								var statusNum = i + 1;
-								
+
 								output += '<div class="col-3">';
 								output += '<div class="card"  style=" margin-top:5px;margin-bottom:13px; width: 270px; height:430px;">';
 								output += '<div class="card-body">';
-								output += '<h5 class="card-title py-2" style="text-align: center;" >No.' + statusNum  + '<h5>';
+								output += '<h5 class="card-title py-2" style="text-align: center;" >No.'
+										+ statusNum + '<h5>';
 								output += '<div style="height:200px;width:5px;">';
-								
-								output += '<a href="${pageContext.request.contextPath }/foodInfo?fcode='+foodList[i].fcode+'">';
+
+								output += '<a href="${pageContext.request.contextPath }/foodInfo?fcode='
+										+ foodList[i].fcode + '">';
 								output += '<img alt="" src="${pageContext.request.contextPath }/resources/FoodPicture/'+foodList[i].fpicture+'" style="height:200px;width:237px;" > </a>';
 								output += '</div>';
-								output += '<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="'+foodList[i].fname+'" >'+foodList[i].fname+' </h6>';
-								 if (foodList[i].f1ex != null && foodList[i].f1ex != undefined) {
-								      output += '<p class="small mb-1 half_background">'+foodList[i].f1ex+' </p>';
-								      output += '<p class="small mb-1">'+foodList[i].faddr+' </p>';
-								    } else {
-								      output += '<p class="small mb-1">'+foodList[i].faddr+' </p>';
-								    }
-								output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/foodInfo?fcode='+foodList[i].fcode+' ">상세보기</a>';
+								output += '<h6 class="listTitle mt-2 mb-0" style="color: #012970; font-weight: 700;" title="'+foodList[i].fname+'" >'
+										+ foodList[i].fname + ' </h6>';
+								if (foodList[i].f1ex != null
+										&& foodList[i].f1ex != undefined) {
+									output += '<p class="small mb-1 half_background">'
+											+ foodList[i].f1ex + ' </p>';
+									output += '<p class="small mb-1">'
+											+ foodList[i].faddr + ' </p>';
+								} else {
+									output += '<p class="small mb-1">'
+											+ foodList[i].faddr + ' </p>';
+								}
+								output += '<a class="btn-dark btn-sm btn" href="${pageContext.request.contextPath }/foodInfo?fcode='
+										+ foodList[i].fcode + ' ">상세보기</a>';
 								output += '</div></div></div>'
 							}
 						}
@@ -507,14 +541,9 @@ function searchFood() {
 						/* $("#selectMovie").focus();
 						$("#selectMovie").click();  */
 					}
-		});
+				});
 
-
-		}
-		
-
-
-
+	}
 </script>
 
     <script type="text/javascript">

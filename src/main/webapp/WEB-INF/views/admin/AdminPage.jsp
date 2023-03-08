@@ -468,8 +468,41 @@ select::-ms-expand {
 
 </body>
 
+   <!-- alert창 디자인 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script type="text/javascript">
+    
+    $().ready(function () {
+        // AdminSMsg 메시지 출력
+        var AdminSMsg = "${AdminSMsg}";
+        if (AdminSMsg) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-center',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: AdminSMsg,
+            });
+        }
+        
+        
+        
+        
+    });
+    
+    
+    </script>
+
 
 <!-- enjoy부분 스크립트 시작 -->
+
+ 
 
 <script type="text/javascript">
 	function joinENameCheck(nameVal) {
@@ -601,6 +634,8 @@ function showPopup() {
     		alert(Msg);
     	}
     </script>
+    
+ 
 
 
 </html>

@@ -502,6 +502,10 @@ function change_btn(selectedBtn, group) {
 
 </body>
 
+
+     <!-- alert창 디자인 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 <script type="text/javascript">
 
    /* 
@@ -589,8 +593,25 @@ function change_btn(selectedBtn, group) {
       var procode = $("select[name=province]").val();
       console.log("procode : " + procode);
       if(procode == 99) {
-         alert("지역을 선택해주세요!");
-         location.reload();
+       /*   alert("지역을 선택해주세요!"); */
+         // errorMsg 메시지 출력
+         var infoMsg = "지역을 선택해주세요!";
+         if (infoMsg) {
+             const Toast = Swal.mixin({
+                 toast: true,
+                 position: 'top-center',
+                 showConfirmButton: false,
+                 timer:  1000,
+                 timerProgressBar: true,
+             });
+
+             Toast.fire({
+                 icon: 'info',
+                 title: infoMsg,
+             });
+         }
+         setTimeout(function(){location.reload();},1000)
+         /* location.reload(); */
       }
       
       var thcode = seasonVal + togetherVal + subjectVal;
@@ -766,7 +787,8 @@ function clickAjax(thcode, procode) {
    
 
    
-   
+<!--    카카오맵api 맵을 사용하기 위한 좌표값이 필요함. 그 좌표를 어떻게 받았는지, 좌표값에 대한 map을 리턴받음. 
+   여행지에 대한 좌표값을 받음. -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=93b4f3f3d42ca1981b8841a71a59e4c7&libraries=services,clusterer,drawing"></script>
    <script>
 // 마커를 담을 배열입니다
@@ -989,8 +1011,7 @@ function removeAllChildNods(el) {
 
 
 
-     <!-- alert창 디자인 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     
 <script type="text/javascript">
 
