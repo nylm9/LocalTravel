@@ -49,10 +49,6 @@ public class TrainService {
 		
 	}
 	
-	
-	
-	
-	
 	// 3. 열차 스케줄 가져오기 ( 예매시 사용할 스케쥴 기능 )
 	public String searchSchedule(TRInputScheduleDto inputSchedule) throws Exception {
 		System.out.println("Service - searchSchedule()");
