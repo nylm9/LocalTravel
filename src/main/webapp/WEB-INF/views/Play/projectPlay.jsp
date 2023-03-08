@@ -787,14 +787,13 @@ function clickAjax(thcode, procode) {
    
 
    
-<<<<<<< HEAD
+
    
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8d1475fdd9bd6c2c4dd2d46f76de2e05&libraries=services,clusterer,drawing"></script>
-=======
+
 <!--    카카오맵api 맵을 사용하기 위한 좌표값이 필요함. 그 좌표를 어떻게 받았는지, 좌표값에 대한 map을 리턴받음. 
    여행지에 대한 좌표값을 받음. -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=93b4f3f3d42ca1981b8841a71a59e4c7&libraries=services,clusterer,drawing"></script>
->>>>>>> origin/MinSeo
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8d1475fdd9bd6c2c4dd2d46f76de2e05&libraries=services,clusterer,drawing"></script>
+
    <script>
 // 마커를 담을 배열입니다
 var markers = [];
