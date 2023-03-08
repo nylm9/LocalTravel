@@ -57,9 +57,9 @@
 					<li><p onclick="PCpaymentBtn()" class="btn-type-1" style="cursor: pointer;">
 							PC 결제요청<span class="icon-arrow"></span>
 						</p></li>
-					<li><a
+					<!-- <li><a
 						href="${pageContext.request.contextPath }/MobilePayment"
-						class="btn-type-1">MOBILE 결제요청<span class="icon-arrow"></span></a></li>
+						class="btn-type-1">MOBILE 결제요청<span class="icon-arrow"></span></a></li>  -->
 				</ul>
 				<!-- footer -->
 				<div class="footer">ⓒ NHN KCP Corp.</div>
