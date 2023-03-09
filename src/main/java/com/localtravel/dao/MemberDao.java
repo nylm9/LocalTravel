@@ -17,10 +17,17 @@ import com.localtravel.dto.MemberDto;
 import com.localtravel.dto.ReservationDto;
 
 public interface MemberDao {
+	/*
+	 * @Insert("INSERT INTO MEMBERS (MID, MPW, MNAME, MBIRTH, MGENDER, MEMAIL, MPHONE, MSTATE) "
+	 * +
+	 * "VALUES(#{mid}, #{mpw}, #{mname}, TO_DATE(#{mbirth},'YYYY-MM-DD'), #{mgender}, #{memail}, "
+	 * + "#{mphone}, '0' )") int insertMemberJoin(MemberDto member);
+	 */
 	@Insert("INSERT INTO MEMBERS (MID, MPW, MNAME, MBIRTH, MGENDER, MEMAIL, MPHONE, MSTATE) "
-			+ "VALUES(#{mid}, #{mpw}, #{mname}, TO_DATE(#{mbirth},'YYYY-MM-DD'), #{mgender}, #{memail}, "
+			+ "VALUES(#{mid}, #{mpw}, #{mname}, TO_CHAR(#{mbirth},'YYYY-MM-DD'), #{mgender}, #{memail}, "
 			+ "#{mphone}, '0' )")
-	int insertMemberJoin(MemberDto member);
+int insertMemberJoin(MemberDto member);
+
 
 	
 	
@@ -39,7 +46,7 @@ public interface MemberDao {
 	
 
 
-	@Update("UPDATE MEMBERS set MNAME=#{mname},MBIRTH=TO_DATE(#{mbirth},'YYYY-MM-DD'),MGENDER=#{mgender},MPHONE=#{mphone},MEMAIL=#{memail},MSTATE='0' WHERE MID=#{mid}")
+	@Update("UPDATE MEMBERS set MNAME=#{mname},MBIRTH=TO_CHAR(#{mbirth},'YYYY-MM-DD'),MGENDER=#{mgender},MPHONE=#{mphone},MEMAIL=#{memail},MSTATE='0' WHERE MID=#{mid}")
 int updateBoard(MemberDto memberDto);
 
 
