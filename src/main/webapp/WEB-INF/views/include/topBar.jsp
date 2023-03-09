@@ -14,7 +14,7 @@
       <div class="navbar-brand ">
       	<nav class="navbar navbar-expand-lg navigation-2 navigation">
 		      	<div style="margin-left:-220%; margin-bottom: -50px">
-			          <a  href="${pageContext.request.contextPath }/testMainPage">
+			          <a  href="${pageContext.request.contextPath }/">
 			          	<span style="float:left; margin-right:1px; margin-top:12px;">Tripick</span>
 			           <img src="${pageContext.request.contextPath }/resources/free-icon-passenger-train-6666868.png" alt="image"
 			           style="width:40px; height:40px;">
