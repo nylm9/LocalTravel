@@ -51,8 +51,8 @@
 		<div id="skipCont" class="grid-middle">
 			<div class="inner">
 				<h1 class="title-type-1">NHN KCP</h1>
-				<p class="title-type-2">주문/결제 SAMPLE</p>
-				<p class="txt-type-1">이 페이지는 표준 STANDARD 결제를 요청하는 샘플 페이지입니다.</p>
+				<p class="title-type-2">주문/결제</p>
+				<p class="txt-type-1">  </p>
 				<ul class="list-btn-1">
 					<li><p onclick="PCpaymentBtn()" class="btn-type-1" style="cursor: pointer;">
 							PC 결제요청<span class="icon-arrow"></span>
